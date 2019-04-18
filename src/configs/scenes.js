@@ -1,5 +1,5 @@
 const SCENES = [
-	{
+  {
     name: 'Main',
     bg: 'https://i.stack.imgur.com/Qu5vI.png',
     objects: {
@@ -18,7 +18,7 @@ const SCENES = [
         name: 'C',
         id: 'collectable1',
         collectable: true,
-      }, 
+      },
       {
         x: 240,
         y: 100,
@@ -55,7 +55,7 @@ const SCENES = [
       dialogButtonsMap: [],
     },
   },
-	{
+  {
     name: 'Next',
     bg: 'https://user-images.githubusercontent.com/5445906/41290571-ecc1438c-6e6a-11e8-91c2-2a4ec0cf812c.jpg',
     objects: {

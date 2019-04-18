@@ -1,7 +1,7 @@
-import React from 'react';
-import { 
-  View, 
-  Text, 
+import React, { Component } from 'react';
+import {
+  View,
+  Text,
   TouchableOpacity,
   Dimensions,
   StyleSheet,
@@ -9,57 +9,53 @@ import {
 
 const { width, height } = Dimensions.get('window');
 
-const Inventory = ({collectedItems, open, onPress}) => {
+const Inventory = ({ collectedItems, open, onPress }) => {
   if (open) {
     return (
       <View style={styles.inventoryOpen}>
         <View>
           {collectedItems.map(item => (
             <View style={styles.inventoryItem}>
-              <Text style={{color: 'black'}}>
+              <Text style={{ color: 'black' }}>
                 {item.name}
-              </Text>  
+              </Text>
             </View>
           ))}
         </View>
         <TouchableOpacity onPress={() => onPress()}>
-          <Text style={{color: 'black'}}>
-            C
-          </Text>  
+          <Text style={{ color: 'black' }}>C</Text>
         </TouchableOpacity>
       </View>
     );
   }
   return (
     <TouchableOpacity style={styles.inventoryClosed} onPress={() => onPress()}>
-      <Text style={{color: 'yellow'}}>
-        O
-      </Text>
+      <Text style={{ color: 'yellow' }}>O</Text>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   inventoryOpen: {
-    position: 'absolute', 
+    position: 'absolute',
     zIndex: 999,
     elevation: 1,
     backgroundColor: 'white',
     top: 0,
-    right: 0, 
+    right: 0,
     width: 60,
-    height, 
+    height,
     justifyContent: 'space-between',
   },
   inventoryItem: {
-    width: 60, 
+    width: 60,
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
   },
   inventoryClosed: {
     position: 'absolute',
-    top: height/2 - 15,
+    top: height / 2 - 15,
     right: 30,
   },
 });

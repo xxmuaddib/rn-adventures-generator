@@ -1,13 +1,13 @@
 import React from 'react';
 import {
   createSwitchNavigator,
-  createAppContainer
+  createAppContainer,
 } from 'react-navigation';
 import { Screens, InitialScreen } from './src/helpers/ScreenGenerator';
 
 const SwitchNavigator = createSwitchNavigator(
   Screens(),
-  { initialRouteName: InitialScreen }
+  { initialRouteName: InitialScreen },
 );
 
 const AppContainer = createAppContainer(SwitchNavigator);
