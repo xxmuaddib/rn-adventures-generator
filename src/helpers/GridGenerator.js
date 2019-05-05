@@ -19,23 +19,27 @@ const generateObjectGrid = ({
 }) => {
   return (
     <View style={{ width, height }}>
-      {objects.navMap.map((item, i) => (
+      {objects.navMap.map(item => (
         <TouchableOpacity
-          key={`scene${i}`}
-          style={generateStyle(styles.itemStyle, {x: item.x, y: item.y, width: item.width, height: item.height})}
+          key={item.route}
+          style={generateStyle(styles.itemStyle, {
+            x: item.x,
+            y: item.y,
+            width: item.width,
+            height: item.height,
+          })}
           onPress={() => onPress(item.route)}
         >
           <Text style={{ color: 'green' }}>{item.route}</Text>
         </TouchableOpacity>
       ))}
-      {objects.itemsMap.map((item, i) => {
+      {objects.itemsMap.map(item => {
         const index = collectedItems.findIndex((element) => element.id === item.id);
         if (index > -1) return false;
         return (
-          <View>
+          <View key={item.id}>
             {item.collectable && (
               <TouchableOpacity
-                key={`item${i}`}
                 style={generateStyle(styles.itemStyle, {
                   x: item.x,
                   y: item.y,
@@ -49,7 +53,6 @@ const generateObjectGrid = ({
             )}
             {item.multiple && (
               <TouchableOpacity
-                key={`item${i}`}
                 style={generateStyle(styles.itemStyle, {
                   x: item.x,
                   y: item.y,

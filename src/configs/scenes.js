@@ -47,7 +47,7 @@ const SCENES = [
         width: 20,
         height: 20,
         name: 'Q',
-        multiple: ['Q','E', 'T'],
+        multiple: ['Q', 'E', 'T'],
         correct: 'T',
         id: 'group1_3',
         group: 'group1',
