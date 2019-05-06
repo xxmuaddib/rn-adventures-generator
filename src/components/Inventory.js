@@ -7,6 +7,8 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import { generateElement } from '../helpers/ElementGenerator';
+
 const { width, height } = Dimensions.get('window');
 
 const Inventory = ({ collectedItems, open, onPress }) => {
@@ -15,10 +17,8 @@ const Inventory = ({ collectedItems, open, onPress }) => {
       <View style={styles.inventoryOpen}>
         <View>
           {collectedItems.map(item => (
-            <View style={styles.inventoryItem}>
-              <Text style={{ color: 'black' }}>
-                {item.name}
-              </Text>
+            <View style={styles.inventoryItem} key={item.id}>
+              {generateElement({ item })}
             </View>
           ))}
         </View>

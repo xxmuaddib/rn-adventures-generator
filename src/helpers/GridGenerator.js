@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { generateStyle } from './StyleGenerator';
+import { generateElement } from './ElementGenerator';
 
 const { width, height } = Dimensions.get('window');
 
@@ -30,7 +31,7 @@ const generateObjectGrid = ({
           })}
           onPress={() => onPress(item.route)}
         >
-          <Text style={{ color: 'green' }}>{item.route}</Text>
+          {generateElement({ item })}
         </TouchableOpacity>
       ))}
       {objects.itemsMap.map(item => {
@@ -48,7 +49,7 @@ const generateObjectGrid = ({
                 })}
                 onPress={() => collect(item)}
               >
-                <Text style={{ color: 'green' }}>{item.name}</Text>
+                {generateElement({ item })}
               </TouchableOpacity>
             )}
             {item.multiple && (
@@ -61,7 +62,7 @@ const generateObjectGrid = ({
                 })}
                 onPress={() => toggleMultiple(item)}
               >
-                <Text style={{ color: 'blue' }}>{item.name}</Text>
+                {generateElement({ item, type: 'multiple' })}
               </TouchableOpacity>
             )}
           </View>
