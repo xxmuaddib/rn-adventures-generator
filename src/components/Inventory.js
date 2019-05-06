@@ -8,6 +8,8 @@ import {
   AsyncStorage,
 } from 'react-native';
 
+import { generateElement } from '../helpers/ElementGenerator';
+
 const { width, height } = Dimensions.get('window');
 
 const Inventory = ({ collectedItems, open, onPress }) => {
@@ -20,11 +22,9 @@ const Inventory = ({ collectedItems, open, onPress }) => {
       <View style={styles.inventoryOpen} onPress>
         <View>
           {collectedItems.map(item => (
-            <TouchableOpacity style={styles.inventoryItem} onPress={() => handleInvetoryItemPress(item.id)}>
-              <Text style={{ color: 'black' }}>
-                {item.name}
-              </Text>
-            </TouchableOpacity>
+            <View style={styles.inventoryItem} key={item.id} onPress={() => handleInvetoryItemPress(item.id)}>
+              {generateElement({ item })}
+            </View>
           ))}
         </View>
         <TouchableOpacity onPress={() => onPress()}>

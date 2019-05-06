@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import {
   ImageBackground,
@@ -14,6 +15,7 @@ import Inventory from '../components/Inventory';
 const { width, height } = Dimensions.get('window');
 
 function screenGenerator(scene) {
+  const originalScene = _.cloneDeep(scene);
   return class ScreenGenerator extends React.Component {
     constructor(props) {
       super();
@@ -23,23 +25,71 @@ function screenGenerator(scene) {
         collectedItems: [],
         inventoryOpen: false,
         loading: true,
-        scene: { ...scene },
+        scene: _.cloneDeep(scene),
       };
 
       this.getCollectedItems();
+      this.setMultipleItems();
     }
-
-    componentDidMount() {
-      AsyncStorage.setItem('successComboRoutes', {});
-    }
-
-    async getCollectedItems() {
+    getCollectedItems = async () => {
       const inventoryRaw = await AsyncStorage.getItem('inventory');
       if (inventoryRaw) {
         const inventory = JSON.parse(inventoryRaw);
         this.setState({ collectedItems: inventory, loading: false });
       } else {
         this.setState({ collectedItems: [], loading: false });
+      }
+    }
+
+    reset = async () => {
+      const {
+        scene: {
+          objects,
+        },
+      } = this.state;
+
+      await AsyncStorage.removeItem('inventory');
+      this.setState({ collectedItems: [] });
+      if (objects.itemsMap) {
+        const groups = objects.itemsMap.filter(el => el.type === 'multiple');
+        const unique = [...new Set(groups.map(item => item.group))];
+        unique.forEach(async g => {
+          await AsyncStorage.removeItem(g);
+          this.setState({ scene: _.cloneDeep(originalScene) });
+        });
+      }
+    }
+
+    setMultipleItems = async () => {
+      const {
+        scene: {
+          objects,
+        },
+      } = this.state;
+
+      const objectsCopy = { ...objects };
+
+      if (objectsCopy.itemsMap) {
+        const groups = objectsCopy.itemsMap.filter(el => el.type === 'multiple');
+        const unique = [...new Set(groups.map(item => item.group))];
+        unique.forEach(async g => {
+          const groupRaw = await AsyncStorage.getItem(g);
+          const group = JSON.parse(groupRaw);
+          if (group) {
+            group.forEach(item => {
+              const i = objectsCopy.itemsMap.findIndex(el => el.id === item.id);
+              if (i > -1) {
+                objectsCopy.itemsMap[i] = item;
+              }
+            });
+            this.setState(s => ({
+              scene: {
+                ...s.scene,
+                itemsMap: objectsCopy.itemsMap,
+              },
+            }));
+          }
+        });
       }
     }
 
@@ -97,27 +147,30 @@ function screenGenerator(scene) {
     }
 
     toggleMultiple = async item => {
-      const { scene } = this.state;
-      const { objects } = scene;
+      const {
+        scene: {
+          objects,
+        },
+      } = this.state;
+
       const objectsModified = { ...objects };
 
-      let newChar;
-      if (item.multiple.indexOf(item.name) + 1 < item.multiple.length) {
-        newChar = item.multiple[item.multiple.indexOf(item.name) + 1];
+      const match = item.multiple.findIndex(el => el.id === item.selected);
+      let newSelected;
+      if (match + 1 < item.multiple.length) {
+        newSelected = item.multiple[match + 1];
       } else {
-        newChar = item.multiple[0];
+        newSelected = item.multiple[0];
       }
 
       const group = await AsyncStorage.getItem(item.group);
       const parts = objectsModified.itemsMap.filter(object => object.group === item.group && object);
+      const groups = parts.map(el => {
+        if (el.selected === el.correct) return true;
+        return false;
+      });
 
-      let groupCorrect = true;
-      for (let part of parts) {
-        if (part.name != part.correct) {
-          groupCorrect = false;
-          break;
-        }
-      }
+      const groupCorrect = groups.every(el => el === true);
 
       if (groupCorrect) return;
 
@@ -129,9 +182,9 @@ function screenGenerator(scene) {
       const groupMatch = groupParsed.findIndex(elem => elem.id === item.id && elem);
 
       if (groupMatch > -1) {
-        groupParsed[groupMatch] = { ...item, name: newChar };
+        groupParsed[groupMatch] = { ...item, selected: newSelected.id };
       } else {
-        groupParsed.push({ ...item, name: newChar });
+        groupParsed.push({ ...item, selected: newSelected.id });
       }
 
       await AsyncStorage.setItem(item.group, JSON.stringify(groupParsed));
@@ -139,7 +192,7 @@ function screenGenerator(scene) {
       const itemMatch = objectsModified.itemsMap.findIndex(elem => elem.id === item.id && elem);
 
       if (itemMatch > -1) {
-        objectsModified.itemsMap[itemMatch] = { ...item, name: newChar };
+        objectsModified.itemsMap[itemMatch] = { ...item, selected: newSelected.id };
       }
 
       this.setState({ scene: { ...scene, objects: objectsModified } });
@@ -178,10 +231,7 @@ function screenGenerator(scene) {
           />
           <TouchableOpacity
             style={{ position: 'absolute', top: 80, right: 30 }}
-            onPress={async () => {
-              await AsyncStorage.removeItem('inventory');
-              this.setState({ collectedItems: [] });
-            }}
+            onPress={this.reset}
           >
             <Text style={{ color: 'purple' }}>C</Text>
           </TouchableOpacity>

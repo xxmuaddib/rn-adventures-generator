@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { generateStyle } from './StyleGenerator';
+import { generateElement } from './ElementGenerator';
 
 const { width, height } = Dimensions.get('window');
 
@@ -20,24 +21,21 @@ const generateObjectGrid = ({
 }) => {
   return (
     <View style={{ width, height }}>
-      {objects.navMap.map((item, i) => (
-        /* ((item.hasOwnProperty('showWhen') && [].findIndex(item.showWhen)) || item.hasOwnProperty('showWhen'))
-          && ( */
-            <TouchableOpacity
-              key={`scene${i}`}
-              style={generateStyle(styles.itemStyle, {
-                x: item.x,
-                y: item.y,
-                width: item.width,
-                height: item.height,
-              })}
-              onPress={() => onPress(item.route)}
-            >
-              <Text style={{ color: 'green' }}>{item.route}</Text>
-            </TouchableOpacity>
-          // )
+      {objects.navMap.map(item => (
+        <TouchableOpacity
+          key={item.route}
+          style={generateStyle(styles.itemStyle, {
+            x: item.x,
+            y: item.y,
+            width: item.width,
+            height: item.height,
+          })}
+          onPress={() => onPress(item.route)}
+        >
+          {generateElement({ item })}
+        </TouchableOpacity>
       ))}
-      {objects.itemsMap.map((item, i) => {
+      {objects.itemsMap.map(item => {
         const index = collectedItems.findIndex((element) => element.id === item.id);
         if (index > -1 && (item.hasOwnProperty('type') && item.type !== 'reciever')) return false;
         return (
@@ -58,7 +56,6 @@ const generateObjectGrid = ({
             )}
             {item.collectable && (
               <TouchableOpacity
-                key={`item${i}`}
                 style={generateStyle(styles.itemStyle, {
                   x: item.x,
                   y: item.y,
@@ -67,12 +64,11 @@ const generateObjectGrid = ({
                 })}
                 onPress={() => collect(item)}
               >
-                <Text style={{ color: 'green' }}>{item.name}</Text>
+                {generateElement({ item })}
               </TouchableOpacity>
             )}
             {item.multiple && (
               <TouchableOpacity
-                key={`item${i}`}
                 style={generateStyle(styles.itemStyle, {
                   x: item.x,
                   y: item.y,
@@ -81,7 +77,7 @@ const generateObjectGrid = ({
                 })}
                 onPress={() => toggleMultiple(item)}
               >
-                <Text style={{ color: 'blue' }}>{item.name}</Text>
+                {generateElement({ item, type: 'multiple' })}
               </TouchableOpacity>
             )}
           </View>
