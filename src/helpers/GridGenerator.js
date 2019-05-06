@@ -16,23 +16,46 @@ const generateObjectGrid = ({
   onPress,
   collect,
   toggleMultiple,
+  recieve,
 }) => {
   return (
     <View style={{ width, height }}>
       {objects.navMap.map((item, i) => (
-        <TouchableOpacity
-          key={`scene${i}`}
-          style={generateStyle(styles.itemStyle, {x: item.x, y: item.y, width: item.width, height: item.height})}
-          onPress={() => onPress(item.route)}
-        >
-          <Text style={{ color: 'green' }}>{item.route}</Text>
-        </TouchableOpacity>
+        /* ((item.hasOwnProperty('showWhen') && [].findIndex(item.showWhen)) || item.hasOwnProperty('showWhen'))
+          && ( */
+            <TouchableOpacity
+              key={`scene${i}`}
+              style={generateStyle(styles.itemStyle, {
+                x: item.x,
+                y: item.y,
+                width: item.width,
+                height: item.height,
+              })}
+              onPress={() => onPress(item.route)}
+            >
+              <Text style={{ color: 'green' }}>{item.route}</Text>
+            </TouchableOpacity>
+          // )
       ))}
       {objects.itemsMap.map((item, i) => {
         const index = collectedItems.findIndex((element) => element.id === item.id);
-        if (index > -1) return false;
+        if (index > -1 && (item.hasOwnProperty('type') && item.type !== 'reciever')) return false;
         return (
           <View>
+            {item.type === 'reciever' && (
+              <TouchableOpacity
+                key={`item${i}`}
+                style={generateStyle(styles.itemStyle, {
+                  x: item.x,
+                  y: item.y,
+                  width: item.width,
+                  height: item.height,
+                })}
+                onPress={() => recieve(item.expectedId)}
+              >
+                <Text style={{ color: 'red' }}>{item.name}</Text>
+              </TouchableOpacity>
+            )}
             {item.collectable && (
               <TouchableOpacity
                 key={`item${i}`}

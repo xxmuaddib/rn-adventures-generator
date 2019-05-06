@@ -5,21 +5,26 @@ import {
   TouchableOpacity,
   Dimensions,
   StyleSheet,
+  AsyncStorage,
 } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
 const Inventory = ({ collectedItems, open, onPress }) => {
+  const handleInvetoryItemPress = async itemId => {
+    await AsyncStorage.setItem('selectedItem', itemId);
+  };
+
   if (open) {
     return (
-      <View style={styles.inventoryOpen}>
+      <View style={styles.inventoryOpen} onPress>
         <View>
           {collectedItems.map(item => (
-            <View style={styles.inventoryItem}>
+            <TouchableOpacity style={styles.inventoryItem} onPress={() => handleInvetoryItemPress(item.id)}>
               <Text style={{ color: 'black' }}>
                 {item.name}
               </Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
         <TouchableOpacity onPress={() => onPress()}>
@@ -55,7 +60,7 @@ const styles = StyleSheet.create({
   },
   inventoryClosed: {
     position: 'absolute',
-    top: height / 2 - 15,
+    top: height / 2 - 15 - 30,
     right: 30,
   },
 });

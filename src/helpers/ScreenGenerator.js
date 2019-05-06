@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Text,
   Dimensions,
+  Alert,
 } from 'react-native';
 import { SCENES, INITIAL_SCREEN } from '../configs/scenes';
 import { generateObjectGrid } from './GridGenerator';
@@ -15,7 +16,7 @@ const { width, height } = Dimensions.get('window');
 function screenGenerator(scene) {
   return class ScreenGenerator extends React.Component {
     constructor(props) {
-      super(props);
+      super();
       this.state = {
         name: scene.name,
         bg: scene.bg,
@@ -26,6 +27,10 @@ function screenGenerator(scene) {
       };
 
       this.getCollectedItems();
+    }
+
+    componentDidMount() {
+      AsyncStorage.setItem('successComboRoutes', {});
     }
 
     async getCollectedItems() {
@@ -41,12 +46,54 @@ function screenGenerator(scene) {
     onPress = route => {
       const { navigation } = this.props;
       navigation.navigate(route);
-    }
+    };
 
     collect = async item => {
       const { collectedItems } = this.state;
       await AsyncStorage.setItem('inventory', JSON.stringify([...collectedItems, item]));
       this.setState({ collectedItems: [...collectedItems, item] });
+    };
+
+    recieve = async expectedId => {
+      const selectedItemId = await AsyncStorage.getItem('selectedItem');
+      let alertMsg = '';
+      if (expectedId === selectedItemId) {
+        try {
+          await AsyncStorage.removeItem('selectedItem');
+          const successComboRoutes = await AsyncStorage.getItem('successComboRoutes');
+          const changedObj = {
+            ...successComboRoutes,
+            [expectedId]: true,
+          };
+
+          console.log('changedObj', changedObj)
+          await AsyncStorage.setItem('successComboRoutes', changedObj);
+          console.log('changed', AsyncStorage.getItem('successComboRoutes'));
+          alertMsg = 'Success!';
+        } catch (e) {
+          console.error('Something went wrong', e.message);
+        }
+      } else {
+        alertMsg = 'Fail!';
+      }
+      this.generateAlertMsg(alertMsg);
+    }
+
+    generateAlertMsg = message => {
+      Alert.alert(
+        message,
+        /* 'My Alert Msg',
+        [
+          {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+          {
+            text: 'Cancel',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+          },
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],
+        {cancelable: false}, */
+      );
     }
 
     toggleMultiple = async item => {
@@ -67,7 +114,7 @@ function screenGenerator(scene) {
       let groupCorrect = true;
       for (let part of parts) {
         if (part.name != part.correct) {
-          groupCorrect = false;  
+          groupCorrect = false;
           break;
         }
       }
@@ -96,7 +143,7 @@ function screenGenerator(scene) {
       }
 
       this.setState({ scene: { ...scene, objects: objectsModified } });
-    }
+    };
 
     render() {
       const {
@@ -107,7 +154,8 @@ function screenGenerator(scene) {
       } = this.state;
       const { objects } = this.state.scene;
       return (
-        <ImageBackground source={{ uri: bg }}
+        <ImageBackground
+          source={{ uri: bg }}
           style={{
             height,
             width,
@@ -120,9 +168,14 @@ function screenGenerator(scene) {
             collectedItems,
             onPress: this.onPress,
             collect: this.collect,
+            recieve: this.recieve,
             toggleMultiple: this.toggleMultiple,
           })}
-          <Inventory open={inventoryOpen} collectedItems={collectedItems} onPress={() => this.setState({inventoryOpen: !inventoryOpen })} />
+          <Inventory
+            open={inventoryOpen}
+            collectedItems={collectedItems}
+            onPress={() => this.setState({ inventoryOpen: !inventoryOpen })}
+          />
           <TouchableOpacity
             style={{ position: 'absolute', top: 80, right: 30 }}
             onPress={async () => {
