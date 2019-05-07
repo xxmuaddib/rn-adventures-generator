@@ -2,7 +2,7 @@
 Flexible generator for different adventures
 ## Prerequisites
 ```
-npm install -g expo-cli
+yarn global add expo-cli
 ```
 ## Installing
 Clone repo
@@ -11,11 +11,11 @@ git clone https://github.com/xxmuaddib/adventures-generator.git
 ```
 Run
 ```
-npm install
+yarn (yarn install)
 ```
 ## Deployment
 Activate expo tunnel
 ```
-npm start --tunnel
+yarn start --tunnel
 ```
 Scan QR-code via application

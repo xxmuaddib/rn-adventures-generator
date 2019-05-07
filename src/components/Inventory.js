@@ -22,9 +22,9 @@ const Inventory = ({ collectedItems, open, onPress }) => {
       <View style={styles.inventoryOpen} onPress>
         <View>
           {collectedItems.map(item => (
-            <View style={styles.inventoryItem} key={item.id} onPress={() => handleInvetoryItemPress(item.id)}>
+            <TouchableOpacity style={styles.inventoryItem} key={item.id} onPress={() => handleInvetoryItemPress(item.id)}>
               {generateElement({ item })}
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
         <TouchableOpacity onPress={() => onPress()}>
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   inventoryItem: {
+    marginTop: 20,
     width: 60,
     height: 60,
     justifyContent: 'center',

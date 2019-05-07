@@ -1,27 +1,21 @@
 const SCENES = [
   {
     name: 'Main',
+    route: 'Main',
     bg: 'https://static1.squarespace.com/static/58bea83d59cc6866d228a41b/58ca658b37c5813452b104aa/58ca65a0bebafbce64d25218/1501665865370/view+01.jpg?format=2500w',
     objects: {
       navMap: [
-        {
-          x: 50,
-          y: 30,
-          width: 80,
-          height: 40,
-          name: 'Next',
-          route: 'Next',
-          element: 'text',
-        },
         {
           x: 70,
           y: 30,
           width: 80,
           height: 40,
-          route: 'Test success combo',
-          showWhen: 'collectable1',
+          route: 'Next',
+          name: 'Next',
+          //showWhen: 'collectable1',
+          element: 'text'
         },
-    ],
+      ],
       itemsMap: [{
         x: 200,
         y: 170,
@@ -133,6 +127,7 @@ const SCENES = [
   },
   {
     name: 'Next',
+    route: 'Next',
     bg: 'http://static.materialicious.com/images/house-to-see-the-sky-by-abraham-cota-paredes-o.jpg',
     objects: {
       navMap: [{

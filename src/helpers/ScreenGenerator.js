@@ -110,7 +110,7 @@ function screenGenerator(scene) {
       if (expectedId === selectedItemId) {
         try {
           await AsyncStorage.removeItem('selectedItem');
-          const successComboRoutes = await AsyncStorage.getItem('successComboRoutes');
+          /* const successComboRoutes = await AsyncStorage.getItem('successComboRoutes');
           const changedObj = {
             ...successComboRoutes,
             [expectedId]: true,
@@ -118,7 +118,7 @@ function screenGenerator(scene) {
 
           console.log('changedObj', changedObj)
           await AsyncStorage.setItem('successComboRoutes', changedObj);
-          console.log('changed', AsyncStorage.getItem('successComboRoutes'));
+          console.log('changed', AsyncStorage.getItem('successComboRoutes')); */
           alertMsg = 'Success!';
         } catch (e) {
           console.error('Something went wrong', e.message);

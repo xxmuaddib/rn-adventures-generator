@@ -42,7 +42,7 @@ const generateObjectGrid = ({
           <View>
             {item.type === 'reciever' && (
               <TouchableOpacity
-                key={`item${i}`}
+                // key={`item${i}`}
                 style={generateStyle(styles.itemStyle, {
                   x: item.x,
                   y: item.y,
