@@ -30,7 +30,9 @@ function screenGenerator(scene) {
 
       this.getCollectedItems();
       this.setMultipleItems();
+      this.setSequenceItems();
     }
+
     getCollectedItems = async () => {
       const inventoryRaw = await AsyncStorage.getItem('inventory');
       if (inventoryRaw) {
@@ -56,6 +58,38 @@ function screenGenerator(scene) {
         unique.forEach(async g => {
           await AsyncStorage.removeItem(g);
           this.setState({ scene: _.cloneDeep(originalScene) });
+        });
+      }
+    }
+
+    setSequenceItems = async () => {
+      const {
+        scene: {
+          objects,
+        },
+      } = this.state;
+
+      const objectsCopy = { ...objects };
+
+      if (objectsCopy.describers) {
+        objectsCopy.describers.forEach(async d => {
+          const describerRaw = await AsyncStorage.getItem(d.group);
+          const describer = JSON.parse(describerRaw);
+          if (describer) {
+            const i = objectsCopy.describers.findIndex(el => el.group === describer.group);
+            if (i > -1) {
+              objectsCopy.describers[i] = describer;
+            }
+            this.setState(prevState => ({
+              scene: {
+                ...prevState.scene,
+                objects: {
+                  ...prevState.scene.objects,
+                  describers: objectsCopy.describers,
+                },
+              },
+            }));
+          }
         });
       }
     }
@@ -104,16 +138,16 @@ function screenGenerator(scene) {
       this.setState({ collectedItems: [...collectedItems, item] });
     };
 
-    recieve = async expectedId => {
+    recieve = async expectedValue => {
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
       let alertMsg = '';
-      if (expectedId === selectedItemId) {
+      if (expectedValue === selectedItemId) {
         try {
           await AsyncStorage.removeItem('selectedItem');
           /* const successComboRoutes = await AsyncStorage.getItem('successComboRoutes');
           const changedObj = {
             ...successComboRoutes,
-            [expectedId]: true,
+            [expectedValue]: true,
           };
 
           console.log('changedObj', changedObj)
@@ -127,6 +161,41 @@ function screenGenerator(scene) {
         alertMsg = 'Fail!';
       }
       this.generateAlertMsg(alertMsg);
+    }
+
+    sequence = async item => {
+      const {
+        scene: {
+          objects,
+        },
+      } = this.state;
+
+      const objectsModified = { ...objects };
+      const storageDescriber = await AsyncStorage.getItem(item.group);
+
+      let describer;
+      if (storageDescriber) {
+        describer = JSON.parse(storageDescriber);
+      }
+
+      const describerIndex = objectsModified.describers.findIndex(elem => elem.group === item.group && elem);
+      if (describerIndex > -1) {
+        describer = objectsModified.describers[describerIndex];
+      }
+      const { expectedValue, currentValue } = describer;
+      if (expectedValue[currentValue.length] === item.name) {
+        currentValue.push(item.name);
+        objectsModified.describers[describerIndex] = { ...describer, currentValue };
+        if (expectedValue.length === currentValue.length) {
+          this.generateAlertMsg('Success!!!!');
+          return;
+        }
+      } else {
+        this.generateAlertMsg('Fail!!!!');
+        objectsModified.describers[describerIndex] = { ...describer, currentValue: [] };
+      }
+      await AsyncStorage.setItem(item.group, JSON.stringify(objectsModified.describers[describerIndex]));
+      this.setState({ scene: { ...scene, objects: objectsModified } });
     }
 
     generateAlertMsg = message => {
@@ -206,6 +275,7 @@ function screenGenerator(scene) {
         loading,
       } = this.state;
       const { objects } = this.state.scene;
+
       return (
         <ImageBackground
           source={{ uri: bg }}
@@ -222,6 +292,7 @@ function screenGenerator(scene) {
             onPress: this.onPress,
             collect: this.collect,
             recieve: this.recieve,
+            sequence: this.sequence,
             toggleMultiple: this.toggleMultiple,
           })}
           <Inventory

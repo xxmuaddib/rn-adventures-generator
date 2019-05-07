@@ -18,6 +18,7 @@ const generateObjectGrid = ({
   collect,
   toggleMultiple,
   recieve,
+  sequence,
 }) => {
   return (
     <View style={{ width, height }}>
@@ -37,9 +38,23 @@ const generateObjectGrid = ({
       ))}
       {objects.itemsMap.map(item => {
         const index = collectedItems.findIndex((element) => element.id === item.id);
-        if (index > -1 && (item.hasOwnProperty('type') && item.type !== 'reciever')) return false;
+        if (index > -1 && (item.hasOwnProperty('type') && item.type !== 'reciever' && item.type !== 'sequence')) return false;
         return (
           <View>
+            {item.type === 'sequence' && (
+              <TouchableOpacity
+                // key={`item${i}`}
+                style={generateStyle(styles.itemStyle, {
+                  x: item.x,
+                  y: item.y,
+                  width: item.width,
+                  height: item.height,
+                })}
+                onPress={() => sequence(item)}
+              >
+                <Text style={{ color: 'green' }}>{item.name}</Text>
+              </TouchableOpacity>
+            )}
             {item.type === 'reciever' && (
               <TouchableOpacity
                 // key={`item${i}`}
@@ -49,7 +64,7 @@ const generateObjectGrid = ({
                   width: item.width,
                   height: item.height,
                 })}
-                onPress={() => recieve(item.expectedId)}
+                onPress={() => recieve(item.expectedValue)}
               >
                 <Text style={{ color: 'red' }}>{item.name}</Text>
               </TouchableOpacity>

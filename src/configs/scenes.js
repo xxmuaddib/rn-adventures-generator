@@ -13,7 +13,7 @@ const SCENES = [
           route: 'Next',
           name: 'Next',
           //showWhen: 'collectable1',
-          element: 'text'
+          element: 'text',
         },
       ],
       itemsMap: [{
@@ -30,11 +30,32 @@ const SCENES = [
       },
       {
         x: 150,
+        y: 50,
+        width: 20,
+        height: 20,
+        name: 'D',
+        group: 'sequence1',
+        id: 'sequence1_1',
+        type: 'sequence',
+      },
+      {
+        x: 150,
+        y: 70,
+        width: 20,
+        height: 20,
+        name: 'A',
+        group: 'sequence1',
+        id: 'sequence1_2',
+        type: 'sequence',
+      },
+      {
+        x: 150,
         y: 130,
         width: 40,
         height: 20,
+        id: 'reciever1',
         name: 'Test reciever',
-        expectedId: 'collectable1',
+        expectedValue: 'collectable1',
         type: 'reciever',
       },
       {
@@ -122,6 +143,14 @@ const SCENES = [
         group: 'group1',
         element: 'text',
       }],
+      describers: [
+        {
+          type: 'sequenceDescriber',
+          expectedValue: ['D', 'A', 'B', 'A'],
+          currentValue: [],
+          group: 'sequence1',
+        },
+      ],
       dialogButtonsMap: [],
     }
   },
