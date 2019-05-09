@@ -37,8 +37,7 @@ const generateObjectGrid = ({
         </TouchableOpacity>
       ))}
       {objects.itemsMap.map(item => {
-        const index = collectedItems.findIndex((element) => element.id === item.id);
-        if (index > -1 && (item.hasOwnProperty('type') && item.type !== 'reciever' && item.type !== 'sequence')) return false;
+        const collectableShouldHide = collectedItems.findIndex(element => item.type === 'collectable' && element.id === item.id) !== -1;
         return (
           <View key={item.id}>
             {item.type === 'sequence' && (
@@ -67,7 +66,7 @@ const generateObjectGrid = ({
                 <Text style={{ color: 'red' }}>{item.name}</Text>
               </TouchableOpacity>
             )}
-            {item.collectable && (
+            {item.type === 'collectable' && !collectableShouldHide && (
               <TouchableOpacity
                 style={generateStyle(styles.itemStyle, {
                   x: item.x,

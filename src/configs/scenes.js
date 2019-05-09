@@ -23,7 +23,6 @@ const SCENES = [
         height: 20,
         name: 'C',
         id: 'collectable1',
-        collectable: true,
         type: 'collectable',
         element: 'image',
         imgSrc: 'http://cdn.onlinewebfonts.com/svg/img_327474.png',
@@ -152,7 +151,7 @@ const SCENES = [
         },
       ],
       dialogButtonsMap: [],
-    }
+    },
   },
   {
     name: 'Next',
