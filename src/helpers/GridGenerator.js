@@ -40,10 +40,9 @@ const generateObjectGrid = ({
         const index = collectedItems.findIndex((element) => element.id === item.id);
         if (index > -1 && (item.hasOwnProperty('type') && item.type !== 'reciever' && item.type !== 'sequence')) return false;
         return (
-          <View>
+          <View key={item.id}>
             {item.type === 'sequence' && (
               <TouchableOpacity
-                // key={`item${i}`}
                 style={generateStyle(styles.itemStyle, {
                   x: item.x,
                   y: item.y,
@@ -57,7 +56,6 @@ const generateObjectGrid = ({
             )}
             {item.type === 'reciever' && (
               <TouchableOpacity
-                // key={`item${i}`}
                 style={generateStyle(styles.itemStyle, {
                   x: item.x,
                   y: item.y,
