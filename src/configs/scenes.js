@@ -48,6 +48,16 @@ const SCENES = [
         type: 'sequence',
       },
       {
+        x: 190,
+        y: 70,
+        width: 20,
+        height: 20,
+        name: 'B',
+        group: 'sequence1',
+        id: 'sequence1_3',
+        type: 'sequence',
+      },
+      {
         x: 150,
         y: 130,
         width: 40,

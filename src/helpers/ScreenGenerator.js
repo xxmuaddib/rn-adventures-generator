@@ -17,17 +17,16 @@ const { width, height } = Dimensions.get('window');
 function screenGenerator(scene) {
   const originalScene = _.cloneDeep(scene);
   return class ScreenGenerator extends React.Component {
-    constructor(props) {
-      super();
-      this.state = {
-        name: scene.name,
-        bg: scene.bg,
-        collectedItems: [],
-        inventoryOpen: false,
-        loading: true,
-        scene: _.cloneDeep(scene),
-      };
+    state = {
+      name: scene.name,
+      bg: scene.bg,
+      collectedItems: [],
+      inventoryOpen: false,
+      loading: true,
+      scene: _.cloneDeep(scene),
+    };
 
+    componentWillMount() {
       this.getCollectedItems();
       this.setMultipleItems();
       this.setSequenceItems();
