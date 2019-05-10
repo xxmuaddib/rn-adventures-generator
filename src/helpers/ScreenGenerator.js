@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import {
+  View,
   ImageBackground,
   AsyncStorage,
   TouchableOpacity,
@@ -8,6 +9,9 @@ import {
   Dimensions,
   Alert,
 } from 'react-native';
+import Modal from 'react-native-modal';
+import { FontAwesome } from '@expo/vector-icons';
+
 import { SCENES, INITIAL_SCREEN } from '../configs/scenes';
 import { generateObjectGrid } from './GridGenerator';
 import Inventory from '../components/Inventory';
@@ -23,6 +27,7 @@ function screenGenerator(scene) {
       collectedItems: [],
       inventoryOpen: false,
       loading: true,
+      mainMenuVisible: false,
       scene: _.cloneDeep(scene),
     };
 
@@ -59,6 +64,7 @@ function screenGenerator(scene) {
           this.setState({ scene: _.cloneDeep(originalScene) });
         });
       }
+      this.openMainMenu();
     }
 
     setSequenceItems = async () => {
@@ -266,14 +272,21 @@ function screenGenerator(scene) {
       this.setState({ scene: { ...scene, objects: objectsModified } });
     };
 
+    openMainMenu = () => {
+      this.setState(p => ({ mainMenuVisible: !p.mainMenuVisible }));
+    }
+
     render() {
       const {
         bg,
         collectedItems,
         inventoryOpen,
         loading,
+        mainMenuVisible,
+        scene: {
+          objects,
+        },
       } = this.state;
-      const { objects } = this.state.scene;
 
       return (
         <ImageBackground
@@ -294,17 +307,35 @@ function screenGenerator(scene) {
             sequence: this.sequence,
             toggleMultiple: this.toggleMultiple,
           })}
+          <TouchableOpacity
+            style={{ position: 'absolute', top: 40, left: 20 }}
+            onPress={this.openMainMenu}
+          >
+            <FontAwesome name="gear" size={20} color="#664422" />
+          </TouchableOpacity>
           <Inventory
             open={inventoryOpen}
             collectedItems={collectedItems}
             onPress={() => this.setState({ inventoryOpen: !inventoryOpen })}
           />
-          <TouchableOpacity
-            style={{ position: 'absolute', top: 80, right: 30 }}
-            onPress={this.reset}
+          <Modal
+            isVisible={mainMenuVisible}
+            onBackdropPress={this.openMainMenu}
+            style={{ alignItems: 'center' }}
           >
-            <Text style={{ color: 'purple' }}>C</Text>
-          </TouchableOpacity>
+            <View style={{ backgroundColor: 'white', width: 300, padding: 60 }}>
+              <TouchableOpacity
+                onPress={this.reset}
+              >
+                <Text>Reset the game</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={this.openMainMenu}
+              >
+                <Text>Close</Text>
+              </TouchableOpacity>
+            </View>
+          </Modal>
         </ImageBackground>
       );
     }
