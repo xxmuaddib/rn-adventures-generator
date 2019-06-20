@@ -28,6 +28,7 @@ function screenGenerator(scene) {
       inventoryOpen: false,
       loading: true,
       mainMenuVisible: false,
+      resolved: [],
       scene: _.cloneDeep(scene),
     };
 
@@ -35,6 +36,15 @@ function screenGenerator(scene) {
       this.getCollectedItems();
       this.setMultipleItems();
       this.setSequenceItems();
+      this.setResolved();
+    }
+
+    setResolved = async () => {
+      const SavedResolvedRaw = await AsyncStorage.getItem('resolved');
+      if (SavedResolvedRaw) {
+        const SavedResolved = JSON.parse(SavedResolvedRaw);
+        this.setState({resolved: SavedResolved });
+      }
     }
 
     getCollectedItems = async () => {
@@ -61,7 +71,8 @@ function screenGenerator(scene) {
         const unique = [...new Set(groups.map(item => item.group))];
         unique.forEach(async g => {
           await AsyncStorage.removeItem(g);
-          this.setState({ scene: _.cloneDeep(originalScene) });
+          await AsyncStorage.removeItem('resolved');
+          this.setState({ scene: _.cloneDeep(originalScene), resolved: [] });
         });
       }
       this.openMainMenu();
@@ -120,14 +131,13 @@ function screenGenerator(scene) {
               if (i > -1) {
                 objectsCopy.itemsMap[i] = item;
               }
-            });
+            })};
             this.setState(s => ({
               scene: {
                 ...s.scene,
                 itemsMap: objectsCopy.itemsMap,
               },
             }));
-          }
         });
       }
     }
@@ -158,7 +168,18 @@ function screenGenerator(scene) {
           console.log('changedObj', changedObj)
           await AsyncStorage.setItem('successComboRoutes', changedObj);
           console.log('changed', AsyncStorage.getItem('successComboRoutes')); */
+          const {
+            scene: {
+              objects,
+            },
+          } = this.state;
+          const recieverResolved = objects.itemsMap.find(el => el.type === 'reciever');
+          if (recieverResolved) {
+            this.setState(p => ({resolved: [...p.resolved, recieverResolved.type]}));
+            await AsyncStorage.setItem('resolved', JSON.stringify(this.state.resolved));
+          }
           alertMsg = 'Success!';
+
         } catch (e) {
           console.error('Something went wrong', e.message);
         }
@@ -193,6 +214,10 @@ function screenGenerator(scene) {
         objectsModified.describers[describerIndex] = { ...describer, currentValue };
         if (expectedValue.length === currentValue.length) {
           this.generateAlertMsg('Success!!!!');
+          this.state.resolved.map(el => {
+          })
+          this.setState({resolved: [...this.state.resolved, objectsModified.describers[describerIndex].group]})
+          await AsyncStorage.setItem('resolved', JSON.stringify(this.state.resolved));
           return;
         }
       } else {
@@ -238,19 +263,20 @@ function screenGenerator(scene) {
       }
 
       const group = await AsyncStorage.getItem(item.group);
-      const parts = objectsModified.itemsMap.filter(object => object.group === item.group && object);
-      const groups = parts.map(el => {
+      let parts = objectsModified.itemsMap.filter(object => object.group === item.group && object);
+      let groups = parts.map(el => {
         if (el.selected === el.correct) return true;
         return false;
       });
 
-      const groupCorrect = groups.every(el => el === true);
-
-      if (groupCorrect) return;
-
+      let groupCorrect = groups.every(el => el === true);
       let groupParsed = [];
       if (group) {
         groupParsed = JSON.parse(group);
+      }
+
+      if (groupCorrect) {
+        return;
       }
 
       const groupMatch = groupParsed.findIndex(elem => elem.id === item.id && elem);
@@ -269,7 +295,25 @@ function screenGenerator(scene) {
         objectsModified.itemsMap[itemMatch] = { ...item, selected: newSelected.id };
       }
 
+      parts = objectsModified.itemsMap.filter(object => object.group === item.group && object);
+      groups = parts.map(el => {
+        if (el.selected === el.correct) return true;
+        return false;
+      });
+
+      groupCorrect = groups.every(el => el === true);
+      groupParsed = [];
+      if (group) {
+        groupParsed = JSON.parse(group);
+      }
+
       this.setState({ scene: { ...scene, objects: objectsModified } });
+
+
+      if (groupCorrect) {
+        this.setState({resolved: [...this.state.resolved, objectsModified.itemsMap[itemMatch].group]});
+        await AsyncStorage.setItem('resolved', JSON.stringify(this.state.resolved));
+      }
     };
 
     openMainMenu = () => {
@@ -277,6 +321,7 @@ function screenGenerator(scene) {
     }
 
     render() {
+      console.log(this.state.resolved);
       const {
         bg,
         collectedItems,
@@ -306,6 +351,7 @@ function screenGenerator(scene) {
             recieve: this.recieve,
             sequence: this.sequence,
             toggleMultiple: this.toggleMultiple,
+            state: this.state
           })}
           <TouchableOpacity
             style={{ position: 'absolute', top: 40, left: 20 }}
@@ -329,7 +375,7 @@ function screenGenerator(scene) {
               >
                 <Text>Reset the game</Text>
               </TouchableOpacity>
-              <TouchableOpacity
+              <TouchableOpacity style={{top: 10}}
                 onPress={this.openMainMenu}
               >
                 <Text>Close</Text>
@@ -347,3 +393,4 @@ const Screens = () => generateAllScreens();
 const InitialScreen = INITIAL_SCREEN;
 
 export { Screens, InitialScreen };
+export default screenGenerator;
