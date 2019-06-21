@@ -3,6 +3,7 @@ import React from 'react';
 import {
   View,
   ImageBackground,
+  Image,
   AsyncStorage,
   TouchableOpacity,
   Text,
@@ -29,6 +30,7 @@ function screenGenerator(scene) {
       loading: true,
       mainMenuVisible: false,
       resolved: [],
+      paperModalVisible: false,
       scene: _.cloneDeep(scene),
     };
 
@@ -320,19 +322,22 @@ function screenGenerator(scene) {
       this.setState(p => ({ mainMenuVisible: !p.mainMenuVisible }));
     }
 
+    openPaper = () => {
+      this.setState({paperModalVisible: !this.state.paperModalVisible});
+    }
+
     render() {
-      console.log(this.state.resolved);
       const {
         bg,
         collectedItems,
         inventoryOpen,
         loading,
         mainMenuVisible,
+        paperModalVisible,
         scene: {
           objects,
         },
       } = this.state;
-
       return (
         <ImageBackground
           source={{ uri: bg }}
@@ -381,6 +386,33 @@ function screenGenerator(scene) {
                 <Text>Close</Text>
               </TouchableOpacity>
             </View>
+          </Modal>
+          <TouchableOpacity
+            style={{ position: 'absolute', bottom: 40, left: 20 }}
+            onPress={this.openPaper}
+          >
+            <Image
+              source={require('../photos/scroll.png')}
+              style={{width: 20, height: 20}}
+             />
+          </TouchableOpacity>
+           <Modal
+            isVisible={paperModalVisible}
+            style={{ alignItems: 'center',  }}
+            >
+              <ImageBackground
+                source={require('../photos/old-paper.jpg')}
+                style={{ backgroundColor: 'white', width, height, padding: 10,}}
+                >
+                  <Text style={{fontWeight: 'bold', fontStyle: 'italic', fontSize: 10, width: 400, height: 300, position: 'absolute', left: 70,}}>text txt text text text text text text txt text text text 
+                    text texttext txt text text text text text
+                  </Text>
+                  <TouchableOpacity style={{position: 'absolute', bottom: 10, right: 50, backgroundColor: '#e2a33e', width: 70, height: 30, justifyContent: 'center', alignItems: 'center'}}
+                    onPress={this.openPaper}
+                  >
+                    <Text style={{}}>Got it!</Text>
+                  </TouchableOpacity>
+              </ImageBackground>
           </Modal>
         </ImageBackground>
       );

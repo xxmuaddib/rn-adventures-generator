@@ -71,6 +71,7 @@ const SCENES = [
         id: 'reciever1',
         name: 'Test reciever',
         expectedValue: 'collectable1',
+        showOnResolved: ['sequence1'],
         type: 'reciever',
       },
       {
@@ -79,7 +80,8 @@ const SCENES = [
         y: 100,
         width: 20,
         height: 20,
-        showOnResolvedd: ['reciver'],
+        showOnResolved: ['reciever'],
+        hideOnResolved: ['group1'],
         multiple: [
           {
             id: 'group1_1_1',
@@ -108,7 +110,8 @@ const SCENES = [
         y: 100,
         width: 20,
         height: 20,
-        showOnResolvedd: ['reciver'],
+        showOnResolved: ['reciever'],
+        hideOnResolved: ['group1'],
         multiple: [
           {
             id: 'group1_2_1',
@@ -137,7 +140,8 @@ const SCENES = [
         y: 100,
         width: 20,
         height: 20,
-        showOnResolvedd: ['reciver'],
+        showOnResolved: ['reciever'],
+        hideOnResolved: ['group1'],
         multiple: [
           {
             id: 'group1_3_1',

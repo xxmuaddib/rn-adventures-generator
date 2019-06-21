@@ -5,6 +5,7 @@ import {
   Dimensions,
   TouchableOpacity,
   StyleSheet,
+
 } from 'react-native';
 import { generateStyle } from './StyleGenerator';
 import { generateElement } from './ElementGenerator';
@@ -23,7 +24,7 @@ const generateObjectGrid = ({
   return (
     <View style={{ width, height }}>
       {objects.navMap.map(item => {
-        const isResolved = item.showOnResolved ? item.showOnResolved.every(item => state.resolved.includes(item)) : true //why true? if no item.showOneResolved => false
+        const isResolved = item.showOnResolved ? item.showOnResolved.every(item => state.resolved.includes(item)) : true
         if (isResolved) {
           return (
             <TouchableOpacity
@@ -42,7 +43,7 @@ const generateObjectGrid = ({
         }
       })}
       {objects.itemsMap.map(item => {
-        const isResolvedCollactable = item.showOnResolved && item.showOnResolved.some(item => state.resolved.includes(item));
+        const isResolved = item.showOnResolved && item.showOnResolved.some(item => state.resolved.includes(item));
         const hideResolved = item.hideOnResolved ? item.hideOnResolved.some(item => state.resolved.includes(item)) : true;
         const collectableShouldHide = collectedItems.findIndex(element => item.type === 'collectable' && element.id === item.id) !== -1;
           return (
@@ -60,7 +61,7 @@ const generateObjectGrid = ({
                   <Text style={{ color: 'green' }}>{item.name}</Text>
                 </TouchableOpacity>
               )}
-              {item.type === 'reciever' && (
+              {item.type === 'reciever'   && (
                 <TouchableOpacity
                   style={generateStyle(styles.itemStyle, {
                     x: item.x,
@@ -73,7 +74,7 @@ const generateObjectGrid = ({
                   <Text style={{ color: 'red' }}>{item.name}</Text>
                 </TouchableOpacity>
               )}
-              {item.type === 'collectable' && !collectableShouldHide && isResolvedCollactable && (
+              {item.type === 'collectable' && !collectableShouldHide && isResolved && (
                 <TouchableOpacity
                   style={generateStyle(styles.itemStyle, {
                     x: item.x,
@@ -86,7 +87,7 @@ const generateObjectGrid = ({
                   {generateElement({ item })}
                 </TouchableOpacity>
               )}
-              {item.multiple &&  (
+              {isResolved && item.multiple && !hideResolved &&  (
                 <TouchableOpacity
                   style={generateStyle(styles.itemStyle, {
                     x: item.x,
