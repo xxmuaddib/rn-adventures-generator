@@ -31,6 +31,7 @@ function screenGenerator(scene) {
       mainMenuVisible: false,
       resolved: [],
       paperModalVisible: false,
+      dropItemModalIsOpen: false,
       scene: _.cloneDeep(scene),
     };
 
@@ -368,6 +369,9 @@ function screenGenerator(scene) {
             open={inventoryOpen}
             collectedItems={collectedItems}
             onPress={() => this.setState({ inventoryOpen: !inventoryOpen })}
+            modalIsOpen={this.state.dropItemModalIsOpen}
+            changeModalVisibility={() => this.setState({ dropItemModalIsOpen: !this.state.dropItemModalIsOpen })}
+            getCollectedItems={() => this.getCollectedItems()}
           />
           <Modal
             isVisible={mainMenuVisible}
