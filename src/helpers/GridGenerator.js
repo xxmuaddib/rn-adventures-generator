@@ -1,31 +1,43 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
   Dimensions,
   TouchableOpacity,
-  StyleSheet,
+  StyleSheet
+} from "react-native";
+import Draggable from "react-native-draggable";
+import { generateStyle } from "./StyleGenerator";
+import { Element } from "./ElementGenerator";
+import { ITEMS } from "../constants/items";
+import { ELEMENTS } from "../constants/elements";
 
-} from 'react-native';
-import { generateStyle } from './StyleGenerator';
-import { generateElement } from './ElementGenerator';
-
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 const generateObjectGrid = ({
   objects,
   collectedItems,
   onPress,
   collect,
   toggleMultiple,
-  recieve,
+  receive,
   sequence,
+  showModal,
+  onDragRelease,
+  showDialog,
   state
 }) => {
   return (
     <View style={{ width, height }}>
       {objects.navMap.map(item => {
-        const isResolved = item.showOnResolved ? item.showOnResolved.every(item => state.resolved.includes(item)) : true
-        if (isResolved) {
+        const isResolved =
+          !item.showOnResolved ||
+          !item.showOnResolved.length ||
+          item.showOnResolved.some(item => state.resolved.includes(item));
+        const hideResolved =
+          !item.hideOnResolved || !item.hideOnResolved.length
+            ? false
+            : item.hideOnResolved.every(item => state.resolved.includes(item));
+        if (isResolved && !hideResolved) {
           return (
             <TouchableOpacity
               key={item.route}
@@ -33,75 +45,119 @@ const generateObjectGrid = ({
                 x: item.x,
                 y: item.y,
                 width: item.width,
-                height: item.height,
+                height: item.height
               })}
               onPress={() => onPress(item.route)}
             >
-              {generateElement({ item })}
+              <Element item={item} />
             </TouchableOpacity>
-          )
+          );
         }
       })}
       {objects.itemsMap.map(item => {
-        const isResolved = item.showOnResolved && item.showOnResolved.some(item => state.resolved.includes(item));
-        const hideResolved = item.hideOnResolved ? item.hideOnResolved.some(item => state.resolved.includes(item)) : true;
-        const collectableShouldHide = collectedItems.findIndex(element => item.type === 'collectable' && element.id === item.id) !== -1;
-          return (
-            <View key={item.id}>
-              {item.type === 'sequence' && !hideResolved && (
+        const isResolved =
+          !item.showOnResolved ||
+          !item.showOnResolved.length ||
+          item.showOnResolved.some(item => state.resolved.includes(item));
+        const hideResolved =
+          !item.hideOnResolved || !item.hideOnResolved.length
+            ? false
+            : item.hideOnResolved.every(item => state.resolved.includes(item));
+        const collectableShouldHide =
+          collectedItems.findIndex(
+            element => item.type === ITEMS.COLLECTABLE && element.id === item.id
+          ) !== -1;
+        return (
+          <View key={item.id}>
+            {item.type === ITEMS.SEQUENCE && isResolved && !hideResolved && (
+              <TouchableOpacity
+                style={generateStyle(styles.itemStyle, {
+                  x: item.x,
+                  y: item.y,
+                  width: item.width,
+                  height: item.height
+                })}
+                onPress={() => sequence(item)}
+              >
+                <Text style={{ color: "green" }}>{item.name}</Text>
+              </TouchableOpacity>
+            )}
+            {item.type === ITEMS.RECEIVER && isResolved && !hideResolved && (
+              <TouchableOpacity
+                style={generateStyle(styles.itemStyle, {
+                  x: item.x,
+                  y: item.y,
+                  width: item.width,
+                  height: item.height
+                })}
+                onPress={() => receive(item.expectedValue)}
+              >
+                <Text style={{ color: "red" }}>{item.name}</Text>
+              </TouchableOpacity>
+            )}
+            {item.type === ITEMS.COLLECTABLE &&
+              !collectableShouldHide &&
+              isResolved && (
                 <TouchableOpacity
                   style={generateStyle(styles.itemStyle, {
                     x: item.x,
                     y: item.y,
                     width: item.width,
-                    height: item.height,
-                  })}
-                  onPress={() => sequence(item)}
-                >
-                  <Text style={{ color: 'green' }}>{item.name}</Text>
-                </TouchableOpacity>
-              )}
-              {item.type === 'reciever'   && (
-                <TouchableOpacity
-                  style={generateStyle(styles.itemStyle, {
-                    x: item.x,
-                    y: item.y,
-                    width: item.width,
-                    height: item.height,
-                  })}
-                  onPress={() => recieve(item.expectedValue)}
-                >
-                  <Text style={{ color: 'red' }}>{item.name}</Text>
-                </TouchableOpacity>
-              )}
-              {item.type === 'collectable' && !collectableShouldHide && isResolved && (
-                <TouchableOpacity
-                  style={generateStyle(styles.itemStyle, {
-                    x: item.x,
-                    y: item.y,
-                    width: item.width,
-                    height: item.height,
+                    height: item.height
                   })}
                   onPress={() => collect(item)}
                 >
-                  {generateElement({ item })}
+                  <Element item={item} />
                 </TouchableOpacity>
               )}
-              {isResolved && item.multiple && !hideResolved &&  (
+            {item.multiple && isResolved && !hideResolved && (
+              <TouchableOpacity
+                style={generateStyle(styles.itemStyle, {
+                  x: item.x,
+                  y: item.y,
+                  width: item.width,
+                  height: item.height
+                })}
+                onPress={() => toggleMultiple(item)}
+              >
+                <Element item={item} type={ELEMENTS.MULTIPLE} />
+              </TouchableOpacity>
+            )}
+            {item.type === ITEMS.PAPER && isResolved && !hideResolved && (
+              <>
                 <TouchableOpacity
                   style={generateStyle(styles.itemStyle, {
                     x: item.x,
                     y: item.y,
                     width: item.width,
-                    height: item.height,
+                    height: item.height
                   })}
-                  onPress={() => toggleMultiple(item)}
+                  onPress={() => showModal(item)}
                 >
-                  {generateElement({ item, type: 'multiple' })}
+                  <Element item={item} />
                 </TouchableOpacity>
-              )}
-            </View>
-          );
+              </>
+            )}
+            {item.type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
+              <Draggable x={item.x} y={item.y} onDragRelease={onDragRelease}>
+                <Element item={item} />
+              </Draggable>
+            )}
+            {item.type === ITEMS.DIALOG && isResolved && !hideResolved && (
+              <TouchableOpacity
+                style={generateStyle(styles.itemStyle, {
+                  x: item.x,
+                  y: item.y,
+                  width: item.width,
+                  height: item.height
+                })}
+                onPress={() => showDialog(item.dialogProperties)}
+              >
+                <Element item={item} />
+              </TouchableOpacity>
+            )}
+          </View>
+        );
       })}
     </View>
   );
@@ -109,10 +165,10 @@ const generateObjectGrid = ({
 
 const styles = StyleSheet.create({
   itemStyle: {
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+    position: "absolute",
+    justifyContent: "center",
+    alignItems: "center"
+  }
 });
 
 export { generateObjectGrid };

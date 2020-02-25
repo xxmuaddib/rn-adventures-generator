@@ -1,11 +1,8 @@
-import {
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
+import { StyleSheet, Dimensions } from "react-native";
 
-const { width, height } = Dimensions.get('window');
-const pointX = width / 300;
-const pointY = height / 200;
+const { width, height } = Dimensions.get("window");
+export const pointX = width / 300;
+export const pointY = height / 200;
 
 const generateStyle = (style, dim) => {
   const stylesheet = StyleSheet.create({
@@ -14,8 +11,8 @@ const generateStyle = (style, dim) => {
       left: pointX * dim.x,
       top: pointY * dim.y,
       width: dim.width * pointX,
-      height: dim.height * pointY,
-    },
+      height: dim.height * pointY
+    }
   });
   return stylesheet.result;
 };
