@@ -403,7 +403,7 @@ function screenGenerator(scene) {
       } = this.state;
       return (
         <ImageBackground
-          source={{ uri: bg }}
+          source={bg}
           style={{
             height,
             width,
