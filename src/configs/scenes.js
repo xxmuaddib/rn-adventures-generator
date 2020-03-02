@@ -107,8 +107,8 @@ const SCENES = [
           },
         },
         {
-          type: 'dialog',
-          id: 'dialog2',
+          type: 'blank',
+          id: 'blank1',
           element: {
             type: 'image',
             image: {
@@ -123,14 +123,6 @@ const SCENES = [
           },
           logical: {
             showOnResolved: ['dialog1_1'],
-            dialogProperties: {
-              dialog: [
-                {
-                  s: 'Could you open the door for me please?',
-                  a: 'No! Take it and do whatever you want.',
-                },
-              ],
-            },
           },
         },
         {

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { ElementPropType } from './ElementPropTypes';
+import { ITEMS } from '../constants/items';
 
 export const PositionPropType = PropTypes.shape({
   x: PropTypes.number.isRequired,
@@ -25,7 +26,7 @@ export const LogicalPropType = PropTypes.shape({
 });
 
 export const ObjectPropTypes = PropTypes.shape({
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(Object.values(ITEMS)).isRequired,
   id: PropTypes.string.isRequired,
   element: ElementPropType,
   position: PositionPropType,

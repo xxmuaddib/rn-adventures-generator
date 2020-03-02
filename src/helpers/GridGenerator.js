@@ -85,7 +85,7 @@ const ObjectGrid = ({
                       objects.itemsMap.find(item => item.id === id),
                     );
                   default:
-                    return onPress(logical);
+                    return () => undefined;
                 }
               }}
             >
