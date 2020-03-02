@@ -1,11 +1,14 @@
 {
-    "extends": "airbnb",
+    "extends": ["airbnb", "prettier/react"],
+    "plugins": [
+      "prettier",
+    ],
     "parser": "babel-eslint",
     "rules": {
       "react/display-name": 1,
       "react/jsx-uses-vars": 2,
       "react/prop-types": "warn",
-      "react/destructuring-assignment": "never",
+      "react/destructuring-assignment": 1,
       "react/sort-comp": "warn",
       "react/jsx-indent": ["warn", 2],
       "react/jsx-indent-props": ["warn", 2],
@@ -13,6 +16,7 @@
       "react/jsx-filename-extension": "off",
       "react/forbid-prop-types": "warn",
       "react/prefer-stateless-function": "off",
+      "react/state-in-constructor": 0,
       "jsx-a11y/no-static-element-interactions": "off",
       "jsx-a11y/click-events-have-key-events": "off",
       "space-infix-ops": "warn",
@@ -24,7 +28,6 @@
       "no-mixed-operators": "warn",
       "linebreak-style": 0,
       "no-plusplus": "warn",
-      "indent": ["warn", 2, {"SwitchCase": 1}],
       "comma-dangle": "warn",
       "camelcase": "off",
       "object-curly-spacing": "warn",
@@ -32,12 +35,16 @@
       "no-this-before-super": "warn",
       "no-undef": "warn",
       "no-unreachable": "warn",
-      "no-unused-vars": "warn",
+      "no-unused-vars": "error",
       "constructor-super": "warn",
       "valid-typeof": "warn",
       "max-len": ["warn", { "code": 180 }],
       "no-confusing-arrow": "off",
-      "no-use-before-define": "off"
+      "no-use-before-define": "off",
+      "operator-linebreak": 0,
+      "implicit-arrow-linebreak": 0,
+      "indent": 0,
+      "object-curly-newline": 0,
     },
     "env": {
       "browser": true

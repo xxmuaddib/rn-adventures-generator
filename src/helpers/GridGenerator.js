@@ -1,22 +1,22 @@
-import React from "react";
-import {
-  View,
-  Text,
-  Dimensions,
-  TouchableOpacity,
-  StyleSheet
-} from "react-native";
-import Draggable from "react-native-draggable";
-import { generateStyle } from "./StyleGenerator";
-import { Element } from "./ElementGenerator";
-import { ITEMS } from "../constants/items";
-import { ELEMENTS } from "../constants/elements";
+import React from 'react';
+import { View, Dimensions, TouchableOpacity, StyleSheet } from 'react-native';
+import Draggable from 'react-native-draggable';
+import PropTypes from 'prop-types';
 
-const { width, height } = Dimensions.get("window");
-const generateObjectGrid = ({
+import { generateStyle } from './StyleGenerator';
+import {
+  ObjectPropTypes,
+  ObjectsPropTypes,
+} from '../proptypes/ObjectGridPropTypes';
+import { Element } from './ElementGenerator';
+import { ITEMS } from '../constants/items';
+
+const { width, height } = Dimensions.get('window');
+
+const ObjectGrid = ({
   objects,
   collectedItems,
-  onPress,
+  onRoutePress,
   collect,
   toggleMultiple,
   receive,
@@ -24,151 +24,120 @@ const generateObjectGrid = ({
   showModal,
   onDragRelease,
   showDialog,
-  state
-}) => {
-  return (
-    <View style={{ width, height }}>
-      {objects.navMap.map(item => {
-        const isResolved =
-          !item.showOnResolved ||
-          !item.showOnResolved.length ||
-          item.showOnResolved.some(item => state.resolved.includes(item));
-        const hideResolved =
-          !item.hideOnResolved || !item.hideOnResolved.length
-            ? false
-            : item.hideOnResolved.every(item => state.resolved.includes(item));
-        if (isResolved && !hideResolved) {
-          return (
-            <TouchableOpacity
-              key={item.route}
-              style={generateStyle(styles.itemStyle, {
-                x: item.x,
-                y: item.y,
-                width: item.width,
-                height: item.height
-              })}
-              onPress={() => onPress(item.route)}
-            >
-              <Element item={item} />
-            </TouchableOpacity>
-          );
-        }
-      })}
-      {objects.itemsMap.map(item => {
-        const isResolved =
-          !item.showOnResolved ||
-          !item.showOnResolved.length ||
-          item.showOnResolved.some(item => state.resolved.includes(item));
-        const hideResolved =
-          !item.hideOnResolved || !item.hideOnResolved.length
-            ? false
-            : item.hideOnResolved.every(item => state.resolved.includes(item));
-        const collectableShouldHide =
-          collectedItems.findIndex(
-            element => item.type === ITEMS.COLLECTABLE && element.id === item.id
-          ) !== -1;
+  resolved,
+}) => (
+  <View style={{ width, height }}>
+    {objects.navMap.map(item => {
+      const isResolved =
+        !item.showOnResolved ||
+        !item.showOnResolved.length ||
+        item.showOnResolved.some(id => resolved.includes(id));
+      const hideResolved =
+        !item.hideOnResolved || !item.hideOnResolved.length
+          ? false
+          : item.hideOnResolved.every(id => resolved.includes(id));
+      if (isResolved && !hideResolved) {
         return (
-          <View key={item.id}>
-            {item.type === ITEMS.SEQUENCE && isResolved && !hideResolved && (
-              <TouchableOpacity
-                style={generateStyle(styles.itemStyle, {
-                  x: item.x,
-                  y: item.y,
-                  width: item.width,
-                  height: item.height
-                })}
-                onPress={() => sequence(item)}
-              >
-                <Text style={{ color: "green" }}>{item.name}</Text>
-              </TouchableOpacity>
-            )}
-            {item.type === ITEMS.RECEIVER && isResolved && !hideResolved && (
-              <TouchableOpacity
-                style={generateStyle(styles.itemStyle, {
-                  x: item.x,
-                  y: item.y,
-                  width: item.width,
-                  height: item.height
-                })}
-                onPress={() => receive(item.expectedValue)}
-              >
-                <Text style={{ color: "red" }}>{item.name}</Text>
-              </TouchableOpacity>
-            )}
-            {item.type === ITEMS.COLLECTABLE &&
-              !collectableShouldHide &&
-              isResolved && (
-                <TouchableOpacity
-                  style={generateStyle(styles.itemStyle, {
-                    x: item.x,
-                    y: item.y,
-                    width: item.width,
-                    height: item.height
-                  })}
-                  onPress={() => collect(item)}
-                >
-                  <Element item={item} />
-                </TouchableOpacity>
-              )}
-            {item.multiple && isResolved && !hideResolved && (
-              <TouchableOpacity
-                style={generateStyle(styles.itemStyle, {
-                  x: item.x,
-                  y: item.y,
-                  width: item.width,
-                  height: item.height
-                })}
-                onPress={() => toggleMultiple(item)}
-              >
-                <Element item={item} type={ELEMENTS.MULTIPLE} />
-              </TouchableOpacity>
-            )}
-            {item.type === ITEMS.PAPER && isResolved && !hideResolved && (
-              <>
-                <TouchableOpacity
-                  style={generateStyle(styles.itemStyle, {
-                    x: item.x,
-                    y: item.y,
-                    width: item.width,
-                    height: item.height
-                  })}
-                  onPress={() => showModal(item)}
-                >
-                  <Element item={item} />
-                </TouchableOpacity>
-              </>
-            )}
-            {item.type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
-              <Draggable x={item.x} y={item.y} onDragRelease={onDragRelease}>
-                <Element item={item} />
-              </Draggable>
-            )}
-            {item.type === ITEMS.DIALOG && isResolved && !hideResolved && (
-              <TouchableOpacity
-                style={generateStyle(styles.itemStyle, {
-                  x: item.x,
-                  y: item.y,
-                  width: item.width,
-                  height: item.height
-                })}
-                onPress={() => showDialog(item.dialogProperties)}
-              >
-                <Element item={item} />
-              </TouchableOpacity>
-            )}
-          </View>
+          <TouchableOpacity
+            key={item.route}
+            style={generateStyle(styles.itemStyle, item)}
+            onPress={() => onRoutePress(item.route)}
+          >
+            <Element item={item} />
+          </TouchableOpacity>
         );
-      })}
-    </View>
-  );
+      }
+      return null;
+    })}
+    {objects.itemsMap.map(({ type, id, element, position, logical }) => {
+      const isResolved =
+        !logical.showOnResolved ||
+        !logical.showOnResolved.length ||
+        logical.showOnResolved.some(item => resolved.includes(item));
+      const hideResolved =
+        !logical.hideOnResolved || !logical.hideOnResolved.length
+          ? false
+          : logical.hideOnResolved.every(item => resolved.includes(item));
+      const collectableShouldHide =
+        type === ITEMS.COLLECTABLE &&
+        !!collectedItems.find(collectedItem => collectedItem.id === id);
+
+      return (
+        <View key={id}>
+          {isResolved && !hideResolved && !collectableShouldHide && (
+            <TouchableOpacity
+              style={generateStyle(styles.itemStyle, position)}
+              activeOpacity={0.9}
+              onPress={() => {
+                switch (type) {
+                  case ITEMS.SEQUENCE:
+                    return sequence(logical);
+                  case ITEMS.RECEIVER:
+                    return receive(logical.expectedValue);
+                  case ITEMS.MULTIPLE:
+                    return toggleMultiple(logical);
+                  case ITEMS.PAPER:
+                    return showModal(logical);
+                  case ITEMS.DIALOG:
+                    return showDialog(logical.dialogProperties);
+                  case ITEMS.COLLECTABLE:
+                    return collect(
+                      objects.itemsMap.find(item => item.id === id),
+                    );
+                  default:
+                    return onPress(logical);
+                }
+              }}
+            >
+              <Element element={element} />
+            </TouchableOpacity>
+          )}
+          {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
+            <Draggable
+              x={position.x}
+              y={position.y}
+              onDragRelease={onDragRelease}
+            >
+              <Element element={element} />
+            </Draggable>
+          )}
+        </View>
+      );
+    })}
+  </View>
+);
+
+ObjectGrid.propTypes = {
+  objects: ObjectsPropTypes.isRequired,
+  collectedItems: PropTypes.arrayOf(ObjectPropTypes).isRequired,
+  onRoutePress: PropTypes.func,
+  collect: PropTypes.func,
+  toggleMultiple: PropTypes.func,
+  receive: PropTypes.func,
+  sequence: PropTypes.func,
+  showModal: PropTypes.func,
+  onDragRelease: PropTypes.func,
+  showDialog: PropTypes.func,
+  resolved: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+ObjectGrid.defaultProps = {
+  onRoutePress: () => undefined,
+  collect: () => undefined,
+  toggleMultiple: () => undefined,
+  receive: () => undefined,
+  sequence: () => undefined,
+  showModal: () => undefined,
+  onDragRelease: () => undefined,
+  showDialog: () => undefined,
 };
 
 const styles = StyleSheet.create({
   itemStyle: {
-    position: "absolute",
-    justifyContent: "center",
-    alignItems: "center"
-  }
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
-export { generateObjectGrid };
+export { ObjectGrid };

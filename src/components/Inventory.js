@@ -1,70 +1,53 @@
-import React from "react";
+import React from 'react';
 import {
   View,
-  Text,
   TouchableOpacity,
   Dimensions,
   StyleSheet,
-  AsyncStorage
-} from "react-native";
-import Modal from "react-native-modal";
-import Draggable from "react-native-draggable";
-import { FontAwesome } from "@expo/vector-icons";
-import { pointX, pointY } from "../helpers/StyleGenerator";
+  AsyncStorage,
+} from 'react-native';
+import Draggable from 'react-native-draggable';
+import PropTypes from 'prop-types';
+import { FontAwesome } from '@expo/vector-icons';
 
-import { Element } from "../helpers/ElementGenerator";
+import { pointX, pointY } from '../helpers/StyleGenerator';
+import { Element } from '../helpers/ElementGenerator';
+import {
+  ObjectPropTypes,
+  ObjectsPropTypes,
+} from '../proptypes/ObjectGridPropTypes';
 
-const { width, height } = Dimensions.get("window");
+const { height } = Dimensions.get('window');
 
-const Inventory = ({
+export const Inventory = ({
   collectedItems,
   open,
   onPress,
-  modalIsOpen,
-  changeModalVisibility,
-  getCollectedItems,
   receive,
-  objects
+  objects,
 }) => {
   const handleInvetoryItemPress = async itemId => {
-    await AsyncStorage.setItem("selectedItem", itemId);
-  };
-  const dropItemFromInventory = async () => {
-    const itemId = await AsyncStorage.getItem("selectedItem");
-    if (itemId) {
-      const indexRow = collectedItems.find(el => el.id === itemId);
-      if (indexRow) {
-        const index = collectedItems.indexOf(indexRow);
-        if (index > -1) {
-          collectedItems.splice(index, 1);
-          await AsyncStorage.setItem(
-            "inventory",
-            JSON.stringify(collectedItems)
-          );
-          await getCollectedItems();
-        }
-      }
-    }
+    await AsyncStorage.setItem('selectedItem', itemId);
   };
 
   const onDragRelease = (_, g) => {
     const moveX = g.moveX / pointX;
     const moveY = g.moveY / pointY;
     const receiver = objects.itemsMap.find(
-      item => item.expectedValue === "collectable1"
+      ({ logical }) => logical.expectedValue === 'collectable1',
     );
     if (
-      moveX > receiver.x &&
-      moveX < receiver.x + receiver.width &&
-      moveY > receiver.y &&
-      moveY < receiver.y + receiver.height
+      moveX > receiver.position.x &&
+      moveX < receiver.position.x + receiver.position.width &&
+      moveY > receiver.position.y &&
+      moveY < receiver.position.y + receiver.position.height
     ) {
-      receive("collectable1");
+      receive('collectable1');
     }
   };
 
   const onDrag = item => {
-    AsyncStorage.setItem("selectedItem", item.id);
+    AsyncStorage.setItem('selectedItem', item.id);
   };
 
   if (open) {
@@ -74,7 +57,7 @@ const Inventory = ({
           {collectedItems.map(item => (
             <Draggable
               onDragRelease={onDragRelease}
-              shouldReverse={true}
+              shouldReverse
               onDrag={() => onDrag(item)}
             >
               <TouchableOpacity
@@ -82,7 +65,7 @@ const Inventory = ({
                 key={item.id}
                 onPress={() => handleInvetoryItemPress(item.id)}
               >
-                <Element item={item} />
+                <Element element={item.element} />
               </TouchableOpacity>
             </Draggable>
           ))}
@@ -103,38 +86,50 @@ const Inventory = ({
   );
 };
 
+Inventory.propTypes = {
+  collectedItems: PropTypes.arrayOf(ObjectPropTypes).isRequired,
+  open: PropTypes.bool,
+  onPress: PropTypes.func,
+  receive: PropTypes.func,
+  objects: ObjectsPropTypes.isRequired,
+};
+
+Inventory.defaultProps = {
+  open: false,
+  onPress: () => undefined,
+  receive: () => undefined,
+};
+
 const styles = StyleSheet.create({
   inventoryOpen: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 999,
     elevation: 1,
-    backgroundColor: "#FFF1E6",
+    backgroundColor: '#FFF1E6',
     top: 0,
     right: 0,
     width: 60,
-    borderLeftColor: "#E4CDBA",
+    borderLeftColor: '#E4CDBA',
     borderLeftWidth: 5,
     height,
-    justifyContent: "space-between"
+    justifyContent: 'space-between',
   },
   inventoryItem: {
     marginTop: 20,
     width: 60,
     height: 60,
     paddingRight: 10,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   inventoryCloseIcon: {
-    position: "absolute",
+    position: 'absolute',
     top: height / 2 - 10,
-    left: -4
+    left: -4,
   },
   inventoryClosed: {
-    position: "absolute",
+    position: 'absolute',
     top: 40,
-    right: 20
-  }
+    right: 20,
+  },
 });
-
-export default Inventory;
