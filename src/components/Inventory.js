@@ -43,6 +43,7 @@ export const Inventory = ({
       moveY < receiver.position.y + receiver.position.height
     ) {
       receive('collectable1');
+      // TODO: Fix hardcode
     }
   };
 
@@ -54,21 +55,24 @@ export const Inventory = ({
     return (
       <View style={styles.inventoryOpen} onPress>
         <View>
-          {collectedItems.map(item => (
-            <Draggable
-              onDragRelease={onDragRelease}
-              shouldReverse
-              onDrag={() => onDrag(item)}
-            >
-              <TouchableOpacity
-                style={styles.inventoryItem}
-                key={item.id}
-                onPress={() => handleInvetoryItemPress(item.id)}
-              >
-                <Element element={item.element} />
-              </TouchableOpacity>
-            </Draggable>
-          ))}
+          {collectedItems.map(
+            item =>
+              !!item.logical.countOfUse && (
+                <Draggable
+                  onDragRelease={onDragRelease}
+                  shouldReverse
+                  onDrag={() => onDrag(item)}
+                >
+                  <TouchableOpacity
+                    style={styles.inventoryItem}
+                    key={item.id}
+                    onPress={() => handleInvetoryItemPress(item.id)}
+                  >
+                    <Element element={item.element} />
+                  </TouchableOpacity>
+                </Draggable>
+              ),
+          )}
         </View>
         <TouchableOpacity
           onPress={() => onPress()}

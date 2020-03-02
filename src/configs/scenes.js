@@ -150,6 +150,7 @@ const SCENES = [
           },
           logical: {
             showOnResolved: ['dialog1_1'],
+            countOfUse: 1,
           },
         },
         {

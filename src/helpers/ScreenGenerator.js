@@ -164,13 +164,15 @@ function screenGenerator(scene) {
     };
 
     receive = async expectedValue => {
-      const { resolved } = this.state;
+      const {
+        resolved,
+        scene: { objects },
+        collectedItems,
+      } = this.state;
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
       if (expectedValue === selectedItemId) {
         await AsyncStorage.removeItem('selectedItem');
-        const {
-          scene: { objects },
-        } = this.state;
+
         const receiverResolved = objects.itemsMap.find(
           el => el.type === 'receiver',
         );
@@ -181,6 +183,23 @@ function screenGenerator(scene) {
           await AsyncStorage.setItem(
             'resolved',
             JSON.stringify([...resolved, receiverResolved.id]),
+          );
+
+          const collectedItemsCopy = [...collectedItems];
+
+          const index = collectedItemsCopy.findIndex(
+            item => item.id === selectedItemId,
+          );
+
+          if (index !== -1 && collectedItemsCopy[index].logical) {
+            collectedItemsCopy[index].logical.countOfUse -= 1;
+          }
+
+          this.setState({ collectedItems: collectedItemsCopy });
+
+          await AsyncStorage.setItem(
+            'inventory',
+            JSON.stringify(collectedItemsCopy),
           );
         }
       }
