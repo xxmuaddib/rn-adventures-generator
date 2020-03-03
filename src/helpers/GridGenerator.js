@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Dimensions, TouchableOpacity, StyleSheet } from 'react-native';
 import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { generateStyle } from './StyleGenerator';
 import {
@@ -26,7 +27,7 @@ const ObjectGrid = ({
   showDialog,
   resolved,
 }) => (
-  <View style={{ width, height }}>
+  <ObjectGridContainer>
     {objects.navMap.map(item => {
       const isResolved =
         !item.showOnResolved ||
@@ -104,7 +105,7 @@ const ObjectGrid = ({
         </View>
       );
     })}
-  </View>
+  </ObjectGridContainer>
 );
 
 ObjectGrid.propTypes = {
@@ -131,6 +132,11 @@ ObjectGrid.defaultProps = {
   onDragRelease: () => undefined,
   showDialog: () => undefined,
 };
+
+const ObjectGridContainer = styled(View)`
+  width: ${width};
+  height: ${height};
+`;
 
 const styles = StyleSheet.create({
   itemStyle: {

@@ -14,15 +14,19 @@ import { PaperPropType } from '../proptypes/ObjectGridPropTypes';
 const { width, height } = Dimensions.get('window');
 
 export const Paper = ({ paperModalVisible, paperModalContent, openPaper }) => (
-  <Modal isVisible={paperModalVisible} style={{ alignItems: 'center' }}>
+  <StyledModal isVisible={paperModalVisible}>
     <PaperBackground source={paperModalContent.bg}>
       <PaperText>{paperModalContent.text}</PaperText>
       <ClosePaperButton onPress={openPaper}>
         <Text>Got it!</Text>
       </ClosePaperButton>
     </PaperBackground>
-  </Modal>
+  </StyledModal>
 );
+
+const StyledModal = styled(Modal)`
+  align-items: center;
+`;
 
 const PaperBackground = styled(ImageBackground)`
   background-color: white;
