@@ -1,16 +1,14 @@
 import _ from 'lodash';
 import React from 'react';
 import {
-  View,
   ImageBackground,
   AsyncStorage,
   TouchableOpacity,
-  Text,
   Dimensions,
 } from 'react-native';
-import Modal from 'react-native-modal';
 import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
+import styled from 'styled-components';
 
 import { SCENES, INITIAL_SCREEN } from '../configs/scenes';
 import { pointX, pointY } from './StyleGenerator';
@@ -18,6 +16,7 @@ import { ObjectGrid } from './GridGenerator';
 import { Inventory } from '../components/Inventory';
 import { Dialog } from '../components/Dialog';
 import { Paper } from '../components/Paper';
+import { MainMenuModal } from '../components/MainMenuModal';
 
 const { width, height } = Dimensions.get('window');
 
@@ -409,15 +408,7 @@ function screenGenerator(scene) {
         scene: { objects },
       } = this.state;
       return (
-        <ImageBackground
-          source={bg}
-          style={{
-            height,
-            width,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <SceneBackground source={bg}>
           {!loading && (
             <ObjectGrid
               objects={objects}
@@ -433,12 +424,9 @@ function screenGenerator(scene) {
               resolved={resolved}
             />
           )}
-          <TouchableOpacity
-            style={{ position: 'absolute', top: 40, left: 20 }}
-            onPress={this.openMainMenu}
-          >
+          <MainMenuButton onPress={this.openMainMenu}>
             <FontAwesome name="gear" size={20} color="#664422" />
-          </TouchableOpacity>
+          </MainMenuButton>
           <Inventory
             open={inventoryOpen}
             collectedItems={collectedItems}
@@ -446,20 +434,11 @@ function screenGenerator(scene) {
             receive={this.receive}
             objects={objects}
           />
-          <Modal
+          <MainMenuModal
             isVisible={mainMenuVisible}
-            onBackdropPress={this.openMainMenu}
-            style={{ alignItems: 'center' }}
-          >
-            <View style={{ backgroundColor: 'white', width: 300, padding: 60 }}>
-              <TouchableOpacity onPress={this.reset}>
-                <Text>Reset the game</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={{ top: 10 }} onPress={this.openMainMenu}>
-                <Text>Close</Text>
-              </TouchableOpacity>
-            </View>
-          </Modal>
+            openMainMenu={this.openMainMenu}
+            reset={this.reset}
+          />
           {paperModalContent && (
             <Paper
               paperModalVisible={paperModalVisible}
@@ -477,7 +456,7 @@ function screenGenerator(scene) {
               showDialog={this.showDialog}
             />
           )}
-        </ImageBackground>
+        </SceneBackground>
       );
     }
   }
@@ -488,6 +467,19 @@ function screenGenerator(scene) {
   };
   return ScreenGenerator;
 }
+
+const SceneBackground = styled(ImageBackground)`
+  height: ${height};
+  width: ${width};
+  justify-content: center;
+  align-items: center;
+`;
+
+const MainMenuButton = styled(TouchableOpacity)`
+  position: absolute;
+  top: 40;
+  left: 20;
+`;
 
 const generateAllScreens = () =>
   Object.values(SCENES).reduce(
