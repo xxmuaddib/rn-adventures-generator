@@ -30,8 +30,8 @@ const StyledModal = styled(Modal)`
 
 const PaperBackground = styled(ImageBackground)`
   background-color: white;
-  width: ${width};
-  height: ${height};
+  width: ${width}px;
+  height: ${height}px;
   padding: 10px;
 `;
 

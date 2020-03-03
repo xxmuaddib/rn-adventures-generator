@@ -5,6 +5,7 @@ import {
   AsyncStorage,
   TouchableOpacity,
   Dimensions,
+  Platform
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
@@ -469,16 +470,16 @@ function screenGenerator(scene) {
 }
 
 const SceneBackground = styled(ImageBackground)`
-  height: ${height};
-  width: ${width};
+  height: ${height}px;
+  width: ${width}px;
   justify-content: center;
   align-items: center;
 `;
 
 const MainMenuButton = styled(TouchableOpacity)`
   position: absolute;
-  top: 40;
-  left: 20;
+  top: ${Platform.OS === 'ios' ? '20px' : '40px'};
+  left: 20px;
 `;
 
 const generateAllScreens = () =>

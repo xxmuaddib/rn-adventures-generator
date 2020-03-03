@@ -134,8 +134,8 @@ ObjectGrid.defaultProps = {
 };
 
 const ObjectGridContainer = styled(View)`
-  width: ${width};
-  height: ${height};
+  width: ${width}px;
+  height: ${height}px;
 `;
 
 const styles = StyleSheet.create({

@@ -120,7 +120,7 @@ const InventoryOpen = styled(View)`
 
 const InventoryCloseIcon = styled(TouchableOpacity)`
   position: absolute;
-  top: ${height} / 2 - 10;
+  top: ${(height / 2 - 10)}px;
   left: -4px;
 `;
 
