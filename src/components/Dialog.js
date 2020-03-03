@@ -41,8 +41,8 @@ export const Dialog = ({
 
 const DialogContainer = styled(View)`
   background-color: white;
-  width: ${width};
-  height: ${height} / 2;
+  width: ${width}px;
+  height: ${(height / 2)}px;
   padding: 10px;
   display: flex;
   align-items: center;
