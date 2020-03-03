@@ -38,7 +38,7 @@ const SCENES = [
                     'No way, unless you give me the answer to the question of the universe!!!',
                   dialog: [
                     {
-                      hideOnResolved: 'dialog1_1',
+                      hideOnResolved: ['dialog1_1'],
                       s: 'What is the question, ara?',
                       a:
                         "What a bad attitude. But I'll tell you if you promise to behave well, ara!",

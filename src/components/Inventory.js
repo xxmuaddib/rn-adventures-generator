@@ -1,14 +1,9 @@
 import React from 'react';
-import {
-  View,
-  TouchableOpacity,
-  Dimensions,
-  StyleSheet,
-  AsyncStorage,
-} from 'react-native';
+import { View, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
 import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
+import styled from 'styled-components';
 
 import { pointX, pointY } from '../helpers/StyleGenerator';
 import { Element } from '../helpers/ElementGenerator';
@@ -53,7 +48,7 @@ export const Inventory = ({
 
   if (open) {
     return (
-      <View style={styles.inventoryOpen} onPress>
+      <InventoryOpen>
         <View>
           {collectedItems.map(
             item =>
@@ -63,30 +58,26 @@ export const Inventory = ({
                   shouldReverse
                   onDrag={() => onDrag(item)}
                 >
-                  <TouchableOpacity
-                    style={styles.inventoryItem}
+                  <InventoryItem
                     key={item.id}
                     onPress={() => handleInvetoryItemPress(item.id)}
                   >
                     <Element element={item.element} />
-                  </TouchableOpacity>
+                  </InventoryItem>
                 </Draggable>
               ),
           )}
         </View>
-        <TouchableOpacity
-          onPress={() => onPress()}
-          style={styles.inventoryCloseIcon}
-        >
+        <InventoryCloseIcon onPress={() => onPress()}>
           <FontAwesome name="chevron-right" size={30} color="#E4CDBA" />
-        </TouchableOpacity>
-      </View>
+        </InventoryCloseIcon>
+      </InventoryOpen>
     );
   }
   return (
-    <TouchableOpacity style={styles.inventoryClosed} onPress={() => onPress()}>
+    <InventoryClosed onPress={() => onPress()}>
       <FontAwesome name="briefcase" size={20} color="#664422" />
-    </TouchableOpacity>
+    </InventoryClosed>
   );
 };
 
@@ -104,36 +95,37 @@ Inventory.defaultProps = {
   receive: () => undefined,
 };
 
-const styles = StyleSheet.create({
-  inventoryOpen: {
-    position: 'absolute',
-    zIndex: 999,
-    elevation: 1,
-    backgroundColor: '#FFF1E6',
-    top: 0,
-    right: 0,
-    width: 60,
-    borderLeftColor: '#E4CDBA',
-    borderLeftWidth: 5,
-    height,
-    justifyContent: 'space-between',
-  },
-  inventoryItem: {
-    marginTop: 20,
-    width: 60,
-    height: 60,
-    paddingRight: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  inventoryCloseIcon: {
-    position: 'absolute',
-    top: height / 2 - 10,
-    left: -4,
-  },
-  inventoryClosed: {
-    position: 'absolute',
-    top: 40,
-    right: 20,
-  },
-});
+const InventoryItem = styled(TouchableOpacity)`
+  margin-top: 20px;
+  width: 60px;
+  height: 60px;
+  padding-right: 10px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InventoryOpen = styled(View)`
+  position: absolute;
+  z-index: 999;
+  elevation: 1;
+  background-color: #fff1e6;
+  top: 0;
+  right: 0;
+  width: 60px;
+  border-left-color: #e4cdba;
+  border-left-width: 5px;
+  height: ${height}px;
+  justify-content: space-between;
+`;
+
+const InventoryCloseIcon = styled(TouchableOpacity)`
+  position: absolute;
+  top: ${height} / 2 - 10;
+  left: -4px;
+`;
+
+const InventoryClosed = styled(TouchableOpacity)`
+  position: absolute;
+  top: 40px;
+  right: 20px;
+`;

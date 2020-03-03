@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ElementPropType } from './ElementPropTypes';
+import { ElementPropType, ImageSource } from './ElementPropTypes';
 import { ITEMS } from '../constants/items';
 
 export const PositionPropType = PropTypes.shape({
@@ -16,6 +16,11 @@ export const DialogPropType = PropTypes.shape({
   showOnResolved: PropTypes.arrayOf(PropTypes.string),
   hideOnResolved: PropTypes.arrayOf(PropTypes.string),
   resolve: PropTypes.string,
+});
+
+export const PaperPropType = PropTypes.shape({
+  bg: ImageSource,
+  text: PropTypes.string,
 });
 
 export const LogicalPropType = PropTypes.shape({

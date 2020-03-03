@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, TouchableOpacity, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
+import styled from 'styled-components';
 
 import { DialogPropType } from '../proptypes/ObjectGridPropTypes';
 
@@ -15,68 +16,64 @@ export const Dialog = ({
   setDialog,
   showDialog,
 }) => (
-  <Modal isVisible={dialogModalVisible} style={{ alignItems: 'center' }}>
-    <View
-      style={{
-        backgroundColor: 'white',
-        width,
-        height: height / 2,
-        padding: 10,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
+  <StyledModal isVisible={dialogModalVisible}>
+    <DialogContainer>
       <>
-        {!!dialogAnswer && (
-          <Text
-            style={{
-              fontWeight: 'bold',
-              fontStyle: 'italic',
-              fontSize: 12,
-              color: 'blue',
-              marginBottom: 20,
-            }}
-          >
-            {dialogAnswer}
-          </Text>
-        )}
+        {!!dialogAnswer && <AnswerText>{dialogAnswer}</AnswerText>}
         {dialogModalContent &&
           dialogModalContent.dialog &&
           !!dialogModalContent.dialog.length &&
           dialogModalContent.dialog.map(
             item =>
               !resolved.includes(item.hideOnResolved) && (
-                <TouchableOpacity key={item.s} onPress={() => setDialog(item)}>
-                  <Text
-                    style={{
-                      fontWeight: 'bold',
-                      fontStyle: 'italic',
-                      color: 'black',
-                      fontSize: 12,
-                    }}
-                  >
-                    {item.s}
-                  </Text>
-                </TouchableOpacity>
+                <QuestionContainer key={item.s} onPress={() => setDialog(item)}>
+                  <Text>{item.s}</Text>
+                </QuestionContainer>
               ),
           )}
-        <TouchableOpacity onPress={showDialog}>
-          <Text
-            style={{
-              fontWeight: 'bold',
-              fontStyle: 'italic',
-              color: 'black',
-              fontSize: 12,
-            }}
-          >
-            Ok, gotta go. We'll chat later.
-          </Text>
-        </TouchableOpacity>
+        <CloseDialogButton onPress={showDialog}>
+          <Text>Ok, gotta go. We'll chat later.</Text>
+        </CloseDialogButton>
       </>
-    </View>
-  </Modal>
+    </DialogContainer>
+  </StyledModal>
 );
+
+const DialogContainer = styled(View)`
+  background-color: white;
+  width: ${width};
+  height: ${height} / 2;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const AnswerText = styled(Text)`
+  font-weight: bold;
+  font-style: italic;
+  font-size: 12px;
+  color: blue;
+  margin-bottom: 20px;
+`;
+
+const CloseDialogButton = styled(TouchableOpacity)`
+  font-weight: bold;
+  font-style: italic;
+  color: black;
+  font-size: 12px;
+`;
+
+const QuestionContainer = styled(TouchableOpacity)`
+  font-weight: bold;
+  font-style: italic;
+  color: black;
+  font-size: 12px;
+`;
+
+const StyledModal = styled(Modal)`
+  align-items: center;
+`;
 
 Dialog.propTypes = {
   dialogModalVisible: PropTypes.bool,
