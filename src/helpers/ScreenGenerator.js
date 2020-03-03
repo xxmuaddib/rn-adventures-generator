@@ -5,7 +5,6 @@ import {
   AsyncStorage,
   TouchableOpacity,
   Dimensions,
-  Platform
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
@@ -18,6 +17,7 @@ import { Inventory } from '../components/Inventory';
 import { Dialog } from '../components/Dialog';
 import { Paper } from '../components/Paper';
 import { MainMenuModal } from '../components/MainMenuModal';
+import { PlatformSpecificMeasurement } from './PlatformSpecificUtils';
 
 const { width, height } = Dimensions.get('window');
 
@@ -478,7 +478,7 @@ const SceneBackground = styled(ImageBackground)`
 
 const MainMenuButton = styled(TouchableOpacity)`
   position: absolute;
-  top: ${Platform.OS === 'ios' ? '20px' : '40px'};
+  top: ${PlatformSpecificMeasurement(20)};
   left: 20px;
 `;
 
