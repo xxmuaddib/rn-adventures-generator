@@ -7,7 +7,7 @@ export const ElementAnimationPropType = PropTypes.shape({
   loop: PropTypes.bool,
 });
 
-const ImageSource = PropTypes.oneOfType([
+export const ImageSource = PropTypes.oneOfType([
   PropTypes.shape({
     uri: PropTypes.string,
     headers: PropTypes.objectOf(PropTypes.string),

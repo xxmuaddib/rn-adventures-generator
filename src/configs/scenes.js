@@ -4,6 +4,7 @@ import ManWithoutKey from '../assets/images/ManWithoutKey.png';
 import Key from '../assets/images/Key.png';
 import ClosedDoor from '../assets/images/ClosedDoor.png';
 import OpenDoor from '../assets/images/OpenDoor.png';
+import i18n from 'i18n-js';
 
 const SCENES = [
   {
@@ -33,7 +34,7 @@ const SCENES = [
             dialogProperties: {
               dialog: [
                 {
-                  s: 'Hi, Give me the key, please!!! I need to go to toilet...',
+                  s: i18n.t('dialog1_1s1'),
                   a:
                     'No way, unless you give me the answer to the question of the universe!!!',
                   dialog: [
