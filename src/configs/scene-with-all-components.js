@@ -1,3 +1,9 @@
+import EmptyRoomWithClosedDoor from '../assets/images/EmptyRoomWithClosedDoor.png';
+import Man from '../assets/images/Man.png';
+import ManWithoutKey from '../assets/images/ManWithoutKey.png';
+import Key from '../assets/images/Key.png';
+import ClosedDoor from '../assets/images/ClosedDoor.png';
+import OpenDoor from '../assets/images/OpenDoor.png';
 import { watermelon } from '../assets/animations';
 
 const SCENES = [
@@ -174,15 +180,22 @@ const SCENES = [
         {
           type: 'paper',
           id: 'paper1',
-          element: 'text',
-          name: 'P',
-          x: 20,
-          y: 40,
-          width: 20,
-          height: 20,
-          bg:
-            'https://previews.123rf.com/images/alexutemov/alexutemov1604/alexutemov160400954/54830274-vintage-old-map-antique-and-retro-vintage-paper-old-map-vintage-old-map-world-navigation-art-parchme.jpg',
-          text: '321321321312 dsadsadsdsa',
+          element: {
+            type: 'image',
+            image: {
+              src: Key,
+            },
+          },
+          position: {
+            x: 100,
+            y: 100,
+            width: 40,
+            height: 40,
+          },
+          logical: {
+            bg: EmptyRoomWithClosedDoor,
+            text: '321321321312 dsadsadsdsa',
+          },
         },
         {
           type: 'draggable',

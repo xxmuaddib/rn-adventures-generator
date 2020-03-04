@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Image, Text, TouchableOpacity } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import LottieView from 'lottie-react-native';
 import styled from 'styled-components';
 
@@ -9,12 +9,13 @@ import { ElementPropType } from '../proptypes/ElementPropTypes';
 const Element = ({ element: { type, image, name, animation } }) => {
   const animationRef = useRef(null);
   switch (type) {
-    case ELEMENT_VARIANTS.IMAGE: {
+    case ELEMENT_VARIANTS.IMAGE:
       return <StyledImage source={image.src} resizeMode="contain" />;
-    }
+    case ELEMENT_VARIANTS.BLANK_AREA:
+      return <StyledBlankArea />;
     case ELEMENT_VARIANTS.TEXT:
       return <Text>{name}</Text>;
-    case ELEMENT_VARIANTS.ANIMATABLE: {
+    case ELEMENT_VARIANTS.ANIMATABLE:
       return (
         <TouchableOpacity
           onPress={() => {
@@ -31,7 +32,6 @@ const Element = ({ element: { type, image, name, animation } }) => {
           />
         </TouchableOpacity>
       );
-    }
     default:
       return <Text>{name}</Text>;
   }
@@ -40,6 +40,11 @@ const Element = ({ element: { type, image, name, animation } }) => {
 Element.propTypes = {
   element: ElementPropType.isRequired,
 };
+
+const StyledBlankArea = styled(View)`
+  height: 100%;
+  width: 100%;
+`;
 
 const StyledImage = styled(Image)`
   height: 100%;

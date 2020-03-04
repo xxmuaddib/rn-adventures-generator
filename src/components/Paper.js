@@ -44,19 +44,19 @@ const PaperText = styled(Text)`
   position: absolute;
   left: 70px;
   top: 70px;
-  z-index: 10px;
+  z-index: 10;
 `;
 
 const ClosePaperButton = styled(TouchableOpacity)`
   position: absolute;
   bottom: 50px;
-  right: 50;
+  right: 50px;
   background-color: #e2a33e;
   width: 70px;
   height: 30px;
   justify-content: center;
   align-items: center;
-  z-index: 10px;
+  z-index: 10;
 `;
 
 Paper.propTypes = {

@@ -362,11 +362,27 @@ function screenGenerator(scene) {
       }));
     };
 
-    onDragRelease = (evt, g) => {
+    onDragRelease = async (evt, g, id) => {
+      const {
+        scene: { objects },
+        resolved,
+      } = this.state;
       const moveX = g.moveX / pointX;
       const moveY = g.moveY / pointY;
-      if (moveX > 100 && moveX < 200 && moveY > 50 && moveY < 150) {
-        // TOOD: Add logics
+      const receiver = objects.itemsMap.find(
+        item => item.logical && item.logical.expectedValue === id,
+      );
+      if (
+        moveX > receiver.position.x &&
+        moveX < receiver.position.x + receiver.position.width &&
+        moveY > receiver.position.y &&
+        moveY < receiver.position.y + receiver.position.height
+      ) {
+        this.setState(s => ({ resolved: [...s.resolved, id] }));
+        await AsyncStorage.setItem(
+          'resolved',
+          JSON.stringify([...resolved, id]),
+        );
       }
     };
 
@@ -436,7 +452,7 @@ function screenGenerator(scene) {
             objects={objects}
           />
           <MainMenuModal
-            isVisible={mainMenuVisible}
+            mainMenuVisible={mainMenuVisible}
             openMainMenu={this.openMainMenu}
             reset={this.reset}
           />

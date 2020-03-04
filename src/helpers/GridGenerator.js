@@ -30,11 +30,12 @@ const ObjectGrid = ({
   <ObjectGridContainer>
     {objects.navMap.map(item => {
       const isResolved =
+        !item ||
         !item.showOnResolved ||
         !item.showOnResolved.length ||
         item.showOnResolved.some(id => resolved.includes(id));
       const hideResolved =
-        !item.hideOnResolved || !item.hideOnResolved.length
+        !item || !item.hideOnResolved || !item.hideOnResolved.length
           ? false
           : item.hideOnResolved.every(id => resolved.includes(id));
       if (isResolved && !hideResolved) {
@@ -52,11 +53,12 @@ const ObjectGrid = ({
     })}
     {objects.itemsMap.map(({ type, id, element, position, logical }) => {
       const isResolved =
+        !logical ||
         !logical.showOnResolved ||
         !logical.showOnResolved.length ||
         logical.showOnResolved.some(item => resolved.includes(item));
       const hideResolved =
-        !logical.hideOnResolved || !logical.hideOnResolved.length
+        !logical || !logical.hideOnResolved || !logical.hideOnResolved.length
           ? false
           : logical.hideOnResolved.every(item => resolved.includes(item));
       const collectableShouldHide =
@@ -65,39 +67,42 @@ const ObjectGrid = ({
 
       return (
         <View key={id}>
-          {isResolved && !hideResolved && !collectableShouldHide && (
-            <TouchableOpacity
-              style={generateStyle(styles.itemStyle, position)}
-              activeOpacity={0.9}
-              onPress={() => {
-                switch (type) {
-                  case ITEMS.SEQUENCE:
-                    return sequence(logical);
-                  case ITEMS.RECEIVER:
-                    return receive(logical.expectedValue);
-                  case ITEMS.MULTIPLE:
-                    return toggleMultiple(logical);
-                  case ITEMS.PAPER:
-                    return showModal(logical);
-                  case ITEMS.DIALOG:
-                    return showDialog(logical.dialogProperties);
-                  case ITEMS.COLLECTABLE:
-                    return collect(
-                      objects.itemsMap.find(item => item.id === id),
-                    );
-                  default:
-                    return () => undefined;
-                }
-              }}
-            >
-              <Element element={element} />
-            </TouchableOpacity>
-          )}
+          {type !== ITEMS.DRAGGABLE &&
+            isResolved &&
+            !hideResolved &&
+            !collectableShouldHide && (
+              <TouchableOpacity
+                style={generateStyle(styles.itemStyle, position)}
+                activeOpacity={0.9}
+                onPress={() => {
+                  switch (type) {
+                    case ITEMS.SEQUENCE:
+                      return sequence(logical);
+                    case ITEMS.RECEIVER:
+                      return receive(logical.expectedValue);
+                    case ITEMS.MULTIPLE:
+                      return toggleMultiple(logical);
+                    case ITEMS.PAPER:
+                      return showModal(logical);
+                    case ITEMS.DIALOG:
+                      return showDialog(logical.dialogProperties);
+                    case ITEMS.COLLECTABLE:
+                      return collect(
+                        objects.itemsMap.find(item => item.id === id),
+                      );
+                    default:
+                      return () => undefined;
+                  }
+                }}
+              >
+                <Element element={element} />
+              </TouchableOpacity>
+            )}
           {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
             <Draggable
               x={position.x}
               y={position.y}
-              onDragRelease={onDragRelease}
+              onDragRelease={(evt, g) => onDragRelease(evt, g, id)}
             >
               <Element element={element} />
             </Draggable>

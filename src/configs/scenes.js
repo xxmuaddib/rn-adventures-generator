@@ -4,6 +4,7 @@ import ManWithoutKey from '../assets/images/ManWithoutKey.png';
 import Key from '../assets/images/Key.png';
 import ClosedDoor from '../assets/images/ClosedDoor.png';
 import OpenDoor from '../assets/images/OpenDoor.png';
+import watermelon from '../assets/animations/watermelon.json';
 
 const SCENES = [
   {
@@ -183,6 +184,43 @@ const SCENES = [
           logical: {
             expectedValue: 'collectable2',
             showOnResolved: ['receiver1'],
+          },
+        },
+        {
+          type: 'draggable',
+          id: 'draggable1',
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 20,
+            y: 120,
+            width: 20,
+            height: 20,
+          },
+          logical: {
+            hideOnResolved: ['draggable1'],
+          },
+        },
+        {
+          type: 'receiver',
+          id: 'receiver3',
+          element: {
+            type: 'blank_area',
+          },
+          position: {
+            x: 120,
+            y: 20,
+            width: 200,
+            height: 200,
+          },
+          logical: {
+            expectedValue: 'draggable1',
+            hideOnResolved: ['draggable1'],
           },
         },
       ],
