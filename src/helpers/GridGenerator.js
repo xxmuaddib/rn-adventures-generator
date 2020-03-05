@@ -64,17 +64,17 @@ const ObjectGrid = ({
       const collectableShouldHide =
         type === ITEMS.COLLECTABLE &&
         !!collectedItems.find(collectedItem => collectedItem.id === id);
-      const deactiveResolved =
+      const isDeactive =
         !logical ||
         !logical.deactivateOnResolved ||
         !logical.deactivateOnResolved.length
           ? false
           : logical.deactivateOnResolved.every(item => resolved.includes(item));
-      const activeResolved =
+      const isActive =
         !logical ||
         !logical.activateOnResolved ||
         !logical.activateOnResolved.length
-          ? false
+          ? true
           : logical.activateOnResolved.every(item => resolved.includes(item));
       return (
         <View key={id}>
@@ -84,7 +84,8 @@ const ObjectGrid = ({
             !collectableShouldHide && (
               <TouchableOpacity
                 style={generateStyle(position)}
-                activeOpacity={0.9}
+                activeOpacity={isDeactive ? 1 : 0.9}
+                disabled={isDeactive}
                 onPress={() => {
                   switch (type) {
                     case ITEMS.SEQUENCE:
@@ -113,7 +114,7 @@ const ObjectGrid = ({
             <Draggable
               x={position.x}
               y={position.y}
-              disabled={deactiveResolved}
+              disabled={isDeactive || !isActive}
               onDragRelease={(evt, g) => onDragRelease(evt, g, id)}
             >
               <Element element={element} position={position} />
