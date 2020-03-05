@@ -203,7 +203,7 @@ const SCENES = [
             height: 20,
           },
           logical: {
-            hideOnResolved: ['draggable1'],
+            deactivateOnResolved: ['draggable1'],
           },
         },
         {

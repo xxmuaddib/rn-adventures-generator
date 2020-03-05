@@ -64,7 +64,18 @@ const ObjectGrid = ({
       const collectableShouldHide =
         type === ITEMS.COLLECTABLE &&
         !!collectedItems.find(collectedItem => collectedItem.id === id);
-
+      const deactiveResolved =
+        !logical ||
+        !logical.deactivateOnResolved ||
+        !logical.deactivateOnResolved.length
+          ? false
+          : logical.deactivateOnResolved.every(item => resolved.includes(item));
+      const activeResolved =
+        !logical ||
+        !logical.activateOnResolved ||
+        !logical.activateOnResolved.length
+          ? false
+          : logical.activateOnResolved.every(item => resolved.includes(item));
       return (
         <View key={id}>
           {type !== ITEMS.DRAGGABLE &&
@@ -102,6 +113,7 @@ const ObjectGrid = ({
             <Draggable
               x={position.x}
               y={position.y}
+              disabled={deactiveResolved}
               onDragRelease={(evt, g) => onDragRelease(evt, g, id)}
             >
               <Element element={element} position={position} />

@@ -26,6 +26,8 @@ export const PaperPropType = PropTypes.shape({
 export const LogicalPropType = PropTypes.shape({
   showOnResolved: PropTypes.arrayOf(PropTypes.string),
   hideOnResolved: PropTypes.arrayOf(PropTypes.string),
+  deactivateOnResolved: PropTypes.arrayOf(PropTypes.string),
+  activateOnResolved: PropTypes.arrayOf(PropTypes.string),
   dialogProperties: DialogPropType,
   expectedValue: PropTypes.string,
 });

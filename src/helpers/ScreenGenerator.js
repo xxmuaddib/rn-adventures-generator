@@ -144,8 +144,12 @@ function screenGenerator(scene) {
           await AsyncStorage.removeItem(g);
         });
         await AsyncStorage.removeItem('resolved');
-        this.setState({ scene: _.cloneDeep(originalScene), resolved: [] });
+        await this.setState({
+          scene: _.cloneDeep(originalScene),
+          resolved: [],
+        });
       }
+
       this.openMainMenu();
     };
 
