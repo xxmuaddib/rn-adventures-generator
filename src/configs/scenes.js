@@ -156,9 +156,9 @@ const SCENES = [
             },
           },
           position: {
-            x: 154,
+            x: 110,
             y: 0,
-            width: 50,
+            width: 131,
             height: 200,
           },
           logical: {
@@ -176,9 +176,9 @@ const SCENES = [
             },
           },
           position: {
-            x: 154,
+            x: 110,
             y: 0,
-            width: 50,
+            width: 131,
             height: 200,
           },
           logical: {

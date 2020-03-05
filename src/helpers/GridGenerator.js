@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Dimensions, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Dimensions, TouchableOpacity } from 'react-native';
 import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -42,7 +42,7 @@ const ObjectGrid = ({
         return (
           <TouchableOpacity
             key={item.route}
-            style={generateStyle(styles.itemStyle, item)}
+            style={generateStyle(item)}
             onPress={() => onRoutePress(item.route)}
           >
             <Element item={item} />
@@ -72,7 +72,7 @@ const ObjectGrid = ({
             !hideResolved &&
             !collectableShouldHide && (
               <TouchableOpacity
-                style={generateStyle(styles.itemStyle, position)}
+                style={generateStyle(position)}
                 activeOpacity={0.9}
                 onPress={() => {
                   switch (type) {
@@ -95,7 +95,7 @@ const ObjectGrid = ({
                   }
                 }}
               >
-                <Element element={element} />
+                <Element element={element} position={position} />
               </TouchableOpacity>
             )}
           {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
@@ -104,7 +104,7 @@ const ObjectGrid = ({
               y={position.y}
               onDragRelease={(evt, g) => onDragRelease(evt, g, id)}
             >
-              <Element element={element} />
+              <Element element={element} position={position} />
             </Draggable>
           )}
         </View>
@@ -142,13 +142,5 @@ const ObjectGridContainer = styled(View)`
   width: ${width}px;
   height: ${height}px;
 `;
-
-const styles = StyleSheet.create({
-  itemStyle: {
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export { ObjectGrid };
