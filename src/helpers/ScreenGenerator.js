@@ -144,7 +144,11 @@ function screenGenerator(scene) {
           await AsyncStorage.removeItem(g);
         });
         await AsyncStorage.removeItem('resolved');
-        this.setState({ scene: _.cloneDeep(originalScene), resolved: [] });
+        this.setState({
+          scene: _.cloneDeep(originalScene),
+          resolved: [],
+          dialogAnswer: '',
+        });
       }
       this.openMainMenu();
     };
@@ -391,7 +395,14 @@ function screenGenerator(scene) {
         dialogModalVisible: !s.dialogModalVisible,
         dialogModalContent: item,
         originalDialogContent: item,
+        dialogAnswer: item.character,
       }));
+    };
+
+    showDialogAnswer = item => {
+      this.setState({
+        dialogModalContent: { ...item, questionsShouldBeShown: true },
+      });
     };
 
     setDialog = async item => {
@@ -405,7 +416,7 @@ function screenGenerator(scene) {
       }
       this.setState({
         dialogModalContent: item.dialog ? item : originalDialogContent,
-        dialogAnswer: item.a,
+        dialogAnswer: item.character,
       });
     };
 
@@ -471,6 +482,7 @@ function screenGenerator(scene) {
               resolved={resolved}
               setDialog={this.setDialog}
               showDialog={this.showDialog}
+              showDialogAnswer={this.showDialogAnswer}
             />
           )}
         </SceneBackground>

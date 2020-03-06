@@ -5,6 +5,16 @@ import Key from '../assets/images/Key.png';
 import ClosedDoor from '../assets/images/ClosedDoor.png';
 import OpenDoor from '../assets/images/OpenDoor.png';
 import watermelon from '../assets/animations/watermelon.json';
+import CharacterAvatar1 from '../assets/images/CharacterAvatar1.png';
+import CharacterAvatar2 from '../assets/images/CharacterAvatar2.png';
+import HeroAvatar1 from '../assets/images/HeroAvatar1.png';
+import HeroAvatar2 from '../assets/images/HeroAvatar2.png';
+import HeroAvatar3 from '../assets/images/HeroAvatar3.png';
+import HeroAvatar4 from '../assets/images/HeroAvatar4.png';
+import HeroAvatar5 from '../assets/images/HeroAvatar5.png';
+import HeroAvatar6 from '../assets/images/HeroAvatar6.png';
+import HeroAvatar7 from '../assets/images/HeroAvatar7.png';
+import HeroAvatar8 from '../assets/images/HeroAvatar8.png';
 
 const SCENES = [
   {
@@ -32,70 +42,231 @@ const SCENES = [
           logical: {
             hideOnResolved: ['dialog1_1'],
             dialogProperties: {
+              character: 'Hello baby!!!',
+              characterElement: {
+                type: 'image',
+                image: {
+                  src: CharacterAvatar1,
+                },
+              },
+              heroElement: {
+                type: 'image',
+                image: {
+                  src: HeroAvatar1,
+                },
+              },
               dialog: [
                 {
-                  s: 'Hi, Give me the key, please!!! I need to go to toilet...',
-                  a:
+                  hero:
+                    'Hi, Give me the key, please!!! I need to go to toilet...',
+                  character:
                     'No way, unless you give me the answer to the question of the universe!!!',
+                  characterElement: {
+                    type: 'image',
+                    image: {
+                      src: CharacterAvatar2,
+                    },
+                  },
+                  heroElement: {
+                    type: 'image',
+                    image: {
+                      src: HeroAvatar2,
+                    },
+                  },
                   dialog: [
                     {
                       hideOnResolved: ['dialog1_1'],
-                      s: 'What is the question, ara?',
-                      a:
+                      hero: 'What is the question, ara?',
+                      character:
                         "What a bad attitude. But I'll tell you if you promise to behave well, ara!",
+                      characterElement: {
+                        type: 'image',
+                        image: {
+                          src: CharacterAvatar1,
+                        },
+                      },
+                      heroElement: {
+                        type: 'image',
+                        image: {
+                          src: HeroAvatar3,
+                        },
+                      },
                       dialog: [
                         {
-                          s: 'Ok, tell me please, your majesty.',
-                          a:
+                          hero: 'Ok, tell me please, your majesty.',
+                          character:
                             'What is the green thing that lives under the ground and eats stone?',
+                          characterElement: {
+                            type: 'image',
+                            image: {
+                              src: CharacterAvatar1,
+                            },
+                          },
+                          heroElement: {
+                            type: 'image',
+                            image: {
+                              src: HeroAvatar4,
+                            },
+                          },
                           dialog: [
                             {
-                              s: 'The green underground stoneeater.',
-                              a: "Wow, you're a genius. Take the key.",
+                              hero: 'The green underground stoneeater.',
+                              character: "Wow, you're a genius. Take the key.",
+                              characterElement: {
+                                type: 'image',
+                                image: {
+                                  src: CharacterAvatar1,
+                                },
+                              },
+                              heroElement: {
+                                type: 'image',
+                                image: {
+                                  src: HeroAvatar5,
+                                },
+                              },
                               resolve: 'dialog1_1',
                             },
                             {
-                              s: 'Fish?...',
-                              a: "You're a donk. A fish is never green.",
+                              hero: 'Fish?...',
+                              character:
+                                "You're a donk. A fish is never green.",
+                              characterElement: {
+                                type: 'image',
+                                image: {
+                                  src: CharacterAvatar1,
+                                },
+                              },
+                              heroElement: {
+                                type: 'image',
+                                image: {
+                                  src: HeroAvatar6,
+                                },
+                              },
                             },
                             {
-                              s: 'Doggy?...',
-                              a: 'Get out of my sight, you crazy idiot!!!',
+                              hero: 'Doggy?...',
+                              character:
+                                'Get out of my sight, you crazy idiot!!!',
+                              characterElement: {
+                                type: 'image',
+                                image: {
+                                  src: CharacterAvatar1,
+                                },
+                              },
+                              heroElement: {
+                                type: 'image',
+                                image: {
+                                  src: HeroAvatar7,
+                                },
+                              },
                             },
                             {
-                              s: 'IBM Watson',
-                              a:
+                              hero: 'IBM Watson',
+                              character:
                                 'That could be true in another galaxy in a dream of a drunk ill elephant before dying because of diarea!!! GET OUT!!!',
+                              characterElement: {
+                                type: 'image',
+                                image: {
+                                  src: CharacterAvatar1,
+                                },
+                              },
+                              heroElement: {
+                                type: 'image',
+                                image: {
+                                  src: HeroAvatar8,
+                                },
+                              },
                             },
                           ],
                         },
                       ],
                     },
                     {
-                      s:
+                      hero:
                         "I don't have time for this kind of games. I need to go to toilet!",
-                      a:
+                      character:
                         "I don't care. The universe is in danger. Go and pee in another place.",
+                      characterElement: {
+                        type: 'image',
+                        image: {
+                          src: CharacterAvatar1,
+                        },
+                      },
+                      heroElement: {
+                        type: 'image',
+                        image: {
+                          src: HeroAvatar1,
+                        },
+                      },
                       dialog: [
                         {
-                          s: 'Why are you doing this?',
-                          a: 'Because I am spiderman...',
+                          hero: 'Why are you doing this?',
+                          character: 'Because I am spiderman...',
+                          characterElement: {
+                            type: 'image',
+                            image: {
+                              src: CharacterAvatar1,
+                            },
+                          },
+                          heroElement: {
+                            type: 'image',
+                            image: {
+                              src: HeroAvatar1,
+                            },
+                          },
                         },
                       ],
                     },
                     {
-                      s:
+                      hero:
                         "Listen, man... I don't who are you... But this is my house. Give me the key!!!",
-                      a:
+                      character:
                         "It was your house until I came here. Now it's our house.",
+                      characterElement: {
+                        type: 'image',
+                        image: {
+                          src: CharacterAvatar1,
+                        },
+                      },
+                      heroElement: {
+                        type: 'image',
+                        image: {
+                          src: HeroAvatar1,
+                        },
+                      },
                       dialog: [
                         {
-                          s: 'I will call the police.',
-                          a: 'Your bladder will explode by the time they come.',
+                          hero: 'I will call the police.',
+                          character:
+                            'Your bladder will explode by the time they come.',
+                          characterElement: {
+                            type: 'image',
+                            image: {
+                              src: CharacterAvatar1,
+                            },
+                          },
+                          heroElement: {
+                            type: 'image',
+                            image: {
+                              src: HeroAvatar1,
+                            },
+                          },
                           dialog: [
                             {
-                              s: "Maan... You're right",
-                              a: 'Universe is always right...',
+                              hero: "Maan... You're right",
+                              character: 'Universe is always right...',
+                              characterElement: {
+                                type: 'image',
+                                image: {
+                                  src: CharacterAvatar1,
+                                },
+                              },
+                              heroElement: {
+                                type: 'image',
+                                image: {
+                                  src: HeroAvatar1,
+                                },
+                              },
                             },
                           ],
                         },
