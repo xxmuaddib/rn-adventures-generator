@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import { Audio } from 'expo-av';
 import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
@@ -160,6 +161,15 @@ function screenGenerator(scene) {
 
     collect = async item => {
       const { collectedItems } = this.state;
+      if (item.sound) {
+        const soundObject = new Audio.Sound();
+        try {
+          await soundObject.loadAsync(item.sound.soundName);
+          await soundObject.playAsync(item.sound.soundName);
+        } catch (error) {
+          console.error(error);
+        }
+      }
       await AsyncStorage.setItem(
         'inventory',
         JSON.stringify([...collectedItems, item]),
@@ -180,6 +190,7 @@ function screenGenerator(scene) {
         const receiverResolved = objects.itemsMap.find(
           el => el.type === 'receiver',
         );
+        // console.error(receiverResolved);
         if (receiverResolved) {
           this.setState(p => ({
             resolved: [...p.resolved, receiverResolved.id],

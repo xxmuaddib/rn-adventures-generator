@@ -1,6 +1,7 @@
 import EmptyRoomWithClosedDoor from '../assets/images/EmptyRoomWithClosedDoor.png';
 import Man from '../assets/images/Man.png';
 import ManWithoutKey from '../assets/images/ManWithoutKey.png';
+import DropingKeys from '../assets/sounds/dropingKeys.mp3';
 import Key from '../assets/images/Key.png';
 import ClosedDoor from '../assets/images/ClosedDoor.png';
 import OpenDoor from '../assets/images/OpenDoor.png';
@@ -144,6 +145,10 @@ const SCENES = [
           logical: {
             showOnResolved: ['dialog1_1'],
             countOfUse: 1,
+          },
+          sound: {
+            soundName: DropingKeys,
+            playOnResolved: ['dialog1_1'],
           },
         },
         {
