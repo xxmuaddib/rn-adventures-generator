@@ -150,6 +150,7 @@ function screenGenerator(scene) {
           dialogAnswer: '',
         });
       }
+
       this.openMainMenu();
     };
 
