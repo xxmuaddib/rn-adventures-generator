@@ -223,6 +223,69 @@ const SCENES = [
             hideOnResolved: ['draggable1'],
           },
         },
+        {
+          type: 'sequence',
+          id: 'sequence1_1',
+          group: 'sequence1',
+          main: true,
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 100,
+            y: 80,
+            width: 20,
+            height: 20,
+          },
+          logical: {
+            scenario: [
+              'sequence1_2',
+              'sequence1_1',
+              'sequence1_2',
+              'sequence1_3',
+            ],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_2',
+          group: 'sequence1',
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 120,
+            y: 80,
+            width: 20,
+            height: 20,
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_3',
+          group: 'sequence1',
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 80,
+            y: 80,
+            width: 20,
+            height: 20,
+          },
+        },
       ],
     },
   },
