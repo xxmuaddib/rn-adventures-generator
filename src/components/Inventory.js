@@ -63,7 +63,7 @@ export const Inventory = ({
                     key={item.id}
                     onPress={() => handleInvetoryItemPress(item.id)}
                   >
-                    <Element element={item.element} />
+                    <Element element={item.element} position={item.position} />
                   </InventoryItem>
                 </Draggable>
               ),

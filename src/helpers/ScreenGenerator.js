@@ -7,6 +7,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Audio } from 'expo-av';
 import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
@@ -159,7 +160,9 @@ function screenGenerator(scene) {
         });
         await AsyncStorage.removeItem('resolved');
         setState({ scene: _.cloneDeep(originalScene) }, sceneName);
+        setState({ resolved: [], dialogAnswer: '' });
       }
+
       this.openMainMenu();
     };
 
@@ -170,6 +173,15 @@ function screenGenerator(scene) {
 
     collect = async item => {
       const { collectedItems, setState } = this.props;
+      if (item.sound) {
+        const soundObject = new Audio.Sound();
+        try {
+          await soundObject.loadAsync(item.sound.soundName);
+          await soundObject.playAsync(item.sound.soundName);
+        } catch (error) {
+          console.error(error);
+        }
+      }
       await AsyncStorage.setItem(
         'inventory',
         JSON.stringify([...collectedItems, item]),
@@ -193,6 +205,7 @@ function screenGenerator(scene) {
         const receiverResolved = objects.itemsMap.find(
           el => el.type === 'receiver',
         );
+        // console.error(receiverResolved);
         if (receiverResolved) {
           setState({
             resolved: [...resolved, receiverResolved.id],
@@ -388,6 +401,13 @@ function screenGenerator(scene) {
         dialogModalVisible: !dialogModalVisible,
         dialogModalContent: item,
         originalDialogContent: item,
+        dialogAnswer: item.character,
+      });
+    };
+
+    showDialogAnswer = item => {
+      this.setState({
+        dialogModalContent: { ...item, questionsShouldBeShown: true },
       });
     };
 
@@ -402,7 +422,7 @@ function screenGenerator(scene) {
       }
       setState({
         dialogModalContent: item.dialog ? item : originalDialogContent,
-        dialogAnswer: item.a,
+        dialogAnswer: item.character,
       });
     };
 
@@ -467,6 +487,7 @@ function screenGenerator(scene) {
               resolved={resolved}
               setDialog={this.setDialog}
               showDialog={this.showDialog}
+              showDialogAnswer={this.showDialogAnswer}
             />
           )}
         </SceneBackground>

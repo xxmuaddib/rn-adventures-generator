@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Dimensions, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Dimensions, TouchableOpacity } from 'react-native';
 import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -42,7 +42,7 @@ const ObjectGrid = ({
         return (
           <TouchableOpacity
             key={item.route}
-            style={generateStyle(styles.itemStyle, item)}
+            style={generateStyle(item)}
             onPress={() => onRoutePress(item.route)}
           >
             <Element item={item} />
@@ -64,7 +64,18 @@ const ObjectGrid = ({
       const collectableShouldHide =
         type === ITEMS.COLLECTABLE &&
         !!collectedItems.find(collectedItem => collectedItem.id === id);
-
+      const isDeactive =
+        !logical ||
+        !logical.deactivateOnResolved ||
+        !logical.deactivateOnResolved.length
+          ? false
+          : logical.deactivateOnResolved.every(item => resolved.includes(item));
+      const isActive =
+        !logical ||
+        !logical.activateOnResolved ||
+        !logical.activateOnResolved.length
+          ? true
+          : logical.activateOnResolved.every(item => resolved.includes(item));
       return (
         <View key={id}>
           {type !== ITEMS.DRAGGABLE &&
@@ -72,8 +83,9 @@ const ObjectGrid = ({
             !hideResolved &&
             !collectableShouldHide && (
               <TouchableOpacity
-                style={generateStyle(styles.itemStyle, position)}
-                activeOpacity={0.9}
+                style={generateStyle(position)}
+                activeOpacity={isDeactive ? 1 : 0.9}
+                disabled={isDeactive}
                 onPress={() => {
                   switch (type) {
                     case ITEMS.SEQUENCE:
@@ -95,16 +107,17 @@ const ObjectGrid = ({
                   }
                 }}
               >
-                <Element element={element} />
+                <Element element={element} position={position} />
               </TouchableOpacity>
             )}
           {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
             <Draggable
               x={position.x}
               y={position.y}
+              disabled={isDeactive || !isActive}
               onDragRelease={(evt, g) => onDragRelease(evt, g, id)}
             >
-              <Element element={element} />
+              <Element element={element} position={position} />
             </Draggable>
           )}
         </View>
@@ -142,13 +155,5 @@ const ObjectGridContainer = styled(View)`
   width: ${width}px;
   height: ${height}px;
 `;
-
-const styles = StyleSheet.create({
-  itemStyle: {
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export { ObjectGrid };
