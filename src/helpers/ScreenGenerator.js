@@ -212,7 +212,7 @@ function screenGenerator(scene) {
         const receiverResolved = objects.itemsMap.find(
           el => el.type === 'receiver',
         );
-        // console.error(receiverResolved);
+
         if (receiverResolved) {
           setState({
             resolved: [...resolved, receiverResolved.id],
@@ -242,32 +242,53 @@ function screenGenerator(scene) {
       }
     };
 
-    handleSequence = async seq => {
+    handleSequence = async (group, id) => {
       const {
         currentScene: {
-          scene: { objects },
+          scene: {
+            objects: { itemsMap },
+          },
         },
         tmp,
+        resolved,
         setState,
       } = this.props;
 
-      const mainSequence = objects.find(
-        item => item.group === seq.group && item.main,
+      const mainSequence = itemsMap.find(
+        item => item.group === group && item.main,
       );
+
       const scenario =
         mainSequence && mainSequence.logical && mainSequence.logical.scenario;
       if (!scenario) return false;
 
-      const currentSequence = tmp[mainSequence.group] || [];
+      if (!tmp[mainSequence.group]) {
+        setState({
+          tmp: {
+            ...tmp,
+            [mainSequence.group]: [],
+          },
+        });
+      }
 
-      if (_.isEqual(currentSequence, [...tmp[mainSequence.group], seq.id])) {
-        console.error('true');
+      const currentSequence = tmp[mainSequence.group]
+        ? [...tmp[mainSequence.group], id]
+        : [id];
+
+      if (_.isEqual(scenario, currentSequence)) {
+        await AsyncStorage.setItem(
+          'resolved',
+          JSON.stringify([...resolved, group]),
+        );
+        return setState({
+          resolved: [...resolved, group],
+        });
       }
 
       setState({
         tmp: {
           ...tmp,
-          [mainSequence.group]: [...tmp[mainSequence.group], seq.id],
+          [mainSequence.group]: currentSequence,
         },
       });
     };

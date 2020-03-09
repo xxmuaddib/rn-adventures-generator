@@ -402,8 +402,9 @@ const SCENES = [
         },
         {
           type: 'sequence',
-          id: 'sequence1_3',
+          id: 'sequence1_1',
           group: 'sequence1',
+          main: true,
           element: {
             type: 'animatable',
             animation: {
@@ -416,27 +417,7 @@ const SCENES = [
             y: 80,
             width: 20,
             height: 20,
-            zIndex: 3,
-          },
-        },
-        {
-          type: 'sequence',
-          id: 'sequence1_1',
-          group: 'sequence1',
-          main: true,
-          element: {
-            type: 'animatable',
-            animation: {
-              src: watermelon,
-              autoPlay: true,
-            },
-          },
-          position: {
-            x: 100,
-            y: 80,
-            width: 20,
-            height: 20,
-            zIndex: 1,
+            zIndex: 10,
           },
           logical: {
             scenario: [
@@ -463,7 +444,26 @@ const SCENES = [
             y: 80,
             width: 20,
             height: 20,
-            zIndex: 2,
+            zIndex: 20,
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_3',
+          group: 'sequence1',
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 160,
+            y: 80,
+            width: 20,
+            height: 20,
+            zIndex: 30,
           },
         },
       ],
