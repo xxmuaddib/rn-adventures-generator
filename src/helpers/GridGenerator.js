@@ -77,39 +77,40 @@ const ObjectGrid = ({
           ? true
           : logical.activateOnResolved.every(item => resolved.includes(item));
       return (
-        <View key={id}>
-          {type !== ITEMS.DRAGGABLE &&
-            isResolved &&
-            !hideResolved &&
-            !collectableShouldHide && (
-              <TouchableOpacity
-                style={generateStyle(position)}
-                activeOpacity={isDeactive ? 1 : 0.9}
-                disabled={isDeactive}
-                onPress={() => {
-                  switch (type) {
-                    case ITEMS.SEQUENCE:
-                      return handleSequence(logical);
-                    case ITEMS.RECEIVER:
-                      return receive(logical.expectedValue);
-                    case ITEMS.MULTIPLE:
-                      return toggleMultiple(logical);
-                    case ITEMS.PAPER:
-                      return showModal(logical);
-                    case ITEMS.DIALOG:
-                      return showDialog(logical.dialogProperties);
-                    case ITEMS.COLLECTABLE:
-                      return collect(
-                        objects.itemsMap.find(item => item.id === id),
-                      );
-                    default:
-                      return () => undefined;
-                  }
-                }}
-              >
-                <Element element={element} position={position} />
-              </TouchableOpacity>
-            )}
+        <>
+          <View key={id} style={generateStyle(position)}>
+            {type !== ITEMS.DRAGGABLE &&
+              isResolved &&
+              !hideResolved &&
+              !collectableShouldHide && (
+                <TouchableOpacity
+                  activeOpacity={isDeactive ? 1 : 0.9}
+                  disabled={isDeactive}
+                  onPress={() => {
+                    switch (type) {
+                      case ITEMS.SEQUENCE:
+                        return handleSequence(logical);
+                      case ITEMS.RECEIVER:
+                        return receive(logical.expectedValue);
+                      case ITEMS.MULTIPLE:
+                        return toggleMultiple(logical);
+                      case ITEMS.PAPER:
+                        return showModal(logical);
+                      case ITEMS.DIALOG:
+                        return showDialog(logical.dialogProperties);
+                      case ITEMS.COLLECTABLE:
+                        return collect(
+                          objects.itemsMap.find(item => item.id === id),
+                        );
+                      default:
+                        return () => undefined;
+                    }
+                  }}
+                >
+                  <Element element={element} position={position} />
+                </TouchableOpacity>
+              )}
+          </View>
           {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
             <Draggable
               style={generateStyle(position)}
@@ -122,7 +123,7 @@ const ObjectGrid = ({
               <Element element={element} position={position} />
             </Draggable>
           )}
-        </View>
+        </>
       );
     })}
   </ObjectGridContainer>

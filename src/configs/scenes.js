@@ -39,7 +39,6 @@ const SCENES = [
             y: 40,
             width: 50,
             height: 150,
-            zIndex: 6,
           },
           logical: {
             hideOnResolved: ['dialog1_1'],
@@ -403,6 +402,25 @@ const SCENES = [
         },
         {
           type: 'sequence',
+          id: 'sequence1_3',
+          group: 'sequence1',
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 80,
+            y: 80,
+            width: 20,
+            height: 20,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'sequence',
           id: 'sequence1_1',
           group: 'sequence1',
           main: true,
@@ -418,6 +436,7 @@ const SCENES = [
             y: 80,
             width: 20,
             height: 20,
+            zIndex: 1,
           },
           logical: {
             scenario: [
@@ -444,24 +463,7 @@ const SCENES = [
             y: 80,
             width: 20,
             height: 20,
-          },
-        },
-        {
-          type: 'sequence',
-          id: 'sequence1_3',
-          group: 'sequence1',
-          element: {
-            type: 'animatable',
-            animation: {
-              src: watermelon,
-              autoPlay: true,
-            },
-          },
-          position: {
-            x: 80,
-            y: 80,
-            width: 20,
-            height: 20,
+            zIndex: 2,
           },
         },
       ],
