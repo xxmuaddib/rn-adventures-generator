@@ -26,7 +26,28 @@ const ObjectGrid = ({
   onDragRelease,
   showDialog,
   resolved,
+}) => {
+  const animationRef = useRef(null);
+  return (
+    <ObjectGridContainer>
+      {objects.navMap.map(item => {
+        const isResolved =
+          !item ||
+          !item.showOnResolved ||
+          !item.showOnResolved.length ||
+          item.showOnResolved.some(id => resolved.includes(id));
+        const hideResolved =
+          !item || !item.hideOnResolved || !item.hideOnResolved.length
+            ? false
+            : item.hideOnResolved.every(id => resolved.includes(id));
+        if (isResolved && !hideResolved) {
+          return (
+            <TouchableOpacity
+              key={item.route}
+              style={generateStyle(item)}
+              onPress={() => onRoutePress(item.route)}
             >
+              >
               <Element item={item} />
             </TouchableOpacity>
           );

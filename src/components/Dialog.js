@@ -28,7 +28,7 @@ export const Dialog = ({
       {dialogModalContent.characterElement && (
         <CharacterAvatar
           source={dialogModalContent.characterElement.image.src}
-          left
+          isLeft
         />
       )}
       <DialogContainer>
@@ -74,7 +74,7 @@ export const Dialog = ({
         dialogModalContent.questionsShouldBeShown && (
           <CharacterAvatar
             source={dialogModalContent.heroElement.image.src}
-            right
+            isRight
           />
         )}
     </Container>
@@ -100,8 +100,8 @@ const DialogContainer = styled(View)`
 
 const CharacterAvatar = styled(Image)`
   height: 100px;
-  ${p => p.left && 'margin-left: 20px'};
-  ${p => p.right && 'margin-right: 20px'};
+  ${p => p.isLeft && 'margin-left: 20px'};
+  ${p => p.isRight && 'margin-right: 20px'};
   margin-bottom: 20px;
 `;
 

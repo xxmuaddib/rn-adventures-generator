@@ -1,12 +1,19 @@
 import React from 'react';
 import { YellowBox } from 'react-native';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
+
 import { Screens, InitialScreen } from './src/helpers/ScreenGenerator';
+import {
+  generateReducers,
+  generateActions,
+} from './src/helpers/ReducersGenerator';
 
 YellowBox.ignoreWarnings(['Warning:']);
 
 const SwitchNavigator = createSwitchNavigator(Screens(), {
-	initialRouteName: InitialScreen,
+  initialRouteName: InitialScreen,
 });
 
 const store = createStore(generateReducers());
