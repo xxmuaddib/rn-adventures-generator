@@ -167,8 +167,8 @@ function screenGenerator(scene) {
         try {
           await soundObject.loadAsync(item.sound.soundName);
           await soundObject.playAsync(item.sound.soundName);
-        } catch (error) {
-          console.error(error);
+        } catch (e) {
+          console.error(e);
         }
       }
       await AsyncStorage.setItem(
@@ -184,6 +184,9 @@ function screenGenerator(scene) {
         scene: { objects },
         collectedItems,
       } = this.state;
+      const receiveElement = objects.itemsMap.find(
+        el => el.logical.expectedValue === expectedValue,
+      );
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
       if (expectedValue === selectedItemId) {
         await AsyncStorage.removeItem('selectedItem');
@@ -191,8 +194,23 @@ function screenGenerator(scene) {
         const receiverResolved = objects.itemsMap.find(
           el => el.type === 'receiver',
         );
-        // console.error(receiverResolved);
         if (receiverResolved) {
+          if (
+            receiverResolved.sound &&
+            receiverResolved.sound.resolvedSoundName
+          ) {
+            const soundObject = new Audio.Sound();
+            try {
+              await soundObject.loadAsync(
+                receiverResolved.sound.resolvedSoundName,
+              );
+              await soundObject.playAsync(
+                receiverResolved.sound.resolvedSoundName,
+              );
+            } catch (e) {
+              console.eroor(e);
+            }
+          }
           this.setState(p => ({
             resolved: [...p.resolved, receiverResolved.id],
           }));
@@ -218,10 +236,19 @@ function screenGenerator(scene) {
             JSON.stringify(collectedItemsCopy),
           );
         }
+      } else if (receiveElement.sound && receiveElement.sound.soundName) {
+        const soundObject = new Audio.Sound();
+        try {
+          await soundObject.loadAsync(receiveElement.sound.soundName);
+          await soundObject.playAsync(receiveElement.sound.soundName);
+        } catch (e) {
+          console.eroor(e);
+        }
       }
     };
 
     sequence = async item => {
+      console.error(item);
       const {
         scene: { objects },
         resolved,

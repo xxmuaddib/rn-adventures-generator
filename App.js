@@ -6,13 +6,13 @@ import { Screens, InitialScreen } from './src/helpers/ScreenGenerator';
 YellowBox.ignoreWarnings(['Warning:']);
 
 const SwitchNavigator = createSwitchNavigator(Screens(), {
-  initialRouteName: InitialScreen,
+	initialRouteName: InitialScreen,
 });
 
 const AppContainer = createAppContainer(SwitchNavigator);
 
 export default class App extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
+	render() {
+		return <AppContainer />;
+	}
 }

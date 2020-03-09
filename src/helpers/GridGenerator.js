@@ -34,6 +34,7 @@ const ObjectGrid = ({
         !item.showOnResolved ||
         !item.showOnResolved.length ||
         item.showOnResolved.some(id => resolved.includes(id));
+      console.error(resolved);
       const hideResolved =
         !item || !item.hideOnResolved || !item.hideOnResolved.length
           ? false
