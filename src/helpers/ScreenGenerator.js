@@ -27,6 +27,7 @@ import {
   PaperPropType,
   DialogPropType,
 } from '../proptypes/ObjectGridPropTypes';
+import { arrayIncludesSorted } from './Utils';
 
 const { width, height } = Dimensions.get('window');
 
@@ -275,7 +276,7 @@ function screenGenerator(scene) {
         ? [...tmp[mainSequence.group], id]
         : [id];
 
-      if (_.isEqual(scenario, currentSequence)) {
+      if (arrayIncludesSorted(scenario, currentSequence)) {
         await AsyncStorage.setItem(
           'resolved',
           JSON.stringify([...resolved, group]),
