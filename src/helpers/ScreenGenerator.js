@@ -21,6 +21,12 @@ import { Paper } from '../components/Paper';
 import { MainMenuModal } from '../components/MainMenuModal';
 import { PlatformSpecificMeasurement } from './PlatformSpecificUtils';
 import { setStateAction } from './ReducersGenerator';
+import { ScenePropTypes } from '../proptypes/ScenePropTypes';
+import {
+  ObjectPropTypes,
+  PaperPropType,
+  DialogPropType,
+} from '../proptypes/ObjectGridPropTypes';
 
 const { width, height } = Dimensions.get('window');
 
@@ -241,7 +247,7 @@ function screenGenerator(scene) {
           scene: { objects },
         },
         tmp,
-        resolved,
+        setState,
       } = this.props;
 
       const mainSequence = objects.find(
@@ -406,7 +412,8 @@ function screenGenerator(scene) {
     };
 
     showDialogAnswer = item => {
-      this.setState({
+      const { setState } = this.props;
+      setState({
         dialogModalContent: { ...item, questionsShouldBeShown: true },
       });
     };
@@ -499,6 +506,19 @@ function screenGenerator(scene) {
       navigate: PropTypes.func.isRequired,
     }).isRequired,
     setState: PropTypes.func.isRequired,
+    currentScene: ScenePropTypes.isRequired,
+    resolved: PropTypes.arrayOf(PropTypes.string).isRequired,
+    collectedItems: PropTypes.arrayOf(ObjectPropTypes).isRequired,
+    inventoryOpen: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired,
+    mainMenuVisible: PropTypes.bool.isRequired,
+    paperModalVisible: PropTypes.bool.isRequired,
+    dialogModalVisible: PropTypes.bool.isRequired,
+    paperModalContent: PaperPropType.isRequired,
+    dialogModalContent: DialogPropType.isRequired,
+    originalDialogContent: DialogPropType.isRequired,
+    dialogAnswer: PropTypes.string.isRequired,
+    tmp: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
   };
 
   const mapStateToProps = ({ app, [scene.name]: currentScene }) => ({
