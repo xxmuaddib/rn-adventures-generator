@@ -21,7 +21,7 @@ const ObjectGrid = ({
   collect,
   toggleMultiple,
   receive,
-  sequence,
+  handleSequence,
   showModal,
   onDragRelease,
   showDialog,
@@ -89,7 +89,7 @@ const ObjectGrid = ({
                 onPress={() => {
                   switch (type) {
                     case ITEMS.SEQUENCE:
-                      return sequence(logical);
+                      return handleSequence(logical);
                     case ITEMS.RECEIVER:
                       return receive(logical.expectedValue);
                     case ITEMS.MULTIPLE:
@@ -135,7 +135,7 @@ ObjectGrid.propTypes = {
   collect: PropTypes.func,
   toggleMultiple: PropTypes.func,
   receive: PropTypes.func,
-  sequence: PropTypes.func,
+  handleSequence: PropTypes.func,
   showModal: PropTypes.func,
   onDragRelease: PropTypes.func,
   showDialog: PropTypes.func,
@@ -147,7 +147,7 @@ ObjectGrid.defaultProps = {
   collect: () => undefined,
   toggleMultiple: () => undefined,
   receive: () => undefined,
-  sequence: () => undefined,
+  handleSequence: () => undefined,
   showModal: () => undefined,
   onDragRelease: () => undefined,
   showDialog: () => undefined,

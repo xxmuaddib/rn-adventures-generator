@@ -1,6 +1,7 @@
 import EmptyRoomWithClosedDoor from '../assets/images/EmptyRoomWithClosedDoor.png';
 import Man from '../assets/images/Man.png';
 import ManWithoutKey from '../assets/images/ManWithoutKey.png';
+import DropingKeys from '../assets/sounds/dropingKeys.mp3';
 import Key from '../assets/images/Key.png';
 import ClosedDoor from '../assets/images/ClosedDoor.png';
 import OpenDoor from '../assets/images/OpenDoor.png';
@@ -317,6 +318,10 @@ const SCENES = [
             showOnResolved: ['dialog1_1'],
             countOfUse: 1,
           },
+          sound: {
+            soundName: DropingKeys,
+            playOnResolved: ['dialog1_1'],
+          },
         },
         {
           type: 'receiver',
@@ -394,6 +399,69 @@ const SCENES = [
           logical: {
             expectedValue: 'draggable1',
             hideOnResolved: ['draggable1'],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_1',
+          group: 'sequence1',
+          main: true,
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 100,
+            y: 80,
+            width: 20,
+            height: 20,
+          },
+          logical: {
+            scenario: [
+              'sequence1_2',
+              'sequence1_1',
+              'sequence1_2',
+              'sequence1_3',
+            ],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_2',
+          group: 'sequence1',
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 120,
+            y: 80,
+            width: 20,
+            height: 20,
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_3',
+          group: 'sequence1',
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 80,
+            y: 80,
+            width: 20,
+            height: 20,
           },
         },
       ],
