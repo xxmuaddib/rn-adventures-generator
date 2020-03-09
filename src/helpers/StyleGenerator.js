@@ -15,6 +15,7 @@ const generateStyle = position => {
       top: pointY * position.y,
       width: pointX * position.width,
       height: pointY * position.height,
+      elevation: position.zIndex,
     },
   });
   return stylesheet.result;

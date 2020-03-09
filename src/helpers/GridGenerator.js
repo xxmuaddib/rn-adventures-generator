@@ -112,8 +112,10 @@ const ObjectGrid = ({
             )}
           {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
             <Draggable
+              style={generateStyle(position)}
               x={position.x}
               y={position.y}
+              z={position.zIndex}
               disabled={isDeactive || !isActive}
               onDragRelease={(evt, g) => onDragRelease(evt, g, id)}
             >

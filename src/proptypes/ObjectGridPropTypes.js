@@ -7,6 +7,7 @@ export const PositionPropType = PropTypes.shape({
   y: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
+  zIndex: PropTypes.number,
 });
 
 export const DialogPropType = PropTypes.shape({

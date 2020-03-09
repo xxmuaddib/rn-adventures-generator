@@ -38,6 +38,7 @@ const SCENES = [
             y: 40,
             width: 50,
             height: 150,
+            zIndex: 6,
           },
           logical: {
             hideOnResolved: ['dialog1_1'],
@@ -368,10 +369,11 @@ const SCENES = [
             },
           },
           position: {
-            x: 20,
-            y: 120,
-            width: 20,
-            height: 20,
+            x: 80,
+            y: 40,
+            width: 50,
+            height: 150,
+            zIndex: 5,
           },
           logical: {
             deactivateOnResolved: ['draggable1'],
