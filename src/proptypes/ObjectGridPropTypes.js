@@ -7,6 +7,7 @@ export const PositionPropType = PropTypes.shape({
   y: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
+  zIndex: PropTypes.number,
 });
 
 export const DialogPropType = PropTypes.shape({
@@ -30,11 +31,13 @@ export const LogicalPropType = PropTypes.shape({
   activateOnResolved: PropTypes.arrayOf(PropTypes.string),
   dialogProperties: DialogPropType,
   expectedValue: PropTypes.string,
+  scenario: PropTypes.arrayOf(PropTypes.string),
 });
 
 export const ObjectPropTypes = PropTypes.shape({
   type: PropTypes.oneOf(Object.values(ITEMS)).isRequired,
   id: PropTypes.string.isRequired,
+  group: PropTypes.string,
   element: ElementPropType,
   position: PositionPropType,
   logical: LogicalPropType,

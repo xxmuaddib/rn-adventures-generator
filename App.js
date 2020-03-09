@@ -9,10 +9,17 @@ const SwitchNavigator = createSwitchNavigator(Screens(), {
 	initialRouteName: InitialScreen,
 });
 
+const store = createStore(generateReducers());
+generateActions();
+
 const AppContainer = createAppContainer(SwitchNavigator);
 
 export default class App extends React.Component {
-	render() {
-		return <AppContainer />;
-	}
+  render() {
+    return (
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    );
+  }
 }

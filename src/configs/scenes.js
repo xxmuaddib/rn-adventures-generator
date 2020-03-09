@@ -378,10 +378,11 @@ const SCENES = [
             },
           },
           position: {
-            x: 20,
-            y: 120,
-            width: 20,
-            height: 20,
+            x: 80,
+            y: 40,
+            width: 50,
+            height: 150,
+            zIndex: 5,
           },
           logical: {
             hideOnResolved: ['draggable1'],
@@ -402,6 +403,72 @@ const SCENES = [
           logical: {
             expectedValue: 'draggable1',
             hideOnResolved: ['draggable1'],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_1',
+          group: 'sequence1',
+          main: true,
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 80,
+            y: 80,
+            width: 20,
+            height: 20,
+            zIndex: 10,
+          },
+          logical: {
+            scenario: [
+              'sequence1_2',
+              'sequence1_1',
+              'sequence1_2',
+              'sequence1_3',
+            ],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_2',
+          group: 'sequence1',
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 120,
+            y: 80,
+            width: 20,
+            height: 20,
+            zIndex: 20,
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_3',
+          group: 'sequence1',
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 160,
+            y: 80,
+            width: 20,
+            height: 20,
+            zIndex: 30,
           },
         },
       ],

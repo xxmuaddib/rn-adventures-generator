@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { Audio } from 'expo-av';
 import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
@@ -19,29 +20,29 @@ import { Dialog } from '../components/Dialog';
 import { Paper } from '../components/Paper';
 import { MainMenuModal } from '../components/MainMenuModal';
 import { PlatformSpecificMeasurement } from './PlatformSpecificUtils';
+import { setStateAction } from './ReducersGenerator';
+import { ScenePropTypes } from '../proptypes/ScenePropTypes';
+import {
+  ObjectPropTypes,
+  PaperPropType,
+  DialogPropType,
+} from '../proptypes/ObjectGridPropTypes';
+import { arrayIncludesSorted } from './Utils';
 
 const { width, height } = Dimensions.get('window');
 
 function screenGenerator(scene) {
-  const originalScene = _.cloneDeep(scene);
   class ScreenGenerator extends React.PureComponent {
-    state = {
-      bg: scene.bg,
-      collectedItems: [],
-      inventoryOpen: false,
-      loading: true,
-      mainMenuVisible: false,
-      resolved: [],
-      paperModalVisible: false,
-      dialogModalVisible: false,
-      paperModalContent: null,
-      dialogModalContent: null,
-      originalDialogContent: null,
-      dialogAnswer: '',
-      scene: _.cloneDeep(scene),
-    };
-
     componentDidMount() {
+      const { setState } = this.props;
+      setState(
+        {
+          scene: _.cloneDeep(scene),
+          originalScene: _.cloneDeep(scene),
+        },
+        scene.name,
+      );
+
       this.loadCollectedItems();
       this.loadMultipleItems();
       this.loadSequenceItems();
@@ -49,27 +50,33 @@ function screenGenerator(scene) {
     }
 
     loadResolved = async () => {
+      const { setState } = this.props;
       const SavedResolvedRaw = await AsyncStorage.getItem('resolved');
       if (SavedResolvedRaw) {
         const SavedResolved = JSON.parse(SavedResolvedRaw);
-        this.setState({ resolved: SavedResolved });
+        setState({ resolved: SavedResolved });
       }
     };
 
     loadCollectedItems = async () => {
+      const { setState } = this.props;
       const inventoryRaw = await AsyncStorage.getItem('inventory');
       if (inventoryRaw) {
         const inventory = JSON.parse(inventoryRaw);
-        this.setState({ collectedItems: inventory, loading: false });
+        setState({ collectedItems: inventory, loading: false });
       } else {
-        this.setState({ collectedItems: [], loading: false });
+        setState({ collectedItems: [], loading: false });
       }
     };
 
     loadSequenceItems = async () => {
       const {
-        scene: { objects },
-      } = this.state;
+        currentScene,
+        currentScene: {
+          scene: { objects },
+        },
+        setState,
+      } = this.props;
 
       const objectsCopy = { ...objects };
 
@@ -84,15 +91,18 @@ function screenGenerator(scene) {
             if (i > -1) {
               objectsCopy.describers[i] = describer;
             }
-            this.setState(prevState => ({
-              scene: {
-                ...prevState.scene,
-                objects: {
-                  ...prevState.scene.objects,
-                  describers: objectsCopy.describers,
+            setState(
+              {
+                scene: {
+                  ...currentScene,
+                  objects: {
+                    ...objects,
+                    describers: objectsCopy.describers,
+                  },
                 },
               },
-            }));
+              currentScene.scene.name,
+            );
           }
         });
       }
@@ -100,8 +110,12 @@ function screenGenerator(scene) {
 
     loadMultipleItems = async () => {
       const {
-        scene: { objects },
-      } = this.state;
+        currentScene,
+        currentScene: {
+          scene: { objects },
+        },
+        setState,
+      } = this.props;
 
       const objectsCopy = { ...objects };
 
@@ -121,23 +135,30 @@ function screenGenerator(scene) {
               }
             });
           }
-          this.setState(s => ({
-            scene: {
-              ...s.scene,
-              itemsMap: objectsCopy.itemsMap,
+          setState(
+            {
+              scene: {
+                ...currentScene,
+                itemsMap: objectsCopy.itemsMap,
+              },
             },
-          }));
+            currentScene.scene.name,
+          );
         });
       }
     };
 
     reset = async () => {
       const {
-        scene: { objects },
-      } = this.state;
+        currentScene: {
+          scene: { objects, name: sceneName },
+          originalScene,
+        },
+        setState,
+      } = this.props;
 
       await AsyncStorage.removeItem('inventory');
-      this.setState({ collectedItems: [] });
+      setState({ collectedItems: [] });
       if (objects.itemsMap) {
         const groups = objects.itemsMap.filter(el => el.type === 'multiple');
         const unique = [...new Set(groups.map(item => item.group))];
@@ -145,11 +166,9 @@ function screenGenerator(scene) {
           await AsyncStorage.removeItem(g);
         });
         await AsyncStorage.removeItem('resolved');
-        this.setState({
-          scene: _.cloneDeep(originalScene),
-          resolved: [],
-          dialogAnswer: '',
-        });
+        setState({ scene: _.cloneDeep(originalScene) }, sceneName);
+        setState({ resolved: [], dialogAnswer: '', loading: true });
+        setState({ loading: false });
       }
 
       this.openMainMenu();
@@ -161,7 +180,7 @@ function screenGenerator(scene) {
     };
 
     collect = async item => {
-      const { collectedItems } = this.state;
+      const { collectedItems, setState } = this.props;
       if (item.sound) {
         const soundObject = new Audio.Sound();
         try {
@@ -175,15 +194,18 @@ function screenGenerator(scene) {
         'inventory',
         JSON.stringify([...collectedItems, item]),
       );
-      this.setState({ collectedItems: [...collectedItems, item] });
+      setState({ collectedItems: [...collectedItems, item] });
     };
 
     receive = async expectedValue => {
       const {
         resolved,
-        scene: { objects },
+        currentScene: {
+          scene: { objects },
+        },
         collectedItems,
-      } = this.state;
+        setState,
+      } = this.props;
       const receiveElement = objects.itemsMap.find(
         el => el.logical.expectedValue === expectedValue,
       );
@@ -229,7 +251,7 @@ function screenGenerator(scene) {
             collectedItemsCopy[index].logical.countOfUse -= 1;
           }
 
-          this.setState({ collectedItems: collectedItemsCopy });
+          setState({ collectedItems: collectedItemsCopy });
 
           await AsyncStorage.setItem(
             'inventory',
@@ -247,169 +269,168 @@ function screenGenerator(scene) {
       }
     };
 
-    sequence = async item => {
-      console.error(item);
+    handleSequence = async (group, id) => {
       const {
-        scene: { objects },
+        currentScene: {
+          scene: {
+            objects: { itemsMap },
+          },
+        },
+        tmp,
         resolved,
-      } = this.state;
+        setState,
+      } = this.props;
 
-      const objectsModified = { ...objects };
-      const storageDescriber = await AsyncStorage.getItem(item.group);
-
-      let describer;
-      if (storageDescriber) {
-        describer = JSON.parse(storageDescriber);
-      }
-
-      const describerIndex = objectsModified.describers.findIndex(
-        elem => elem.group === item.group && elem,
+      const mainSequence = itemsMap.find(
+        item => item.group === group && item.main,
       );
-      if (describerIndex > -1) {
-        describer = objectsModified.describers[describerIndex];
+
+      const scenario =
+        mainSequence && mainSequence.logical && mainSequence.logical.scenario;
+      if (!scenario) return false;
+
+      if (!tmp[mainSequence.group]) {
+        setState({
+          tmp: {
+            ...tmp,
+            [mainSequence.group]: [],
+          },
+        });
       }
-      const { expectedValue, currentValue } = describer;
-      if (expectedValue[currentValue.length] === item.name) {
-        currentValue.push(item.name);
-        objectsModified.describers[describerIndex] = {
-          ...describer,
-          currentValue,
-        };
-        if (expectedValue.length === currentValue.length) {
-          resolved.map(el => el);
-          this.setState({
-            resolved: [
-              ...resolved,
-              objectsModified.describers[describerIndex].group,
-            ],
-          });
-          await AsyncStorage.setItem(
-            'resolved',
-            JSON.stringify([
-              ...resolved,
-              objectsModified.describers[describerIndex].group,
-            ]),
-          );
-          return;
-        }
-      } else {
-        objectsModified.describers[describerIndex] = {
-          ...describer,
-          currentValue: [],
-        };
+
+      const currentSequence = tmp[mainSequence.group]
+        ? [...tmp[mainSequence.group], id]
+        : [id];
+
+      if (arrayIncludesSorted(scenario, currentSequence)) {
+        await AsyncStorage.setItem(
+          'resolved',
+          JSON.stringify([...resolved, group]),
+        );
+        return setState({
+          resolved: [...resolved, group],
+        });
       }
-      await AsyncStorage.setItem(
-        item.group,
-        JSON.stringify(objectsModified.describers[describerIndex]),
-      );
-      this.setState({ scene: { ...scene, objects: objectsModified } });
+
+      setState({
+        tmp: {
+          ...tmp,
+          [mainSequence.group]: currentSequence,
+        },
+      });
     };
 
     toggleMultiple = async item => {
-      const {
-        scene: { objects },
-        resolved,
-      } = this.state;
-
-      const objectsModified = { ...objects };
-
-      const match = item.multiple.findIndex(el => el.id === item.selected);
-
-      const index = match + 1 < item.multiple.length ? match + 1 : 0;
-      const newSelected = item.multiple[index];
-
-      const group = await AsyncStorage.getItem(item.group);
-      let parts = objectsModified.itemsMap.filter(
-        object => object.group === item.group && object,
-      );
-      let groups = parts.map(el => {
-        if (el.selected === el.correct) return true;
-        return false;
-      });
-
-      let groupCorrect = groups.every(el => el === true);
-      let groupParsed = [];
-      if (group) {
-        groupParsed = JSON.parse(group);
-      }
-
-      if (groupCorrect) {
-        return;
-      }
-
-      const groupMatch = groupParsed.findIndex(
-        elem => elem.id === item.id && elem,
-      );
-
-      if (groupMatch > -1) {
-        groupParsed[groupMatch] = { ...item, selected: newSelected.id };
-      } else {
-        groupParsed.push({ ...item, selected: newSelected.id });
-      }
-
-      await AsyncStorage.setItem(item.group, JSON.stringify(groupParsed));
-
-      const itemMatch = objectsModified.itemsMap.findIndex(
-        elem => elem.id === item.id && elem,
-      );
-
-      if (itemMatch > -1) {
-        objectsModified.itemsMap[itemMatch] = {
-          ...item,
-          selected: newSelected.id,
-        };
-      }
-
-      parts = objectsModified.itemsMap.filter(
-        object => object.group === item.group && object,
-      );
-      groups = parts.map(el => {
-        if (el.selected === el.correct) return true;
-        return false;
-      });
-
-      groupCorrect = groups.every(el => el === true);
-      groupParsed = [];
-      if (group) {
-        groupParsed = JSON.parse(group);
-      }
-
-      this.setState({ scene: { ...scene, objects: objectsModified } });
-
-      if (groupCorrect) {
-        this.setState({
-          resolved: [...resolved, objectsModified.itemsMap[itemMatch].group],
-        });
-        await AsyncStorage.setItem(
-          'resolved',
-          JSON.stringify([
-            ...resolved,
-            objectsModified.itemsMap[itemMatch].group,
-          ]),
-        );
-      }
+      //       const {
+      //         scene: { objects },
+      //         resolved,
+      //       } = this.state;
+      //
+      //       const objectsModified = { ...objects };
+      //
+      //       const match = item.multiple.findIndex(el => el.id === item.selected);
+      //
+      //       const index = match + 1 < item.multiple.length ? match + 1 : 0;
+      //       const newSelected = item.multiple[index];
+      //
+      //       const group = await AsyncStorage.getItem(item.group);
+      //       let parts = objectsModified.itemsMap.filter(
+      //         object => object.group === item.group && object,
+      //       );
+      //       let groups = parts.map(el => {
+      //         if (el.selected === el.correct) return true;
+      //         return false;
+      //       });
+      //
+      //       let groupCorrect = groups.every(el => el === true);
+      //       let groupParsed = [];
+      //       if (group) {
+      //         groupParsed = JSON.parse(group);
+      //       }
+      //
+      //       if (groupCorrect) {
+      //         return;
+      //       }
+      //
+      //       const groupMatch = groupParsed.findIndex(
+      //         elem => elem.id === item.id && elem,
+      //       );
+      //
+      //       if (groupMatch > -1) {
+      //         groupParsed[groupMatch] = { ...item, selected: newSelected.id };
+      //       } else {
+      //         groupParsed.push({ ...item, selected: newSelected.id });
+      //       }
+      //
+      //       await AsyncStorage.setItem(item.group, JSON.stringify(groupParsed));
+      //
+      //       const itemMatch = objectsModified.itemsMap.findIndex(
+      //         elem => elem.id === item.id && elem,
+      //       );
+      //
+      //       if (itemMatch > -1) {
+      //         objectsModified.itemsMap[itemMatch] = {
+      //           ...item,
+      //           selected: newSelected.id,
+      //         };
+      //       }
+      //
+      //       parts = objectsModified.itemsMap.filter(
+      //         object => object.group === item.group && object,
+      //       );
+      //       groups = parts.map(el => {
+      //         if (el.selected === el.correct) return true;
+      //         return false;
+      //       });
+      //
+      //       groupCorrect = groups.every(el => el === true);
+      //       groupParsed = [];
+      //       if (group) {
+      //         groupParsed = JSON.parse(group);
+      //       }
+      //
+      //       this.setState({ scene: { ...scene, objects: objectsModified } });
+      //
+      //       if (groupCorrect) {
+      //         this.setState({
+      //           resolved: [...resolved, objectsModified.itemsMap[itemMatch].group],
+      //         });
+      //         await AsyncStorage.setItem(
+      //           'resolved',
+      //           JSON.stringify([
+      //             ...resolved,
+      //             objectsModified.itemsMap[itemMatch].group,
+      //           ]),
+      //         );
+      //       }
     };
 
     openMainMenu = () => {
-      this.setState(s => ({ mainMenuVisible: !s.mainMenuVisible }));
+      const { setState, mainMenuVisible } = this.props;
+      setState({ mainMenuVisible: !mainMenuVisible });
     };
 
     openInventory = () => {
-      this.setState(s => ({ inventoryOpen: !s.inventoryOpen }));
+      const { setState, inventoryOpen } = this.props;
+      setState({ inventoryOpen: !inventoryOpen });
     };
 
     openPaper = (paperModalContent = null) => {
-      this.setState(s => ({
-        paperModalVisible: !s.paperModalVisible,
+      const { setState, paperModalVisible } = this.props;
+      setState({
+        paperModalVisible: !paperModalVisible,
         paperModalContent,
-      }));
+      });
     };
 
     onDragRelease = async (evt, g, id) => {
       const {
-        scene: { objects },
+        currentScene: {
+          scene: { objects },
+        },
         resolved,
-      } = this.state;
+        setState,
+      } = this.props;
       const moveX = g.moveX / pointX;
       const moveY = g.moveY / pointY;
       const receiver = objects.itemsMap.find(
@@ -421,7 +442,7 @@ function screenGenerator(scene) {
         moveY > receiver.position.y &&
         moveY < receiver.position.y + receiver.position.height
       ) {
-        this.setState(s => ({ resolved: [...s.resolved, id] }));
+        setState({ resolved: [...resolved, id] });
         await AsyncStorage.setItem(
           'resolved',
           JSON.stringify([...resolved, id]),
@@ -430,30 +451,32 @@ function screenGenerator(scene) {
     };
 
     showDialog = (item = null) => {
-      this.setState(s => ({
-        dialogModalVisible: !s.dialogModalVisible,
+      const { dialogModalVisible, setState } = this.props;
+      setState({
+        dialogModalVisible: !dialogModalVisible,
         dialogModalContent: item,
         originalDialogContent: item,
         dialogAnswer: item.character,
-      }));
+      });
     };
 
     showDialogAnswer = item => {
-      this.setState({
+      const { setState } = this.props;
+      setState({
         dialogModalContent: { ...item, questionsShouldBeShown: true },
       });
     };
 
     setDialog = async item => {
-      const { resolved, originalDialogContent } = this.state;
+      const { resolved, originalDialogContent, setState } = this.props;
       if (item.resolve) {
-        this.setState(s => ({ resolved: [...s.resolved, item.resolve] }));
+        setState({ resolved: [...resolved, item.resolve] });
         await AsyncStorage.setItem(
           'resolved',
           JSON.stringify([...resolved, item.resolve]),
         );
       }
-      this.setState({
+      setState({
         dialogModalContent: item.dialog ? item : originalDialogContent,
         dialogAnswer: item.character,
       });
@@ -461,7 +484,6 @@ function screenGenerator(scene) {
 
     render() {
       const {
-        bg,
         collectedItems,
         inventoryOpen,
         loading,
@@ -472,8 +494,8 @@ function screenGenerator(scene) {
         dialogModalContent,
         dialogAnswer,
         resolved,
-        scene: { objects },
-      } = this.state;
+        currentScene: { objects, bg },
+      } = this.props;
       return (
         <SceneBackground source={bg}>
           {!loading && (
@@ -483,7 +505,7 @@ function screenGenerator(scene) {
               onRoutePress={this.onRoutePress}
               collect={this.collect}
               receive={this.receive}
-              sequence={this.sequence}
+              handleSequence={this.handleSequence}
               toggleMultiple={this.toggleMultiple}
               showModal={this.openPaper}
               onDragRelease={this.onDragRelease}
@@ -532,8 +554,43 @@ function screenGenerator(scene) {
     navigation: PropTypes.shape({
       navigate: PropTypes.func.isRequired,
     }).isRequired,
+    setState: PropTypes.func.isRequired,
+    currentScene: ScenePropTypes.isRequired,
+    resolved: PropTypes.arrayOf(PropTypes.string).isRequired,
+    collectedItems: PropTypes.arrayOf(ObjectPropTypes).isRequired,
+    inventoryOpen: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired,
+    mainMenuVisible: PropTypes.bool.isRequired,
+    paperModalVisible: PropTypes.bool.isRequired,
+    dialogModalVisible: PropTypes.bool.isRequired,
+    paperModalContent: PaperPropType.isRequired,
+    dialogModalContent: DialogPropType.isRequired,
+    originalDialogContent: DialogPropType.isRequired,
+    dialogAnswer: PropTypes.string.isRequired,
+    tmp: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
   };
-  return ScreenGenerator;
+
+  const mapStateToProps = ({ app, [scene.name]: currentScene }) => ({
+    currentScene,
+    resolved: app.resolved,
+    collectedItems: app.collectedItems,
+    inventoryOpen: app.inventoryOpen,
+    loading: app.loading,
+    mainMenuVisible: app.mainMenuVisible,
+    paperModalVisible: app.paperModalVisible,
+    dialogModalVisible: app.dialogModalVisible,
+    paperModalContent: app.paperModalContent,
+    dialogModalContent: app.dialogModalContent,
+    originalDialogContent: app.originalDialogContent,
+    dialogAnswer: app.dialogAnswer,
+    tmp: app.tmp,
+  });
+
+  const mapDispatchToProps = {
+    setState: setStateAction,
+  };
+
+  return connect(mapStateToProps, mapDispatchToProps)(ScreenGenerator);
 }
 
 const SceneBackground = styled(ImageBackground)`

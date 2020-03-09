@@ -1,15 +1,19 @@
-import React, { useRef } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { Image, Text, View } from 'react-native';
 import LottieView from 'lottie-react-native';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { pointX, pointY } from './StyleGenerator';
 
 import { ELEMENT_VARIANTS } from '../constants/elements';
 import { ElementPropType } from '../proptypes/ElementPropTypes';
 import { PositionPropType } from '../proptypes/ObjectGridPropTypes';
 
-const Element = ({ element: { type, image, name, animation }, position }) => {
-  const animationRef = useRef(null);
+const Element = ({
+  element: { type, image, name, animation },
+  position,
+  animationRef,
+}) => {
   switch (type) {
     case ELEMENT_VARIANTS.IMAGE:
       return (
@@ -25,20 +29,14 @@ const Element = ({ element: { type, image, name, animation }, position }) => {
       return <Text>{name}</Text>;
     case ELEMENT_VARIANTS.ANIMATABLE:
       return (
-        <TouchableOpacity
-          onPress={() => {
-            if (!animation.autoPlay) {
-              animationRef.current.play();
-            }
-          }}
-        >
+        <View>
           <StyledLottieView
-            ref={animationRef}
+            ref={animationRef || null}
             source={animation.src}
             autoPlay={animation.autoPlay}
             loop={animation.loop}
           />
-        </TouchableOpacity>
+        </View>
       );
     default:
       return <Text>{name}</Text>;
@@ -48,6 +46,14 @@ const Element = ({ element: { type, image, name, animation }, position }) => {
 Element.propTypes = {
   element: ElementPropType.isRequired,
   position: PositionPropType.isRequired,
+  animationRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
+};
+
+Element.defaultProps = {
+  animationRef: null,
 };
 
 const StyledBlankArea = styled(View)`
