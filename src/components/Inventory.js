@@ -11,6 +11,7 @@ import {
   ObjectPropTypes,
   ObjectsPropTypes,
 } from '../proptypes/ObjectGridPropTypes';
+import { PlatformSpecificMeasurement } from '../helpers/PlatformSpecificUtils';
 
 const { height } = Dimensions.get('window');
 
@@ -62,7 +63,7 @@ export const Inventory = ({
                     key={item.id}
                     onPress={() => handleInvetoryItemPress(item.id)}
                   >
-                    <Element element={item.element} />
+                    <Element element={item.element} position={item.position} />
                   </InventoryItem>
                 </Draggable>
               ),
@@ -120,12 +121,12 @@ const InventoryOpen = styled(View)`
 
 const InventoryCloseIcon = styled(TouchableOpacity)`
   position: absolute;
-  top: ${(height / 2 - 10)}px;
+  top: ${height / 2 - 10}px;
   left: -4px;
 `;
 
 const InventoryClosed = styled(TouchableOpacity)`
   position: absolute;
-  top: 40px;
+  top: ${PlatformSpecificMeasurement(20)};
   right: 20px;
 `;

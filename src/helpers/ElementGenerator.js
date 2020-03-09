@@ -1,37 +1,43 @@
-import React, { useRef } from 'react';
-import { Image, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { Image, Text, View } from 'react-native';
 import LottieView from 'lottie-react-native';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { pointX, pointY } from './StyleGenerator';
 
 import { ELEMENT_VARIANTS } from '../constants/elements';
 import { ElementPropType } from '../proptypes/ElementPropTypes';
+import { PositionPropType } from '../proptypes/ObjectGridPropTypes';
 
-const Element = ({ element: { type, image, name, animation } }) => {
-  const animationRef = useRef(null);
+const Element = ({
+  element: { type, image, name, animation },
+  position,
+  animationRef,
+}) => {
   switch (type) {
-    case ELEMENT_VARIANTS.IMAGE: {
-      return <StyledImage source={image.src} resizeMode="contain" />;
-    }
+    case ELEMENT_VARIANTS.IMAGE:
+      return (
+        <StyledImage
+          source={image.src}
+          resizeMode="stretch"
+          position={position}
+        />
+      );
+    case ELEMENT_VARIANTS.BLANK_AREA:
+      return <StyledBlankArea />;
     case ELEMENT_VARIANTS.TEXT:
       return <Text>{name}</Text>;
-    case ELEMENT_VARIANTS.ANIMATABLE: {
+    case ELEMENT_VARIANTS.ANIMATABLE:
       return (
-        <TouchableOpacity
-          onPress={() => {
-            if (!animation.autoPlay) {
-              animationRef.current.play();
-            }
-          }}
-        >
+        <View>
           <StyledLottieView
-            ref={animationRef}
+            ref={animationRef || null}
             source={animation.src}
             autoPlay={animation.autoPlay}
             loop={animation.loop}
           />
-        </TouchableOpacity>
+        </View>
       );
-    }
     default:
       return <Text>{name}</Text>;
   }
@@ -39,10 +45,25 @@ const Element = ({ element: { type, image, name, animation } }) => {
 
 Element.propTypes = {
   element: ElementPropType.isRequired,
+  position: PositionPropType.isRequired,
+  animationRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
 };
 
-const StyledImage = styled(Image)`
+Element.defaultProps = {
+  animationRef: null,
+};
+
+const StyledBlankArea = styled(View)`
   height: 100%;
+  width: 100%;
+`;
+
+const StyledImage = styled(Image)`
+  width: ${p => p.position.width * pointX}px;
+  height: ${p => p.position.height * pointY}px;
 `;
 
 const StyledLottieView = styled(LottieView)`
