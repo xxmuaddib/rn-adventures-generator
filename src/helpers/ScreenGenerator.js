@@ -166,7 +166,8 @@ function screenGenerator(scene) {
         });
         await AsyncStorage.removeItem('resolved');
         setState({ scene: _.cloneDeep(originalScene) }, sceneName);
-        setState({ resolved: [], dialogAnswer: '' });
+        setState({ resolved: [], dialogAnswer: '', loading: true });
+        setState({ loading: false });
       }
 
       this.openMainMenu();
