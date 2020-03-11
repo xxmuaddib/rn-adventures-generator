@@ -6,7 +6,6 @@ const getTranslationsFromScene = (
   if (typeof obj !== 'object') return false;
 
   Object.keys(obj).forEach(objkey => {
-    // console.error(`${lastkey}_${objkey}`);
     if (typeof obj[objkey] === 'object') {
       const key = `${lastkey}_${objkey}`;
       if (objkey === 'translations') {
