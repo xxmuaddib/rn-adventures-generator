@@ -27,6 +27,7 @@ import {
   PaperPropType,
   DialogPropType,
 } from '../proptypes/ObjectGridPropTypes';
+import { internationalizeScene } from '../localization';
 
 const { width, height } = Dimensions.get('window');
 
@@ -34,10 +35,14 @@ function screenGenerator(scene) {
   class ScreenGenerator extends React.PureComponent {
     componentDidMount() {
       const { setState } = this.props;
+      const sceneCopy = _.cloneDeep(scene);
+      //internationalizeScene(sceneCopy);
+      console.log(sceneCopy);
+
       setState(
         {
-          scene: _.cloneDeep(scene),
-          originalScene: _.cloneDeep(scene),
+          scene: sceneCopy,
+          originalScene: sceneCopy,
         },
         scene.name,
       );

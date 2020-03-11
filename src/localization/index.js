@@ -5,6 +5,7 @@ import {
   getLanguages,
   generateTranslationsObject,
 } from '../helpers/TranslationsHelper';
+import { SCENES } from '../configs/scenes';
 
 i18n.locale = Localization.locale;
 i18n.fallbacks = true;
@@ -19,18 +20,15 @@ const collectSceneTranslations = scene => {
   i18n.translations = translations;
 };
 
-const mutateObjectProperty = (lasti18nindex, obj) =>
-  obj.constructor === Object &&
+export const internationalizeScene = (lasti18nindex, obj) =>
+  typeof obj === Object &&
   Object.keys(obj).forEach(key => {
     const nexti18nindex = `${lasti18nindex}_${key}`;
     if (obj[key].translations !== undefined) {
       // eslint-disable-next-line no-param-reassign
       obj[key] = i18n.t[`${nexti18nindex}`];
     }
-    mutateObjectProperty(nexti18nindex, obj[key]);
+    internationalizeScene(nexti18nindex, obj[key]);
   });
 
-export const internationalizeScene = scene => {
-  collectSceneTranslations(scene);
-  mutateObjectProperty('SCENES', scene);
-};
+collectSceneTranslations(SCENES);
