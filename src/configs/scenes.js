@@ -48,7 +48,7 @@ const SCENES = [
               character: {
                 translations: {
                   en: 'Hello baby!!!',
-                  ru: 'Здарова, детка!',
+                  ru: 'Привет, детка!',
                 },
               },
               characterElement: {

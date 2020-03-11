@@ -6,13 +6,16 @@ const getTranslationsFromScene = (
   if (typeof obj !== 'object') return false;
 
   Object.keys(obj).forEach(objkey => {
-    const key = `${lastkey}_${key}`;
-    if (objkey === 'translations') {
-      // eslint-disable-next-line no-param-reassign
-      translationsObj[key] = obj[objkey];
-      return true;
+    // console.error(`${lastkey}_${objkey}`);
+    if (typeof obj[objkey] === 'object') {
+      const key = `${lastkey}_${objkey}`;
+      if (objkey === 'translations') {
+        // eslint-disable-next-line no-param-reassign
+        translationsObj[lastkey] = obj[objkey];
+        return true;
+      }
+      getTranslationsFromScene(obj[objkey], key, translationsObj);
     }
-    getTranslationsFromScene(obj[objkey], key, translationsObj);
   });
   return translationsObj;
 };
