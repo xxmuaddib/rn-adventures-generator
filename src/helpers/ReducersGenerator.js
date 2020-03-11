@@ -32,7 +32,10 @@ export const generateReducers = () => {
   const sceneReducers = {};
 
   SCENES.forEach(scene => {
-    const initialState = { ...scene };
+    const initialState = {
+      scene: { ...scene },
+      originalScene: { ...scene },
+    };
     sceneReducers[scene.name] = createReducer(initialState, {
       [`${scene.name}_SET_STATE`]: (state, action) => {
         const filteredAction = { ...action };

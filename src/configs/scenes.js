@@ -471,6 +471,96 @@ const SCENES = [
             zIndex: 30,
           },
         },
+        {
+          type: 'slot',
+          id: 'slot1_1',
+          group: 'slot1',
+          main: true,
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 200,
+            y: 120,
+            width: 20,
+            height: 20,
+            zIndex: 30,
+          },
+          logical: {
+            scenario: {
+              slot1_1: 2,
+              slot1_2: 1,
+            },
+            selected: 1,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'animatable',
+                  animation: {
+                    src: watermelon,
+                    autoPlay: true,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: Key,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot1_2',
+          group: 'slot1',
+          element: {
+            type: 'image',
+            image: {
+              src: Key,
+            },
+          },
+          position: {
+            x: 200,
+            y: 80,
+            width: 20,
+            height: 20,
+            zIndex: 30,
+          },
+          logical: {
+            selected: 2,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'animatable',
+                  animation: {
+                    src: watermelon,
+                    autoPlay: true,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: Key,
+                  },
+                },
+              },
+            ],
+          },
+        },
       ],
     },
   },

@@ -1,4 +1,4 @@
-export function arrayIncludesSorted(array1, array2) {
+function arrayIncludesSorted(array1, array2) {
   if (array1.length > array2.length) return false;
   let isEqual = true;
 
@@ -10,3 +10,25 @@ export function arrayIncludesSorted(array1, array2) {
   }
   return isEqual;
 }
+
+function objCompare(obj1, obj2) {
+  if (obj1 === obj2) {
+    return true;
+  }
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  keys1.forEach(key1 => {
+    if (!obj2[key1] || obj1[key1] !== obj2[key1]) {
+      return false;
+    }
+  });
+
+  return true;
+}
+
+export { arrayIncludesSorted, objCompare };

@@ -21,13 +21,13 @@ import { Paper } from '../components/Paper';
 import { MainMenuModal } from '../components/MainMenuModal';
 import { PlatformSpecificMeasurement } from './PlatformSpecificUtils';
 import { setStateAction } from './ReducersGenerator';
-import { ScenePropTypes } from '../proptypes/ScenePropTypes';
+import { SceneReducerPropTypes } from '../proptypes/ScenePropTypes';
 import {
   ObjectPropTypes,
   PaperPropType,
   DialogPropType,
 } from '../proptypes/ObjectGridPropTypes';
-import { arrayIncludesSorted } from './Utils';
+import { arrayIncludesSorted, objCompare } from './Utils';
 
 const { width, height } = Dimensions.get('window');
 
@@ -44,8 +44,8 @@ function screenGenerator(scene) {
       );
 
       this.loadCollectedItems();
-      this.loadMultipleItems();
-      this.loadSequenceItems();
+      // this.loadMultipleItems();
+      // this.loadSequenceItems();
       this.loadResolved();
     }
 
@@ -94,7 +94,7 @@ function screenGenerator(scene) {
             setState(
               {
                 scene: {
-                  ...currentScene,
+                  ...currentScene.scene,
                   objects: {
                     ...objects,
                     describers: objectsCopy.describers,
@@ -320,89 +320,94 @@ function screenGenerator(scene) {
       });
     };
 
-    toggleMultiple = async item => {
-      //       const {
-      //         scene: { objects },
-      //         resolved,
-      //       } = this.state;
-      //
-      //       const objectsModified = { ...objects };
-      //
-      //       const match = item.multiple.findIndex(el => el.id === item.selected);
-      //
-      //       const index = match + 1 < item.multiple.length ? match + 1 : 0;
-      //       const newSelected = item.multiple[index];
-      //
-      //       const group = await AsyncStorage.getItem(item.group);
-      //       let parts = objectsModified.itemsMap.filter(
-      //         object => object.group === item.group && object,
-      //       );
-      //       let groups = parts.map(el => {
-      //         if (el.selected === el.correct) return true;
-      //         return false;
-      //       });
-      //
-      //       let groupCorrect = groups.every(el => el === true);
-      //       let groupParsed = [];
-      //       if (group) {
-      //         groupParsed = JSON.parse(group);
-      //       }
-      //
-      //       if (groupCorrect) {
-      //         return;
-      //       }
-      //
-      //       const groupMatch = groupParsed.findIndex(
-      //         elem => elem.id === item.id && elem,
-      //       );
-      //
-      //       if (groupMatch > -1) {
-      //         groupParsed[groupMatch] = { ...item, selected: newSelected.id };
-      //       } else {
-      //         groupParsed.push({ ...item, selected: newSelected.id });
-      //       }
-      //
-      //       await AsyncStorage.setItem(item.group, JSON.stringify(groupParsed));
-      //
-      //       const itemMatch = objectsModified.itemsMap.findIndex(
-      //         elem => elem.id === item.id && elem,
-      //       );
-      //
-      //       if (itemMatch > -1) {
-      //         objectsModified.itemsMap[itemMatch] = {
-      //           ...item,
-      //           selected: newSelected.id,
-      //         };
-      //       }
-      //
-      //       parts = objectsModified.itemsMap.filter(
-      //         object => object.group === item.group && object,
-      //       );
-      //       groups = parts.map(el => {
-      //         if (el.selected === el.correct) return true;
-      //         return false;
-      //       });
-      //
-      //       groupCorrect = groups.every(el => el === true);
-      //       groupParsed = [];
-      //       if (group) {
-      //         groupParsed = JSON.parse(group);
-      //       }
-      //
-      //       this.setState({ scene: { ...scene, objects: objectsModified } });
-      //
-      //       if (groupCorrect) {
-      //         this.setState({
-      //           resolved: [...resolved, objectsModified.itemsMap[itemMatch].group],
-      //         });
-      //         await AsyncStorage.setItem(
-      //           'resolved',
-      //           JSON.stringify([
-      //             ...resolved,
-      //             objectsModified.itemsMap[itemMatch].group,
-      //           ]),
-      //         );
-      //       }
+    handleSlot = async (group, id) => {
+      const {
+        currentScene: {
+          scene: oldScene,
+          scene: {
+            name: sceneName,
+            objects,
+            objects: { itemsMap },
+          },
+        },
+        tmp,
+        resolved,
+        setState,
+      } = this.props;
+
+      const slotSequence = itemsMap.find(
+        item => item.group === group && item.main,
+      );
+
+      const slotScenario =
+        slotSequence && slotSequence.logical && slotSequence.logical.scenario;
+      if (!slotScenario) return false;
+
+      if (!tmp[slotSequence.group]) {
+        setState({
+          tmp: {
+            ...tmp,
+            [slotSequence.group]: {},
+          },
+        });
+      }
+
+      const itemsMapCopy = _.cloneDeep(itemsMap);
+
+      const allSlots = itemsMapCopy.filter(item => item.group === group);
+      const currentSlot = itemsMapCopy.findIndex(item => item.id === id);
+
+      const currentPosition = {};
+
+      allSlots.forEach(item => {
+        currentPosition[item.id] = item.logical.selected;
+      });
+
+      let { selected } = itemsMapCopy[currentSlot].logical;
+      const { options } = itemsMapCopy[currentSlot].logical;
+
+      if (selected === options[options.length - 1].id) {
+        selected = options[0].id;
+      } else {
+        const currentOption = options.findIndex(item => item.id === selected);
+        selected = options[currentOption + 1].id;
+      }
+
+      const selectedOption = itemsMapCopy[currentSlot].logical.options.find(
+        item => item.id === selected,
+      );
+      itemsMapCopy[currentSlot].element = selectedOption.element;
+      itemsMapCopy[currentSlot].logical.selected = selected;
+
+      setState(
+        {
+          scene: {
+            ...oldScene,
+            objects: {
+              ...objects,
+              itemsMap: itemsMapCopy,
+            },
+          },
+        },
+        sceneName,
+      );
+
+      if (objCompare(slotScenario, currentPosition)) {
+        await AsyncStorage.setItem(
+          'resolved',
+          JSON.stringify([...resolved, group]),
+        );
+        return setState({
+          resolved: [...resolved, group],
+        });
+      }
+
+      setState({
+        tmp: {
+          ...tmp,
+          [slotSequence.group]: currentPosition,
+        },
+      });
     };
 
     openMainMenu = () => {
@@ -494,7 +499,9 @@ function screenGenerator(scene) {
         dialogModalContent,
         dialogAnswer,
         resolved,
-        currentScene: { objects, bg },
+        currentScene: {
+          scene: { objects, bg },
+        },
       } = this.props;
       return (
         <SceneBackground source={bg}>
@@ -506,6 +513,7 @@ function screenGenerator(scene) {
               collect={this.collect}
               receive={this.receive}
               handleSequence={this.handleSequence}
+              handleSlot={this.handleSlot}
               toggleMultiple={this.toggleMultiple}
               showModal={this.openPaper}
               onDragRelease={this.onDragRelease}
@@ -550,12 +558,13 @@ function screenGenerator(scene) {
       );
     }
   }
+
   ScreenGenerator.propTypes = {
     navigation: PropTypes.shape({
       navigate: PropTypes.func.isRequired,
     }).isRequired,
     setState: PropTypes.func.isRequired,
-    currentScene: ScenePropTypes.isRequired,
+    currentScene: SceneReducerPropTypes.isRequired,
     resolved: PropTypes.arrayOf(PropTypes.string).isRequired,
     collectedItems: PropTypes.arrayOf(ObjectPropTypes).isRequired,
     inventoryOpen: PropTypes.bool.isRequired,

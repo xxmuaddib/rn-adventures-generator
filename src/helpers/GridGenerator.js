@@ -19,7 +19,7 @@ const ObjectGrid = ({
   collectedItems,
   onRoutePress,
   collect,
-  toggleMultiple,
+  handleSlot,
   receive,
   handleSequence,
   showModal,
@@ -102,8 +102,8 @@ const ObjectGrid = ({
                             return handleSequence(group, id);
                           case ITEMS.RECEIVER:
                             return receive(logical.expectedValue);
-                          case ITEMS.MULTIPLE:
-                            return toggleMultiple(logical);
+                          case ITEMS.SLOT:
+                            return handleSlot(group, id);
                           case ITEMS.PAPER:
                             return showModal(logical);
                           case ITEMS.DIALOG:
@@ -150,7 +150,7 @@ ObjectGrid.propTypes = {
   collectedItems: PropTypes.arrayOf(ObjectPropTypes).isRequired,
   onRoutePress: PropTypes.func,
   collect: PropTypes.func,
-  toggleMultiple: PropTypes.func,
+  handleSlot: PropTypes.func,
   receive: PropTypes.func,
   handleSequence: PropTypes.func,
   showModal: PropTypes.func,
@@ -162,7 +162,7 @@ ObjectGrid.propTypes = {
 ObjectGrid.defaultProps = {
   onRoutePress: () => undefined,
   collect: () => undefined,
-  toggleMultiple: () => undefined,
+  handleSlot: () => undefined,
   receive: () => undefined,
   handleSequence: () => undefined,
   showModal: () => undefined,
