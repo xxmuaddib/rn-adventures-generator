@@ -1,8 +1,9 @@
 import React from 'react';
 import { YellowBox } from 'react-native';
-import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
+
 import { Screens, InitialScreen } from './src/helpers/ScreenGenerator';
 import {
   generateReducers,

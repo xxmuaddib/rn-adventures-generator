@@ -20,7 +20,7 @@ const Element = ({
         <StyledImage
           source={image.src}
           resizeMode="stretch"
-          position={position}
+          imagePosition={position}
         />
       );
     case ELEMENT_VARIANTS.BLANK_AREA:
@@ -62,8 +62,8 @@ const StyledBlankArea = styled(View)`
 `;
 
 const StyledImage = styled(Image)`
-  width: ${p => p.position.width * pointX}px;
-  height: ${p => p.position.height * pointY}px;
+  width: ${p => p.imagePosition.width * pointX}px;
+  height: ${p => p.imagePosition.height * pointY}px;
 `;
 
 const StyledLottieView = styled(LottieView)`

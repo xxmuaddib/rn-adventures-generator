@@ -28,6 +28,7 @@ import {
   DialogPropType,
 } from '../proptypes/ObjectGridPropTypes';
 import { internationalizeScene } from '../localization';
+import { arrayIncludesSorted } from './Utils';
 
 const { width, height } = Dimensions.get('window');
 
@@ -190,8 +191,8 @@ function screenGenerator(scene) {
         try {
           await soundObject.loadAsync(item.sound.soundName);
           await soundObject.playAsync(item.sound.soundName);
-        } catch (error) {
-          console.error(error);
+        } catch (e) {
+          console.error(e);
         }
       }
       await AsyncStorage.setItem(
@@ -210,6 +211,9 @@ function screenGenerator(scene) {
         collectedItems,
         setState,
       } = this.props;
+      const receiveElement = objects.itemsMap.find(
+        el => el.logical.expectedValue === expectedValue,
+      );
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
       if (expectedValue === selectedItemId) {
         await AsyncStorage.removeItem('selectedItem');
@@ -217,11 +221,26 @@ function screenGenerator(scene) {
         const receiverResolved = objects.itemsMap.find(
           el => el.type === 'receiver',
         );
-
         if (receiverResolved) {
-          setState({
-            resolved: [...resolved, receiverResolved.id],
-          });
+          if (
+            receiverResolved.sound &&
+            receiverResolved.sound.resolvedSoundName
+          ) {
+            const soundObject = new Audio.Sound();
+            try {
+              await soundObject.loadAsync(
+                receiverResolved.sound.resolvedSoundName,
+              );
+              await soundObject.playAsync(
+                receiverResolved.sound.resolvedSoundName,
+              );
+            } catch (e) {
+              console.eroor(e);
+            }
+          }
+          this.setState(p => ({
+            resolved: [...p.resolved, receiverResolved.id],
+          }));
           await AsyncStorage.setItem(
             'resolved',
             JSON.stringify([...resolved, receiverResolved.id]),
@@ -243,6 +262,14 @@ function screenGenerator(scene) {
             'inventory',
             JSON.stringify(collectedItemsCopy),
           );
+        }
+      } else if (receiveElement.sound && receiveElement.sound.soundName) {
+        const soundObject = new Audio.Sound();
+        try {
+          await soundObject.loadAsync(receiveElement.sound.soundName);
+          await soundObject.playAsync(receiveElement.sound.soundName);
+        } catch (e) {
+          console.eroor(e);
         }
       }
     };
@@ -280,7 +307,7 @@ function screenGenerator(scene) {
         ? [...tmp[mainSequence.group], id]
         : [id];
 
-      if (_.isEqual(scenario, currentSequence)) {
+      if (arrayIncludesSorted(scenario, currentSequence)) {
         await AsyncStorage.setItem(
           'resolved',
           JSON.stringify([...resolved, group]),

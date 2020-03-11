@@ -2,6 +2,8 @@ import EmptyRoomWithClosedDoor from '../assets/images/EmptyRoomWithClosedDoor.pn
 import Man from '../assets/images/Man.png';
 import ManWithoutKey from '../assets/images/ManWithoutKey.png';
 import DropingKeys from '../assets/sounds/dropingKeys.mp3';
+import LockDoor from '../assets/sounds/doorLock.mp3';
+import OpenDoorSound from '../assets/sounds/openDoor.mp3';
 import Key from '../assets/images/Key.png';
 import ClosedDoor from '../assets/images/ClosedDoor.png';
 import OpenDoor from '../assets/images/OpenDoor.png';
@@ -377,7 +379,6 @@ const SCENES = [
           },
           sound: {
             soundName: DropingKeys,
-            playOnResolved: ['dialog1_1'],
           },
         },
         {
@@ -398,6 +399,10 @@ const SCENES = [
           logical: {
             expectedValue: 'collectable1',
             hideOnResolved: ['receiver1'],
+          },
+          sound: {
+            resolvedSoundName: OpenDoorSound,
+            soundName: LockDoor,
           },
         },
         {
@@ -438,7 +443,7 @@ const SCENES = [
             zIndex: 5,
           },
           logical: {
-            deactivateOnResolved: ['draggable1'],
+            hideOnResolved: ['draggable1'],
           },
         },
         {

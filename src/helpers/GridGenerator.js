@@ -47,6 +47,7 @@ const ObjectGrid = ({
               style={generateStyle(item)}
               onPress={() => onRoutePress(item.route)}
             >
+              >
               <Element item={item} />
             </TouchableOpacity>
           );
