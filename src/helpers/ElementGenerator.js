@@ -23,8 +23,8 @@ const Element = ({
           imagePosition={position}
         />
       );
-    case ELEMENT_VARIANTS.BLANK_AREA:
-      return <StyledBlankArea />;
+    case ELEMENT_VARIANTS.TRIGGER:
+      return <StyledTrigger />;
     case ELEMENT_VARIANTS.TEXT:
       return <Text>{name}</Text>;
     case ELEMENT_VARIANTS.ANIMATABLE:
@@ -56,7 +56,7 @@ Element.defaultProps = {
   animationRef: null,
 };
 
-const StyledBlankArea = styled(View)`
+const StyledTrigger = styled(View)`
   height: 100%;
   width: 100%;
 `;
