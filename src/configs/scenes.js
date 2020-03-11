@@ -450,7 +450,7 @@ const SCENES = [
           type: 'receiver',
           id: 'receiver3',
           element: {
-            type: 'blank_area',
+            type: 'trigger',
           },
           position: {
             x: 120,
