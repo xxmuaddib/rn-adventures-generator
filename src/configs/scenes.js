@@ -1,6 +1,7 @@
 import EmptyRoomWithClosedDoor from '../assets/images/EmptyRoomWithClosedDoor.png';
 import Man from '../assets/images/Man.png';
 import ManWithoutKey from '../assets/images/ManWithoutKey.png';
+import backgroundSound from '../assets/sounds/scene1-bg-sound.mp3';
 import DropingKeys from '../assets/sounds/dropingKeys.mp3';
 import LockDoor from '../assets/sounds/doorLock.mp3';
 import OpenDoorSound from '../assets/sounds/openDoor.mp3';
@@ -24,6 +25,7 @@ const SCENES = [
     name: 'Main',
     route: 'Main',
     bg: EmptyRoomWithClosedDoor,
+    bgSound: backgroundSound,
     objects: {
       navMap: [],
       itemsMap: [
@@ -319,9 +321,7 @@ const SCENES = [
             showOnResolved: ['dialog1_1'],
             countOfUse: 1,
           },
-          sound: {
-            soundName: DropingKeys,
-          },
+          sound: DropingKeys,
         },
         {
           type: 'receiver',
@@ -342,10 +342,7 @@ const SCENES = [
             expectedValue: 'collectable1',
             hideOnResolved: ['receiver1'],
           },
-          sound: {
-            resolvedSoundName: OpenDoorSound,
-            soundName: LockDoor,
-          },
+          sound: LockDoor,
         },
         {
           type: 'receiver',

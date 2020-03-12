@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { View, Dimensions, TouchableOpacity } from 'react-native';
+import { Audio } from 'expo-av';
 import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -27,6 +28,16 @@ const ObjectGrid = ({
   showDialog,
   resolved,
 }) => {
+  const playAudio = async sound => {
+    const soundObject = new Audio.Sound();
+    try {
+      await soundObject.loadAsync(sound);
+      await soundObject.playAsync(sound);
+      await soundObject.setStatusAsync({ volume: 1 });
+    } catch (e) {
+      console.error(e);
+    }
+  };
   const animationRef = useRef(null);
   return (
     <ObjectGridContainer>
@@ -55,7 +66,7 @@ const ObjectGrid = ({
         return null;
       })}
       {objects.itemsMap.map(
-        ({ type, id, element, position, logical, group }) => {
+        ({ type, id, element, position, logical, group, sound }) => {
           const isResolved =
             !logical ||
             !logical.showOnResolved ||
@@ -97,6 +108,9 @@ const ObjectGrid = ({
                       activeOpacity={isDeactive ? 1 : 0.9}
                       disabled={isDeactive}
                       onPress={() => {
+                        if (sound) {
+                          playAudio(sound);
+                        }
                         switch (type) {
                           case ITEMS.SEQUENCE:
                             return handleSequence(group, id);
@@ -132,7 +146,12 @@ const ObjectGrid = ({
                   y={position.y}
                   z={position.zIndex}
                   disabled={isDeactive || !isActive}
-                  onDragRelease={(evt, g) => onDragRelease(evt, g, id)}
+                  onDragRelease={(evt, g) => {
+                    if (sound) {
+                      playAudio(sound);
+                    }
+                    onDragRelease(evt, g, id);
+                  }}
                 >
                   <Element element={element} position={position} />
                 </Draggable>

@@ -23,6 +23,21 @@ export const ImageSource = PropTypes.oneOfType([
   ),
 ]);
 
+export const SoundPropType = (props, propName, componentName) => {
+  const prop = props[propName];
+  if (
+    prop &&
+    typeof prop !== 'string' &&
+    !(prop instanceof window.Blob) &&
+    !(prop instanceof window.File)
+  ) {
+    return new Error(`Invalid ${propName} supplied to ${componentName}
+      expected either string or file/blob`);
+  }
+
+  return null;
+};
+
 export const ElementImagePropType = PropTypes.shape({
   src: ImageSource,
 });
@@ -32,4 +47,5 @@ export const ElementPropType = PropTypes.shape({
   name: PropTypes.string,
   animation: ElementAnimationPropType,
   image: ElementImagePropType,
+  sound: SoundPropType,
 });
