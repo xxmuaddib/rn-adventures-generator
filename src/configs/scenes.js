@@ -47,7 +47,12 @@ const SCENES = [
           logical: {
             hideOnResolved: ['dialog1_1'],
             dialogProperties: {
-              character: 'Hello baby!!!',
+              character: {
+                translations: {
+                  en: 'Hello baby!!!',
+                  ru: 'Привет, детка!',
+                },
+              },
               characterElement: {
                 type: 'image',
                 image: {
@@ -62,10 +67,22 @@ const SCENES = [
               },
               dialog: [
                 {
-                  hero:
-                    'Hi, Give me the key, please!!! I need to go to toilet...',
-                  character:
-                    'No way, unless you give me the answer to the question of the universe!!!',
+                  hero: {
+                    translations: {
+                      en:
+                        'Hi, Give me the key, please!!! I need to go to toilet...',
+                      ru:
+                        'Привет, дай мне ключ, пожалуйста!!! Мне нужно в туалет...',
+                    },
+                  },
+                  character: {
+                    translations: {
+                      en:
+                        'No way, unless you give me the answer to the question of the universe!!!',
+                      ru:
+                        'Не дам, пока ты дашь ответ на главный вопрос вселенной!!!',
+                    },
+                  },
                   characterElement: {
                     type: 'image',
                     image: {
@@ -81,9 +98,20 @@ const SCENES = [
                   dialog: [
                     {
                       hideOnResolved: ['dialog1_1'],
-                      hero: 'What is the question, ara?',
-                      character:
-                        "What a bad attitude. But I'll tell you if you promise to behave well, ara!",
+                      hero: {
+                        translations: {
+                          en: 'What is the question, ara?',
+                          ru: 'И чо за вопрос, ара?',
+                        },
+                      },
+                      character: {
+                        translations: {
+                          en:
+                            "What a bad attitude. But I'll tell you if you promise to behave well, ara!",
+                          ru:
+                            'Что за неуважение? Если ты будешь хорошо себя вести, я может быть тебе его и задам, ара!',
+                        },
+                      },
                       characterElement: {
                         type: 'image',
                         image: {
@@ -98,9 +126,20 @@ const SCENES = [
                       },
                       dialog: [
                         {
-                          hero: 'Ok, tell me please, your majesty.',
-                          character:
-                            'What is the green thing that lives under the ground and eats stone?',
+                          hero: {
+                            translations: {
+                              en: 'Ok, tell me please, your majesty.',
+                              ru:
+                                'Ладно... Ваше превосходительство, так какой же главный вопрос во вселенной?',
+                            },
+                          },
+                          character: {
+                            translations: {
+                              en:
+                                'What is the green thing that lives under the ground and eats stone?',
+                              ru: 'Что зелёное, живёт под землёй и ест камни?',
+                            },
+                          },
                           characterElement: {
                             type: 'image',
                             image: {
@@ -115,8 +154,18 @@ const SCENES = [
                           },
                           dialog: [
                             {
-                              hero: 'The green underground stoneeater.',
-                              character: "Wow, you're a genius. Take the key.",
+                              hero: {
+                                translations: {
+                                  en: 'The green underground stoneeater.',
+                                  ru: 'Зеленый подземный камнеед.',
+                                },
+                              },
+                              character: {
+                                translations: {
+                                  en: "Wow, you're a genius. Take the key.",
+                                  ru: 'Вау, да ты - гений. Вот, держи ключ.',
+                                },
+                              },
                               characterElement: {
                                 type: 'image',
                                 image: {
@@ -132,9 +181,18 @@ const SCENES = [
                               resolve: 'dialog1_1',
                             },
                             {
-                              hero: 'Fish?...',
-                              character:
-                                "You're a donk. A fish is never green.",
+                              hero: {
+                                translations: {
+                                  en: 'Fish?..',
+                                  ru: 'Рыба?..',
+                                },
+                              },
+                              character: {
+                                translations: {
+                                  en: "You're a donk. A fish is never green.",
+                                  ru: 'Рыба?..',
+                                },
+                              },
                               characterElement: {
                                 type: 'image',
                                 image: {
@@ -389,7 +447,7 @@ const SCENES = [
           type: 'receiver',
           id: 'receiver3',
           element: {
-            type: 'blank_area',
+            type: 'trigger',
           },
           position: {
             x: 120,
@@ -466,6 +524,96 @@ const SCENES = [
             width: 20,
             height: 20,
             zIndex: 30,
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot1_1',
+          group: 'slot1',
+          main: true,
+          element: {
+            type: 'animatable',
+            animation: {
+              src: watermelon,
+              autoPlay: true,
+            },
+          },
+          position: {
+            x: 200,
+            y: 120,
+            width: 20,
+            height: 20,
+            zIndex: 30,
+          },
+          logical: {
+            scenario: {
+              slot1_1: 2,
+              slot1_2: 1,
+            },
+            selected: 1,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'animatable',
+                  animation: {
+                    src: watermelon,
+                    autoPlay: true,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: Key,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot1_2',
+          group: 'slot1',
+          element: {
+            type: 'image',
+            image: {
+              src: Key,
+            },
+          },
+          position: {
+            x: 200,
+            y: 80,
+            width: 20,
+            height: 20,
+            zIndex: 30,
+          },
+          logical: {
+            selected: 2,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'animatable',
+                  animation: {
+                    src: watermelon,
+                    autoPlay: true,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: Key,
+                  },
+                },
+              },
+            ],
           },
         },
       ],
