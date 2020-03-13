@@ -1,6 +1,11 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { isIphoneX } from 'react-native-iphone-x-helper';
 
-const { width, height } = Dimensions.get('window');
+let { width, height } = Dimensions.get('window');
+if (isIphoneX()) {
+  height -= 55;
+  width -= 65;
+}
 
 const pointX = width / 300;
 const pointY = height / 200;

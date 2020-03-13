@@ -4,7 +4,6 @@ import ManWithoutKey from '../assets/images/ManWithoutKey.png';
 import backgroundSound from '../assets/sounds/scene1-bg-sound.mp3';
 import DropingKeys from '../assets/sounds/dropingKeys.mp3';
 import LockDoor from '../assets/sounds/doorLock.mp3';
-import OpenDoorSound from '../assets/sounds/openDoor.mp3';
 import Key from '../assets/images/Key.png';
 import ClosedDoor from '../assets/images/ClosedDoor.png';
 import OpenDoor from '../assets/images/OpenDoor.png';

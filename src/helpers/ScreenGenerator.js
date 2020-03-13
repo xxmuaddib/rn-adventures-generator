@@ -5,12 +5,14 @@ import {
   AsyncStorage,
   TouchableOpacity,
   Dimensions,
+  View,
 } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Audio } from 'expo-av';
 import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
+import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import { SCENES, INITIAL_SCREEN } from '../configs/scenes';
 import { pointX, pointY } from './StyleGenerator';
@@ -30,7 +32,11 @@ import {
 import { internationalizeScene } from '../localization';
 import { arrayIncludesSorted, objCompare } from './Utils';
 
-const { width, height } = Dimensions.get('window');
+let { width, height } = Dimensions.get('window');
+if (isIphoneX()) {
+  width -= 65;
+  height -= 55;
+}
 
 function screenGenerator(scene) {
   class ScreenGenerator extends React.PureComponent {
@@ -490,57 +496,59 @@ function screenGenerator(scene) {
         },
       } = this.props;
       return (
-        <SceneBackground source={bg}>
-          {!loading && (
-            <ObjectGrid
-              objects={objects}
+        <Container>
+          <SceneBackground source={bg}>
+            {!loading && (
+              <ObjectGrid
+                objects={objects}
+                collectedItems={collectedItems}
+                onRoutePress={this.onRoutePress}
+                collect={this.collect}
+                receive={this.receive}
+                handleSequence={this.handleSequence}
+                handleSlot={this.handleSlot}
+                toggleMultiple={this.toggleMultiple}
+                showModal={this.openPaper}
+                onDragRelease={this.onDragRelease}
+                showDialog={this.showDialog}
+                resolved={resolved}
+              />
+            )}
+            <MainMenuButton onPress={this.openMainMenu}>
+              <FontAwesome name="gear" size={20} color="#664422" />
+            </MainMenuButton>
+            <Inventory
+              open={inventoryOpen}
               collectedItems={collectedItems}
-              onRoutePress={this.onRoutePress}
-              collect={this.collect}
+              onPress={this.openInventory}
               receive={this.receive}
-              handleSequence={this.handleSequence}
-              handleSlot={this.handleSlot}
-              toggleMultiple={this.toggleMultiple}
-              showModal={this.openPaper}
-              onDragRelease={this.onDragRelease}
-              showDialog={this.showDialog}
-              resolved={resolved}
+              objects={objects}
             />
-          )}
-          <MainMenuButton onPress={this.openMainMenu}>
-            <FontAwesome name="gear" size={20} color="#664422" />
-          </MainMenuButton>
-          <Inventory
-            open={inventoryOpen}
-            collectedItems={collectedItems}
-            onPress={this.openInventory}
-            receive={this.receive}
-            objects={objects}
-          />
-          <MainMenuModal
-            mainMenuVisible={mainMenuVisible}
-            openMainMenu={this.openMainMenu}
-            reset={this.reset}
-          />
-          {paperModalContent && (
-            <Paper
-              paperModalVisible={paperModalVisible}
-              paperModalContent={paperModalContent}
-              openPaper={this.openPaper}
+            <MainMenuModal
+              mainMenuVisible={mainMenuVisible}
+              openMainMenu={this.openMainMenu}
+              reset={this.reset}
             />
-          )}
-          {dialogModalContent && (
-            <Dialog
-              dialogModalVisible={dialogModalVisible}
-              dialogModalContent={dialogModalContent}
-              dialogAnswer={dialogAnswer}
-              resolved={resolved}
-              setDialog={this.setDialog}
-              showDialog={this.showDialog}
-              showDialogAnswer={this.showDialogAnswer}
-            />
-          )}
-        </SceneBackground>
+            {paperModalContent && (
+              <Paper
+                paperModalVisible={paperModalVisible}
+                paperModalContent={paperModalContent}
+                openPaper={this.openPaper}
+              />
+            )}
+            {dialogModalContent && (
+              <Dialog
+                dialogModalVisible={dialogModalVisible}
+                dialogModalContent={dialogModalContent}
+                dialogAnswer={dialogAnswer}
+                resolved={resolved}
+                setDialog={this.setDialog}
+                showDialog={this.showDialog}
+                showDialogAnswer={this.showDialogAnswer}
+              />
+            )}
+          </SceneBackground>
+        </Container>
       );
     }
   }
@@ -588,11 +596,16 @@ function screenGenerator(scene) {
   return connect(mapStateToProps, mapDispatchToProps)(ScreenGenerator);
 }
 
+const Container = styled(View)`
+  flex: 1;
+  background-color: #000;
+  justify-content: center;
+  align-items: center;
+`;
+
 const SceneBackground = styled(ImageBackground)`
   height: ${height}px;
   width: ${width}px;
-  justify-content: center;
-  align-items: center;
 `;
 
 const MainMenuButton = styled(TouchableOpacity)`

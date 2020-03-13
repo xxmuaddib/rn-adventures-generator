@@ -3,7 +3,6 @@ import { YellowBox } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
-
 import { Screens, InitialScreen } from './src/helpers/ScreenGenerator';
 import {
   generateReducers,
