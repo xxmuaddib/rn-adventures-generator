@@ -1,5 +1,9 @@
 import PropTypes from 'prop-types';
-import { ElementPropType, ImageSource } from './ElementPropTypes';
+import {
+  ElementPropType,
+  ImageSource,
+  SoundPropType,
+} from './ElementPropTypes';
 import { ITEMS } from '../constants/items';
 
 export const PositionPropType = PropTypes.shape({
@@ -22,6 +26,7 @@ export const DialogPropType = PropTypes.shape({
 export const PaperPropType = PropTypes.shape({
   bg: ImageSource,
   text: PropTypes.string,
+  bgSound: SoundPropType,
 });
 
 export const LogicalPropType = PropTypes.shape({
@@ -41,6 +46,7 @@ export const ObjectPropTypes = PropTypes.shape({
   element: ElementPropType,
   position: PositionPropType,
   logical: LogicalPropType,
+  sound: SoundPropType,
 });
 
 export const NavItemPropType = PropTypes.shape({

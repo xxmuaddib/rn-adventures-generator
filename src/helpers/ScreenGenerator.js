@@ -7,8 +7,8 @@ import {
   Dimensions,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Audio } from 'expo-av';
 import PropTypes from 'prop-types';
+import { Audio } from 'expo-av';
 import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
 
@@ -27,6 +27,7 @@ import {
   PaperPropType,
   DialogPropType,
 } from '../proptypes/ObjectGridPropTypes';
+import { internationalizeScene } from '../localization';
 import { arrayIncludesSorted, objCompare } from './Utils';
 
 const { width, height } = Dimensions.get('window');
@@ -35,10 +36,13 @@ function screenGenerator(scene) {
   class ScreenGenerator extends React.PureComponent {
     componentDidMount() {
       const { setState } = this.props;
+      const sceneCopy = _.cloneDeep(scene);
+      internationalizeScene('SCENES_0', sceneCopy);
+
       setState(
         {
-          scene: _.cloneDeep(scene),
-          originalScene: _.cloneDeep(scene),
+          scene: sceneCopy,
+          originalScene: sceneCopy,
         },
         scene.name,
       );
@@ -47,6 +51,7 @@ function screenGenerator(scene) {
       // this.loadMultipleItems();
       // this.loadSequenceItems();
       this.loadResolved();
+      this.setBgSound();
     }
 
     loadResolved = async () => {
@@ -148,6 +153,20 @@ function screenGenerator(scene) {
       }
     };
 
+    setBgSound = async () => {
+      if (scene.bgSound) {
+        const soundObject = new Audio.Sound();
+        try {
+          await soundObject.loadAsync(scene.bgSound);
+          await soundObject.playAsync(scene.bgSound);
+          await soundObject.setIsLoopingAsync(true);
+          await soundObject.setStatusAsync({ volume: 0.2 });
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    };
+
     reset = async () => {
       const {
         currentScene: {
@@ -181,15 +200,6 @@ function screenGenerator(scene) {
 
     collect = async item => {
       const { collectedItems, setState } = this.props;
-      if (item.sound) {
-        const soundObject = new Audio.Sound();
-        try {
-          await soundObject.loadAsync(item.sound.soundName);
-          await soundObject.playAsync(item.sound.soundName);
-        } catch (e) {
-          console.error(e);
-        }
-      }
       await AsyncStorage.setItem(
         'inventory',
         JSON.stringify([...collectedItems, item]),
@@ -217,22 +227,6 @@ function screenGenerator(scene) {
           el => el.type === 'receiver',
         );
         if (receiverResolved) {
-          if (
-            receiverResolved.sound &&
-            receiverResolved.sound.resolvedSoundName
-          ) {
-            const soundObject = new Audio.Sound();
-            try {
-              await soundObject.loadAsync(
-                receiverResolved.sound.resolvedSoundName,
-              );
-              await soundObject.playAsync(
-                receiverResolved.sound.resolvedSoundName,
-              );
-            } catch (e) {
-              console.eroor(e);
-            }
-          }
           this.setState(p => ({
             resolved: [...p.resolved, receiverResolved.id],
           }));
@@ -257,14 +251,6 @@ function screenGenerator(scene) {
             'inventory',
             JSON.stringify(collectedItemsCopy),
           );
-        }
-      } else if (receiveElement.sound && receiveElement.sound.soundName) {
-        const soundObject = new Audio.Sound();
-        try {
-          await soundObject.loadAsync(receiveElement.sound.soundName);
-          await soundObject.playAsync(receiveElement.sound.soundName);
-        } catch (e) {
-          console.eroor(e);
         }
       }
     };

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { ObjectsPropTypes } from './ObjectGridPropTypes';
-import { ImageSource } from './ElementPropTypes';
+import { ImageSource, SoundPropType } from './ElementPropTypes';
 
 export const SceneReducerPropTypes = PropTypes.shape({
   scene: ScenePropTypes,
@@ -11,4 +11,5 @@ export const ScenePropTypes = PropTypes.shape({
   objects: ObjectsPropTypes,
   name: PropTypes.string.isRequired,
   bg: ImageSource,
+  bgSound: SoundPropType,
 });

@@ -44,7 +44,8 @@
     "implicit-arrow-linebreak": 0,
     "indent": 0,
     "object-curly-newline": 0,
-    "consistent-return": 0
+    "consistent-return": 0,
+    "function-paren-newline": 0
   },
   "env": {
     "browser": true
