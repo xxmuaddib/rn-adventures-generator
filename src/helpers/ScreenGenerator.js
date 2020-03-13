@@ -428,7 +428,7 @@ function screenGenerator(scene) {
       });
     };
 
-    onDragRelease = async (evt, g, id) => {
+    onDragRelease = async (evt, g, id, group) => {
       const {
         currentScene: {
           scene: { objects },
@@ -447,11 +447,29 @@ function screenGenerator(scene) {
         moveY > receiver.position.y &&
         moveY < receiver.position.y + receiver.position.height
       ) {
-        setState({ resolved: [...resolved, id] });
-        await AsyncStorage.setItem(
-          'resolved',
-          JSON.stringify([...resolved, id]),
+        const resolvedWithId = [...resolved, id];
+        const groupItems = objects.itemsMap
+          .filter(item => item.group === group)
+          .map(item => item.id);
+
+        const groupIsResolved = groupItems.every(item =>
+          resolvedWithId.includes(item),
         );
+
+        if (groupIsResolved) {
+          resolvedWithId.push(group);
+        }
+
+        setState({ resolved: resolvedWithId });
+        await AsyncStorage.setItem('resolved', JSON.stringify(resolvedWithId));
+      } else if (resolved.includes(id)) {
+        const resolvedCopy = [...resolved];
+        resolvedCopy.splice(
+          resolvedCopy.findIndex(item => item.id === id),
+          1,
+        );
+        setState({ resolved: resolvedCopy });
+        await AsyncStorage.setItem('resolved', JSON.stringify(resolvedCopy));
       }
     };
 

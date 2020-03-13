@@ -57,8 +57,8 @@ Element.defaultProps = {
 };
 
 const StyledTrigger = styled(View)`
-  height: 100%;
   width: 100%;
+  height: 100%;
 `;
 
 const StyledImage = styled(Image)`

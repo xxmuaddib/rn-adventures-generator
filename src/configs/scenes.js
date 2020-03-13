@@ -368,6 +368,22 @@ const SCENES = [
           },
         },
         {
+          type: 'receiver',
+          id: 'receiver3',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 120,
+            y: 20,
+            width: 200,
+            height: 200,
+          },
+          logical: {
+            expectedValue: 'draggable1',
+          },
+        },
+        {
           type: 'draggable',
           id: 'draggable1',
           element: {
@@ -384,26 +400,79 @@ const SCENES = [
             height: 150,
             zIndex: 5,
           },
-          logical: {
-            hideOnResolved: ['draggable1'],
-          },
+          logical: {},
         },
         {
           type: 'receiver',
-          id: 'receiver3',
+          id: 'receiver4',
           element: {
             type: 'trigger',
           },
           position: {
             x: 120,
             y: 20,
-            width: 200,
-            height: 200,
+            width: 100,
+            height: 100,
           },
           logical: {
-            expectedValue: 'draggable1',
-            hideOnResolved: ['draggable1'],
+            expectedValue: 'puzzle1',
           },
+        },
+        {
+          type: 'draggable',
+          id: 'puzzle1',
+          group: 'puzzle',
+          element: {
+            type: 'image',
+            image: {
+              src: Key,
+            },
+          },
+          position: {
+            x: 80,
+            y: 200,
+            width: 15,
+            height: 30,
+            zIndex: 5,
+          },
+          logical: {
+            hideOnResolved: ['puzzle'],
+          },
+        },
+        {
+          type: 'receiver',
+          id: 'receiver5',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 120,
+            y: 20,
+            width: 100,
+            height: 100,
+          },
+          logical: {
+            expectedValue: 'puzzle2',
+          },
+        },
+        {
+          type: 'draggable',
+          id: 'puzzle2',
+          group: 'puzzle',
+          element: {
+            type: 'image',
+            image: {
+              src: Key,
+            },
+          },
+          position: {
+            x: 120,
+            y: 200,
+            width: 15,
+            height: 30,
+            zIndex: 5,
+          },
+          logical: {},
         },
         {
           type: 'sequence',
@@ -486,8 +555,8 @@ const SCENES = [
           position: {
             x: 200,
             y: 120,
-            width: 20,
-            height: 20,
+            width: 15,
+            height: 30,
             zIndex: 30,
           },
           logical: {
@@ -532,8 +601,8 @@ const SCENES = [
           position: {
             x: 200,
             y: 80,
-            width: 20,
-            height: 20,
+            width: 15,
+            height: 30,
             zIndex: 30,
           },
           logical: {

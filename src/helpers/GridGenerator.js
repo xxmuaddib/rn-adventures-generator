@@ -93,7 +93,7 @@ const ObjectGrid = ({
                   isResolved &&
                   !hideResolved &&
                   !collectableShouldHide && (
-                    <TouchableOpacity
+                    <StyledTouchableOpacity
                       activeOpacity={isDeactive ? 1 : 0.9}
                       disabled={isDeactive}
                       onPress={() => {
@@ -122,7 +122,7 @@ const ObjectGrid = ({
                         position={position}
                         animationRef={animationRef}
                       />
-                    </TouchableOpacity>
+                    </StyledTouchableOpacity>
                   )}
               </View>
               {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
@@ -131,8 +131,7 @@ const ObjectGrid = ({
                   x={position.x}
                   y={position.y}
                   z={position.zIndex}
-                  disabled={isDeactive || !isActive}
-                  onDragRelease={(evt, g) => onDragRelease(evt, g, id)}
+                  onDragRelease={(evt, g) => onDragRelease(evt, g, id, group)}
                 >
                   <Element element={element} position={position} />
                 </Draggable>
@@ -173,6 +172,11 @@ ObjectGrid.defaultProps = {
 const ObjectGridContainer = styled(View)`
   width: ${width}px;
   height: ${height}px;
+`;
+
+const StyledTouchableOpacity = styled(TouchableOpacity)`
+  width: 100%;
+  height: 100%;
 `;
 
 export { ObjectGrid };
