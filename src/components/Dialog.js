@@ -3,10 +3,12 @@ import { Text, View, TouchableOpacity, Dimensions, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
 import styled from 'styled-components';
+import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import { DialogPropType } from '../proptypes/ObjectGridPropTypes';
 
 const { height } = Dimensions.get('window');
+const iphoneX = isIphoneX();
 
 export const Dialog = ({
   dialogModalVisible,
@@ -96,13 +98,14 @@ const DialogContainer = styled(View)`
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
+  margin-bottom: ${iphoneX ? 16 : 0}px;
 `;
 
 const CharacterAvatar = styled(Image)`
   height: 100px;
-  ${p => p.isLeft && 'margin-left: 20px'};
-  ${p => p.isRight && 'margin-right: 20px'};
-  margin-bottom: 20px;
+  ${p => (p.isLeft && iphoneX ? 'margin-left: 40px' : 'margin-left: 20px')};
+  ${p => (p.isRight && iphoneX ? 'margin-right: 40px' : 'margin-right: 20px')};
+  margin-bottom: ${iphoneX ? 35 : 20}px;
 `;
 
 const DialogTouchableOpacity = styled(TouchableOpacity)`
@@ -110,7 +113,7 @@ const DialogTouchableOpacity = styled(TouchableOpacity)`
   background-color: white;
   padding: 10px 20px;
   border-radius: 13px;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
 `;
 
 const AnswerTextTouchableOpacity = styled(DialogTouchableOpacity)`
