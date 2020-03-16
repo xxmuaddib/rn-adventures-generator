@@ -29,6 +29,25 @@ const SCENES = [
       navMap: [],
       itemsMap: [
         {
+          type: 'blank',
+          id: 'blank1',
+          element: {
+            type: 'image',
+            image: {
+              src: ManWithoutKey,
+            },
+          },
+          position: {
+            x: 50,
+            y: 40,
+            width: 50,
+            height: 150,
+          },
+          logical: {
+            showOnResolved: ['dialog1_1'],
+          },
+        },
+        {
           type: 'dialog',
           id: 'dialog1',
           element: {
@@ -341,25 +360,6 @@ const SCENES = [
           },
         },
         {
-          type: 'blank',
-          id: 'blank1',
-          element: {
-            type: 'image',
-            image: {
-              src: ManWithoutKey,
-            },
-          },
-          position: {
-            x: 50,
-            y: 40,
-            width: 50,
-            height: 150,
-          },
-          logical: {
-            showOnResolved: ['dialog1_1'],
-          },
-        },
-        {
           type: 'collectable',
           id: 'collectable1',
           element: {
@@ -382,6 +382,26 @@ const SCENES = [
         },
         {
           type: 'receiver',
+          id: 'receiver2',
+          element: {
+            type: 'image',
+            image: {
+              src: OpenDoor,
+            },
+          },
+          position: {
+            x: 110,
+            y: 0,
+            width: 131,
+            height: 200,
+          },
+          logical: {
+            expectedValue: 'collectable2',
+            showOnResolved: ['receiver1'],
+          },
+        },
+        {
+          type: 'receiver',
           id: 'receiver1',
           element: {
             type: 'image',
@@ -400,26 +420,6 @@ const SCENES = [
             hideOnResolved: ['receiver1'],
           },
           sound: LockDoor,
-        },
-        {
-          type: 'receiver',
-          id: 'receiver2',
-          element: {
-            type: 'image',
-            image: {
-              src: OpenDoor,
-            },
-          },
-          position: {
-            x: 110,
-            y: 0,
-            width: 131,
-            height: 200,
-          },
-          logical: {
-            expectedValue: 'collectable2',
-            showOnResolved: ['receiver1'],
-          },
         },
         {
           type: 'receiver',
