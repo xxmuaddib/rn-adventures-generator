@@ -43,7 +43,6 @@ const ObjectGrid = ({
   itemsMapCopy.sort(function(a, b) {
     return a.position.zIndex - b.position.zIndex;
   });
-  console.error(itemsMapCopy);
   return (
     <ObjectGridContainer>
       {objects.navMap.map(item => {
