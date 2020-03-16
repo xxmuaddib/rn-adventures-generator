@@ -382,26 +382,6 @@ const SCENES = [
         },
         {
           type: 'receiver',
-          id: 'receiver2',
-          element: {
-            type: 'image',
-            image: {
-              src: OpenDoor,
-            },
-          },
-          position: {
-            x: 110,
-            y: 0,
-            width: 131,
-            height: 200,
-          },
-          logical: {
-            expectedValue: 'collectable2',
-            showOnResolved: ['receiver1'],
-          },
-        },
-        {
-          type: 'receiver',
           id: 'receiver1',
           element: {
             type: 'image',
@@ -414,12 +394,34 @@ const SCENES = [
             y: 0,
             width: 131,
             height: 200,
+            zIndex: 7,
           },
           logical: {
             expectedValue: 'collectable1',
             hideOnResolved: ['receiver1'],
           },
           sound: LockDoor,
+        },
+        {
+          type: 'receiver',
+          id: 'receiver2',
+          element: {
+            type: 'image',
+            image: {
+              src: OpenDoor,
+            },
+          },
+          position: {
+            x: 110,
+            y: 0,
+            width: 131,
+            height: 200,
+            zIndex: 5,
+          },
+          logical: {
+            expectedValue: 'collectable2',
+            showOnResolved: ['receiver1'],
+          },
         },
         {
           type: 'receiver',
