@@ -26,11 +26,12 @@ export const Inventory = ({
     await AsyncStorage.setItem('selectedItem', itemId);
   };
 
-  const onDragRelease = (_, g) => {
+  const onDragRelease = async (_, g) => {
     const moveX = g.moveX / pointX;
     const moveY = g.moveY / pointY;
+    const itemId = await AsyncStorage.getItem('selectedItem');
     const receiver = objects.itemsMap.find(
-      ({ logical }) => logical.expectedValue === 'collectable1',
+      ({ logical }) => logical.expectedValue === itemId,
     );
     if (
       moveX > receiver.position.x &&
@@ -38,8 +39,7 @@ export const Inventory = ({
       moveY > receiver.position.y &&
       moveY < receiver.position.y + receiver.position.height
     ) {
-      receive('collectable1');
-      // TODO: Fix hardcode
+      receive(itemId);
     }
   };
 
