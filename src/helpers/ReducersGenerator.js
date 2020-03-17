@@ -15,6 +15,7 @@ const appInitialState = {
   originalDialogContent: null,
   dialogAnswer: '',
   tmp: {},
+  mainObjects: [],
 };
 
 const appReducer = createReducer(appInitialState, {
@@ -26,11 +27,18 @@ const appReducer = createReducer(appInitialState, {
       ...filteredAction,
     };
   },
+  GET_MAIN_OBJECTS: (state, action) => {
+    const filteredAction = { ...action };
+    delete filteredAction.type;
+    return {
+      ...state,
+      mainObjects: filteredAction.mainObjects,
+    };
+  },
 });
 
 export const generateReducers = () => {
   const sceneReducers = {};
-
   SCENES.forEach(scene => {
     const initialState = {
       scene: { ...scene },
@@ -52,6 +60,7 @@ export const generateReducers = () => {
 
 export const generateActions = () => {
   createAction('SET_STATE');
+  createAction('GET_MAIN_OBJECTS');
   SCENES.forEach(scene => {
     createAction(`${scene.name}_SET_STATE`);
   });
@@ -60,4 +69,14 @@ export const generateActions = () => {
 export const setStateAction = (obj, sceneName) => {
   const type = sceneName ? `${sceneName}_SET_STATE` : 'SET_STATE';
   return { ...obj, type };
+};
+
+export const getMainObjectsAction = () => {
+  const type = 'GET_MAIN_OBJECTS';
+  let mainObjects = [];
+  SCENES.forEach(scene => {
+    let sceneMainObjects = scene.objects.itemsMap.filter(item => item.main);
+    mainObjects = [...mainObjects, ...sceneMainObjects];
+  });
+  return { mainObjects, type };
 };
