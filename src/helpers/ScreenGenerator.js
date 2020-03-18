@@ -233,22 +233,25 @@ function screenGenerator(scene) {
           el => el.type === 'receiver',
         );
         if (receiverResolved) {
-          this.setState(p => ({
-            resolved: [...p.resolved, receiverResolved.id],
-          }));
+          setState({
+            resolved: [...resolved, receiverResolved.id],
+          });
           await AsyncStorage.setItem(
             'resolved',
             JSON.stringify([...resolved, receiverResolved.id]),
           );
 
-          const collectedItemsCopy = [...collectedItems];
+          let collectedItemsCopy = [...collectedItems];
 
           const index = collectedItemsCopy.findIndex(
             item => item.id === selectedItemId,
           );
-
           if (index !== -1 && collectedItemsCopy[index].logical) {
-            collectedItemsCopy[index].logical.countOfUse -= 1;
+            collectedItemsCopy[index] = {
+              logical: {
+                countOfUse: collectedItemsCopy[index].logical.countOfUse - 1,
+              },
+            };
           }
 
           setState({ collectedItems: collectedItemsCopy });
