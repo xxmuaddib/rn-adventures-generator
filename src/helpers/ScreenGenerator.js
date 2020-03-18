@@ -247,12 +247,18 @@ function screenGenerator(scene) {
             item => item.id === selectedItemId,
           );
           if (index !== -1 && collectedItemsCopy[index].logical) {
-            collectedItemsCopy[index] = {
-              logical: {
-                countOfUse: collectedItemsCopy[index].logical.countOfUse - 1,
-              },
-            };
+            if (collectedItemsCopy[index].logical.countOfUse === 1) {
+              collectedItemsCopy.splice(index, 1);
+            } else {
+              collectedItemsCopy[index] = {
+                logical: {
+                  countOfUse: collectedItemsCopy[index].logical.countOfUse - 1,
+                },
+              };
+            }
           }
+
+          console.error(collectedItemsCopy);
 
           setState({ collectedItems: collectedItemsCopy });
 
