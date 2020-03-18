@@ -22,7 +22,7 @@ import { Dialog } from '../components/Dialog';
 import { Paper } from '../components/Paper';
 import { MainMenuModal } from '../components/MainMenuModal';
 import { PlatformSpecificMeasurement } from './PlatformSpecificUtils';
-import { setStateAction, getMainObjectsAction } from './ReducersGenerator';
+import { setStateAction, findHelperFunction } from './ReducersGenerator';
 import { SceneReducerPropTypes } from '../proptypes/ScenePropTypes';
 import {
   ObjectPropTypes,
@@ -41,8 +41,7 @@ if (isIphoneX()) {
 function screenGenerator(scene) {
   class ScreenGenerator extends React.PureComponent {
     componentDidMount() {
-      const { setState, getMainObjects } = this.props;
-      getMainObjects();
+      const { setState } = this.props;
       const sceneCopy = _.cloneDeep(scene);
       internationalizeScene('SCENES_0', sceneCopy);
 
@@ -271,10 +270,14 @@ function screenGenerator(scene) {
         },
         tmp,
         resolved,
-        mainObjects,
         setState,
       } = this.props;
-      const mainSequence = mainObjects.find(item => item.group === group);
+      const findFunction = scene => {
+        return scene.objects.itemsMap.find(
+          item => item.group === group && item.main,
+        );
+      };
+      const mainSequence = findHelperFunction(findFunction);
       const scenario =
         mainSequence && mainSequence.logical && mainSequence.logical.scenario;
       if (!scenario) return false;
@@ -321,17 +324,19 @@ function screenGenerator(scene) {
           },
         },
         tmp,
-        mainObjects,
         resolved,
         setState,
       } = this.props;
 
-      const slotSequence = mainObjects.find(item => item.group === group);
-
+      const findFunction = scene => {
+        return scene.objects.itemsMap.find(
+          item => item.group === group && item.main,
+        );
+      };
+      const slotSequence = findHelperFunction(findFunction);
       const slotScenario =
         slotSequence && slotSequence.logical && slotSequence.logical.scenario;
       if (!slotScenario) return false;
-
       if (!tmp[slotSequence.group]) {
         setState({
           tmp: {
@@ -607,12 +612,10 @@ function screenGenerator(scene) {
     originalDialogContent: app.originalDialogContent,
     dialogAnswer: app.dialogAnswer,
     tmp: app.tmp,
-    mainObjects: app.mainObjects,
   });
 
   const mapDispatchToProps = {
     setState: setStateAction,
-    getMainObjects: getMainObjectsAction,
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(ScreenGenerator);

@@ -15,7 +15,6 @@ const appInitialState = {
   originalDialogContent: null,
   dialogAnswer: '',
   tmp: {},
-  mainObjects: [],
 };
 
 const appReducer = createReducer(appInitialState, {
@@ -25,14 +24,6 @@ const appReducer = createReducer(appInitialState, {
     return {
       ...state,
       ...filteredAction,
-    };
-  },
-  GET_MAIN_OBJECTS: (state, action) => {
-    const filteredAction = { ...action };
-    delete filteredAction.type;
-    return {
-      ...state,
-      mainObjects: filteredAction.mainObjects,
     };
   },
 });
@@ -71,12 +62,10 @@ export const setStateAction = (obj, sceneName) => {
   return { ...obj, type };
 };
 
-export const getMainObjectsAction = () => {
-  const type = 'GET_MAIN_OBJECTS';
-  let mainObjects = [];
+export const findHelperFunction = findFunction => {
+  let findedItem;
   SCENES.forEach(scene => {
-    let sceneMainObjects = scene.objects.itemsMap.filter(item => item.main);
-    mainObjects = [...mainObjects, ...sceneMainObjects];
+    findedItem = findFunction(scene);
   });
-  return { mainObjects, type };
+  return findedItem;
 };
