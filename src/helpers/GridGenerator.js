@@ -79,18 +79,6 @@ const ObjectGrid = ({
                 );
           return (
             <>
-              {/* {type === ITEMS.NAV && isResolved && !hideResolved && ( */}
-              {/*   <TouchableOpacity */}
-              {/*     key={route} */}
-              {/*     // style={generateStyle(position)} */}
-              {/*     onPress={() => { */}
-              {/*       console.error('vahamin'); */}
-              {/*       onRoutePress(route); */}
-              {/*     }} */}
-              {/*   > */}
-              {/*     {/* <Element position={position} element={element} /> */}
-              {/*   </TouchableOpacity> */}
-              {/* )} */}
               <View key={id} style={generateStyle(position)}>
                 {type !== ITEMS.DRAGGABLE &&
                   isResolved &&
