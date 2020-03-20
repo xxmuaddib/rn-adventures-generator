@@ -45,32 +45,8 @@ const ObjectGrid = ({
   });
   return (
     <ObjectGridContainer>
-      {objects.navMap.map(item => {
-        const isResolved =
-          !item ||
-          !item.showOnResolved ||
-          !item.showOnResolved.length ||
-          item.showOnResolved.some(id => resolved.includes(id));
-        const hideResolved =
-          !item || !item.hideOnResolved || !item.hideOnResolved.length
-            ? false
-            : item.hideOnResolved.every(id => resolved.includes(id));
-        if (isResolved && !hideResolved) {
-          return (
-            <TouchableOpacity
-              key={item.route}
-              style={generateStyle(item)}
-              onPress={() => onRoutePress(item.route)}
-            >
-              >
-              <Element item={item} />
-            </TouchableOpacity>
-          );
-        }
-        return null;
-      })}
       {itemsMapCopy.map(
-        ({ type, id, element, position, logical, group, sound }) => {
+        ({ type, id, element, position, logical, group, sound, route }) => {
           const isResolved =
             !logical ||
             !logical.showOnResolved ||
@@ -103,6 +79,18 @@ const ObjectGrid = ({
                 );
           return (
             <>
+              {/* {type === ITEMS.NAV && isResolved && !hideResolved && ( */}
+              {/*   <TouchableOpacity */}
+              {/*     key={route} */}
+              {/*     // style={generateStyle(position)} */}
+              {/*     onPress={() => { */}
+              {/*       console.error('vahamin'); */}
+              {/*       onRoutePress(route); */}
+              {/*     }} */}
+              {/*   > */}
+              {/*     {/* <Element position={position} element={element} /> */}
+              {/*   </TouchableOpacity> */}
+              {/* )} */}
               <View key={id} style={generateStyle(position)}>
                 {type !== ITEMS.DRAGGABLE &&
                   isResolved &&
@@ -130,6 +118,8 @@ const ObjectGrid = ({
                             return collect(
                               objects.itemsMap.find(item => item.id === id),
                             );
+                          case ITEMS.NAV:
+                            return onRoutePress(route);
                           default:
                             return () => undefined;
                         }

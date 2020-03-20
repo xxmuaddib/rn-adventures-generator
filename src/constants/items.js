@@ -6,4 +6,5 @@ export const ITEMS = {
   PAPER: 'paper',
   DRAGGABLE: 'draggable',
   DIALOG: 'dialog',
+  NAV: 'nav',
 };

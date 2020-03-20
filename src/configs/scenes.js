@@ -26,8 +26,24 @@ const SCENES = [
     bg: EmptyRoomWithClosedDoor,
     bgSound: backgroundSound,
     objects: {
-      navMap: [],
       itemsMap: [
+        {
+          type: 'nav',
+          id: 'nav1',
+          route: 'Next',
+          element: {
+            type: 'image',
+            image: {
+              src: Key,
+            },
+          },
+          position: {
+            x: 20,
+            y: 20,
+            width: 50,
+            height: 50,
+          },
+        },
         {
           type: 'blank',
           id: 'blank1',
