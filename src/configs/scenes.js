@@ -19,6 +19,27 @@ import HeroAvatar6 from '../assets/images/HeroAvatar6.png';
 import HeroAvatar7 from '../assets/images/HeroAvatar7.png';
 import HeroAvatar8 from '../assets/images/HeroAvatar8.png';
 
+import Farm1Bg from '../assets/images/farm1-bg.png';
+import Farm1Cow from '../assets/images/farm1-cow.png';
+
+import Farm2Bg from '../assets/images/farm2-bg.png';
+import Farm2Cow from '../assets/images/farm2-cow.png';
+
+import Farm3Bg from '../assets/images/farm3-bg.png';
+import Farm3Cow from '../assets/images/farm3-cow.png';
+
+import Farm4Bg from '../assets/images/farm4-bg.png';
+import Farm4Cow from '../assets/images/farm4-cow.png';
+import Farm4Points from '../assets/images/farm4-points.png';
+
+import CityBg from '../assets/images/city-bg.png';
+
+import Wall1Bg from '../assets/images/wall1-bg.png';
+import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
+import Wall1Death from '../assets/images/wall1-death.png';
+import Wall1Floor from '../assets/images/wall1-floor.png';
+import Wall1Table1 from '../assets/images/wall1-table1.png';
+
 const SCENES = [
   {
     name: 'Main',
@@ -705,8 +726,200 @@ const SCENES = [
       ],
     },
   },
+  {
+    name: 'Farm1',
+    route: 'Farm1',
+    bg: Farm1Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Farm2',
+          element: {
+            type: 'image',
+            image: {
+              src: Farm1Cow,
+            },
+          },
+          position: {
+            x: 200,
+            y: 100,
+            width: 90,
+            height: 100,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Farm2',
+    route: 'Farm2',
+    bg: Farm2Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Farm3',
+          element: {
+            type: 'image',
+            image: {
+              src: Farm2Cow,
+            },
+          },
+          position: {
+            x: 115,
+            y: 15,
+            width: 170,
+            height: 190,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Farm3',
+    route: 'Farm3',
+    bg: Farm3Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Farm4',
+          element: {
+            type: 'image',
+            image: {
+              src: Farm3Cow,
+            },
+          },
+          position: {
+            x: 20,
+            y: 20,
+            width: 270,
+            height: 180,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Farm4',
+    route: 'Farm4',
+    bg: Farm4Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'receiver',
+          element: {
+            type: 'image',
+            image: {
+              src: Farm4Cow,
+            },
+          },
+          position: {
+            x: 0,
+            y: 10,
+            width: 300,
+            height: 190,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'City',
+          element: {
+            type: 'image',
+            image: {
+              src: Farm4Points,
+            },
+          },
+          position: {
+            x: 90,
+            y: 90,
+            width: 20,
+            height: 30,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'City',
+    route: 'City',
+    bg: CityBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'University1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Wall1',
+    route: 'Wall1',
+    bg: Wall1Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Wall1Blackboard',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Blackboard,
+            },
+          },
+          position: {
+            x: 110,
+            y: 20,
+            width: 145,
+            height: 100,
+          },
+        },
+        {
+          type: 'dialog',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Death,
+            },
+          },
+          position: {
+            x: 55,
+            y: 50,
+            width: 40,
+            height: 130,
+          },
+        },
+        {
+          type: 'receiver',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Table1,
+            },
+          },
+          position: {
+            x: 160,
+            y: 130,
+            width: 90,
+            height: 50,
+          },
+        },
+      ],
+    },
+  },
 ];
 
-const INITIAL_SCREEN = 'Main';
+const INITIAL_SCREEN = 'Farm1';
 
 export { SCENES, INITIAL_SCREEN };
