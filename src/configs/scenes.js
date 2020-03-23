@@ -34,11 +34,42 @@ import Farm4Points from '../assets/images/farm4-points.png';
 
 import CityBg from '../assets/images/city-bg.png';
 
+import University1Bg from '../assets/images/university1-bg.png';
+import University1 from '../assets/images/university1.png';
+
+import University2Bg from '../assets/images/university2-bg.png';
+import University2 from '../assets/images/university2.png';
+
+import University3Bg from '../assets/images/university3-bg.png';
+import University3 from '../assets/images/university3.png';
+
+import University4 from '../assets/images/university4.png';
+
 import Wall1Bg from '../assets/images/wall1-bg.png';
 import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
 import Wall1Death from '../assets/images/wall1-death.png';
 import Wall1Floor from '../assets/images/wall1-floor.png';
 import Wall1Table1 from '../assets/images/wall1-table1.png';
+
+import Wall2Bg from '../assets/images/wall2-bg.png';
+import Wall2Window1 from '../assets/images/wall2-window1.png';
+import Wall2Window2 from '../assets/images/wall2-window2.png';
+import Wall2Picture1 from '../assets/images/wall2-picture1.png';
+import Wall2Picture2 from '../assets/images/wall2-picture2.png';
+import Wall2Picture3 from '../assets/images/wall2-picture3.png';
+
+import Wall3Bg from '../assets/images/wall3-bg.png';
+import Wall3Skeleton from '../assets/images/wall3-skeleton.png';
+import Wall3Mirror from '../assets/images/wall3-mirror.png';
+import Wall3Rack from '../assets/images/wall3-rack.png';
+
+import Wall4Bg from '../assets/images/wall4-bg.png';
+import Wall4Door from '../assets/images/wall4-door.png';
+import Wall4Picture1 from '../assets/images/wall4-picture1.png';
+import Wall4Picture2 from '../assets/images/wall4-picture2.png';
+import Wall4Time from '../assets/images/wall4-time.png';
+
+import Roof from '../assets/images/roof.png';
 
 const SCENES = [
   {
@@ -864,11 +895,134 @@ const SCENES = [
     },
   },
   {
+    name: 'University1',
+    route: 'University1',
+    bg: University1Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'University2',
+          element: {
+            type: 'image',
+            image: {
+              src: University1,
+            },
+          },
+          position: {
+            x: 105,
+            y: 25,
+            width: 80,
+            height: 100,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'University2',
+    route: 'University2',
+    bg: University2Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'University3',
+          element: {
+            type: 'image',
+            image: {
+              src: University2,
+            },
+          },
+          position: {
+            x: 90,
+            y: 20,
+            width: 170,
+            height: 190,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'University3',
+    route: 'University3',
+    bg: University3Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'University4',
+          element: {
+            type: 'image',
+            image: {
+              src: University3,
+            },
+          },
+          position: {
+            x: 60,
+            y: 20,
+            width: 200,
+            height: 180,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'University4',
+    route: 'University4',
+    bg: University4,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Wall1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
     name: 'Wall1',
     route: 'Wall1',
     bg: Wall1Bg,
     objects: {
       itemsMap: [
+        {
+          type: 'nav',
+          route: 'Roof',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 35,
+            y: 0,
+            width: 232,
+            height: 20,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Wall4',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 35,
+            height: 200,
+          },
+        },
         {
           type: 'nav',
           route: 'Wall1Blackboard',
@@ -901,7 +1055,8 @@ const SCENES = [
           },
         },
         {
-          type: 'receiver',
+          type: 'nav',
+          route: '',
           element: {
             type: 'image',
             image: {
@@ -915,11 +1070,394 @@ const SCENES = [
             height: 50,
           },
         },
+        {
+          type: 'nav',
+          route: 'Wall2',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 265,
+            y: 0,
+            width: 35,
+            height: 200,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Wall2',
+    route: 'Wall2',
+    bg: Wall2Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Roof',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 35,
+            y: 0,
+            width: 232,
+            height: 20,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Wall1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 35,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Window1,
+            },
+          },
+          position: {
+            x: 60,
+            y: 20,
+            width: 50,
+            height: 120,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Window2,
+            },
+          },
+          position: {
+            x: 200,
+            y: 20,
+            width: 50,
+            height: 120,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Picture1,
+            },
+          },
+          position: {
+            x: 120,
+            y: 30,
+            width: 40,
+            height: 40,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Picture2,
+            },
+          },
+          position: {
+            x: 173,
+            y: 60,
+            width: 20,
+            height: 30,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Picture3,
+            },
+          },
+          position: {
+            x: 135,
+            y: 100,
+            width: 35,
+            height: 35,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Wall3',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 265,
+            y: 0,
+            width: 35,
+            height: 200,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Wall3',
+    route: 'Wall3',
+    bg: Wall3Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Roof',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 35,
+            y: 0,
+            width: 232,
+            height: 20,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Wall2',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 35,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall3Rack,
+            },
+          },
+          position: {
+            x: 50,
+            y: 40,
+            width: 40,
+            height: 140,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall3Mirror,
+            },
+          },
+          position: {
+            x: 130,
+            y: 40,
+            width: 35,
+            height: 70,
+          },
+        },
+        {
+          type: 'nav',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall3Skeleton,
+            },
+          },
+          position: {
+            x: 200,
+            y: 25,
+            width: 30,
+            height: 165,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Wall4',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 265,
+            y: 0,
+            width: 35,
+            height: 200,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Wall4',
+    route: 'Wall4',
+    bg: Wall4Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Roof',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 35,
+            y: 0,
+            width: 232,
+            height: 20,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Wall3',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 35,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall4Door,
+            },
+          },
+          position: {
+            x: 50,
+            y: 55,
+            width: 40,
+            height: 115,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall4Picture1,
+            },
+          },
+          position: {
+            x: 120,
+            y: 55,
+            width: 35,
+            height: 60,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall4Picture2,
+            },
+          },
+          position: {
+            x: 200,
+            y: 55,
+            width: 35,
+            height: 60,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall4Time,
+            },
+          },
+          position: {
+            x: 160,
+            y: 15,
+            width: 30,
+            height: 40,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Wall1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 265,
+            y: 0,
+            width: 35,
+            height: 200,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Roof',
+    route: 'Roof',
+    bg: Roof,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Wall2',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Wall4',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 270,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
       ],
     },
   },
 ];
 
-const INITIAL_SCREEN = 'Farm1';
+const INITIAL_SCREEN = 'Roof';
 
 export { SCENES, INITIAL_SCREEN };
