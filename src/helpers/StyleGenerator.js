@@ -6,6 +6,7 @@ if (isIphoneX()) {
   height -= 55;
   width -= 65;
 }
+width = Math.round((height * 16) / 9);
 
 const pointX = width / 300;
 const pointY = height / 200;

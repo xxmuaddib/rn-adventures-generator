@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
   View,
+  StatusBar,
 } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -37,6 +38,7 @@ if (isIphoneX()) {
   width -= 65;
   height -= 55;
 }
+width = Math.round((height * 16) / 9);
 
 function screenGenerator(scene) {
   class ScreenGenerator extends React.PureComponent {
@@ -257,8 +259,6 @@ function screenGenerator(scene) {
               };
             }
           }
-
-          console.error(collectedItemsCopy);
 
           setState({ collectedItems: collectedItemsCopy });
 
@@ -531,7 +531,8 @@ function screenGenerator(scene) {
       } = this.props;
       return (
         <Container>
-          <SceneBackground source={bg}>
+          <StatusBar hidden={true} />
+          <SceneBackground style={{ aspectRatio: 16 / 9 }} source={bg}>
             {!loading && (
               <ObjectGrid
                 objects={objects}
@@ -638,8 +639,8 @@ const Container = styled(View)`
 `;
 
 const SceneBackground = styled(ImageBackground)`
-  height: ${height}px;
   width: ${width}px;
+  height: ${height}px;
 `;
 
 const MainMenuButton = styled(TouchableOpacity)`
