@@ -50,6 +50,11 @@ import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
 import Wall1Death from '../assets/images/wall1-death.png';
 import Wall1Floor from '../assets/images/wall1-floor.png';
 import Wall1Table1 from '../assets/images/wall1-table1.png';
+import Wall1Table2 from '../assets/images/wall1-table2.png';
+import Wall1Chair from '../assets/images/wall1-chair.png';
+import Wall1Virus1 from '../assets/images/wall1-virus1.png';
+import Wall1Virus2 from '../assets/images/wall1-virus2.png';
+import Wall1Virus3 from '../assets/images/wall1-virus3.png';
 
 import Wall2Bg from '../assets/images/wall2-bg.png';
 import Wall2Window1 from '../assets/images/wall2-window1.png';
@@ -935,8 +940,8 @@ const SCENES = [
             },
           },
           position: {
-            x: 90,
-            y: 20,
+            x: 70,
+            y: 10,
             width: 170,
             height: 190,
           },
@@ -1034,9 +1039,9 @@ const SCENES = [
           },
           position: {
             x: 110,
-            y: 20,
+            y: 10,
             width: 145,
-            height: 100,
+            height: 90,
           },
         },
         {
@@ -1048,10 +1053,10 @@ const SCENES = [
             },
           },
           position: {
-            x: 55,
-            y: 50,
-            width: 40,
-            height: 130,
+            x: 50,
+            y: 40,
+            width: 50,
+            height: 120,
           },
         },
         {
@@ -1064,10 +1069,10 @@ const SCENES = [
             },
           },
           position: {
-            x: 160,
-            y: 130,
+            x: 170,
+            y: 110,
             width: 90,
-            height: 50,
+            height: 45,
           },
         },
         {
@@ -1081,6 +1086,153 @@ const SCENES = [
             y: 0,
             width: 35,
             height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Table2,
+            },
+          },
+          position: {
+            x: 28,
+            y: 140,
+            width: 80,
+            height: 50,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Chair,
+            },
+          },
+          position: {
+            x: 40,
+            y: 180,
+            width: 55,
+            height: 20,
+            zIndex: 1,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Virus1,
+            },
+          },
+          position: {
+            x: 50,
+            y: 131,
+            width: 40,
+            height: 60,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Table2,
+            },
+          },
+          position: {
+            x: 113,
+            y: 145,
+            width: 80,
+            height: 50,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Chair,
+            },
+          },
+          position: {
+            x: 210,
+            y: 180,
+            width: 55,
+            height: 20,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Virus2,
+            },
+          },
+          position: {
+            x: 135,
+            y: 131,
+            width: 40,
+            height: 60,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Table2,
+            },
+          },
+          position: {
+            x: 198,
+            y: 145,
+            width: 80,
+            height: 50,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Chair,
+            },
+          },
+          position: {
+            x: 125,
+            y: 180,
+            width: 55,
+            height: 20,
+          },
+        },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall1Virus3,
+            },
+          },
+          position: {
+            x: 220,
+            y: 131,
+            width: 40,
+            height: 60,
           },
         },
       ],
@@ -1129,9 +1281,9 @@ const SCENES = [
           },
           position: {
             x: 60,
-            y: 20,
+            y: 30,
             width: 50,
-            height: 120,
+            height: 100,
           },
         },
         {
@@ -1145,9 +1297,9 @@ const SCENES = [
           },
           position: {
             x: 200,
-            y: 20,
+            y: 30,
             width: 50,
-            height: 120,
+            height: 100,
           },
         },
         {
@@ -1161,9 +1313,9 @@ const SCENES = [
           },
           position: {
             x: 120,
-            y: 30,
-            width: 40,
-            height: 40,
+            y: 40,
+            width: 30,
+            height: 30,
           },
         },
         {
@@ -1176,9 +1328,9 @@ const SCENES = [
             },
           },
           position: {
-            x: 173,
+            x: 170,
             y: 60,
-            width: 20,
+            width: 25,
             height: 30,
           },
         },
@@ -1193,9 +1345,9 @@ const SCENES = [
           },
           position: {
             x: 135,
-            y: 100,
-            width: 35,
-            height: 35,
+            y: 90,
+            width: 30,
+            height: 25,
           },
         },
         {
@@ -1258,8 +1410,8 @@ const SCENES = [
           position: {
             x: 50,
             y: 40,
-            width: 40,
-            height: 140,
+            width: 50,
+            height: 130,
           },
         },
         {
@@ -1288,9 +1440,9 @@ const SCENES = [
           },
           position: {
             x: 200,
-            y: 25,
+            y: 30,
             width: 30,
-            height: 165,
+            height: 155,
           },
         },
         {
@@ -1352,7 +1504,7 @@ const SCENES = [
           },
           position: {
             x: 50,
-            y: 55,
+            y: 39,
             width: 40,
             height: 115,
           },
@@ -1442,6 +1594,19 @@ const SCENES = [
         },
         {
           type: 'nav',
+          route: 'Wall3',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 10,
+            y: 0,
+            width: 280,
+            height: 15,
+          },
+        },
+        {
+          type: 'nav',
           route: 'Wall4',
           element: {
             type: 'trigger',
@@ -1453,11 +1618,24 @@ const SCENES = [
             height: 200,
           },
         },
+        {
+          type: 'nav',
+          route: 'Wall1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 10,
+            y: 185,
+            width: 280,
+            height: 15,
+          },
+        },
       ],
     },
   },
 ];
 
-const INITIAL_SCREEN = 'Roof';
+const INITIAL_SCREEN = 'Farm1';
 
 export { SCENES, INITIAL_SCREEN };
