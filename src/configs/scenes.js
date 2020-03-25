@@ -1102,7 +1102,6 @@ const SCENES = [
             y: 140,
             width: 80,
             height: 50,
-            zIndex: 2,
           },
         },
         {
@@ -1119,7 +1118,7 @@ const SCENES = [
             y: 180,
             width: 55,
             height: 20,
-            zIndex: 1,
+            zIndex: 2,
           },
         },
         {
@@ -1133,10 +1132,10 @@ const SCENES = [
           },
           position: {
             x: 50,
-            y: 131,
+            y: 132,
             width: 40,
             height: 60,
-            zIndex: 3,
+            zIndex: 1,
           },
         },
         {
@@ -1169,6 +1168,7 @@ const SCENES = [
             y: 180,
             width: 55,
             height: 20,
+            zIndex: 2,
           },
         },
         {
@@ -1182,9 +1182,10 @@ const SCENES = [
           },
           position: {
             x: 135,
-            y: 131,
+            y: 135,
             width: 40,
             height: 60,
+            zIndex: 1,
           },
         },
         {
@@ -1217,6 +1218,7 @@ const SCENES = [
             y: 180,
             width: 55,
             height: 20,
+            zIndex: 2,
           },
         },
         {
@@ -1233,6 +1235,7 @@ const SCENES = [
             y: 131,
             width: 40,
             height: 60,
+            zIndex: 1,
           },
         },
       ],
@@ -1636,6 +1639,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Farm1';
+const INITIAL_SCREEN = 'Wall1';
 
 export { SCENES, INITIAL_SCREEN };
