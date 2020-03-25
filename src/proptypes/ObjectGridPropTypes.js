@@ -54,6 +54,5 @@ export const NavItemPropType = PropTypes.shape({
 });
 
 export const ObjectsPropTypes = PropTypes.shape({
-  navMap: PropTypes.arrayOf(NavItemPropType).isRequired,
   itemsMap: PropTypes.arrayOf(ObjectPropTypes).isRequired,
 });
