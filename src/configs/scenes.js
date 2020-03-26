@@ -1639,6 +1639,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Wall1';
+const INITIAL_SCREEN = 'Farm1';
 
 export { SCENES, INITIAL_SCREEN };
