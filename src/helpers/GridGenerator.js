@@ -1,5 +1,10 @@
 import React, { useRef } from 'react';
-import { View, Dimensions, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Dimensions,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { Audio } from 'expo-av';
 import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
@@ -81,6 +86,7 @@ const ObjectGrid = ({
             <>
               <View key={id} style={generateStyle(position)}>
                 {type !== ITEMS.DRAGGABLE &&
+                  type !== ITEMS.NAV &&
                   isResolved &&
                   !hideResolved &&
                   !collectableShouldHide && (
@@ -106,8 +112,6 @@ const ObjectGrid = ({
                             return collect(
                               objects.itemsMap.find(item => item.id === id),
                             );
-                          case ITEMS.NAV:
-                            return onRoutePress(route);
                           default:
                             return () => undefined;
                         }
@@ -121,6 +125,22 @@ const ObjectGrid = ({
                     </StyledTouchableOpacity>
                   )}
               </View>
+              {type === ITEMS.NAV && isResolved && !hideResolved && (
+                <View style={generateStyle(position)}>
+                  <StyledTouchableWithoutFeedback
+                    onPress={() => {
+                      if (sound) {
+                        playAudio(sound);
+                      }
+                      onRoutePress(route);
+                    }}
+                  >
+                    <StyledView>
+                      <Element element={element} position={position} />
+                    </StyledView>
+                  </StyledTouchableWithoutFeedback>
+                </View>
+              )}
               {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
                 <Draggable
                   style={generateStyle(position)}
@@ -177,6 +197,16 @@ const ObjectGridContainer = styled(View)`
 `;
 
 const StyledTouchableOpacity = styled(TouchableOpacity)`
+  width: 100%;
+  height: 100%;
+`;
+
+const StyledTouchableWithoutFeedback = styled(TouchableWithoutFeedback)`
+  width: 100%;
+  height: 100%;
+`;
+
+const StyledView = styled(View)`
   width: 100%;
   height: 100%;
 `;
