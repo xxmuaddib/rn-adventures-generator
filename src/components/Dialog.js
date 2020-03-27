@@ -7,8 +7,11 @@ import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import { DialogPropType } from '../proptypes/ObjectGridPropTypes';
 
-const { height } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 const iphoneX = isIphoneX();
+const gameWidth = Math.round((height * 16) / 9);
+const left = (width - gameWidth) / 2 + 20;
+const right = (width - gameWidth) / 2 + 10;
 
 export const Dialog = ({
   dialogModalVisible,
@@ -103,8 +106,14 @@ const DialogContainer = styled(View)`
 
 const CharacterAvatar = styled(Image)`
   height: 100px;
-  ${p => (p.isLeft && iphoneX ? 'margin-left: 40px' : 'margin-left: 20px')};
-  ${p => (p.isRight && iphoneX ? 'margin-right: 40px' : 'margin-right: 20px')};
+  ${p =>
+    p.isLeft &&
+    (iphoneX ? `margin-left: ${left + 40}px` : `margin-left: ${left + 20}px`)};
+  ${p =>
+    p.isRight &&
+    (iphoneX
+      ? `margin-right: ${right + 40}px`
+      : `margin-right: ${right + 20}px`)};
   margin-bottom: ${iphoneX ? 35 : 20}px;
 `;
 
@@ -142,6 +151,7 @@ const StyledModal = styled(Modal)`
   justify-content: flex-end;
   align-items: center;
   margin: 0;
+  width: ${gameWidth}px;
 `;
 
 Dialog.propTypes = {
