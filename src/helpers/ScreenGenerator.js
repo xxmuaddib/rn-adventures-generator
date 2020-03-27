@@ -40,12 +40,12 @@ if (isIphoneX()) {
 }
 width = Math.round((height * 16) / 9);
 
-function screenGenerator(scene) {
+function screenGenerator(scene, index) {
   class ScreenGenerator extends React.PureComponent {
     componentDidMount() {
       const { setState } = this.props;
       const sceneCopy = _.cloneDeep(scene);
-      internationalizeScene('SCENES_0', sceneCopy);
+      internationalizeScene(`SCENES_${index}`, sceneCopy);
 
       setState(
         {
@@ -651,7 +651,7 @@ const MainMenuButton = styled(TouchableOpacity)`
 
 const generateAllScreens = () =>
   Object.values(SCENES).reduce(
-    (obj, scene) => ({ ...obj, [scene.name]: screenGenerator(scene) }),
+    (obj, scene, i) => ({ ...obj, [scene.name]: screenGenerator(scene, i) }),
     {},
   );
 const Screens = () => generateAllScreens();
