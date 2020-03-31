@@ -64,8 +64,10 @@ export const setStateAction = (obj, sceneName) => {
 
 export const findHelperFunction = findFunction => {
   let findedItem;
-  SCENES.forEach(scene => {
+  for (let scene of SCENES) {
     findedItem = findFunction(scene);
-  });
-  return findedItem;
+    if (findedItem) {
+      return findedItem;
+    }
+  }
 };
