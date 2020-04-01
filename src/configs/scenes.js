@@ -732,7 +732,7 @@ const SCENES = [
   //           zIndex: 30,
   //         },
   //         logical: {
-  //           selected: 2,
+  //           selected: 3,
   //           options: [
   //             {
   //               id: 1,
@@ -963,1987 +963,406 @@ const SCENES = [
     bg: Wall1Bg,
     objects: {
       itemsMap: [
-        // {
-        //   type: 'nav',
-        //   route: 'Roof',
-        //   element: {
-        //     type: 'trigger',
-        //   },
-        //   position: {
-        //     x: 35,
-        //     y: 0,
-        //     width: 232,
-        //     height: 20,
-        //   },
-        // },
-
         {
-          type: 'slot',
-          id: 'slot2_1',
-          group: 'slot2',
-          main: true,
+          type: 'nav',
+          route: 'Roof',
           element: {
-            type: 'image',
-            image: {
-              src: MoleculeBlack,
-            },
+            type: 'trigger',
           },
           position: {
-            x: 60,
-            y: 30,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            deactivateOnResolved: ['slot2_1'],
-            scenario: {
-              slot2_1: 4,
-              slot2_2: 3,
-              slot2_3: 1,
-              slot2_4: 1,
-              slot2_5: 4,
-              slot2_6: 2,
-              slot2_7: 1,
-              slot2_8: 2,
-              slot2_9: 4,
-              slot2_10: 3,
-              slot2_11: 1,
-              slot2_12: 3,
-              slot2_13: 4,
-              slot2_14: 4,
-              slot2_15: 1,
-              slot2_16: 3,
-              slot2_17: 2,
-              slot2_18: 2,
-              slot2_19: 4,
-              slot2_20: 3,
-              slot2_21: 4,
-              slot2_22: 3,
-              slot2_23: 1,
-              slot2_24: 4,
-              slot2_25: 3,
-              slot2_26: 1,
-              slot2_27: 4,
-              slot2_28: 2,
-              slot2_29: 3,
-              slot2_30: 4,
-              slot2_31: 2,
-              slot2_32: 4,
-            },
-            selected: 1,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
+            x: 35,
+            y: 0,
+            width: 232,
+            height: 20,
           },
         },
         {
-          type: 'slot',
-          id: 'slot2_2',
-          group: 'slot2',
+          type: 'nav',
+          route: 'Wall1Blackboard',
           element: {
             type: 'image',
             image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 70,
-            y: 20,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 3,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_3',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 70,
-            y: 5,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_4',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 80,
-            y: 30,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_5',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 80,
-            y: 45,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_6',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 70,
-            y: 55,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_7',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 60,
-            y: 45,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_8',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 90,
-            y: 20,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_9',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 90,
-            y: 5,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_10',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 100,
-            y: 30,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_11',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 100,
-            y: 45,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_12',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 90,
-            y: 55,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_13',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 90,
-            y: 70,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_14',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
+              src: Wall1Blackboard,
             },
           },
           position: {
             x: 110,
-            y: 20,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
+            y: 10,
+            width: 145,
+            height: 90,
           },
         },
         {
-          type: 'slot',
-          id: 'slot2_15',
-          group: 'slot2',
+          type: 'dialog',
+          id: 'dialog1_1',
           element: {
             type: 'image',
             image: {
-              src: MoleculeOrange,
+              src: Wall1Death,
             },
           },
           position: {
-            x: 110,
-            y: 5,
-            width: 7,
-            height: 7,
+            x: 50,
+            y: 40,
+            width: 50,
+            height: 120,
           },
           logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
+            dialogProperties: {
+              character: {
+                translations: {
+                  en:
+                    "Hey! I don't remember anything. Can you help me, please?",
                 },
               },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
+              characterElement: {
+                type: 'image',
+                image: {
+                  src: DeathAvatar1,
                 },
               },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
+              dialog: [
+                {
+                  hero: {
+                    translations: {
+                      en: "Ok, I'll help you :)",
+                    },
+                  },
+                  character: {
+                    translations: {
+                      en: 'Thanks!!',
+                    },
+                  },
+                  heroElement: {
+                    type: 'image',
+                    image: {
+                      src: DeathAvatar1,
+                    },
                   },
                 },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
+                {
+                  hero: {
+                    translations: {
+                      en: "No! I don't help deaths!!",
+                    },
+                  },
+                  character: {
+                    translations: {
+                      en: "But why? I'll cry",
+                    },
                   },
                 },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_16',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
+              ],
             },
           },
-          position: {
-            x: 120,
-            y: 30,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
         },
-        {
-          type: 'slot',
-          id: 'slot2_17',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 120,
-            y: 15,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_18',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 120,
-            y: 45,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_19',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 110,
-            y: 55,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_20',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 110,
-            y: 70,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_21',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 130,
-            y: 20,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_22',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 130,
-            y: 5,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_23',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 140,
-            y: 30,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_24',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 140,
-            y: 45,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_25',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 130,
-            y: 55,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_26',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 130,
-            y: 70,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_27',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 120,
-            y: 80,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_28',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 140,
-            y: 80,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_29',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 150,
-            y: 20,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_30',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 150,
-            y: 5,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_31',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 160,
-            y: 30,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: 'slot',
-          id: 'slot2_32',
-          group: 'slot2',
-          element: {
-            type: 'image',
-            image: {
-              src: MoleculeOrange,
-            },
-          },
-          position: {
-            x: 150,
-            y: 55,
-            width: 7,
-            height: 7,
-          },
-          logical: {
-            selected: 2,
-            options: [
-              {
-                id: 1,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlack,
-                  },
-                },
-              },
-              {
-                id: 2,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeBlue,
-                  },
-                },
-              },
-              {
-                id: 3,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeOrange,
-                  },
-                },
-              },
-              {
-                id: 4,
-                element: {
-                  type: 'image',
-                  image: {
-                    src: MoleculeWhite,
-                  },
-                },
-              },
-            ],
-          },
-        },
-        // {
-        //   type: 'nav',
-        //   route: 'Wall1Blackboard',
-        //   element: {
-        //     type: 'image',
-        //     image: {
-        //       src: Wall1Blackboard,
-        //     },
-        //   },
-        //   position: {
-        //     x: 110,
-        //     y: 10,
-        //     width: 145,
-        //     height: 90,
-        //   },
-        // },
         // {
         //   type: 'dialog',
-        //   id: 'dialog1_1',
+        //   id: 'dialog1',
         //   element: {
         //     type: 'image',
         //     image: {
-        //       src: Wall1Death,
+        //       src: Man,
         //     },
         //   },
         //   position: {
         //     x: 50,
         //     y: 40,
         //     width: 50,
-        //     height: 120,
+        //     height: 150,
         //   },
         //   logical: {
         //     hideOnResolved: ['dialog1_1'],
         //     dialogProperties: {
         //       character: {
         //         translations: {
-        //           en:
-        //             "Hey! I don't remember anything. Can you help me, please?",
+        //           en: 'Hello baby!!!',
+        //           ru: 'Привет, детка!',
         //         },
         //       },
         //       characterElement: {
         //         type: 'image',
         //         image: {
-        //           src: DeathAvatar1,
+        //           src: CharacterAvatar1,
+        //         },
+        //       },
+        //       heroElement: {
+        //         type: 'image',
+        //         image: {
+        //           src: HeroAvatar1,
         //         },
         //       },
         //       dialog: [
         //         {
         //           hero: {
         //             translations: {
-        //               en: "Ok, I'll help you :)",
+        //               en:
+        //                 'Hi, Give me the key, please!!! I need to go to toilet...',
+        //               ru:
+        //                 'Привет, дай мне ключ, пожалуйста!!! Мне нужно в туалет...',
         //             },
         //           },
-        //           doalog: [
+        //           character: {
+        //             translations: {
+        //               en:
+        //                 'No way, unless you give me the answer to the question of the universe!!!',
+        //               ru:
+        //                 'Не дам, пока ты дашь ответ на главный вопрос вселенной!!!',
+        //             },
+        //           },
+        //           characterElement: {
+        //             type: 'image',
+        //             image: {
+        //               src: CharacterAvatar2,
+        //             },
+        //           },
+        //           heroElement: {
+        //             type: 'image',
+        //             image: {
+        //               src: HeroAvatar2,
+        //             },
+        //           },
+        //           dialog: [
         //             {
-        //               character: {
-        //                 translations: {
-        //                   en: 'Ohh. Thanks!',
-        //                 },
-        //               },
+        //               hideOnResolved: ['dialog1_1'],
         //               hero: {
         //                 translations: {
-        //                   en: "You're welcome!",
+        //                   en: 'What is the question, ara?',
+        //                   ru: 'И чо за вопрос, ара?',
         //                 },
         //               },
+        //               character: {
+        //                 translations: {
+        //                   en:
+        //                     "What a bad attitude. But I'll tell you if you promise to behave well, ara!",
+        //                   ru:
+        //                     'Что за неуважение? Если ты будешь хорошо себя вести, я может быть тебе его и задам, ара!',
+        //                 },
+        //               },
+        //               characterElement: {
+        //                 type: 'image',
+        //                 image: {
+        //                   src: CharacterAvatar1,
+        //                 },
+        //               },
+        //               heroElement: {
+        //                 type: 'image',
+        //                 image: {
+        //                   src: HeroAvatar3,
+        //                 },
+        //               },
+        //               dialog: [
+        //                 {
+        //                   hero: {
+        //                     translations: {
+        //                       en: 'Ok, tell me please, your majesty.',
+        //                       ru:
+        //                         'Ладно... Ваше превосходительство, так какой же главный вопрос во вселенной?',
+        //                     },
+        //                   },
+        //                   character: {
+        //                     translations: {
+        //                       en:
+        //                         'What is the Blue thing that lives under the ground and eats stone?',
+        //                       ru: 'Что зелёное, живёт под землёй и ест камни?',
+        //                     },
+        //                   },
+        //                   characterElement: {
+        //                     type: 'image',
+        //                     image: {
+        //                       src: CharacterAvatar1,
+        //                     },
+        //                   },
+        //                   heroElement: {
+        //                     type: 'image',
+        //                     image: {
+        //                       src: HeroAvatar4,
+        //                     },
+        //                   },
+        //                   dialog: [
+        //                     {
+        //                       hero: {
+        //                         translations: {
+        //                           en: 'The Blue underground stoneeater.',
+        //                           ru: 'Зеленый подземный камнеед.',
+        //                         },
+        //                       },
+        //                       character: {
+        //                         translations: {
+        //                           en: "Wow, you're a genius. Take the key.",
+        //                           ru: 'Вау, да ты - гений. Вот, держи ключ.',
+        //                         },
+        //                       },
+        //                       characterElement: {
+        //                         type: 'image',
+        //                         image: {
+        //                           src: CharacterAvatar1,
+        //                         },
+        //                       },
+        //                       heroElement: {
+        //                         type: 'image',
+        //                         image: {
+        //                           src: HeroAvatar5,
+        //                         },
+        //                       },
+        //                       resolve: 'dialog1_1',
+        //                     },
+        //                     {
+        //                       hero: {
+        //                         translations: {
+        //                           en: 'Fish?..',
+        //                           ru: 'Рыба?..',
+        //                         },
+        //                       },
+        //                       character: {
+        //                         translations: {
+        //                           en: "You're a donk. A fish is never Blue.",
+        //                           ru: 'Рыба?..',
+        //                         },
+        //                       },
+        //                       characterElement: {
+        //                         type: 'image',
+        //                         image: {
+        //                           src: CharacterAvatar1,
+        //                         },
+        //                       },
+        //                       heroElement: {
+        //                         type: 'image',
+        //                         image: {
+        //                           src: HeroAvatar6,
+        //                         },
+        //                       },
+        //                     },
+        //                     {
+        //                       hero: 'Doggy?...',
+        //                       character:
+        //                         'Get out of my sight, you crazy idiot!!!',
+        //                       characterElement: {
+        //                         type: 'image',
+        //                         image: {
+        //                           src: CharacterAvatar1,
+        //                         },
+        //                       },
+        //                       heroElement: {
+        //                         type: 'image',
+        //                         image: {
+        //                           src: HeroAvatar7,
+        //                         },
+        //                       },
+        //                     },
+        //                     {
+        //                       hero: 'IBM Watson',
+        //                       character:
+        //                         'That could be true in another galaxy in a dream of a drunk ill elephant before dying because of diarea!!! GET OUT!!!',
+        //                       characterElement: {
+        //                         type: 'image',
+        //                         image: {
+        //                           src: CharacterAvatar1,
+        //                         },
+        //                       },
+        //                       heroElement: {
+        //                         type: 'image',
+        //                         image: {
+        //                           src: HeroAvatar8,
+        //                         },
+        //                       },
+        //                     },
+        //                   ],
+        //                 },
+        //               ],
+        //             },
+        //             {
+        //               hero:
+        //                 "I don't have time for this kind of games. I need to go to toilet!",
+        //               character:
+        //                 "I don't care. The universe is in danger. Go and pee in another place.",
+        //               characterElement: {
+        //                 type: 'image',
+        //                 image: {
+        //                   src: CharacterAvatar1,
+        //                 },
+        //               },
+        //               heroElement: {
+        //                 type: 'image',
+        //                 image: {
+        //                   src: HeroAvatar1,
+        //                 },
+        //               },
+        //               dialog: [
+        //                 {
+        //                   hero: 'Why are you doing this?',
+        //                   character: 'Because I am spiderman...',
+        //                   characterElement: {
+        //                     type: 'image',
+        //                     image: {
+        //                       src: CharacterAvatar1,
+        //                     },
+        //                   },
+        //                   heroElement: {
+        //                     type: 'image',
+        //                     image: {
+        //                       src: HeroAvatar1,
+        //                     },
+        //                   },
+        //                 },
+        //               ],
+        //             },
+        //             {
+        //               hero:
+        //                 "Listen, man... I don't who are you... But this is my house. Give me the key!!!",
+        //               character:
+        //                 "It was your house until I came here. Now it's our house.",
+        //               characterElement: {
+        //                 type: 'image',
+        //                 image: {
+        //                   src: CharacterAvatar1,
+        //                 },
+        //               },
+        //               heroElement: {
+        //                 type: 'image',
+        //                 image: {
+        //                   src: HeroAvatar1,
+        //                 },
+        //               },
+        //               dialog: [
+        //                 {
+        //                   hero: 'I will call the police.',
+        //                   character:
+        //                     'Your bladder will explode by the time they come.',
+        //                   characterElement: {
+        //                     type: 'image',
+        //                     image: {
+        //                       src: CharacterAvatar1,
+        //                     },
+        //                   },
+        //                   heroElement: {
+        //                     type: 'image',
+        //                     image: {
+        //                       src: HeroAvatar1,
+        //                     },
+        //                   },
+        //                   dialog: [
+        //                     {
+        //                       hero: "Maan... You're right",
+        //                       character: 'Universe is always right...',
+        //                       characterElement: {
+        //                         type: 'image',
+        //                         image: {
+        //                           src: CharacterAvatar1,
+        //                         },
+        //                       },
+        //                       heroElement: {
+        //                         type: 'image',
+        //                         image: {
+        //                           src: HeroAvatar1,
+        //                         },
+        //                       },
+        //                     },
+        //                   ],
+        //                 },
+        //               ],
         //             },
         //           ],
-        //           resolve: 'dialog1_1',
-        //         },
-        //         {
-        //           hero: {
-        //             translations: {
-        //               en: "No, I won'nt help you :)",
-        //             },
-        //           },
         //         },
         //       ],
         //     },
@@ -3483,6 +1902,1898 @@ const SCENES = [
             y: 0,
             width: 30,
             height: 200,
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_1',
+          group: 'slot2',
+          main: true,
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeBlack,
+            },
+          },
+          position: {
+            x: 60,
+            y: 30,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            scenario: {
+              slot2_1: 4,
+              slot2_2: 3,
+              slot2_3: 1,
+              slot2_4: 1,
+              slot2_5: 4,
+              slot2_6: 2,
+              slot2_7: 1,
+              slot2_8: 2,
+              slot2_9: 4,
+              slot2_10: 3,
+              slot2_11: 1,
+              slot2_12: 3,
+              slot2_13: 4,
+              slot2_14: 4,
+              slot2_15: 1,
+              slot2_16: 3,
+              slot2_17: 2,
+              slot2_18: 2,
+              slot2_19: 4,
+              slot2_20: 3,
+              slot2_21: 4,
+              slot2_22: 3,
+              slot2_23: 1,
+              slot2_24: 4,
+              slot2_25: 3,
+              slot2_26: 1,
+              slot2_27: 4,
+              slot2_28: 2,
+              slot2_29: 3,
+              slot2_30: 4,
+              slot2_31: 2,
+              slot2_32: 4,
+            },
+            hideOnResolved: ['slot2'],
+            selected: 1,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_2',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 70,
+            y: 20,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_3',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 70,
+            y: 5,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_4',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 80,
+            y: 30,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_5',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 80,
+            y: 45,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_6',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 70,
+            y: 55,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_7',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 60,
+            y: 45,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_8',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 90,
+            y: 20,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_9',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 90,
+            y: 5,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_10',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 100,
+            y: 30,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_11',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 100,
+            y: 45,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_12',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 90,
+            y: 55,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_13',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 90,
+            y: 70,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_14',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 110,
+            y: 20,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_15',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 110,
+            y: 5,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_16',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 120,
+            y: 30,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_17',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 120,
+            y: 15,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_18',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 120,
+            y: 45,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_19',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 110,
+            y: 55,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_20',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 110,
+            y: 70,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_21',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 130,
+            y: 20,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_22',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 130,
+            y: 5,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_23',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 140,
+            y: 30,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_24',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 140,
+            y: 45,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_25',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 130,
+            y: 55,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_26',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 130,
+            y: 70,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_27',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 120,
+            y: 80,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_28',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 140,
+            y: 80,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_29',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 150,
+            y: 20,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_30',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeBlack,
+            },
+          },
+          position: {
+            x: 150,
+            y: 5,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 1,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_31',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 160,
+            y: 30,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'slot',
+          id: 'slot2_32',
+          group: 'slot2',
+          element: {
+            type: 'image',
+            image: {
+              src: MoleculeOrange,
+            },
+          },
+          position: {
+            x: 150,
+            y: 55,
+            width: 7,
+            height: 7,
+          },
+          logical: {
+            selected: 3,
+            options: [
+              {
+                id: 1,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlack,
+                  },
+                },
+              },
+              {
+                id: 2,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeBlue,
+                  },
+                },
+              },
+              {
+                id: 3,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeOrange,
+                  },
+                },
+              },
+              {
+                id: 4,
+                element: {
+                  type: 'image',
+                  image: {
+                    src: MoleculeWhite,
+                  },
+                },
+              },
+            ],
           },
         },
         {
