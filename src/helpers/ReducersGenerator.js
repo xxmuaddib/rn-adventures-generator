@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { createReducer, createAction } from '@reduxjs/toolkit';
-import { SCENES } from '../configs/scenes';
+import { SCENES } from '../configs/scenes-combiner';
 
 const appInitialState = {
   resolved: [],

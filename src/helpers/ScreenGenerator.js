@@ -15,7 +15,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 
-import { SCENES, INITIAL_SCREEN } from '../configs/scenes';
+import { SCENES, INITIAL_SCREEN } from '../configs/scenes-combiner';
 import { pointX, pointY } from './StyleGenerator';
 import { ObjectGrid } from './GridGenerator';
 import { Inventory } from '../components/Inventory';
@@ -360,12 +360,6 @@ function screenGenerator(scene, index) {
       const allSlots = itemsMapCopy.filter(item => item.group === group);
       const currentSlot = itemsMapCopy.findIndex(item => item.id === id);
 
-      const currentPosition = {};
-
-      allSlots.forEach(item => {
-        currentPosition[item.id] = item.logical.selected;
-      });
-
       let { selected } = itemsMapCopy[currentSlot].logical;
       const { options } = itemsMapCopy[currentSlot].logical;
 
@@ -394,7 +388,11 @@ function screenGenerator(scene, index) {
         },
         sceneName,
       );
+      const currentPosition = {};
 
+      allSlots.forEach(item => {
+        currentPosition[item.id] = item.logical.selected;
+      });
       if (objCompare(slotScenario, currentPosition)) {
         await AsyncStorage.setItem(
           'resolved',
