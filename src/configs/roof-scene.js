@@ -59,7 +59,7 @@ export const ROOF_SCENE = {
         },
       },
       {
-        type: 'nav',
+        type: 'decorative',
         element: {
           type: 'image',
           image: {
@@ -568,7 +568,7 @@ export const ROOF_SCENE = {
         },
       },
       {
-        type: 'nav',
+        type: 'decorative',
         element: {
           type: 'image',
           image: {
