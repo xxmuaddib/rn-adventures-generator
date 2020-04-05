@@ -72,26 +72,14 @@ export const ROOF_SCENE = {
           width: 180,
           height: 120,
         },
+        logical: {
+          hideOnResolved: ['slot1'],
+        },
       },
-      // {
-      //   type: 'nav',
-      //   element: {
-      //     type: 'image',
-      //     image: {
-      //       src: MoleculesFull,
-      //     },
-      //   },
-      //   position: {
-      //     x: 55,
-      //     y: 45,
-      //     width: 180,
-      //     height: 120,
-      //   },
-      // },
       {
         type: 'slot',
-        id: 'slot3_1',
-        group: 'slot3',
+        id: 'slot1_1',
+        group: 'slot1',
         main: true,
         element: {
           type: 'image',
@@ -100,18 +88,22 @@ export const ROOF_SCENE = {
           },
         },
         position: {
-          x: 72,
-          y: 43,
-          width: 42,
-          height: 45,
+          x: 74,
+          y: 46,
+          width: 39,
+          height: 39,
           zIndex: 2,
         },
         logical: {
           scenario: {
-            slot3_1: 1,
-            slot3_2: 2,
-            slot3_3: 3,
-            slot3_4: 4,
+            slot1_1: 4,
+            slot1_2: 3,
+            slot1_3: 4,
+            slot1_4: 3,
+            slot1_5: 2,
+            slot1_6: 1,
+            slot1_7: 2,
+            slot1_8: 3,
           },
           selected: 1,
           hideOnResolved: ['slot1'],
@@ -157,8 +149,8 @@ export const ROOF_SCENE = {
       },
       {
         type: 'slot',
-        group: 'slot3',
-        id: 'slot3_2',
+        group: 'slot1',
+        id: 'slot1_2',
         element: {
           type: 'image',
           image: {
@@ -166,10 +158,10 @@ export const ROOF_SCENE = {
           },
         },
         position: {
-          x: 163,
+          x: 160,
           y: 55,
-          width: 40,
-          height: 40,
+          width: 39,
+          height: 39,
           zIndex: 2,
         },
         logical: {
@@ -199,7 +191,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: Molecule2_3,
+                  src: Molecule2_4,
                 },
               },
             },
@@ -208,7 +200,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: Molecule2_4,
+                  src: Molecule2_3,
                 },
               },
             },
@@ -217,8 +209,8 @@ export const ROOF_SCENE = {
       },
       {
         type: 'slot',
-        group: 'slot3',
-        id: 'slot3_3',
+        group: 'slot1',
+        id: 'slot1_3',
         element: {
           type: 'image',
           image: {
@@ -226,10 +218,11 @@ export const ROOF_SCENE = {
           },
         },
         position: {
-          x: 207,
-          y: 68,
-          width: 18,
-          height: 16,
+          x: 194,
+          y: 56,
+          width: 39,
+          height: 39,
+          zIndex: 2,
         },
         logical: {
           hideOnResolved: ['slot1'],
@@ -276,8 +269,8 @@ export const ROOF_SCENE = {
       },
       {
         type: 'slot',
-        group: 'slot3',
-        id: 'slot3_3',
+        group: 'slot1',
+        id: 'slot1_4',
         element: {
           type: 'image',
           image: {
@@ -285,10 +278,11 @@ export const ROOF_SCENE = {
           },
         },
         position: {
-          x: 157,
-          y: 71,
-          width: 10,
-          height: 20,
+          x: 143,
+          y: 68,
+          width: 37,
+          height: 38,
+          zIndex: 2,
         },
         logical: {
           hideOnResolved: ['slot1'],
@@ -317,141 +311,16 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: Molecule4_3,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
                   src: Molecule4_4,
                 },
               },
             },
-          ],
-        },
-      },
-      {
-        type: 'blank',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeLinesFull,
-          },
-        },
-        position: {
-          x: 55,
-          y: 45,
-          width: 180,
-          height: 120,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_1',
-        group: 'slot2',
-        main: true,
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 71,
-          y: 46,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          scenario: {
-            slot2_1: 1,
-            slot2_2: 4,
-            slot2_3: 1,
-            slot2_4: 3,
-
-            slot2_5: 2,
-            slot2_6: 2,
-            slot2_7: 4,
-
-            slot2_8: 3,
-
-            slot2_9: 4,
-            slot2_10: 4,
-            slot2_11: 4,
-            slot2_12: 3,
-
-            slot2_13: 4,
-            slot2_14: 3,
-            slot2_15: 3,
-            slot2_16: 1,
-            slot2_17: 2,
-
-            slot2_18: 2,
-
-            slot2_19: 1,
-            slot2_20: 4,
-            slot2_21: 1,
-            slot2_22: 2,
-            slot2_23: 4,
-
-            slot2_24: 2,
-            slot2_25: 3,
-            slot2_26: 4,
-            slot2_27: 3,
-            slot2_28: 4,
-
-            slot2_29: 1,
-            slot2_30: 1,
-
-            slot2_31: 4,
-            slot2_32: 3,
-            slot2_33: 1,
-
-            slot2_34: 4,
-            slot2_35: 2,
-          },
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
             {
               id: 4,
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeWhite,
+                  src: Molecule4_3,
                 },
               },
             },
@@ -460,22 +329,23 @@ export const ROOF_SCENE = {
       },
       {
         type: 'slot',
-        id: 'slot2_2',
-        group: 'slot2',
+        group: 'slot1',
+        id: 'slot1_5',
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: Molecule5_1,
           },
         },
         position: {
-          x: 105,
-          y: 46,
-          width: 11,
-          height: 11,
+          x: 91,
+          y: 77,
+          width: 39,
+          height: 41,
+          zIndex: 2,
         },
         logical: {
-          hideOnResolved: ['slot2'],
+          hideOnResolved: ['slot1'],
           selected: 1,
           options: [
             {
@@ -483,7 +353,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: Molecule5_1,
                 },
               },
             },
@@ -492,7 +362,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlue,
+                  src: Molecule5_4,
                 },
               },
             },
@@ -501,7 +371,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeOrange,
+                  src: Molecule5_3,
                 },
               },
             },
@@ -510,7 +380,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeWhite,
+                  src: Molecule5_2,
                 },
               },
             },
@@ -519,22 +389,23 @@ export const ROOF_SCENE = {
       },
       {
         type: 'slot',
-        id: 'slot2_3',
-        group: 'slot2',
+        group: 'slot1',
+        id: 'slot1_6',
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: Molecule6_4,
           },
         },
         position: {
-          x: 140,
-          y: 46,
-          width: 11,
-          height: 11,
+          x: 160,
+          y: 104,
+          width: 38,
+          height: 40,
+          zIndex: 2,
         },
         logical: {
-          hideOnResolved: ['slot2'],
+          hideOnResolved: ['slot1'],
           selected: 1,
           options: [
             {
@@ -542,7 +413,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: Molecule6_4,
                 },
               },
             },
@@ -551,7 +422,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlue,
+                  src: Molecule6_2,
                 },
               },
             },
@@ -560,7 +431,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeOrange,
+                  src: Molecule6_3,
                 },
               },
             },
@@ -569,7 +440,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeWhite,
+                  src: Molecule6_1,
                 },
               },
             },
@@ -578,22 +449,23 @@ export const ROOF_SCENE = {
       },
       {
         type: 'slot',
-        id: 'slot2_4',
-        group: 'slot2',
+        group: 'slot1',
+        id: 'slot1_7',
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: Molecule7_1,
           },
         },
         position: {
-          x: 174,
-          y: 46,
-          width: 11,
-          height: 11,
+          x: 74,
+          y: 112,
+          width: 39,
+          height: 42,
+          zIndex: 2,
         },
         logical: {
-          hideOnResolved: ['slot2'],
+          hideOnResolved: ['slot1'],
           selected: 1,
           options: [
             {
@@ -601,7 +473,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: Molecule7_1,
                 },
               },
             },
@@ -610,7 +482,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlue,
+                  src: Molecule7_4,
                 },
               },
             },
@@ -619,7 +491,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeOrange,
+                  src: Molecule7_3,
                 },
               },
             },
@@ -628,7 +500,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeWhite,
+                  src: Molecule7_2,
                 },
               },
             },
@@ -637,22 +509,23 @@ export const ROOF_SCENE = {
       },
       {
         type: 'slot',
-        id: 'slot2_5',
-        group: 'slot2',
+        group: 'slot1',
+        id: 'slot1_8',
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: Molecule8_3,
           },
         },
         position: {
-          x: 88,
-          y: 60,
-          width: 11,
-          height: 11,
+          x: 177,
+          y: 110,
+          width: 39,
+          height: 47,
+          zIndex: 2,
         },
         logical: {
-          hideOnResolved: ['slot2'],
+          hideOnResolved: ['slot1'],
           selected: 1,
           options: [
             {
@@ -660,7 +533,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: Molecule8_3,
                 },
               },
             },
@@ -669,7 +542,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlue,
+                  src: Molecule8_2,
                 },
               },
             },
@@ -678,7 +551,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeOrange,
+                  src: Molecule8_1,
                 },
               },
             },
@@ -687,1796 +560,2219 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeWhite,
+                  src: Molecule8_4,
                 },
               },
             },
           ],
         },
       },
+//       {
+//         type: 'blank',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeLinesFull,
+//           },
+//         },
+//         position: {
+//           x: 55,
+//           y: 45,
+//           width: 180,
+//           height: 120,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//         },
+//       },
+// 
+//       {
+//         type: 'slot',
+//         id: 'slot2_1',
+//         group: 'slot2',
+//         main: true,
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 71,
+//           y: 46,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           scenario: {
+//             slot2_1: 1,
+//             slot2_2: 4,
+//             slot2_3: 1,
+//             slot2_4: 3,
+//             slot2_5: 2,
+//             slot2_6: 2,
+//             slot2_7: 4,
+//             slot2_8: 3,
+//             slot2_9: 4,
+//             slot2_10: 4,
+//             slot2_11: 4,
+//             slot2_12: 3,
+//             slot2_13: 4,
+//             slot2_14: 3,
+//             slot2_15: 3,
+//             slot2_16: 1,
+//             slot2_17: 2,
+//             slot2_18: 2,
+//             slot2_19: 1,
+//             slot2_20: 4,
+//             slot2_21: 1,
+//             slot2_22: 2,
+//             slot2_23: 4,
+//             slot2_24: 2,
+//             slot2_25: 3,
+//             slot2_26: 4,
+//             slot2_27: 3,
+//             slot2_28: 4,
+//             slot2_29: 1,
+//             slot2_30: 1,
+//             slot2_31: 4,
+//             slot2_32: 3,
+//             slot2_33: 1,
+//             slot2_34: 4,
+//             slot2_35: 2,
+//           },
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_2',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 105,
+//           y: 46,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           showOnResolved: ['slot1'],
+//           hideOnResolved: ['slot2'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_3',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 140,
+//           y: 46,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_4',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 174,
+//           y: 46,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_5',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 88,
+//           y: 60,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_6',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 156,
+//           y: 60,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_7',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 224,
+//           y: 60,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_8',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 71,
+//           y: 69,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_9',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 106,
+//           y: 69,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_10',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 139,
+//           y: 69,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_11',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 173,
+//           y: 69,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_12',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 208,
+//           y: 69,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_13',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 55,
+//           y: 81,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_14',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 122,
+//           y: 81,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_15',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 156,
+//           y: 81,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_16',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 190,
+//           y: 81,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_17',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 225,
+//           y: 81,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_18',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 106,
+//           y: 93,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+// 
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_19',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 54,
+//           y: 105,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],          
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_20',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 88,
+//           y: 105,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_21',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 123,
+//           y: 105,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_22',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 156,
+//           y: 105,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_23',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 190,
+//           y: 105,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_24',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 71,
+//           y: 117,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_25',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 106,
+//           y: 117,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_26',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 139,
+//           y: 117,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_27',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 174,
+//           y: 117,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_28',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 208,
+//           y: 117,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_29',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 88,
+//           y: 129,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_30',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 191,
+//           y: 129,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_31',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 106,
+//           y: 141,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_32',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 140,
+//           y: 141,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_33',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 174,
+//           y: 141,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_34',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 156,
+//           y: 153,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
+//       {
+//         type: 'slot',
+//         id: 'slot2_35',
+//         group: 'slot2',
+//         element: {
+//           type: 'image',
+//           image: {
+//             src: MoleculeBlack,
+//           },
+//         },
+//         position: {
+//           x: 190,
+//           y: 153,
+//           width: 11,
+//           height: 11,
+//           zIndex: 2,
+//         },
+//         logical: {
+//           hideOnResolved: ['slot2'],
+//           showOnResolved: ['slot1'],
+//           selected: 1,
+//           options: [
+//             {
+//               id: 1,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlack,
+//                 },
+//               },
+//             },
+//             {
+//               id: 2,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeBlue,
+//                 },
+//               },
+//             },
+//             {
+//               id: 3,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeOrange,
+//                 },
+//               },
+//             },
+//             {
+//               id: 4,
+//               element: {
+//                 type: 'image',
+//                 image: {
+//                   src: MoleculeWhite,
+//                 },
+//               },
+//             },
+//           ],
+//         },
+//       },
       {
-        type: 'slot',
-        id: 'slot2_6',
-        group: 'slot2',
+        type: 'nav',
+        route: 'Wall3',
         element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
+          type: 'trigger',
         },
         position: {
-          x: 156,
-          y: 60,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
+          x: 10,
+          y: 0,
+          width: 280,
+          height: 15,
         },
       },
-      {
-        type: 'slot',
-        id: 'slot2_7',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 224,
-          y: 60,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_8',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 71,
-          y: 69,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_9',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 106,
-          y: 69,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_10',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 139,
-          y: 69,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_11',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 173,
-          y: 69,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_12',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 208,
-          y: 69,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_13',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 55,
-          y: 81,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_14',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 122,
-          y: 81,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_15',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 156,
-          y: 81,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_16',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 190,
-          y: 81,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_17',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 225,
-          y: 81,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_18',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 106,
-          y: 93,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_19',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 54,
-          y: 105,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_20',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 88,
-          y: 105,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_21',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 123,
-          y: 105,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_22',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 156,
-          y: 105,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_23',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 190,
-          y: 105,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_24',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 71,
-          y: 117,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_25',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 106,
-          y: 117,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_26',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 139,
-          y: 117,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_27',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 174,
-          y: 117,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_28',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 208,
-          y: 117,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_29',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 88,
-          y: 129,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_30',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 191,
-          y: 129,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_31',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 106,
-          y: 141,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_32',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 140,
-          y: 141,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_33',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 174,
-          y: 141,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_34',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 156,
-          y: 153,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        id: 'slot2_35',
-        group: 'slot2',
-        element: {
-          type: 'image',
-          image: {
-            src: MoleculeBlack,
-          },
-        },
-        position: {
-          x: 190,
-          y: 153,
-          width: 11,
-          height: 11,
-        },
-        logical: {
-          hideOnResolved: ['slot2'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlack,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeBlue,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
-          ],
-        },
-      },
-      // {
-      //   type: 'nav',
-      //   route: 'Wall3',
-      //   element: {
-      //     type: 'trigger',
-      //   },
-      //   position: {
-      //     x: 10,
-      //     y: 0,
-      //     width: 280,
-      //     height: 15,
-      //   },
-      // },
       {
         type: 'nav',
         route: 'Wall4',

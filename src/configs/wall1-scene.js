@@ -172,7 +172,7 @@ export const WALL1_SCENE = {
       },
       {
         type: 'nav',
-        route: '',
+        route: 'Virus1',
         element: {
           type: 'image',
           image: {
@@ -222,7 +222,7 @@ export const WALL1_SCENE = {
       },
       {
         type: 'nav',
-        route: '',
+        route: 'Virus2',
         element: {
           type: 'image',
           image: {
@@ -272,7 +272,7 @@ export const WALL1_SCENE = {
       },
       {
         type: 'nav',
-        route: '',
+        route: 'Virus3',
         element: {
           type: 'image',
           image: {

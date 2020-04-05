@@ -37,6 +37,12 @@ import University3Bg from '../assets/images/university3-bg.png';
 
 import University4 from '../assets/images/university4.png';
 
+import VirusesBg from '../assets/images/viruses-bg.png';
+import Virus1Front from '../assets/images/virus1-front.png';
+import Virus2Front from '../assets/images/virus2-front.png';
+import Virus3Front from '../assets/images/virus3-front.png';
+import VirusesTableFront from '../assets/images/viruses-table-front.png';
+
 import Wall2Bg from '../assets/images/wall2-bg.png';
 import Wall2Window1 from '../assets/images/wall2-window1.png';
 import Wall2Window2 from '../assets/images/wall2-window2.png';
@@ -596,6 +602,198 @@ const SCENES = [
             y: 0,
             width: 35,
             height: 200,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Virus1',
+    route: 'Virus1',
+    bg: VirusesBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'dialog',
+          id: 'dialog2',
+          element: {
+            type: 'image',
+            image: {
+              src: Virus1Front
+            },
+          },
+          position: {
+            x: 100,
+            y: 5,
+            width: 100,
+            height: 150,
+            zIndex: 1,
+          },
+          logical: {
+            dialogProperties: {
+              character: {
+                translations: {
+                  en: 'Ill kill your time',
+                },
+              },
+            },
+          },
+        },
+        {
+          type: '',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFront,
+            },
+          },
+          position: {
+              x: 80,
+              y: 80,
+              width: 150,
+              height: 100,
+              zIndex: 2,
+            },
+        },
+        {
+          type: 'nav',
+          route: 'Wall1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 185,
+            height: 15,
+            width: 300,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Virus2',
+    route: 'Virus2',
+    bg: VirusesBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'dialog',
+          id: 'dialog2',
+          element: {
+            type: 'image',
+            image: {
+              src: Virus2Front
+            },
+          },
+          position: {
+            x: 100,
+            y: 5,
+            width: 100,
+            height: 150,
+            zIndex: 1,
+          },
+          logical: {
+            dialogProperties: {
+              character: {
+                translations: {
+                  en: 'Ill kill your time',
+                },
+              },
+            },
+          },
+        },
+        {
+          type: '',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFront,
+            },
+          },
+          position: {
+              x: 80,
+              y: 80,
+              width: 150,
+              height: 100,
+              zIndex: 2,
+            },
+        },
+        {
+          type: 'nav',
+          route: 'Wall1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 185,
+            height: 15,
+            width: 300,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Virus3',
+    route: 'Virus3',
+    bg: VirusesBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'dialog',
+          id: 'dialog2',
+          element: {
+            type: 'image',
+            image: {
+              src: Virus3Front
+            },
+          },
+          position: {
+            x: 100,
+            y: 5,
+            width: 100,
+            height: 150,
+            zIndex: 1,
+          },
+          logical: {
+            dialogProperties: {
+              character: {
+                translations: {
+                  en: 'Ill kill your time',
+                },
+              },
+            },
+          },
+        },
+        {
+          type: '',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFront,
+            },
+          },
+          position: {
+              x: 80,
+              y: 80,
+              width: 150,
+              height: 100,
+              zIndex: 2,
+            },
+        },
+        {
+          type: 'nav',
+          route: 'Wall1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 185,
+            height: 15,
+            width: 300,
           },
         },
       ],

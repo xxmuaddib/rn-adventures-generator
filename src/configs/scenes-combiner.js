@@ -4,4 +4,4 @@ import { ROOF_SCENE } from './roof-scene';
 
 SCENES.push(WALL1_SCENE, ROOF_SCENE);
 
-export { SCENES, WALL1_SCENE };
+export { SCENES, INITIAL_SCREEN, WALL1_SCENE };
