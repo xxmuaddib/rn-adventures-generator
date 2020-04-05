@@ -28,6 +28,7 @@ const ObjectGrid = ({
   handleSlot,
   receive,
   handleSequence,
+  handleDecorative,
   showModal,
   onDragRelease,
   showDialog,
@@ -112,6 +113,8 @@ const ObjectGrid = ({
                             return collect(
                               objects.itemsMap.find(item => item.id === id),
                             );
+                          case ITEMS.DECORATIVE:
+                            return handleDecorative(id);
                           default:
                             return () => undefined;
                         }

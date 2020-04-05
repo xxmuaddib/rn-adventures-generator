@@ -411,6 +411,17 @@ function screenGenerator(scene, index) {
       });
     };
 
+    handleDecorative = async id => {
+      const { setState, resolved } = this.props;
+      if (id) {
+        await AsyncStorage.setItem(
+          'resolved',
+          JSON.stringify([...resolved, id]),
+        );
+        return setState({ resolved: [...resolved, id] });
+      }
+    };
+
     openMainMenu = () => {
       const { setState, mainMenuVisible } = this.props;
       setState({ mainMenuVisible: !mainMenuVisible });
@@ -527,6 +538,7 @@ function screenGenerator(scene, index) {
           scene: { objects, bg },
         },
       } = this.props;
+      // console.error(collectedItems);
       return (
         <Container>
           <StatusBar hidden={true} />
@@ -540,6 +552,7 @@ function screenGenerator(scene, index) {
                 receive={this.receive}
                 handleSequence={this.handleSequence}
                 handleSlot={this.handleSlot}
+                handleDecorative={this.handleDecorative}
                 toggleMultiple={this.toggleMultiple}
                 showModal={this.openPaper}
                 onDragRelease={this.onDragRelease}
