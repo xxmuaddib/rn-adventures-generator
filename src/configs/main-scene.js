@@ -42,6 +42,8 @@ import Virus1Front from '../assets/images/virus1-front.png';
 import Virus2Front from '../assets/images/virus2-front.png';
 import Virus3Front from '../assets/images/virus3-front.png';
 import VirusesTableFront from '../assets/images/viruses-table-front.png';
+import GumWithKey from '../assets/images/gum-with-key.png';
+import GreenKey from '../assets/images/green-key.png';
 
 import Wall2Bg from '../assets/images/wall2-bg.png';
 import Wall2Window1 from '../assets/images/wall2-window1.png';
@@ -619,7 +621,7 @@ const SCENES = [
           element: {
             type: 'image',
             image: {
-              src: Virus1Front
+              src: Virus1Front,
             },
           },
           position: {
@@ -648,12 +650,12 @@ const SCENES = [
             },
           },
           position: {
-              x: 80,
-              y: 80,
-              width: 150,
-              height: 100,
-              zIndex: 2,
-            },
+            x: 80,
+            y: 80,
+            width: 150,
+            height: 100,
+            zIndex: 2,
+          },
         },
         {
           type: 'nav',
@@ -683,7 +685,7 @@ const SCENES = [
           element: {
             type: 'image',
             image: {
-              src: Virus2Front
+              src: Virus2Front,
             },
           },
           position: {
@@ -712,12 +714,12 @@ const SCENES = [
             },
           },
           position: {
-              x: 80,
-              y: 80,
-              width: 150,
-              height: 100,
-              zIndex: 2,
-            },
+            x: 80,
+            y: 80,
+            width: 150,
+            height: 100,
+            zIndex: 2,
+          },
         },
         {
           type: 'nav',
@@ -747,7 +749,7 @@ const SCENES = [
           element: {
             type: 'image',
             image: {
-              src: Virus3Front
+              src: Virus3Front,
             },
           },
           position: {
@@ -768,7 +770,8 @@ const SCENES = [
           },
         },
         {
-          type: '',
+          type: 'decorative',
+          id: 'decorative1',
           element: {
             type: 'image',
             image: {
@@ -776,24 +779,63 @@ const SCENES = [
             },
           },
           position: {
-              x: 80,
-              y: 80,
-              width: 150,
-              height: 100,
-              zIndex: 2,
-            },
+            x: 80,
+            y: 80,
+            width: 150,
+            height: 100,
+            zIndex: 2,
+          },
         },
+        // {
+        //   type: 'nav',
+        //   route: 'Wall1',
+        //   element: {
+        //     type: 'trigger',
+        //   },
+        //   position: {
+        //     x: 0,
+        //     y: 185,
+        //     height: 15,
+        //     width: 300,
+        //   },
+        // },
         {
-          type: 'nav',
-          route: 'Wall1',
+          type: 'decorative',
+          id: 'decorative2',
           element: {
-            type: 'trigger',
+            type: 'image',
+            image: {
+              src: GumWithKey,
+            },
           },
           position: {
-            x: 0,
+            x: 100,
+            y: 175,
+            width: 20,
+            height: 20,
+          },
+          logical: {
+            hideOnResolved: ['decorative2'],
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'collectable1',
+          element: {
+            type: 'image',
+            image: {
+              src: GreenKey,
+            },
+          },
+          position: {
+            x: 110,
             y: 185,
-            height: 15,
-            width: 300,
+            width: 10,
+            height: 10,
+          },
+          logical: {
+            showOnResolved: ['decorative2'],
+            countOfUse: 1,
           },
         },
       ],
@@ -801,6 +843,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Roof';
+const INITIAL_SCREEN = 'Wall1';
 
 export { SCENES, INITIAL_SCREEN };
