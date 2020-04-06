@@ -21,14 +21,15 @@ function objCompare(obj1, obj2) {
   if (keys1.length !== keys2.length) {
     return false;
   }
+  let isSame = true;
 
   keys1.forEach(key1 => {
     if (!obj2[key1] || obj1[key1] !== obj2[key1]) {
-      return false;
+      isSame = false;
     }
   });
 
-  return true;
+  return isSame;
 }
 
 export { arrayIncludesSorted, objCompare };

@@ -5,7 +5,7 @@ import {
   getLanguages,
   generateTranslationsObject,
 } from '../helpers/TranslationsHelper';
-import { SCENES } from '../configs/scenes';
+import { SCENES } from '../configs/main-scene';
 
 i18n.locale = Localization.locale;
 i18n.fallbacks = true;

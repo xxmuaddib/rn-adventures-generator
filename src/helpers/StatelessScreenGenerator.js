@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
 import { FontAwesome } from '@expo/vector-icons';
 
-import { SCENES, INITIAL_SCREEN } from '../configs/scenes';
+import { SCENES, INITIAL_SCREEN } from '../configs/scenes-combiner';
 import { pointX, pointY } from './StyleGenerator';
 import { ObjectGrid } from './GridGenerator';
 import { Inventory } from '../components/Inventory';

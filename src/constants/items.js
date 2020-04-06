@@ -7,4 +7,5 @@ export const ITEMS = {
   DRAGGABLE: 'draggable',
   DIALOG: 'dialog',
   NAV: 'nav',
+  DECORATIVE: 'decorative',
 };
