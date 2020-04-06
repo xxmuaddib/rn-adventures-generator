@@ -7,7 +7,7 @@ import {
   Dimensions,
   View,
   StatusBar,
-  Platform
+  Platform,
 } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -429,13 +429,16 @@ function screenGenerator(scene, index) {
       });
     };
 
-    handleDecorative = async id => {
+    handleDecorative = async (id, progress) => {
       const { setState, resolved } = this.props;
       if (id) {
         await AsyncStorage.setItem(
           'resolved',
           JSON.stringify([...resolved, id]),
         );
+        if (progress) {
+          setState({ progress });
+        }
         return setState({ resolved: [...resolved, id] });
       }
     };
@@ -528,7 +531,12 @@ function screenGenerator(scene, index) {
     };
 
     showDialogAnswer = item => {
-      const { setState } = this.props;
+      const { setState, dialogShouldBeDropped } = this.props;
+
+      if (dialogShouldBeDropped) {
+        return setState({ dialogModalVisible: false, dialogModalContent: null, dialogShouldBeDropped: false, dialogAnswer: '' });
+      }
+
       setState({
         dialogModalContent: { ...item, questionsShouldBeShown: true },
       });
@@ -543,8 +551,10 @@ function screenGenerator(scene, index) {
           JSON.stringify([...resolved, item.resolve]),
         );
       }
+
       setState({
         dialogModalContent: item.dialog ? item : originalDialogContent,
+        dialogShouldBeDropped: !!item.drop,
         dialogAnswer: item.character,
       });
     };
@@ -676,9 +686,10 @@ function screenGenerator(scene, index) {
     dialogModalContent: DialogPropType.isRequired,
     originalDialogContent: DialogPropType.isRequired,
     dialogAnswer: PropTypes.string.isRequired,
+    dialogShouldBeDropped: PropTypes.bool.isRequired,
     hintModalVisible: PropTypes.bool.isRequired,
     tmp: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
-    progress: PropTypes.string,
+    progress: PropTypes.string.isRequired,
   };
 
   const mapStateToProps = ({ app, [scene.name]: currentScene }) => ({
@@ -693,6 +704,7 @@ function screenGenerator(scene, index) {
     paperModalContent: app.paperModalContent,
     dialogModalContent: app.dialogModalContent,
     originalDialogContent: app.originalDialogContent,
+    dialogShouldBeDropped: app.dialogShouldBeDropped,
     hintModalVisible: app.hintModalVisible,
     dialogAnswer: app.dialogAnswer,
     tmp: app.tmp,

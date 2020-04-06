@@ -64,7 +64,7 @@ export const WALL1_SCENE = {
           dialogProperties: {
             character: {
               translations: {
-                en: "Hey! I don't remember anything. Can you help me, please?",
+                en: 'Hi class! I am your new teacher. They call me The Plague. Introduce yourselves, insects!',
               },
             },
             characterElement: {
@@ -72,37 +72,64 @@ export const WALL1_SCENE = {
               image: {
                 src: DeathAvatar1,
               },
+              bg: 'rgba(255, 255, 255, .8)',
+              color: 'rgb(0, 0, 0)',
+            },
+            heroElement: {
+              bg: 'rgba(255, 255, 255, .8)',
+              color: 'rgb(0, 0, 0)',
             },
             dialog: [
               {
                 hero: {
                   translations: {
-                    en: "Ok, I'll help you :)",
+                    en: "Well, I don't have a name yet. But I am a fan of you... Can you teach me being as deadly as you are?",
                   },
                 },
                 character: {
                   translations: {
-                    en: 'Thanks!!',
+                    en: 'No, I am too old and I have Parkinson\'s... Unfortunately I remember not much of my previous days. But if you help me, then maybe I will help you...',
                   },
                 },
-                heroElement: {
+                characterElement: {
                   type: 'image',
                   image: {
                     src: DeathAvatar1,
                   },
+                  bg: 'rgba(255, 255, 255, .8)',
+                  color: 'rgb(0, 0, 0)',
                 },
-              },
-              {
-                hero: {
-                  translations: {
-                    en: "No! I don't help deaths!!",
+                heroElement: {
+                  bg: 'rgba(255, 255, 255, .8)',
+                  color: 'rgb(0, 0, 0)',
+                },
+                dialog: [
+                    {
+                    hero: {
+                      translations: {
+                        en: 'Well, what should I do then?',
+                      },
+                    },
+                    character: {
+                      translations: {
+                        en: 'I don\'t know... But I just want to remember good ol\' days',
+                      },
+                    },
+                    drop: true,
+                    characterElement: {
+                      type: 'image',
+                      image: {
+                        src: DeathAvatar1,
+                      },
+                      bg: 'rgba(255, 255, 255, .8)',
+                      color: 'rgb(0, 0, 0)',
+                    },
+                    heroElement: {
+                      bg: 'rgba(255, 255, 255, .8)',
+                      color: 'rgb(0, 0, 0)',
+                    },
                   },
-                },
-                character: {
-                  translations: {
-                    en: "But why? I'll cry",
-                  },
-                },
+                ],
               },
             ],
           },

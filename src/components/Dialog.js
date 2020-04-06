@@ -46,8 +46,9 @@ export const Dialog = ({
               disabled={dialogModalContent.questionsShouldBeShown}
               activeOpacity={0.6}
               onPress={() => showDialogAnswer(dialogModalContent)}
+              bg={dialogModalContent.characterElement.bg}
             >
-              <AnswerText>{dialogAnswer}</AnswerText>
+              <AnswerText color={dialogModalContent.characterElement.color}>{dialogAnswer}</AnswerText>
             </AnswerTextTouchableOpacity>
           )}
           {dialogModalContent &&
@@ -61,14 +62,19 @@ export const Dialog = ({
                     key={item.hero}
                     onPress={() => setDialog(item)}
                     activeOpacity={0.6}
+                    bg={item.heroElement.bg}
                   >
-                    <QuestionText>{item.hero}</QuestionText>
+                    <QuestionText color={item.heroElement.color}>{item.hero}</QuestionText>
                   </DialogTouchableOpacity>
                 ),
             )}
           {dialogModalContent && dialogModalContent.questionsShouldBeShown && (
-            <DialogTouchableOpacity onPress={showDialog}>
-              <ClosingDialogButton>
+            <DialogTouchableOpacity
+              color={dialogModalContent.heroElement.color}
+              onPress={showDialog}
+              bg={dialogModalContent.heroElement.bg}
+            >
+              <ClosingDialogButton color={dialogModalContent.heroElement.color}>
                 Ok, gotta go. We'll chat later.
               </ClosingDialogButton>
             </DialogTouchableOpacity>
@@ -76,6 +82,7 @@ export const Dialog = ({
         </>
       </DialogContainer>
       {dialogModalContent.heroElement &&
+        dialogModalContent.heroElement.image &&
         dialogModalContent.questionsShouldBeShown && (
           <CharacterAvatar
             source={dialogModalContent.heroElement.image.src}
@@ -119,7 +126,7 @@ const CharacterAvatar = styled(Image)`
 
 const DialogTouchableOpacity = styled(TouchableOpacity)`
   width: 100%;
-  background-color: white;
+  background-color: ${p => p.bg};
   padding: 10px 20px;
   border-radius: 13px;
   margin-bottom: 10px;
@@ -127,23 +134,23 @@ const DialogTouchableOpacity = styled(TouchableOpacity)`
 
 const AnswerTextTouchableOpacity = styled(DialogTouchableOpacity)`
   width: ${p => (p.isLarge ? '80%' : '60%')};
-  background-color: rgba(122, 27, 56, 0.85);
+  background-color: ${p => p.bg};
   margin-bottom: 10px;
 `;
 
 const AnswerText = styled(Text)`
   font-size: 14px;
-  color: white;
+  color: ${p => p.color};
 `;
 
 const QuestionText = styled(Text)`
-  color: rgb(139, 49, 73);
+  color: ${p => p.color};
   font-size: 14px;
 `;
 
 const ClosingDialogButton = styled(Text)`
   font-size: 14px;
-  color: rgb(139, 49, 73);
+  color: ${p => p.color};
 `;
 
 const StyledModal = styled(Modal)`
