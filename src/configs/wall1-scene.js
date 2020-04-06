@@ -47,7 +47,7 @@ export const WALL1_SCENE = {
       },
       {
         type: 'dialog',
-        id: 'dialog1_1',
+        id: 'dialog1',
         element: {
           type: 'image',
           image: {
@@ -115,7 +115,6 @@ export const WALL1_SCENE = {
                         en: 'I don\'t know... But I just want to remember good ol\' days',
                       },
                     },
-                    drop: true,
                     characterElement: {
                       type: 'image',
                       image: {
@@ -128,6 +127,9 @@ export const WALL1_SCENE = {
                       bg: 'rgba(255, 255, 255, .8)',
                       color: 'rgb(0, 0, 0)',
                     },
+                    drop: true,
+                    resolve: 'dialog1',
+                    setProgressOnResolved: 'plaguePictureShouldBeSolved',
                   },
                 ],
               },

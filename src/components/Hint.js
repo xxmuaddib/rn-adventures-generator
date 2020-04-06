@@ -1,28 +1,42 @@
 import React from 'react';
 import {
   Text,
+  View,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
 import styled from 'styled-components';
 
+import { HINTS } from '../configs/hints';
 import { PaperPropType } from '../proptypes/ObjectGridPropTypes';
 
-export const Hint = ({ hintModalVisible, progress, hints, showHintModal }) => {
-  const hint = hints.find(item => item.name === progress);
+const { width, height } = Dimensions.get('window');
+
+export const Hint = ({ hintModalVisible, progress, showHintModal }) => {
+  const hint = HINTS.find(item => item.progress === progress);
   return (
     <StyledModal isVisible={hintModalVisible}>
-      <Text>Test</Text>
-      <CloseHintButton onPress={showHintModal}>
+      <PaperBackground>
         <Text>{hint.text}</Text>
-      </CloseHintButton>
+        <CloseHintButton onPress={showHintModal}>
+          <Text>Close</Text>
+        </CloseHintButton>
+      </PaperBackground>
     </StyledModal>
   );
 };
 
 const StyledModal = styled(Modal)`
   align-items: center;
+`;
+
+const PaperBackground = styled(View)`
+  background-color: white;
+  width: ${width}px;
+  height: ${height}px;
+  padding: 10px;
 `;
 
 const CloseHintButton = styled(TouchableOpacity)`
@@ -40,12 +54,10 @@ const CloseHintButton = styled(TouchableOpacity)`
 Hint.propTypes = {
   hintModalVisible: PaperPropType.isRequired,
   progress: PropTypes.string,
-  hints: PropTypes.arrayOf(PropTypes.any),
   showHintModal: PropTypes.func,
 };
 
 Hint.defaultProps = {
   progress: '',
-  hints: [],
   showHintModal: () => undefined,
 };
