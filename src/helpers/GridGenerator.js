@@ -46,9 +46,7 @@ const ObjectGrid = ({
   };
   const animationRef = useRef(null);
   const itemsMapCopy = [...objects.itemsMap];
-  itemsMapCopy.sort((a, b) =>
-    a.position.zIndex - b.position.zIndex,
-  );
+  itemsMapCopy.sort((a, b) => a.position.zIndex - b.position.zIndex);
   return (
     <ObjectGridContainer>
       {itemsMapCopy.map(
@@ -100,22 +98,42 @@ const ObjectGrid = ({
                         }
                         switch (type) {
                           case ITEMS.SEQUENCE:
-                            return handleSequence(group, id, logical && logical.setProgressOnResolved);
+                            return handleSequence(
+                              group,
+                              id,
+                              logical && logical.setProgressOnResolved,
+                            );
                           case ITEMS.RECEIVER:
-                            return receive(logical.expectedValue, logical && logical.setProgressOnResolved);
+                            return receive(
+                              logical.expectedValue,
+                              logical && logical.setProgressOnResolved,
+                            );
                           case ITEMS.SLOT:
-                            return handleSlot(group, id, logical && logical.setProgressOnResolved);
+                            return handleSlot(
+                              group,
+                              id,
+                              logical && logical.setProgressOnResolved,
+                            );
                           case ITEMS.PAPER:
-                            return showModal(logical, logical && logical.setProgressOnResolved);
+                            return showModal(
+                              logical,
+                              logical && logical.setProgressOnResolved,
+                            );
                           case ITEMS.DIALOG:
-                            return showDialog(logical.dialogProperties, logical && logical.setProgressOnResolved);
+                            return showDialog(
+                              logical.dialogProperties,
+                              logical && logical.setProgressOnResolved,
+                            );
                           case ITEMS.COLLECTABLE:
                             return collect(
                               objects.itemsMap.find(item => item.id === id),
                               logical && logical.setProgressOnResolved,
                             );
                           case ITEMS.DECORATIVE:
-                            return handleDecorative(id, logical && logical.setProgressOnResolved);
+                            return handleDecorative(
+                              id,
+                              logical && logical.setProgressOnResolved,
+                            );
                           default:
                             return () => undefined;
                         }
@@ -136,7 +154,10 @@ const ObjectGrid = ({
                       if (sound) {
                         playAudio(sound);
                       }
-                      onRoutePress(route, logical && logical.setProgressOnResolved);
+                      onRoutePress(
+                        route,
+                        logical && logical.setProgressOnResolved,
+                      );
                     }}
                   >
                     <StyledView>
@@ -156,7 +177,13 @@ const ObjectGrid = ({
                     if (sound) {
                       playAudio(sound);
                     }
-                    onDragRelease(evt, g, id, group, logical && logical.setProgressOnResolved);
+                    onDragRelease(
+                      evt,
+                      g,
+                      id,
+                      group,
+                      logical && logical.setProgressOnResolved,
+                    );
                   }}
                 >
                   <Element element={element} position={position} />

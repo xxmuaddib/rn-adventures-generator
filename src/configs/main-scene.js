@@ -44,6 +44,8 @@ import Virus3Front from '../assets/images/virus3-front.png';
 import VirusesTableFront from '../assets/images/viruses-table-front.png';
 import GumWithKey from '../assets/images/gum-with-key.png';
 import GreenKey from '../assets/images/green-key.png';
+import VirusesTableFrontFoots from '../assets/images/viruses-table-front-foots.png';
+import ImagePart2 from '../assets/images/image-part2.png';
 
 import Wall2Bg from '../assets/images/wall2-bg.png';
 import Wall2Window1 from '../assets/images/wall2-window1.png';
@@ -55,7 +57,14 @@ import Wall2Picture3 from '../assets/images/wall2-picture3.png';
 import Wall3Bg from '../assets/images/wall3-bg.png';
 import Wall3Skeleton from '../assets/images/wall3-skeleton.png';
 import Wall3Mirror from '../assets/images/wall3-mirror.png';
-import Wall3Rack from '../assets/images/wall3-rack.png';
+import Wall3Safe from '../assets/images/wall3-safe.png';
+import Wall3SafeDoor1 from '../assets/images/wall3-safe-door1.png';
+import Wall3SafeDoor2 from '../assets/images/wall3-safe-door2.png';
+import Wall3SafeDoor1Opened from '../assets/images/wall3-safe-door1-opened.png';
+import Wall3SafeDoor2Opened from '../assets/images/wall3-safe-door2-opened.png';
+import Wall3Skull from '../assets/images/wall3-skull.png';
+import ImagePart1 from '../assets/images/image-part1.png';
+import Wall3Vase from '../assets/images/wall3-vase.png';
 
 import Wall4Bg from '../assets/images/wall4-bg.png';
 import Wall4Door from '../assets/images/wall4-door.png';
@@ -435,12 +444,28 @@ const SCENES = [
           },
         },
         {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall3Vase,
+            },
+          },
+          position: {
+            x: 68,
+            y: 5,
+            width: 13,
+            height: 40,
+            zIndex: 4,
+          },
+        },
+        {
           type: 'nav',
           route: '',
           element: {
             type: 'image',
             image: {
-              src: Wall3Rack,
+              src: Wall3Safe,
             },
           },
           position: {
@@ -448,6 +473,115 @@ const SCENES = [
             y: 40,
             width: 50,
             height: 130,
+          },
+        },
+        {
+          type: 'receiver',
+          id: 'receiver1',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall3SafeDoor1,
+            },
+          },
+          position: {
+            x: 55,
+            y: 50,
+            width: 40,
+            height: 55,
+            zIndex: 3,
+          },
+          logical: {
+            expectedValue: 'collectable1',
+            hideOnResolved: ['receiver1'],
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'collectable2',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall3Skull,
+            },
+          },
+          position: {
+            x: 68,
+            y: 63,
+            width: 15,
+            height: 25,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'decorative',
+          id: 'decorative3',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall3SafeDoor2,
+            },
+          },
+          position: {
+            x: 55,
+            y: 110,
+            width: 40,
+            height: 55,
+            zIndex: 3,
+          },
+          logical: {
+            hideOnResolved: ['decorative3'],
+          },
+        },
+        {
+          type: 'blank',
+          id: 'blank1',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall3SafeDoor1Opened,
+            },
+          },
+          position: {
+            x: 55,
+            y: 50,
+            width: 40,
+            height: 55,
+            zIndex: 1,
+          },
+        },
+        {
+          type: 'blank',
+          id: 'blank1',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall3SafeDoor2Opened,
+            },
+          },
+          position: {
+            x: 55,
+            y: 110,
+            width: 40,
+            height: 55,
+            zIndex: 1,
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'collectable4',
+          element: {
+            type: 'image',
+            image: {
+              src: ImagePart1,
+            },
+          },
+          position: {
+            x: 60,
+            y: 135,
+            width: 22,
+            height: 18,
+            zIndex: 1,
           },
         },
         {
@@ -642,7 +776,7 @@ const SCENES = [
           },
         },
         {
-          type: '',
+          type: 'blank',
           element: {
             type: 'image',
             image: {
@@ -654,7 +788,23 @@ const SCENES = [
             y: 80,
             width: 150,
             height: 100,
-            zIndex: 2,
+            zIndex: 1,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontFoots,
+            },
+          },
+          position: {
+            x: 80,
+            y: 128,
+            width: 149,
+            height: 60,
+            zIndex: 3,
           },
         },
         {
@@ -718,7 +868,23 @@ const SCENES = [
             y: 80,
             width: 150,
             height: 100,
-            zIndex: 2,
+            zIndex: 1,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontFoots,
+            },
+          },
+          position: {
+            x: 80,
+            y: 128,
+            width: 149,
+            height: 60,
+            zIndex: 3,
           },
         },
         {
@@ -770,7 +936,24 @@ const SCENES = [
           },
         },
         {
-          type: 'decorative',
+          type: 'collectable',
+          id: 'collectable3',
+          element: {
+            type: 'image',
+            image: {
+              src: ImagePart2,
+            },
+          },
+          position: {
+            x: 200,
+            y: 110,
+            width: 15,
+            height: 15,
+            zIndex: 4,
+          },
+        },
+        {
+          type: 'blank',
           id: 'decorative1',
           element: {
             type: 'image',
@@ -783,22 +966,38 @@ const SCENES = [
             y: 80,
             width: 150,
             height: 100,
-            zIndex: 2,
+            zIndex: 1,
           },
         },
-        // {
-        //   type: 'nav',
-        //   route: 'Wall1',
-        //   element: {
-        //     type: 'trigger',
-        //   },
-        //   position: {
-        //     x: 0,
-        //     y: 185,
-        //     height: 15,
-        //     width: 300,
-        //   },
-        // },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontFoots,
+            },
+          },
+          position: {
+            x: 80,
+            y: 128,
+            width: 149,
+            height: 60,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Wall1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 185,
+            height: 15,
+            width: 300,
+          },
+        },
         {
           type: 'decorative',
           id: 'decorative2',
@@ -809,10 +1008,11 @@ const SCENES = [
             },
           },
           position: {
-            x: 100,
-            y: 175,
+            x: 90,
+            y: 160,
             width: 20,
             height: 20,
+            zIndex: 2,
           },
           logical: {
             hideOnResolved: ['decorative2'],
@@ -828,10 +1028,10 @@ const SCENES = [
             },
           },
           position: {
-            x: 110,
-            y: 185,
-            width: 10,
-            height: 10,
+            x: 90,
+            y: 160,
+            width: 20,
+            height: 20,
           },
           logical: {
             showOnResolved: ['decorative2'],
