@@ -7,6 +7,7 @@ import {
   Dimensions,
   View,
   StatusBar,
+  Platform,
 } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -14,6 +15,7 @@ import { Audio } from 'expo-av';
 import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
 import { isIphoneX } from 'react-native-iphone-x-helper';
+import { AdMobRewarded } from 'expo-ads-admob';
 
 import { SCENES, INITIAL_SCREEN } from '../configs/scenes-combiner';
 import { pointX, pointY } from './StyleGenerator';
@@ -21,6 +23,7 @@ import { ObjectGrid } from './GridGenerator';
 import { Inventory } from '../components/Inventory';
 import { Dialog } from '../components/Dialog';
 import { Paper } from '../components/Paper';
+import { Hint } from '../components/Hint';
 import { MainMenuModal } from '../components/MainMenuModal';
 import { PlatformSpecificMeasurement } from './PlatformSpecificUtils';
 import { setStateAction, findHelperFunction } from './ReducersGenerator';
@@ -42,7 +45,7 @@ width = Math.round((height * 16) / 9);
 
 function screenGenerator(scene, index) {
   class ScreenGenerator extends React.PureComponent {
-    componentDidMount() {
+    async componentDidMount() {
       const { setState } = this.props;
       const sceneCopy = _.cloneDeep(scene);
       internationalizeScene(`SCENES_${index}`, sceneCopy);
@@ -201,21 +204,36 @@ function screenGenerator(scene, index) {
       this.openMainMenu();
     };
 
-    onRoutePress = route => {
+    saveProgress = async (progress) => {
+      const { setState } = this.props;
+      setState({ progress });
+      await AsyncStorage.setItem(
+        'progress',
+        JSON.stringify(progress),
+      );
+    }
+
+    onRoutePress = (route, progress) => {
       const { navigation } = this.props;
+      if (progress) {
+        this.saveProgress(progress);
+      }
       navigation.navigate(route);
     };
 
-    collect = async item => {
+    collect = async (item, progress) => {
       const { collectedItems, setState } = this.props;
       await AsyncStorage.setItem(
         'inventory',
         JSON.stringify([...collectedItems, item]),
       );
+      if (progress) {
+        this.saveProgress(progress);
+      }
       setState({ collectedItems: [...collectedItems, item] });
     };
 
-    receive = async expectedValue => {
+    receive = async (expectedValue, progress) => {
       const {
         resolved,
         currentScene: {
@@ -239,6 +257,9 @@ function screenGenerator(scene, index) {
           setState({
             resolved: [...resolved, receiverResolved.id],
           });
+          if (progress) {
+            this.saveProgress(progress);
+          }
           await AsyncStorage.setItem(
             'resolved',
             JSON.stringify([...resolved, receiverResolved.id]),
@@ -271,7 +292,7 @@ function screenGenerator(scene, index) {
       }
     };
 
-    handleSequence = async (group, id) => {
+    handleSequence = async (group, id, progress) => {
       const {
         currentScene: {
           scene: {
@@ -310,6 +331,9 @@ function screenGenerator(scene, index) {
           'resolved',
           JSON.stringify([...resolved, group]),
         );
+        if (progress) {
+          this.saveProgress(progress);
+        }
         return setState({
           resolved: [...resolved, group],
         });
@@ -323,7 +347,7 @@ function screenGenerator(scene, index) {
       });
     };
 
-    handleSlot = async (group, id) => {
+    handleSlot = async (group, id, progress) => {
       const {
         currentScene: {
           scene: oldScene,
@@ -399,6 +423,9 @@ function screenGenerator(scene, index) {
           'resolved',
           JSON.stringify([...resolved, group]),
         );
+        if (progress) {
+          this.saveProgress(progress);
+        }
         return setState({
           resolved: [...resolved, group],
         });
@@ -412,13 +439,16 @@ function screenGenerator(scene, index) {
       });
     };
 
-    handleDecorative = async id => {
+    handleDecorative = async (id, progress) => {
       const { setState, resolved } = this.props;
       if (id) {
         await AsyncStorage.setItem(
           'resolved',
           JSON.stringify([...resolved, id]),
         );
+        if (progress) {
+          this.saveProgress(progress);
+        }
         return setState({ resolved: [...resolved, id] });
       }
     };
@@ -433,15 +463,18 @@ function screenGenerator(scene, index) {
       setState({ inventoryOpen: !inventoryOpen });
     };
 
-    openPaper = (paperModalContent = null) => {
+    openPaper = (paperModalContent = null, progress) => {
       const { setState, paperModalVisible } = this.props;
+      if (progress) {
+        this.saveProgress(progress);
+      }
       setState({
         paperModalVisible: !paperModalVisible,
         paperModalContent,
       });
     };
 
-    onDragRelease = async (evt, g, id, group) => {
+    onDragRelease = async (evt, g, id, group, progress) => {
       const {
         currentScene: {
           scene: { objects },
@@ -486,6 +519,9 @@ function screenGenerator(scene, index) {
           resolvedCopy.findIndex(item => item.id === id),
           1,
         );
+        if (progress) {
+          this.saveProgress(progress);
+        }
         setState({ resolved: resolvedCopy });
         await AsyncStorage.setItem('resolved', JSON.stringify(resolvedCopy));
       }
@@ -502,26 +538,60 @@ function screenGenerator(scene, index) {
     };
 
     showDialogAnswer = item => {
-      const { setState } = this.props;
+      const { setState, dialogShouldBeDropped } = this.props;
+
+      if (dialogShouldBeDropped) {
+        return setState({ dialogModalVisible: false, dialogModalContent: null, dialogShouldBeDropped: false, dialogAnswer: '' });
+      }
+
       setState({
         dialogModalContent: { ...item, questionsShouldBeShown: true },
       });
     };
 
-    setDialog = async item => {
+    setDialog = async (item) => {
       const { resolved, originalDialogContent, setState } = this.props;
       if (item.resolve) {
         setState({ resolved: [...resolved, item.resolve] });
+        if (item.setProgressOnResolved) {
+          this.saveProgress(item.setProgressOnResolved);
+        }
         await AsyncStorage.setItem(
           'resolved',
           JSON.stringify([...resolved, item.resolve]),
         );
       }
+
       setState({
         dialogModalContent: item.dialog ? item : originalDialogContent,
+        dialogShouldBeDropped: !!item.drop,
         dialogAnswer: item.character,
       });
     };
+
+    showHint = async () => {
+      if (Platform.OS === 'ios') {
+        AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/3552369374');
+      } else {
+        AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/5683229761');
+      }
+      AdMobRewarded.addEventListener('rewardedVideoDidRewardUser', () => {
+        setTimeout(() => {
+          this.openMainMenu();
+          this.showHintModal();
+          AdMobRewarded.removeAllListeners();
+        }, 100);
+      });
+      await AdMobRewarded.requestAdAsync();
+      await AdMobRewarded.showAdAsync();
+    }
+
+    showHintModal = () => {
+      const { hintModalVisible, setState } = this.props;
+      setState({
+        hintModalVisible: !hintModalVisible,
+      });
+    }
 
     render() {
       const {
@@ -534,7 +604,9 @@ function screenGenerator(scene, index) {
         paperModalContent,
         dialogModalContent,
         dialogAnswer,
+        hintModalVisible,
         resolved,
+        progress,
         currentScene: {
           scene: { objects, bg },
         },
@@ -574,6 +646,7 @@ function screenGenerator(scene, index) {
               mainMenuVisible={mainMenuVisible}
               openMainMenu={this.openMainMenu}
               reset={this.reset}
+              showHint={this.showHint}
             />
             {paperModalContent && (
               <Paper
@@ -591,6 +664,13 @@ function screenGenerator(scene, index) {
                 setDialog={this.setDialog}
                 showDialog={this.showDialog}
                 showDialogAnswer={this.showDialogAnswer}
+              />
+            )}
+            {hintModalVisible && (
+              <Hint
+                hintModalVisible={hintModalVisible}
+                progress={progress}
+                showHintModal={this.showHintModal}
               />
             )}
           </SceneBackground>
@@ -616,7 +696,10 @@ function screenGenerator(scene, index) {
     dialogModalContent: DialogPropType.isRequired,
     originalDialogContent: DialogPropType.isRequired,
     dialogAnswer: PropTypes.string.isRequired,
+    dialogShouldBeDropped: PropTypes.bool.isRequired,
+    hintModalVisible: PropTypes.bool.isRequired,
     tmp: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+    progress: PropTypes.string.isRequired,
   };
 
   const mapStateToProps = ({ app, [scene.name]: currentScene }) => ({
@@ -631,8 +714,11 @@ function screenGenerator(scene, index) {
     paperModalContent: app.paperModalContent,
     dialogModalContent: app.dialogModalContent,
     originalDialogContent: app.originalDialogContent,
+    dialogShouldBeDropped: app.dialogShouldBeDropped,
+    hintModalVisible: app.hintModalVisible,
     dialogAnswer: app.dialogAnswer,
     tmp: app.tmp,
+    progress: app.progress,
   });
 
   const mapDispatchToProps = {
