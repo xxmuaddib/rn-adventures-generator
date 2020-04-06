@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "986929944173",
+    "firebase_url": "https://rise-of-coronavirus.firebaseio.com",
+    "project_id": "rise-of-coronavirus",
+    "storage_bucket": "rise-of-coronavirus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986929944173:android:6a8461b4b1b49c3da01164",
+        "android_client_info": {
+          "package_name": "com.skylab.riseofcoronavirus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986929944173-dv4dm41n5d36bf88adc1sml1dh2a1lsb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUDHmkMupkpPk_bQQvCoiu-35UJixLgEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986929944173-dv4dm41n5d36bf88adc1sml1dh2a1lsb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

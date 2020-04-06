@@ -4,9 +4,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Modal from 'react-native-modal';
 
-export const MainMenuModal = ({ mainMenuVisible, openMainMenu, reset }) => (
+export const MainMenuModal = ({ mainMenuVisible, openMainMenu, reset, showHint }) => (
   <StyledModal isVisible={mainMenuVisible} onBackdropPress={openMainMenu}>
     <MainMenuContainer>
+      <TouchableOpacity onPress={showHint}>
+        <Text>Show hint</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={reset}>
         <Text>Reset the game</Text>
       </TouchableOpacity>
@@ -33,12 +36,14 @@ const CloseButton = styled(TouchableOpacity)`
 
 MainMenuModal.propTypes = {
   mainMenuVisible: PropTypes.bool,
+  showHint: PropTypes.func,
   openMainMenu: PropTypes.func,
   reset: PropTypes.func,
 };
 
 MainMenuModal.defaultProps = {
   mainMenuVisible: false,
+  showHint: () => undefined,
   openMainMenu: () => undefined,
   reset: () => undefined,
 };

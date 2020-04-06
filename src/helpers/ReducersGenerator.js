@@ -14,7 +14,9 @@ const appInitialState = {
   dialogModalContent: null,
   originalDialogContent: null,
   dialogAnswer: '',
+  hintModalVisible: false,
   tmp: {},
+  progress: '',
 };
 
 const appReducer = createReducer(appInitialState, {

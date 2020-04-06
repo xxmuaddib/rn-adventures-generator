@@ -22,10 +22,22 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
     "description": "",
-    "githubUrl": "https://github.com/xxmuaddib/rn-adventures-generator"
+    "githubUrl": "https://github.com/xxmuaddib/rn-adventures-generator",
+    "android": {
+      "package": "com.skylab.riseofcoronavirus",
+      "versionCode": 20040119,
+      "googleServicesFile": "./google-services.json",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-2994481870952435~9586267010"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.skylab.riseofcoronavirus",
+      "supportsTablet": true,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-2994481870952435~8576986419"
+      }
+    }
   }
 }

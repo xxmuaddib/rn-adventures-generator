@@ -75,6 +75,16 @@ const SCENES = [
     route: 'Main',
     bg: EmptyRoomWithClosedDoor,
     bgSound: backgroundSound,
+    hints: [
+      {
+        text: 'There is a virus university somewhere on the cow.',
+        showOnProgress: '',
+      },
+      {
+        text: 'There should a real molecula on the roof!',
+        showOnProgress: 'moleculaShouldBeResolved',
+      },
+    ],
     objects: {
       itemsMap: [
         {
@@ -1018,6 +1028,7 @@ const SCENES = [
           },
           logical: {
             hideOnResolved: ['dialog1_1'],
+            setProgressOnResolved: 'moleculaShouldBeResolved',
             dialogProperties: {
               character: {
                 translations: {

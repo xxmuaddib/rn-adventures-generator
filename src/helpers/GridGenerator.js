@@ -45,9 +45,9 @@ const ObjectGrid = ({
   };
   const animationRef = useRef(null);
   const itemsMapCopy = [...objects.itemsMap];
-  itemsMapCopy.sort(function(a, b) {
-    return a.position.zIndex - b.position.zIndex;
-  });
+  itemsMapCopy.sort((a, b) =>
+    a.position.zIndex - b.position.zIndex,
+  );
   return (
     <ObjectGridContainer>
       {itemsMapCopy.map(
@@ -99,18 +99,19 @@ const ObjectGrid = ({
                         }
                         switch (type) {
                           case ITEMS.SEQUENCE:
-                            return handleSequence(group, id);
+                            return handleSequence(group, id, logical.setProgressOnResolved);
                           case ITEMS.RECEIVER:
-                            return receive(logical.expectedValue);
+                            return receive(logical.expectedValue, logical.setProgressOnResolved);
                           case ITEMS.SLOT:
-                            return handleSlot(group, id);
+                            return handleSlot(group, id, logical.setProgressOnResolved);
                           case ITEMS.PAPER:
-                            return showModal(logical);
+                            return showModal(logical, logical.setProgressOnResolved);
                           case ITEMS.DIALOG:
-                            return showDialog(logical.dialogProperties);
+                            return showDialog(logical.dialogProperties, logical.setProgressOnResolved);
                           case ITEMS.COLLECTABLE:
                             return collect(
                               objects.itemsMap.find(item => item.id === id),
+                              logical.setProgressOnResolved,
                             );
                           default:
                             return () => undefined;
@@ -132,7 +133,7 @@ const ObjectGrid = ({
                       if (sound) {
                         playAudio(sound);
                       }
-                      onRoutePress(route);
+                      onRoutePress(route, logical.setProgressOnResolved);
                     }}
                   >
                     <StyledView>
@@ -152,7 +153,7 @@ const ObjectGrid = ({
                     if (sound) {
                       playAudio(sound);
                     }
-                    onDragRelease(evt, g, id, group);
+                    onDragRelease(evt, g, id, group, logical.setProgressOnResolved);
                   }}
                 >
                   <Element element={element} position={position} />

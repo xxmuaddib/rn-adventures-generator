@@ -13,7 +13,6 @@ i18n.fallbacks = true;
 const everyTranslation = getTranslationsFromScene(SCENES);
 const allLanguages = getLanguages(everyTranslation);
 const translations = generateTranslationsObject(allLanguages, everyTranslation);
-console.error(translations)
 
 i18n.translations = translations;
 
