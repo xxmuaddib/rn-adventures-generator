@@ -16,16 +16,9 @@ import { isIphoneX } from 'react-native-iphone-x-helper';
 
 let { height, width } = Dimensions.get('window');
 const iphoneX = isIphoneX();
-// width 812
-// height = iphoneX && height - 55;
-// width = iphoneX && width - 65;
-console.error(height);
 const gameWidth = Math.round((height * 16) / 9);
-// width = Math.round((height * 16) / 9);//320
-// console.error(gameWidth); 569
 const left =
   width >= gameWidth ? (width - gameWidth) / 2 : (gameWidth - width) / 2;
-// console.error(left); //121.5
 export const Inventory = ({
   collectedItems,
   open,
@@ -38,16 +31,12 @@ export const Inventory = ({
   };
 
   const onDragRelease = async (_, g) => {
-    // console.error(g.moveX / pointX);
-    // console.error(left);
     const moveX = g.moveX / pointX - left;
     const moveY = g.moveY / pointY;
-    // console.error(moveX);
     const itemId = await AsyncStorage.getItem('selectedItem');
     const receiver = objects.itemsMap.find(
       ({ logical }) => logical && logical.expectedValue === itemId,
     );
-    // console.error(moveX);
     if (
       !!Object.keys(receiver).length &&
       moveX > receiver.position.x &&
@@ -55,7 +44,6 @@ export const Inventory = ({
       moveY > receiver.position.y &&
       moveY < receiver.position.y + receiver.position.height
     ) {
-      // console.error('vahlami');
       receive(itemId);
     }
   };
