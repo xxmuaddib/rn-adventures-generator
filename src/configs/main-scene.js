@@ -1,23 +1,7 @@
-import EmptyRoomWithClosedDoor from '../assets/images/EmptyRoomWithClosedDoor.png';
-import Man from '../assets/images/Man.png';
-import ManWithoutKey from '../assets/images/ManWithoutKey.png';
-import backgroundSound from '../assets/sounds/scene1-bg-sound.mp3';
-import DropingKeys from '../assets/sounds/dropingKeys.mp3';
-import LockDoor from '../assets/sounds/doorLock.mp3';
-import Key from '../assets/images/Key.png';
-import ClosedDoor from '../assets/images/ClosedDoor.png';
-import OpenDoor from '../assets/images/OpenDoor.png';
-import watermelon from '../assets/animations/watermelon.json';
-import CharacterAvatar1 from '../assets/images/CharacterAvatar1.png';
-import CharacterAvatar2 from '../assets/images/CharacterAvatar2.png';
-import HeroAvatar1 from '../assets/images/HeroAvatar1.png';
-import HeroAvatar2 from '../assets/images/HeroAvatar2.png';
-import HeroAvatar3 from '../assets/images/HeroAvatar3.png';
-import HeroAvatar4 from '../assets/images/HeroAvatar4.png';
-import HeroAvatar5 from '../assets/images/HeroAvatar5.png';
-import HeroAvatar6 from '../assets/images/HeroAvatar6.png';
-import HeroAvatar7 from '../assets/images/HeroAvatar7.png';
-import HeroAvatar8 from '../assets/images/HeroAvatar8.png';
+import ArrowLeft from '../assets/images/arrow-left.png';
+import ArrowRight from '../assets/images/arrow-right.png';
+import ArrowUp from '../assets/images/arrow-up.png';
+import ArrowDown from '../assets/images/arrow-down.png';
 
 import Farm1Bg from '../assets/images/farm1-bg.png';
 
@@ -42,17 +26,25 @@ import Virus1Front from '../assets/images/virus1-front.png';
 import Virus2Front from '../assets/images/virus2-front.png';
 import Virus3Front from '../assets/images/virus3-front.png';
 import VirusesTableFront from '../assets/images/viruses-table-front.png';
+import VirusesTableFrontPart1 from '../assets/images/viruses-table-front-part1.png';
+import VirusesTableFrontPart2 from '../assets/images/viruses-table-front-part2.png';
 import GumWithKey from '../assets/images/gum-with-key.png';
+import Gum from '../assets/images/gum.png';
 import GreenKey from '../assets/images/green-key.png';
-import VirusesTableFrontFoots from '../assets/images/viruses-table-front-foots.png';
 import ImagePart2 from '../assets/images/image-part2.png';
+
+import ImagePart4 from '../assets/images/image-part4.png';
 
 import Wall2Bg from '../assets/images/wall2-bg.png';
 import Wall2Window1 from '../assets/images/wall2-window1.png';
 import Wall2Window2 from '../assets/images/wall2-window2.png';
+import Wall2Window2Opened from '../assets/images/wall2-window2-opened.png';
+import Wall2Foot from '../assets/images/wall2-foot.png';
 import Wall2Picture1 from '../assets/images/wall2-picture1.png';
 import Wall2Picture2 from '../assets/images/wall2-picture2.png';
 import Wall2Picture3 from '../assets/images/wall2-picture3.png';
+import Wall2Arm from '../assets/images/wall2-arm.png';
+import ImagePart3 from '../assets/images/image-part3.png';
 
 import Wall3Bg from '../assets/images/wall3-bg.png';
 import Wall3Skeleton from '../assets/images/wall3-skeleton.png';
@@ -290,6 +282,51 @@ const SCENES = [
     objects: {
       itemsMap: [
         {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowRight,
+            },
+          },
+          position: {
+            x: 284,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowLeft,
+            },
+          },
+          position: {
+            x: 5,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowUp,
+            },
+          },
+          position: {
+            x: 145,
+            y: 3,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
           type: 'nav',
           route: 'Roof',
           element: {
@@ -332,8 +369,8 @@ const SCENES = [
           },
         },
         {
-          type: 'nav',
-          route: '',
+          type: 'decorative',
+          id: 'decorative4',
           element: {
             type: 'image',
             image: {
@@ -345,11 +382,56 @@ const SCENES = [
             y: 30,
             width: 50,
             height: 100,
+            zIndex: 4,
+          },
+          logical: {
+            hideOnResolved: ['decorative4'],
+          },
+        },
+        {
+          type: 'decorative',
+          id: 'decorative5',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Window2Opened,
+            },
+          },
+          position: {
+            x: 190,
+            y: 25,
+            width: 70,
+            height: 105,
+            zIndex: 2,
+          },
+          logical: {
+            showOnResolved: ['decorative4'],
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'collectable5',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Foot,
+            },
+          },
+          position: {
+            x: 221,
+            y: 35,
+            width: 8,
+            height: 90,
+            zIndex: 3,
+          },
+          logical: {
+            showOnResolved: ['decorative4'],
+            countOfUse: 1,
           },
         },
         {
           type: 'nav',
-          route: '',
+          route: 'blank',
           element: {
             type: 'image',
             image: {
@@ -358,9 +440,10 @@ const SCENES = [
           },
           position: {
             x: 120,
-            y: 40,
+            y: 20,
             width: 30,
             height: 30,
+            zIndex: 1,
           },
         },
         {
@@ -374,9 +457,30 @@ const SCENES = [
           },
           position: {
             x: 170,
-            y: 60,
+            y: 30,
             width: 25,
             height: 30,
+            zIndex: 1,
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'collectable6',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Arm,
+            },
+          },
+          position: {
+            x: 128,
+            y: 35,
+            width: 5,
+            height: 40,
+            zIndex: 3,
+          },
+          logical: {
+            countOfUse: 1,
           },
         },
         {
@@ -389,10 +493,31 @@ const SCENES = [
             },
           },
           position: {
-            x: 135,
-            y: 90,
+            x: 125,
+            y: 70,
             width: 30,
             height: 25,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'collectable7',
+          element: {
+            type: 'image',
+            image: {
+              src: ImagePart3,
+            },
+          },
+          position: {
+            x: 129,
+            y: 76,
+            width: 5,
+            height: 8,
+            zIndex: 1,
+          },
+          logical: {
+            countOfUse: 1,
           },
         },
         {
@@ -417,6 +542,51 @@ const SCENES = [
     bg: Wall3Bg,
     objects: {
       itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowRight,
+            },
+          },
+          position: {
+            x: 284,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowLeft,
+            },
+          },
+          position: {
+            x: 5,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowUp,
+            },
+          },
+          position: {
+            x: 145,
+            y: 3,
+            width: 10,
+            height: 10,
+          },
+        },
         {
           type: 'nav',
           route: 'Roof',
@@ -512,6 +682,9 @@ const SCENES = [
             height: 25,
             zIndex: 2,
           },
+          logical: {
+            countOfUse: 1,
+          },
         },
         {
           type: 'decorative',
@@ -583,6 +756,9 @@ const SCENES = [
             height: 18,
             zIndex: 1,
           },
+          logical: {
+            countOfUse: 1,
+          },
         },
         {
           type: 'nav',
@@ -637,6 +813,51 @@ const SCENES = [
     bg: Wall4Bg,
     objects: {
       itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowRight,
+            },
+          },
+          position: {
+            x: 284,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowLeft,
+            },
+          },
+          position: {
+            x: 5,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowUp,
+            },
+          },
+          position: {
+            x: 145,
+            y: 3,
+            width: 10,
+            height: 10,
+          },
+        },
         {
           type: 'nav',
           route: 'Roof',
@@ -750,6 +971,21 @@ const SCENES = [
     objects: {
       itemsMap: [
         {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
           type: 'dialog',
           id: 'dialog2',
           element: {
@@ -796,14 +1032,46 @@ const SCENES = [
           element: {
             type: 'image',
             image: {
-              src: VirusesTableFrontFoots,
+              src: VirusesTableFrontPart1,
             },
           },
           position: {
             x: 80,
-            y: 128,
-            width: 149,
-            height: 60,
+            y: 135,
+            width: 148,
+            height: 30,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart2,
+            },
+          },
+          position: {
+            x: 80,
+            y: 155,
+            width: 15,
+            height: 30,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart2,
+            },
+          },
+          position: {
+            x: 213,
+            y: 155,
+            width: 15,
+            height: 30,
             zIndex: 3,
           },
         },
@@ -829,6 +1097,21 @@ const SCENES = [
     bg: VirusesBg,
     objects: {
       itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
         {
           type: 'dialog',
           id: 'dialog2',
@@ -856,7 +1139,7 @@ const SCENES = [
           },
         },
         {
-          type: '',
+          type: 'blank',
           element: {
             type: 'image',
             image: {
@@ -872,18 +1155,67 @@ const SCENES = [
           },
         },
         {
+          type: 'collectable',
+          id: 'collectable9',
+          element: {
+            type: 'image',
+            image: {
+              src: ImagePart4,
+            },
+          },
+          position: {
+            x: 95,
+            y: 92,
+            width: 38,
+            height: 38,
+            zIndex: 3,
+          },
+        },
+        {
           type: 'blank',
           element: {
             type: 'image',
             image: {
-              src: VirusesTableFrontFoots,
+              src: VirusesTableFrontPart1,
             },
           },
           position: {
             x: 80,
-            y: 128,
-            width: 149,
-            height: 60,
+            y: 135,
+            width: 148,
+            height: 30,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart2,
+            },
+          },
+          position: {
+            x: 80,
+            y: 155,
+            width: 15,
+            height: 30,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart2,
+            },
+          },
+          position: {
+            x: 213,
+            y: 155,
+            width: 15,
+            height: 30,
             zIndex: 3,
           },
         },
@@ -909,6 +1241,21 @@ const SCENES = [
     bg: VirusesBg,
     objects: {
       itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
         {
           type: 'dialog',
           id: 'dialog2',
@@ -951,10 +1298,12 @@ const SCENES = [
             height: 15,
             zIndex: 4,
           },
+          logical: {
+            countOfUse: 1,
+          },
         },
         {
           type: 'blank',
-          id: 'decorative1',
           element: {
             type: 'image',
             image: {
@@ -974,14 +1323,46 @@ const SCENES = [
           element: {
             type: 'image',
             image: {
-              src: VirusesTableFrontFoots,
+              src: VirusesTableFrontPart1,
             },
           },
           position: {
             x: 80,
-            y: 128,
-            width: 149,
-            height: 60,
+            y: 135,
+            width: 148,
+            height: 30,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart2,
+            },
+          },
+          position: {
+            x: 80,
+            y: 155,
+            width: 15,
+            height: 30,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart2,
+            },
+          },
+          position: {
+            x: 213,
+            y: 155,
+            width: 15,
+            height: 30,
             zIndex: 3,
           },
         },
@@ -1009,7 +1390,7 @@ const SCENES = [
           },
           position: {
             x: 90,
-            y: 160,
+            y: 155,
             width: 20,
             height: 20,
             zIndex: 2,
@@ -1030,12 +1411,32 @@ const SCENES = [
           position: {
             x: 90,
             y: 160,
+            width: 30,
+            height: 20,
+            zIndex: 2,
+          },
+          logical: {
+            showOnResolved: ['decorative2'],
+            countOfUse: 1,
+          },
+        },
+        {
+          type: 'decorative',
+          id: 'decorative6',
+          element: {
+            type: 'image',
+            image: {
+              src: Gum,
+            },
+          },
+          position: {
+            x: 90,
+            y: 180,
             width: 20,
             height: 20,
           },
           logical: {
             showOnResolved: ['decorative2'],
-            countOfUse: 1,
           },
         },
       ],

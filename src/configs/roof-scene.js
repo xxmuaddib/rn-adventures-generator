@@ -1,3 +1,8 @@
+import ArrowLeft from '../assets/images/arrow-left.png';
+import ArrowRight from '../assets/images/arrow-right.png';
+import ArrowUp from '../assets/images/arrow-up.png';
+import ArrowDown from '../assets/images/arrow-down.png';
+
 import Roof from '../assets/images/roof.png';
 import MoleculeWhite from '../assets/images/molecule-white.png';
 import MoleculeOrange from '../assets/images/molecule-orange.png';
@@ -45,6 +50,66 @@ export const ROOF_SCENE = {
   bg: Roof,
   objects: {
     itemsMap: [
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: ArrowRight,
+          },
+        },
+        position: {
+          x: 284,
+          y: 95,
+          width: 10,
+          height: 10,
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: ArrowLeft,
+          },
+        },
+        position: {
+          x: 5,
+          y: 95,
+          width: 10,
+          height: 10,
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: ArrowUp,
+          },
+        },
+        position: {
+          x: 145,
+          y: 2,
+          width: 10,
+          height: 10,
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: ArrowDown,
+          },
+        },
+        position: {
+          x: 145,
+          y: 188,
+          width: 10,
+          height: 10,
+        },
+      },
       {
         type: 'nav',
         route: 'Wall2',
