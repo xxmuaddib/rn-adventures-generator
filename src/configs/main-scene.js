@@ -32,6 +32,7 @@ import GumWithKey from '../assets/images/gum-with-key.png';
 import Gum from '../assets/images/gum.png';
 import GreenKey from '../assets/images/green-key.png';
 import ImagePart2 from '../assets/images/image-part2.png';
+import Virus2Image from '../assets/images/virus2-image.png';
 
 import ImagePart4 from '../assets/images/image-part4.png';
 
@@ -772,8 +773,27 @@ const SCENES = [
           position: {
             x: 130,
             y: 40,
-            width: 35,
-            height: 70,
+            width: 40,
+            height: 60,
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'collectable9',
+          element: {
+            type: 'image',
+            image: {
+              src: ImagePart4,
+            },
+          },
+          position: {
+            x: 162,
+            y: 37,
+            width: 10,
+            height: 10,
+          },
+          logical: {
+            countOfUse: 1,
           },
         },
         {
@@ -786,9 +806,9 @@ const SCENES = [
           },
           position: {
             x: 200,
-            y: 30,
-            width: 30,
-            height: 155,
+            y: 50,
+            width: 35,
+            height: 130,
           },
         },
         {
@@ -1156,11 +1176,11 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'collectable9',
+          id: 'collectable10',
           element: {
             type: 'image',
             image: {
-              src: ImagePart4,
+              src: Virus2Image,
             },
           },
           position: {
