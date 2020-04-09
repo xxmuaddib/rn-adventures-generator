@@ -205,14 +205,11 @@ function screenGenerator(scene, index) {
       this.openMainMenu();
     };
 
-    saveProgress = async (progress) => {
+    saveProgress = async progress => {
       const { setState } = this.props;
       setState({ progress });
-      await AsyncStorage.setItem(
-        'progress',
-        JSON.stringify(progress),
-      );
-    }
+      await AsyncStorage.setItem('progress', JSON.stringify(progress));
+    };
 
     onRoutePress = (route, progress) => {
       const { navigation } = this.props;
@@ -243,7 +240,6 @@ function screenGenerator(scene, index) {
         collectedItems,
         setState,
       } = this.props;
-
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
       if (expectedValue.includes(selectedItemId)) {
         await AsyncStorage.removeItem('selectedItem');
@@ -530,7 +526,12 @@ function screenGenerator(scene, index) {
       const { setState, dialogShouldBeDropped } = this.props;
 
       if (dialogShouldBeDropped) {
-        return setState({ dialogModalVisible: false, dialogModalContent: null, dialogShouldBeDropped: false, dialogAnswer: '' });
+        return setState({
+          dialogModalVisible: false,
+          dialogModalContent: null,
+          dialogShouldBeDropped: false,
+          dialogAnswer: '',
+        });
       }
 
       setState({
@@ -538,7 +539,7 @@ function screenGenerator(scene, index) {
       });
     };
 
-    setDialog = async (item) => {
+    setDialog = async item => {
       const { resolved, originalDialogContent, setState } = this.props;
       if (item.resolve) {
         setState({ resolved: [...resolved, item.resolve] });
@@ -573,14 +574,14 @@ function screenGenerator(scene, index) {
       });
       await AdMobRewarded.requestAdAsync();
       await AdMobRewarded.showAdAsync();
-    }
+    };
 
     showHintModal = () => {
       const { hintModalVisible, setState } = this.props;
       setState({
         hintModalVisible: !hintModalVisible,
       });
-    }
+    };
 
     render() {
       const {
@@ -600,7 +601,6 @@ function screenGenerator(scene, index) {
           scene: { objects, bg },
         },
       } = this.props;
-      // console.error(collectedItems);
       return (
         <Container>
           <StatusBar hidden={true} />

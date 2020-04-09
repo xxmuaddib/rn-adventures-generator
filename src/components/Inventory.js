@@ -5,16 +5,20 @@ import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
 
-import { pointX, pointY } from '../helpers/StyleGenerator';
+import { pointX, pointY, width2 } from '../helpers/StyleGenerator';
 import { Element } from '../helpers/ElementGenerator';
 import {
   ObjectPropTypes,
   ObjectsPropTypes,
 } from '../proptypes/ObjectGridPropTypes';
 import { PlatformSpecificMeasurement } from '../helpers/PlatformSpecificUtils';
+import { isIphoneX } from 'react-native-iphone-x-helper';
 
-const { height } = Dimensions.get('window');
-
+let { height, width } = Dimensions.get('window');
+const iphoneX = isIphoneX();
+const gameWidth = Math.round((height * 16) / 9);
+const left =
+  width >= gameWidth ? (width - gameWidth) / 2 : (gameWidth - width) / 2;
 export const Inventory = ({
   collectedItems,
   open,
@@ -27,13 +31,14 @@ export const Inventory = ({
   };
 
   const onDragRelease = async (_, g) => {
-    const moveX = g.moveX / pointX;
+    const moveX = g.moveX / pointX - left;
     const moveY = g.moveY / pointY;
     const itemId = await AsyncStorage.getItem('selectedItem');
     const receiver = objects.itemsMap.find(
       ({ logical }) => logical && logical.expectedValue.includes(itemId),
     );
     if (
+      !!Object.keys(receiver).length &&
       moveX > receiver.position.x &&
       moveX < receiver.position.x + receiver.position.width &&
       moveY > receiver.position.y &&

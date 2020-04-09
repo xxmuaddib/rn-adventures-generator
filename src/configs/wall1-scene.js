@@ -1,3 +1,7 @@
+import ArrowLeft from '../assets/images/arrow-left.png';
+import ArrowRight from '../assets/images/arrow-right.png';
+import ArrowUp from '../assets/images/arrow-up.png';
+
 import Wall1Bg from '../assets/images/wall1-bg.png';
 import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
 import Wall1Death from '../assets/images/wall1-death.png';
@@ -16,6 +20,64 @@ export const WALL1_SCENE = {
   bg: Wall1Bg,
   objects: {
     itemsMap: [
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: ArrowRight,
+          },
+        },
+        position: {
+          x: 284,
+          y: 95,
+          width: 10,
+          height: 10,
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: ArrowLeft,
+          },
+        },
+        position: {
+          x: 5,
+          y: 95,
+          width: 10,
+          height: 10,
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: ArrowUp,
+          },
+        },
+        position: {
+          x: 145,
+          y: 2,
+          width: 10,
+          height: 10,
+        },
+      },
+      {
+        type: 'nav',
+        route: 'Wall4',
+        element: {
+          type: 'trigger',
+        },
+        position: {
+          x: 0,
+          y: 0,
+          width: 35,
+          height: 200,
+        },
+      },
       {
         type: 'nav',
         route: 'Roof',
@@ -64,7 +126,8 @@ export const WALL1_SCENE = {
           dialogProperties: {
             character: {
               translations: {
-                en: 'Hi class! I am your new teacher. They call me The Plague. Introduce yourselves, insects!',
+                en:
+                  'Hi class! I am your new teacher. They call me The Plague. Introduce yourselves, insects!',
               },
             },
             characterElement: {
@@ -83,12 +146,14 @@ export const WALL1_SCENE = {
               {
                 hero: {
                   translations: {
-                    en: "Well, I don't have a name yet. But I am a fan of you... Can you teach me being as deadly as you are?",
+                    en:
+                      "Well, I don't have a name yet. But I am a fan of you... Can you teach me being as deadly as you are?",
                   },
                 },
                 character: {
                   translations: {
-                    en: 'No, I am too old and I have Parkinson\'s... Unfortunately I remember not much of my previous days. But if you help me, then maybe I will help you...',
+                    en:
+                      "No, I am too old and I have Parkinson's... Unfortunately I remember not much of my previous days. But if you help me, then maybe I will help you...",
                   },
                 },
                 characterElement: {
@@ -104,7 +169,7 @@ export const WALL1_SCENE = {
                   color: 'rgb(0, 0, 0)',
                 },
                 dialog: [
-                    {
+                  {
                     hero: {
                       translations: {
                         en: 'Well, what should I do then?',
@@ -112,7 +177,8 @@ export const WALL1_SCENE = {
                     },
                     character: {
                       translations: {
-                        en: 'I don\'t know... But I just want to remember good ol\' days',
+                        en:
+                          "I don't know... But I just want to remember good ol' days",
                       },
                     },
                     characterElement: {
