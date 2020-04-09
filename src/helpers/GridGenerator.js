@@ -83,15 +83,21 @@ const ObjectGrid = ({
                 );
           return (
             <>
-              <View key={id} style={generateStyle(position)}>
-                {type !== ITEMS.DRAGGABLE &&
-                  type !== ITEMS.NAV &&
-                  isResolved &&
-                  !hideResolved &&
-                  !collectableShouldHide && (
+              {type !== ITEMS.DRAGGABLE &&
+                type !== ITEMS.NAV &&
+                type !== ITEMS.BLANK &&
+                isResolved &&
+                !hideResolved &&
+                !collectableShouldHide && (
+                  <View key={id} style={generateStyle(position)}>
                     <StyledTouchableOpacity
                       activeOpacity={isDeactive ? 1 : 0.9}
-                      disabled={isDeactive}
+                      disabled={
+                        isDeactive ||
+                        !isResolved ||
+                        hideResolved ||
+                        collectableShouldHide
+                      }
                       onPress={() => {
                         if (sound) {
                           playAudio(sound);
@@ -145,27 +151,31 @@ const ObjectGrid = ({
                         animationRef={animationRef}
                       />
                     </StyledTouchableOpacity>
-                  )}
-              </View>
-              {type === ITEMS.NAV && isResolved && !hideResolved && (
-                <View style={generateStyle(position)}>
-                  <StyledTouchableWithoutFeedback
-                    onPress={() => {
-                      if (sound) {
-                        playAudio(sound);
-                      }
-                      onRoutePress(
-                        route,
-                        logical && logical.setProgressOnResolved,
-                      );
-                    }}
-                  >
-                    <StyledView>
-                      <Element element={element} position={position} />
-                    </StyledView>
-                  </StyledTouchableWithoutFeedback>
-                </View>
-              )}
+                  </View>
+                )}
+              {(type === ITEMS.NAV || type === ITEMS.BLANK) &&
+                isResolved &&
+                !hideResolved && (
+                  <View style={generateStyle(position)}>
+                    <StyledTouchableWithoutFeedback
+                      onPress={() => {
+                        if (sound) {
+                          playAudio(sound);
+                        }
+                        if (type === ITEMS.NAV) {
+                          onRoutePress(
+                            route,
+                            logical && logical.setProgressOnResolved,
+                          );
+                        }
+                      }}
+                    >
+                      <StyledView>
+                        <Element element={element} position={position} />
+                      </StyledView>
+                    </StyledTouchableWithoutFeedback>
+                  </View>
+                )}
               {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
                 <Draggable
                   style={generateStyle(position)}
