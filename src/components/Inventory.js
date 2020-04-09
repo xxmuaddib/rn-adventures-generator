@@ -31,7 +31,7 @@ export const Inventory = ({
     const moveY = g.moveY / pointY;
     const itemId = await AsyncStorage.getItem('selectedItem');
     const receiver = objects.itemsMap.find(
-      ({ logical }) => logical.expectedValue === itemId,
+      ({ logical }) => logical && logical.expectedValue.includes(itemId),
     );
     if (
       moveX > receiver.position.x &&
@@ -52,16 +52,18 @@ export const Inventory = ({
       <InventoryOpen>
         <View>
           {collectedItems.map(
-            item =>
+            (item, index) =>
               !!item.logical.countOfUse && (
                 <Draggable
                   onDragRelease={onDragRelease}
                   shouldReverse
+                  y={index * 60 + 20}
                   onDrag={() => onDrag(item)}
                 >
                   <InventoryItem
                     key={item.id}
                     onPress={() => handleInvetoryItemPress(item.id)}
+                    index={index}
                   >
                     <Element element={item.element} position={item.position} />
                   </InventoryItem>
@@ -96,8 +98,8 @@ Inventory.defaultProps = {
   receive: () => undefined,
 };
 
+
 const InventoryItem = styled(TouchableOpacity)`
-  margin-top: 20px;
   width: 60px;
   height: 60px;
   padding-right: 10px;

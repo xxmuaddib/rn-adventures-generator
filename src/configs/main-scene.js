@@ -1,24 +1,3 @@
-import EmptyRoomWithClosedDoor from '../assets/images/EmptyRoomWithClosedDoor.png';
-import Man from '../assets/images/Man.png';
-import ManWithoutKey from '../assets/images/ManWithoutKey.png';
-import backgroundSound from '../assets/sounds/scene1-bg-sound.mp3';
-import DropingKeys from '../assets/sounds/dropingKeys.mp3';
-import LockDoor from '../assets/sounds/doorLock.mp3';
-import Key from '../assets/images/Key.png';
-import ClosedDoor from '../assets/images/ClosedDoor.png';
-import OpenDoor from '../assets/images/OpenDoor.png';
-import watermelon from '../assets/animations/watermelon.json';
-import CharacterAvatar1 from '../assets/images/CharacterAvatar1.png';
-import CharacterAvatar2 from '../assets/images/CharacterAvatar2.png';
-import HeroAvatar1 from '../assets/images/HeroAvatar1.png';
-import HeroAvatar2 from '../assets/images/HeroAvatar2.png';
-import HeroAvatar3 from '../assets/images/HeroAvatar3.png';
-import HeroAvatar4 from '../assets/images/HeroAvatar4.png';
-import HeroAvatar5 from '../assets/images/HeroAvatar5.png';
-import HeroAvatar6 from '../assets/images/HeroAvatar6.png';
-import HeroAvatar7 from '../assets/images/HeroAvatar7.png';
-import HeroAvatar8 from '../assets/images/HeroAvatar8.png';
-
 import Farm1Bg from '../assets/images/farm1-bg.png';
 
 import Farm2Bg from '../assets/images/farm2-bg.png';
@@ -56,24 +35,6 @@ import Wall3Bg from '../assets/images/wall3-bg.png';
 import Wall3Skeleton from '../assets/images/wall3-skeleton.png';
 import Wall3Mirror from '../assets/images/wall3-mirror.png';
 import Wall3Rack from '../assets/images/wall3-rack.png';
-
-import Wall4Bg from '../assets/images/wall4-bg.png';
-import Wall4Door from '../assets/images/wall4-door.png';
-import Wall4Picture1 from '../assets/images/wall4-picture1.png';
-import Wall4Picture2 from '../assets/images/wall4-picture2.png';
-import Wall4Time from '../assets/images/wall4-time.png';
-
-import Wall1Bg from '../assets/images/wall1-bg.png';
-import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
-import Wall1Death from '../assets/images/wall1-death.png';
-import Wall1Floor from '../assets/images/wall1-floor.png';
-import Wall1Table1 from '../assets/images/wall1-table1.png';
-import Wall1Table2 from '../assets/images/wall1-table2.png';
-import Wall1Chair from '../assets/images/wall1-chair.png';
-import Wall1Virus1 from '../assets/images/wall1-virus1.png';
-import Wall1Virus2 from '../assets/images/wall1-virus2.png';
-import Wall1Virus3 from '../assets/images/wall1-virus3.png';
-import DeathAvatar1 from '../assets/images/death-avatar1.png';
 
 const SCENES = [
   {
@@ -484,118 +445,6 @@ const SCENES = [
         {
           type: 'nav',
           route: 'Wall4',
-          element: {
-            type: 'trigger',
-          },
-          position: {
-            x: 265,
-            y: 0,
-            width: 35,
-            height: 200,
-          },
-        },
-      ],
-    },
-  },
-  {
-    name: 'Wall4',
-    route: 'Wall4',
-    bg: Wall4Bg,
-    objects: {
-      itemsMap: [
-        {
-          type: 'nav',
-          route: 'Roof',
-          element: {
-            type: 'trigger',
-          },
-          position: {
-            x: 35,
-            y: 0,
-            width: 232,
-            height: 20,
-          },
-        },
-        {
-          type: 'nav',
-          route: 'Wall3',
-          element: {
-            type: 'trigger',
-          },
-          position: {
-            x: 0,
-            y: 0,
-            width: 35,
-            height: 200,
-          },
-        },
-        {
-          type: 'nav',
-          route: '',
-          element: {
-            type: 'image',
-            image: {
-              src: Wall4Door,
-            },
-          },
-          position: {
-            x: 50,
-            y: 39,
-            width: 40,
-            height: 115,
-          },
-        },
-        {
-          type: 'nav',
-          route: '',
-          element: {
-            type: 'image',
-            image: {
-              src: Wall4Picture1,
-            },
-          },
-          position: {
-            x: 120,
-            y: 55,
-            width: 35,
-            height: 60,
-          },
-        },
-        {
-          type: 'nav',
-          route: '',
-          element: {
-            type: 'image',
-            image: {
-              src: Wall4Picture2,
-            },
-          },
-          position: {
-            x: 200,
-            y: 55,
-            width: 35,
-            height: 60,
-          },
-        },
-        {
-          type: 'nav',
-          route: '',
-          element: {
-            type: 'image',
-            image: {
-              src: Wall4Time,
-            },
-          },
-          position: {
-            x: 160,
-            y: 15,
-            width: 30,
-            height: 40,
-          },
-        },
-        {
-          type: 'nav',
-          route: 'Wall1',
           element: {
             type: 'trigger',
           },

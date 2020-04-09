@@ -28,6 +28,7 @@ import { MainMenuModal } from '../components/MainMenuModal';
 import { PlatformSpecificMeasurement } from './PlatformSpecificUtils';
 import { setStateAction, findHelperFunction } from './ReducersGenerator';
 import { SceneReducerPropTypes } from '../proptypes/ScenePropTypes';
+import { ITEMS } from '../constants/items';
 import {
   ObjectPropTypes,
   PaperPropType,
@@ -242,11 +243,9 @@ function screenGenerator(scene, index) {
         collectedItems,
         setState,
       } = this.props;
-      const receiveElement = objects.itemsMap.find(
-        el => el.logical.expectedValue === expectedValue,
-      );
+
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
-      if (expectedValue === selectedItemId) {
+      if (expectedValue.includes(selectedItemId)) {
         await AsyncStorage.removeItem('selectedItem');
 
         const receiverResolved = objects.itemsMap.find(
@@ -264,18 +263,18 @@ function screenGenerator(scene, index) {
             JSON.stringify([...resolved, receiverResolved.id]),
           );
 
-          let collectedItemsCopy = [...collectedItems];
+          const collectedItemsCopy = [...collectedItems];
 
-          const index = collectedItemsCopy.findIndex(
+          const i = collectedItemsCopy.findIndex(
             item => item.id === selectedItemId,
           );
-          if (index !== -1 && collectedItemsCopy[index].logical) {
-            if (collectedItemsCopy[index].logical.countOfUse === 1) {
-              collectedItemsCopy.splice(index, 1);
+          if (i !== -1 && collectedItemsCopy[i].logical) {
+            if (collectedItemsCopy[i].logical.countOfUse === 1) {
+              collectedItemsCopy.splice(i, 1);
             } else {
-              collectedItemsCopy[index] = {
+              collectedItemsCopy[i] = {
                 logical: {
-                  countOfUse: collectedItemsCopy[index].logical.countOfUse - 1,
+                  countOfUse: collectedItemsCopy[i].logical.countOfUse - 1,
                 },
               };
             }
@@ -293,20 +292,13 @@ function screenGenerator(scene, index) {
 
     handleSequence = async (group, id, progress) => {
       const {
-        currentScene: {
-          scene: {
-            objects: { itemsMap },
-          },
-        },
         tmp,
         resolved,
         setState,
       } = this.props;
-      const findFunction = scene => {
-        return scene.objects.itemsMap.find(
-          item => item.group === group && item.main,
-        );
-      };
+      const findFunction = s => s.objects.itemsMap.find(
+        item => item.group === group && item.main,
+      );
       const mainSequence = findHelperFunction(findFunction);
       const scenario =
         mainSequence && mainSequence.logical && mainSequence.logical.scenario;
@@ -361,11 +353,9 @@ function screenGenerator(scene, index) {
         setState,
       } = this.props;
 
-      const findFunction = scene => {
-        return scene.objects.itemsMap.find(
-          item => item.group === group && item.main,
-        );
-      };
+      const findFunction = s => s.objects.itemsMap.find(
+        item => item.group === group && item.main,
+      );
       const slotSequence = findHelperFunction(findFunction);
       const slotScenario =
         slotSequence && slotSequence.logical && slotSequence.logical.scenario;
@@ -481,15 +471,15 @@ function screenGenerator(scene, index) {
         resolved,
         setState,
       } = this.props;
-      if (resolved.includes(group)) {
-        const groupResolvedItems = objects.itemsMap.filter(
-          item => item.group === group,
-        );
-      }
+
       const moveX = g.moveX / pointX;
       const moveY = g.moveY / pointY;
-      const receiver = objects.itemsMap.find(
-        item => item.logical && item.logical.expectedValue === id,
+      const receiver = objects.itemsMap.find(item =>
+        item.type === ITEMS.RECEIVER &&
+        item.logical &&
+        item.logical.expectedValue &&
+        !!item.logical.expectedValue.length &&
+        item.logical.expectedValue.includes(id),
       );
       if (
         moveX > receiver.position.x &&
