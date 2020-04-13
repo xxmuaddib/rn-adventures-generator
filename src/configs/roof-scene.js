@@ -35,14 +35,6 @@ import Molecule6_1 from '../assets/images/molecule6-1.png';
 import Molecule6_2 from '../assets/images/molecule6-2.png';
 import Molecule6_3 from '../assets/images/molecule6-3.png';
 import Molecule6_4 from '../assets/images/molecule6-4.png';
-import Molecule7_1 from '../assets/images/molecule7-1.png';
-import Molecule7_2 from '../assets/images/molecule7-2.png';
-import Molecule7_3 from '../assets/images/molecule7-3.png';
-import Molecule7_4 from '../assets/images/molecule7-4.png';
-import Molecule8_1 from '../assets/images/molecule8-1.png';
-import Molecule8_2 from '../assets/images/molecule8-2.png';
-import Molecule8_3 from '../assets/images/molecule8-3.png';
-import Molecule8_4 from '../assets/images/molecule8-4.png';
 
 export const ROOF_SCENE = {
   name: 'Roof',
@@ -154,7 +146,7 @@ export const ROOF_SCENE = {
         },
         position: {
           x: 74,
-          y: 46,
+          y: 45,
           width: 39,
           height: 39,
           zIndex: 2,
@@ -164,11 +156,9 @@ export const ROOF_SCENE = {
             slot1_1: 4,
             slot1_2: 3,
             slot1_3: 4,
-            slot1_4: 3,
+            slot1_4: 2,
             slot1_5: 2,
-            slot1_6: 1,
-            slot1_7: 2,
-            slot1_8: 3,
+            slot1_6: 3,
           },
           selected: 1,
           hideOnResolved: ['slot1'],
@@ -343,10 +333,10 @@ export const ROOF_SCENE = {
           },
         },
         position: {
-          x: 143,
-          y: 68,
-          width: 37,
-          height: 38,
+          x: 91,
+          y: 77,
+          width: 39,
+          height: 41,
           zIndex: 2,
         },
         logical: {
@@ -367,7 +357,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: Molecule4_2,
+                  src: Molecule4_4,
                 },
               },
             },
@@ -376,7 +366,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: Molecule4_4,
+                  src: Molecule4_3,
                 },
               },
             },
@@ -385,7 +375,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: Molecule4_3,
+                  src: Molecule4_2,
                 },
               },
             },
@@ -403,10 +393,10 @@ export const ROOF_SCENE = {
           },
         },
         position: {
-          x: 91,
-          y: 77,
+          x: 74,
+          y: 112,
           width: 39,
-          height: 41,
+          height: 42,
           zIndex: 2,
         },
         logical: {
@@ -459,127 +449,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: Molecule6_4,
-          },
-        },
-        position: {
-          x: 160,
-          y: 104,
-          width: 38,
-          height: 40,
-          zIndex: 2,
-        },
-        logical: {
-          hideOnResolved: ['slot1'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: Molecule6_4,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: Molecule6_2,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: Molecule6_3,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: Molecule6_1,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        group: 'slot1',
-        id: 'slot1_7',
-        element: {
-          type: 'image',
-          image: {
-            src: Molecule7_1,
-          },
-        },
-        position: {
-          x: 74,
-          y: 112,
-          width: 39,
-          height: 42,
-          zIndex: 2,
-        },
-        logical: {
-          hideOnResolved: ['slot1'],
-          selected: 1,
-          options: [
-            {
-              id: 1,
-              element: {
-                type: 'image',
-                image: {
-                  src: Molecule7_1,
-                },
-              },
-            },
-            {
-              id: 2,
-              element: {
-                type: 'image',
-                image: {
-                  src: Molecule7_4,
-                },
-              },
-            },
-            {
-              id: 3,
-              element: {
-                type: 'image',
-                image: {
-                  src: Molecule7_3,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: Molecule7_2,
-                },
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: 'slot',
-        group: 'slot1',
-        id: 'slot1_8',
-        element: {
-          type: 'image',
-          image: {
-            src: Molecule8_3,
+            src: Molecule6_3,
           },
         },
         position: {
@@ -598,7 +468,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: Molecule8_3,
+                  src: Molecule6_3,
                 },
               },
             },
@@ -607,7 +477,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: Molecule8_2,
+                  src: Molecule6_2,
                 },
               },
             },
@@ -616,7 +486,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: Molecule8_1,
+                  src: Molecule6_1,
                 },
               },
             },
@@ -625,7 +495,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: Molecule8_4,
+                  src: Molecule6_4,
                 },
               },
             },
