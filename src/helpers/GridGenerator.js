@@ -207,6 +207,7 @@ ObjectGrid.propTypes = {
   handleSequence: PropTypes.func,
   showModal: PropTypes.func,
   onDragRelease: PropTypes.func,
+  handleDecorative: PropTypes.func,
   showDialog: PropTypes.func,
   resolved: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
@@ -219,6 +220,7 @@ ObjectGrid.defaultProps = {
   handleSequence: () => undefined,
   showModal: () => undefined,
   onDragRelease: () => undefined,
+  handleDecorative: () => undefined,
   showDialog: () => undefined,
 };
 

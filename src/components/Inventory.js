@@ -1,24 +1,24 @@
 import React from 'react';
-import { View, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
+import { ScrollView, View, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
 import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
 
-import { pointX, pointY, width2 } from '../helpers/StyleGenerator';
+import { pointX, pointY } from '../helpers/StyleGenerator';
 import { Element } from '../helpers/ElementGenerator';
 import {
   ObjectPropTypes,
   ObjectsPropTypes,
 } from '../proptypes/ObjectGridPropTypes';
 import { PlatformSpecificMeasurement } from '../helpers/PlatformSpecificUtils';
-import { isIphoneX } from 'react-native-iphone-x-helper';
 
-let { height, width } = Dimensions.get('window');
-const iphoneX = isIphoneX();
+const { width, height } = Dimensions.get('window');
+
 const gameWidth = Math.round((height * 16) / 9);
 const left =
-  width >= gameWidth ? (width - gameWidth) / 2 : (gameWidth - width) / 2;
+  width >= gameWidth ? (width - gameWidth) / 2 : 0;
+
 export const Inventory = ({
   collectedItems,
   open,
@@ -26,12 +26,8 @@ export const Inventory = ({
   receive,
   objects,
 }) => {
-  const handleInvetoryItemPress = async itemId => {
-    await AsyncStorage.setItem('selectedItem', itemId);
-  };
-
   const onDragRelease = async (_, g) => {
-    const moveX = g.moveX / pointX - left;
+    const moveX = (g.moveX - left) / pointX;
     const moveY = g.moveY / pointY;
     const itemId = await AsyncStorage.getItem('selectedItem');
     const receiver = objects.itemsMap.find(
@@ -48,42 +44,41 @@ export const Inventory = ({
     }
   };
 
-  const onDrag = item => {
-    AsyncStorage.setItem('selectedItem', item.id);
+  const onDrag = itemId => {
+    AsyncStorage.setItem('selectedItem', itemId);
   };
 
   if (open) {
     return (
-      <InventoryOpen>
-        <View>
-          {collectedItems.map(
-            (item, index) =>
-              !!item.logical.countOfUse && (
-                <Draggable
-                  onDragRelease={onDragRelease}
-                  shouldReverse
-                  y={index * 60 + 20}
-                  onDrag={() => onDrag(item)}
+      <InventoryContainer>
+        <InventoryOpen persistentScrollbar height={collectedItems.length * 80} />
+        {collectedItems.filter(el => !!el.logical.countOfUse).map(
+          (item, index) =>
+            !!item.logical.countOfUse && (
+              <Draggable
+                onDragRelease={onDragRelease}
+                shouldReverse
+                y={index * 60 + 20}
+                z={140}
+                onDrag={() => onDrag(item.id)}
+              >
+                <InventoryItem
+                  key={item.id}
+                  index={index}
                 >
-                  <InventoryItem
-                    key={item.id}
-                    onPress={() => handleInvetoryItemPress(item.id)}
-                    index={index}
-                  >
-                    <Element element={item.element} position={item.position} />
-                  </InventoryItem>
-                </Draggable>
-              ),
-          )}
-        </View>
-        <InventoryCloseIcon onPress={() => onPress()}>
+                  <Element element={item.element} position={item.position} />
+                </InventoryItem>
+              </Draggable>
+            ),
+        )}
+        <InventoryCloseIcon onPress={onPress}>
           <FontAwesome name="chevron-right" size={30} color="#E4CDBA" />
         </InventoryCloseIcon>
-      </InventoryOpen>
+      </InventoryContainer>
     );
   }
   return (
-    <InventoryClosed onPress={() => onPress()}>
+    <InventoryClosed onPress={onPress}>
       <FontAwesome name="briefcase" size={20} color="#664422" />
     </InventoryClosed>
   );
@@ -104,26 +99,34 @@ Inventory.defaultProps = {
 };
 
 
-const InventoryItem = styled(TouchableOpacity)`
+const InventoryItem = styled(View)`
   width: 60px;
   height: 60px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 5px;
   justify-content: center;
   align-items: center;
 `;
 
-const InventoryOpen = styled(View)`
+const InventoryContainer = styled(View)`
   position: absolute;
-  z-index: 999;
-  elevation: 1;
-  background-color: #fff1e6;
+  height: ${height}px;
+  width: 80px;
   top: 0;
   right: 0;
-  width: 60px;
+  
+`;
+
+const InventoryOpen = styled(ScrollView).attrs(p => ({
+  contentContainerStyle: ({
+    height: p.height > height ? p.height : height,
+    flexGrow: 1,
+  }),
+}))`
+  width: 80px;
   border-left-color: #e4cdba;
   border-left-width: 5px;
-  height: ${height}px;
-  justify-content: space-between;
+  background-color: #fff1e6;
 `;
 
 const InventoryCloseIcon = styled(TouchableOpacity)`

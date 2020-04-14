@@ -85,11 +85,13 @@ export const WALL4_SCENE = {
         },
         logical: {
           expectedValue: ['picture-part1', 'picture-part2', 'picture-part3', 'picture-part4'],
+          hideOnResolved: ['plaguePicture'],
         },
       },
       {
-        type: 'collectable',
-        id: 'picture-part1',
+        type: 'nav',
+        route: 'PlaguePictureScene',
+        id: 'plaguePictureNav',
         element: {
           type: 'image',
           image: {
@@ -97,89 +99,13 @@ export const WALL4_SCENE = {
           },
         },
         position: {
-          x: 20,
-          y: 25,
-          width: 10,
-          height: 10,
+          x: 200,
+          y: 55,
+          width: 35,
+          height: 60,
         },
         logical: {
-          countOfUse: 1,
-        },
-      },
-      {
-        type: 'collectable',
-        id: 'picture-part2',
-        element: {
-          type: 'image',
-          image: {
-            src: BlankPicture,
-          },
-        },
-        position: {
-          x: 30,
-          y: 25,
-          width: 10,
-          height: 10,
-        },
-        logical: {
-          countOfUse: 1,
-        },
-      },
-      {
-        type: 'collectable',
-        id: 'picture-part3',
-        element: {
-          type: 'image',
-          image: {
-            src: BlankPicture,
-          },
-        },
-        position: {
-          x: 40,
-          y: 25,
-          width: 10,
-          height: 10,
-        },
-        logical: {
-          countOfUse: 1,
-        },
-      },
-      {
-        type: 'collectable',
-        id: 'picture-part4',
-        element: {
-          type: 'image',
-          image: {
-            src: BlankPicture,
-          },
-        },
-        position: {
-          x: 50,
-          y: 25,
-          width: 10,
-          height: 10,
-        },
-        logical: {
-          countOfUse: 1,
-        },
-      },
-      {
-        type: 'collectable',
-        id: 'picture-part5',
-        element: {
-          type: 'image',
-          image: {
-            src: BlankPicture,
-          },
-        },
-        position: {
-          x: 50,
-          y: 50,
-          width: 10,
-          height: 10,
-        },
-        logical: {
-          showOnResolved: ['picture-part1', 'picture-part2', 'picture-part3', 'picture-part4'],
+          showOnResolved: ['plaguePicture'],
         },
       },
       {

@@ -18,6 +18,7 @@ const appInitialState = {
   hintModalVisible: false,
   tmp: {},
   progress: '',
+  currentRoute: '',
 };
 
 const appReducer = createReducer(appInitialState, {
@@ -54,7 +55,6 @@ export const generateReducers = () => {
 
 export const generateActions = () => {
   createAction('SET_STATE');
-  createAction('GET_MAIN_OBJECTS');
   SCENES.forEach(scene => {
     createAction(`${scene.name}_SET_STATE`);
   });
