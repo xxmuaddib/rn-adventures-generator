@@ -8,4 +8,5 @@ export const ITEMS = {
   DIALOG: 'dialog',
   NAV: 'nav',
   DECORATIVE: 'decorative',
+  BLANK: 'blank',
 };
