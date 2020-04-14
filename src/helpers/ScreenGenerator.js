@@ -26,7 +26,11 @@ import { Paper } from '../components/Paper';
 import { Hint } from '../components/Hint';
 import { MainMenuModal } from '../components/MainMenuModal';
 import { PlatformSpecificMeasurement } from './PlatformSpecificUtils';
-import { setStateAction, findHelperFunction } from './ReducersGenerator';
+import {
+  setStateAction,
+  findHelperFunction,
+  resetAction,
+} from './ReducersGenerator';
 import { SceneReducerPropTypes } from '../proptypes/ScenePropTypes';
 import {
   ObjectPropTypes,
@@ -178,29 +182,30 @@ function screenGenerator(scene, index) {
       }
     };
 
-    reset = async () => {
+    resetFunction = async () => {
       const {
         currentScene: {
           scene: { objects, name: sceneName },
           originalScene,
         },
         setState,
+        reset,
       } = this.props;
+      reset();
+      const sceneCopy = _.cloneDeep(scene);
+      internationalizeScene(`SCENES_${index}`, sceneCopy);
 
-      await AsyncStorage.removeItem('inventory');
-      setState({ collectedItems: [] });
-      if (objects.itemsMap) {
-        const groups = objects.itemsMap.filter(el => el.type === 'multiple');
-        const unique = [...new Set(groups.map(item => item.group))];
-        unique.forEach(async g => {
-          await AsyncStorage.removeItem(g);
-        });
-        await AsyncStorage.removeItem('resolved');
-        setState({ scene: _.cloneDeep(originalScene) }, sceneName);
-        setState({ resolved: [], dialogAnswer: '', loading: true });
-        setState({ loading: false });
-      }
+      setState(
+        {
+          scene: sceneCopy,
+          originalScene: sceneCopy,
+        },
+        scene.name,
+      );
 
+      this.loadCollectedItems();
+      this.loadResolved();
+      this.setBgSound();
       this.openMainMenu();
     };
 
@@ -647,7 +652,7 @@ function screenGenerator(scene, index) {
             <MainMenuModal
               mainMenuVisible={mainMenuVisible}
               openMainMenu={this.openMainMenu}
-              reset={this.reset}
+              reset={this.resetFunction}
               showHint={this.showHint}
             />
             {paperModalContent && (
@@ -725,6 +730,7 @@ function screenGenerator(scene, index) {
 
   const mapDispatchToProps = {
     setState: setStateAction,
+    reset: resetAction,
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(ScreenGenerator);

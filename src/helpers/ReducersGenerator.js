@@ -29,6 +29,13 @@ const appReducer = createReducer(appInitialState, {
       ...filteredAction,
     };
   },
+  RESET: (state, action) => {
+    const filteredAction = { ...action };
+    delete filteredAction.type;
+    return {
+      ...appInitialState,
+    };
+  },
 });
 
 export const generateReducers = () => {
@@ -47,6 +54,13 @@ export const generateReducers = () => {
           ...filteredAction,
         };
       },
+      RESET: (state, action) => {
+        const filteredAction = { ...action };
+        delete filteredAction.type;
+        return {
+          ...initialState,
+        };
+      },
     });
   });
   return combineReducers({ ...sceneReducers, app: appReducer });
@@ -54,7 +68,7 @@ export const generateReducers = () => {
 
 export const generateActions = () => {
   createAction('SET_STATE');
-  createAction('GET_MAIN_OBJECTS');
+  createAction('RESET');
   SCENES.forEach(scene => {
     createAction(`${scene.name}_SET_STATE`);
   });
@@ -63,6 +77,11 @@ export const generateActions = () => {
 export const setStateAction = (obj, sceneName) => {
   const type = sceneName ? `${sceneName}_SET_STATE` : 'SET_STATE';
   return { ...obj, type };
+};
+
+export const resetAction = () => {
+  const type = 'RESET';
+  return { type };
 };
 
 export const findHelperFunction = findFunction => {
