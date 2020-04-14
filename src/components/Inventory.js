@@ -1,5 +1,11 @@
 import React from 'react';
-import { ScrollView, View, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
+import {
+  ScrollView,
+  View,
+  TouchableOpacity,
+  Dimensions,
+  AsyncStorage,
+} from 'react-native';
 import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
@@ -16,8 +22,7 @@ import { PlatformSpecificMeasurement } from '../helpers/PlatformSpecificUtils';
 const { width, height } = Dimensions.get('window');
 
 const gameWidth = Math.round((height * 16) / 9);
-const left =
-  width >= gameWidth ? (width - gameWidth) / 2 : 0;
+const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 
 export const Inventory = ({
   collectedItems,
@@ -48,35 +53,27 @@ export const Inventory = ({
     AsyncStorage.setItem('selectedItem', itemId);
   };
 
-  const generarateElementTop = index => {
-    if (index === 0) {
-      return 20;
-    } else {
-      let totalHeight = 20;
-      collectedItems.slice(0, index).forEach(item => {
-        totalHeight += item.position.height + 20;
-      });
-      return totalHeight;
-    }
-  };
-
   if (open) {
     return (
       <InventoryContainer>
-        <InventoryOpen persistentScrollbar height={collectedItems.length * 80} />
-        {collectedItems.filter(el => !!el.logical.countOfUse).map(
-          (item, index) =>
-            !!item.logical.countOfUse && (
-              <Draggable
-                onDragRelease={onDragRelease}
-                shouldReverse
-                y={index * 60 + 20}
-                z={140}
-                onDrag={() => onDrag(item.id)}
-              >
+        <InventoryOpen
+          persistentScrollbar
+          height={collectedItems.length * 80}
+        />
+        {collectedItems
+          .filter(el => !!el.logical.countOfUse)
+          .map(
+            (item, index) =>
+              !!item.logical.countOfUse && (
+                <Draggable
+                  onDragRelease={onDragRelease}
+                  shouldReverse
+                  y={index * 60 + 20}
+                  z={140}
+                  onDrag={() => onDrag(item.id)}
+                >
                   <InventoryItem
                     key={item.id}
-                    top={generarateElementTop(index)}
                     onPress={() => handleInvetoryItemPress(item.id)}
                   >
                     <Element element={item.element} position={item.position} />
@@ -112,7 +109,7 @@ Inventory.defaultProps = {
 };
 
 const InventoryItem = styled(TouchableOpacity)`
-  margin-top: ${props => props.top}px;
+  margin-top: 20px;
   width: 60px;
   height: 60px;
   padding-left: 15px;
@@ -127,14 +124,13 @@ const InventoryContainer = styled(View)`
   width: 80px;
   top: 0;
   right: 0;
-  
 `;
 
 const InventoryOpen = styled(ScrollView).attrs(p => ({
-  contentContainerStyle: ({
+  contentContainerStyle: {
     height: p.height > height ? p.height : height,
     flexGrow: 1,
-  }),
+  },
 }))`
   width: 80px;
   border-left-color: #e4cdba;

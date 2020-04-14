@@ -99,11 +99,8 @@ function screenGenerator(scene, index) {
         },
         scene.name,
       );
-
-      this.loadCollectedItems();
-      this.loadResolved();
       this.setBgSound();
-      this.openMainMenu();
+      setState({ loading: false });
     };
 
     saveProgress = async progress => {
@@ -145,12 +142,19 @@ function screenGenerator(scene, index) {
           el => el.type === ITEMS.RECEIVER,
         );
         if (receiverMatch) {
-          const newResolved = [...resolved, `${receiverMatch.id}-${selectedItemId}`];
+          const newResolved = [
+            ...resolved,
+            `${receiverMatch.id}-${selectedItemId}`,
+          ];
           setState({
             resolved: newResolved,
           });
 
-          if (receiverMatch.logical.expectedValue.every(val => newResolved.includes(`${receiverMatch.id}-${val}`))) {
+          if (
+            receiverMatch.logical.expectedValue.every(val =>
+              newResolved.includes(`${receiverMatch.id}-${val}`),
+            )
+          ) {
             setState({
               resolved: [...newResolved, receiverMatch.id],
             });
@@ -181,14 +185,9 @@ function screenGenerator(scene, index) {
     };
 
     handleSequence = async (group, id, progress) => {
-      const {
-        tmp,
-        resolved,
-        setState,
-      } = this.props;
-      const findFunction = s => s.objects.itemsMap.find(
-        item => item.group === group && item.main,
-      );
+      const { tmp, resolved, setState } = this.props;
+      const findFunction = s =>
+        s.objects.itemsMap.find(item => item.group === group && item.main);
       const mainSequence = findHelperFunction(findFunction);
       const scenario =
         mainSequence && mainSequence.logical && mainSequence.logical.scenario;
@@ -239,9 +238,8 @@ function screenGenerator(scene, index) {
         setState,
       } = this.props;
 
-      const findFunction = s => s.objects.itemsMap.find(
-        item => item.group === group && item.main,
-      );
+      const findFunction = s =>
+        s.objects.itemsMap.find(item => item.group === group && item.main);
       const slotSequence = findHelperFunction(findFunction);
       const slotScenario =
         slotSequence && slotSequence.logical && slotSequence.logical.scenario;
@@ -352,12 +350,13 @@ function screenGenerator(scene, index) {
 
       const moveX = g.moveX / pointX;
       const moveY = g.moveY / pointY;
-      const receiver = objects.itemsMap.find(item =>
-        item.type === ITEMS.RECEIVER &&
-        item.logical &&
-        item.logical.expectedValue &&
-        !!item.logical.expectedValue.length &&
-        item.logical.expectedValue.includes(id),
+      const receiver = objects.itemsMap.find(
+        item =>
+          item.type === ITEMS.RECEIVER &&
+          item.logical &&
+          item.logical.expectedValue &&
+          !!item.logical.expectedValue.length &&
+          item.logical.expectedValue.includes(id),
       );
       if (
         moveX > receiver.position.x &&
@@ -480,7 +479,7 @@ function screenGenerator(scene, index) {
       return (
         <Container>
           <StatusBar hidden />
-          <SceneBackground style={{ aspectRatio: 16 / 9 }} source={bg}>
+          <SceneBackground source={bg}>
             {!loading && (
               <ObjectGrid
                 objects={objects}

@@ -33,9 +33,7 @@ const appReducer = createReducer(appInitialState, {
   RESET: (state, action) => {
     const filteredAction = { ...action };
     delete filteredAction.type;
-    return {
-      ...appInitialState,
-    };
+    return appInitialState;
   },
 });
 
@@ -55,12 +53,10 @@ export const generateReducers = () => {
           ...filteredAction,
         };
       },
-      RESET: (state, action) => {
+      [`RESET`]: (state, action) => {
         const filteredAction = { ...action };
         delete filteredAction.type;
-        return {
-          ...initialState,
-        };
+        return initialState;
       },
     });
   });
