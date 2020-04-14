@@ -52,6 +52,18 @@ export const Inventory = ({
     AsyncStorage.setItem('selectedItem', item.id);
   };
 
+  const generarateElementTop = index => {
+    if (index === 0) {
+      return 20;
+    } else {
+      let totalHeight = 20;
+      collectedItems.slice(0, index).forEach(item => {
+        totalHeight += item.position.height + 20;
+      });
+      return totalHeight;
+    }
+  };
+
   if (open) {
     return (
       <InventoryOpen>
@@ -66,6 +78,9 @@ export const Inventory = ({
                 >
                   <InventoryItem
                     key={item.id}
+                    top={generarateElementTop(
+                      collectedItems.findIndex(el => el.id === item.id),
+                    )}
                     onPress={() => handleInvetoryItemPress(item.id)}
                   >
                     <Element element={item.element} position={item.position} />
@@ -102,7 +117,7 @@ Inventory.defaultProps = {
 };
 
 const InventoryItem = styled(TouchableOpacity)`
-  margin-top: 20px;
+  margin-top: ${props => props.top}px;
   width: 60px;
   height: 60px;
   padding-right: 10px;
