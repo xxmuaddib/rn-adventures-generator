@@ -32,6 +32,7 @@ import {
   resetAction,
 } from './ReducersGenerator';
 import { SceneReducerPropTypes } from '../proptypes/ScenePropTypes';
+import { ITEMS } from '../constants/items';
 import {
   ObjectPropTypes,
   PaperPropType,
@@ -61,112 +62,8 @@ function screenGenerator(scene, index) {
         },
         scene.name,
       );
-
-      this.loadCollectedItems();
-      // this.loadMultipleItems();
-      // this.loadSequenceItems();
-      this.loadResolved();
       this.setBgSound();
     }
-
-    loadResolved = async () => {
-      const { setState } = this.props;
-      const SavedResolvedRaw = await AsyncStorage.getItem('resolved');
-      if (SavedResolvedRaw) {
-        const SavedResolved = JSON.parse(SavedResolvedRaw);
-        setState({ resolved: SavedResolved });
-      }
-    };
-
-    loadCollectedItems = async () => {
-      const { setState } = this.props;
-      const inventoryRaw = await AsyncStorage.getItem('inventory');
-      if (inventoryRaw) {
-        const inventory = JSON.parse(inventoryRaw);
-        setState({ collectedItems: inventory, loading: false });
-      } else {
-        setState({ collectedItems: [], loading: false });
-      }
-    };
-
-    loadSequenceItems = async () => {
-      const {
-        currentScene,
-        currentScene: {
-          scene: { objects },
-        },
-        setState,
-      } = this.props;
-
-      const objectsCopy = { ...objects };
-
-      if (objectsCopy.describers) {
-        objectsCopy.describers.forEach(async d => {
-          const describerRaw = await AsyncStorage.getItem(d.group);
-          const describer = JSON.parse(describerRaw);
-          if (describer) {
-            const i = objectsCopy.describers.findIndex(
-              el => el.group === describer.group,
-            );
-            if (i > -1) {
-              objectsCopy.describers[i] = describer;
-            }
-            setState(
-              {
-                scene: {
-                  ...currentScene.scene,
-                  objects: {
-                    ...objects,
-                    describers: objectsCopy.describers,
-                  },
-                },
-              },
-              currentScene.scene.name,
-            );
-          }
-        });
-      }
-    };
-
-    loadMultipleItems = async () => {
-      const {
-        currentScene,
-        currentScene: {
-          scene: { objects },
-        },
-        setState,
-      } = this.props;
-
-      const objectsCopy = { ...objects };
-
-      if (objectsCopy.itemsMap) {
-        const groups = objectsCopy.itemsMap.filter(
-          el => el.type === 'multiple',
-        );
-        const unique = [...new Set(groups.map(item => item.group))];
-        unique.forEach(async g => {
-          const groupRaw = await AsyncStorage.getItem(g);
-          const group = JSON.parse(groupRaw);
-          if (group) {
-            group.forEach(item => {
-              const i = objectsCopy.itemsMap.findIndex(el => el.id === item.id);
-              if (i > -1) {
-                objectsCopy.itemsMap[i] = item;
-              }
-            });
-          }
-          setState(
-            {
-              scene: {
-                ...currentScene,
-                itemsMap: objectsCopy.itemsMap,
-              },
-            },
-            currentScene.scene.name,
-          );
-        });
-      }
-    };
 
     setBgSound = async () => {
       if (scene.bgSound) {
@@ -212,23 +109,19 @@ function screenGenerator(scene, index) {
     saveProgress = async progress => {
       const { setState } = this.props;
       setState({ progress });
-      await AsyncStorage.setItem('progress', JSON.stringify(progress));
     };
 
     onRoutePress = (route, progress) => {
-      const { navigation } = this.props;
+      const { navigation, setState } = this.props;
       if (progress) {
         this.saveProgress(progress);
       }
+      setState({ currentRoute: route });
       navigation.navigate(route);
     };
 
     collect = async (item, progress) => {
       const { collectedItems, setState } = this.props;
-      await AsyncStorage.setItem(
-        'inventory',
-        JSON.stringify([...collectedItems, item]),
-      );
       if (progress) {
         this.saveProgress(progress);
       }
@@ -244,72 +137,58 @@ function screenGenerator(scene, index) {
         collectedItems,
         setState,
       } = this.props;
-
-      const receiveElement = objects.itemsMap.find(
-        el => el.logical && el.logical.expectedValue === expectedValue,
-      );
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
-      if (expectedValue === selectedItemId) {
+      if (expectedValue.includes(selectedItemId)) {
         await AsyncStorage.removeItem('selectedItem');
 
-        const receiverResolved = objects.itemsMap.find(
-          el => el.type === 'receiver',
+        const receiverMatch = objects.itemsMap.find(
+          el => el.type === ITEMS.RECEIVER,
         );
-        if (receiverResolved) {
+        if (receiverMatch) {
+          const newResolved = [...resolved, `${receiverMatch.id}-${selectedItemId}`];
           setState({
-            resolved: [...resolved, receiverResolved.id],
+            resolved: newResolved,
           });
+
+          if (receiverMatch.logical.expectedValue.every(val => newResolved.includes(`${receiverMatch.id}-${val}`))) {
+            setState({
+              resolved: [...newResolved, receiverMatch.id],
+            });
+          }
+
           if (progress) {
             this.saveProgress(progress);
           }
-          await AsyncStorage.setItem(
-            'resolved',
-            JSON.stringify([...resolved, receiverResolved.id]),
-          );
 
-          let collectedItemsCopy = [...collectedItems];
+          const collectedItemsCopy = [...collectedItems];
 
-          const index = collectedItemsCopy.findIndex(
+          const i = collectedItemsCopy.findIndex(
             item => item.id === selectedItemId,
           );
-          if (index !== -1 && collectedItemsCopy[index].logical) {
-            if (collectedItemsCopy[index].logical.countOfUse === 1) {
-              collectedItemsCopy.splice(index, 1);
-            } else {
-              collectedItemsCopy[index] = {
-                logical: {
-                  countOfUse: collectedItemsCopy[index].logical.countOfUse - 1,
-                },
-              };
-            }
+          if (i !== -1 && collectedItemsCopy[i].logical) {
+            collectedItemsCopy[i] = {
+              ...collectedItemsCopy[i],
+              logical: {
+                ...collectedItemsCopy[i].logical,
+                countOfUse: collectedItemsCopy[i].logical.countOfUse - 1,
+              },
+            };
           }
 
           setState({ collectedItems: collectedItemsCopy });
-
-          await AsyncStorage.setItem(
-            'inventory',
-            JSON.stringify(collectedItemsCopy),
-          );
         }
       }
     };
 
     handleSequence = async (group, id, progress) => {
       const {
-        currentScene: {
-          scene: {
-            objects: { itemsMap },
-          },
-        },
         tmp,
         resolved,
         setState,
       } = this.props;
-      const findFunction = scene => {
-        return scene.objects.itemsMap.find(
-          item => item.group === group && item.main,
-        );
-      };
+      const findFunction = s => s.objects.itemsMap.find(
+        item => item.group === group && item.main,
+      );
       const mainSequence = findHelperFunction(findFunction);
       const scenario =
         mainSequence && mainSequence.logical && mainSequence.logical.scenario;
@@ -329,10 +208,6 @@ function screenGenerator(scene, index) {
         : [id];
 
       if (arrayIncludesSorted(scenario, currentSequence)) {
-        await AsyncStorage.setItem(
-          'resolved',
-          JSON.stringify([...resolved, group]),
-        );
         if (progress) {
           this.saveProgress(progress);
         }
@@ -364,11 +239,9 @@ function screenGenerator(scene, index) {
         setState,
       } = this.props;
 
-      const findFunction = scene => {
-        return scene.objects.itemsMap.find(
-          item => item.group === group && item.main,
-        );
-      };
+      const findFunction = s => s.objects.itemsMap.find(
+        item => item.group === group && item.main,
+      );
       const slotSequence = findHelperFunction(findFunction);
       const slotScenario =
         slotSequence && slotSequence.logical && slotSequence.logical.scenario;
@@ -421,10 +294,6 @@ function screenGenerator(scene, index) {
         currentPosition[item.id] = item.logical.selected;
       });
       if (objCompare(slotScenario, currentPosition)) {
-        await AsyncStorage.setItem(
-          'resolved',
-          JSON.stringify([...resolved, group]),
-        );
         if (progress) {
           this.saveProgress(progress);
         }
@@ -444,10 +313,6 @@ function screenGenerator(scene, index) {
     handleDecorative = async (id, progress) => {
       const { setState, resolved } = this.props;
       if (id) {
-        await AsyncStorage.setItem(
-          'resolved',
-          JSON.stringify([...resolved, id]),
-        );
         if (progress) {
           this.saveProgress(progress);
         }
@@ -484,15 +349,15 @@ function screenGenerator(scene, index) {
         resolved,
         setState,
       } = this.props;
-      if (resolved.includes(group)) {
-        const groupResolvedItems = objects.itemsMap.filter(
-          item => item.group === group,
-        );
-      }
+
       const moveX = g.moveX / pointX;
       const moveY = g.moveY / pointY;
-      const receiver = objects.itemsMap.find(
-        item => item.logical && item.logical.expectedValue === id,
+      const receiver = objects.itemsMap.find(item =>
+        item.type === ITEMS.RECEIVER &&
+        item.logical &&
+        item.logical.expectedValue &&
+        !!item.logical.expectedValue.length &&
+        item.logical.expectedValue.includes(id),
       );
       if (
         moveX > receiver.position.x &&
@@ -514,7 +379,6 @@ function screenGenerator(scene, index) {
         }
 
         setState({ resolved: resolvedWithId });
-        await AsyncStorage.setItem('resolved', JSON.stringify(resolvedWithId));
       } else if (resolved.includes(id)) {
         const resolvedCopy = [...resolved];
         resolvedCopy.splice(
@@ -525,7 +389,6 @@ function screenGenerator(scene, index) {
           this.saveProgress(progress);
         }
         setState({ resolved: resolvedCopy });
-        await AsyncStorage.setItem('resolved', JSON.stringify(resolvedCopy));
       }
     };
 
@@ -563,10 +426,6 @@ function screenGenerator(scene, index) {
         if (item.setProgressOnResolved) {
           this.saveProgress(item.setProgressOnResolved);
         }
-        await AsyncStorage.setItem(
-          'resolved',
-          JSON.stringify([...resolved, item.resolve]),
-        );
       }
 
       setState({
@@ -620,7 +479,7 @@ function screenGenerator(scene, index) {
       } = this.props;
       return (
         <Container>
-          <StatusBar hidden={true} />
+          <StatusBar hidden />
           <SceneBackground style={{ aspectRatio: 16 / 9 }} source={bg}>
             {!loading && (
               <ObjectGrid

@@ -18,6 +18,7 @@ const appInitialState = {
   hintModalVisible: false,
   tmp: {},
   progress: '',
+  currentRoute: '',
 };
 
 const appReducer = createReducer(appInitialState, {
