@@ -59,6 +59,14 @@ import Wall3Skull from '../assets/images/wall3-skull.png';
 import ImagePart1 from '../assets/images/image-part1.png';
 import Wall3Vase from '../assets/images/wall3-vase.png';
 
+import MirrorSceneBackground from '../assets/images/mirror-scene-bg.png';
+import MirrorSceneMirror from '../assets/images/mirror-scene-mirror.png';
+import CrownPart1 from '../assets/images/crown-part1.png';
+import CrownPart2 from '../assets/images/crown-part2.png';
+import CrownPart3 from '../assets/images/crown-part3.png';
+import CrownPart4 from '../assets/images/crown-part4.png';
+import CrownPart5 from '../assets/images/crown-part5.png';
+
 const SCENES = [
   {
     name: 'Farm1',
@@ -745,7 +753,7 @@ const SCENES = [
         },
         {
           type: 'nav',
-          route: '',
+          route: 'Mirror',
           element: {
             type: 'image',
             image: {
@@ -810,7 +818,134 @@ const SCENES = [
     },
   },
   {
-
+    name: 'Mirror',
+    route: 'Mirror',
+    bg: MirrorSceneBackground,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: MirrorSceneMirror,
+            },
+          },
+          position: {
+            x: 90,
+            y: 15,
+            width: 120,
+            height: 170,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart1,
+            },
+          },
+          position: {
+            x: 120,
+            y: 58,
+            width: 15,
+            height: 15,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart2,
+            },
+          },
+          position: {
+            x: 130,
+            y: 52,
+            width: 16,
+            height: 16,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart3,
+            },
+          },
+          position: {
+            x: 144,
+            y: 46,
+            width: 18,
+            height: 18,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart4,
+            },
+          },
+          position: {
+            x: 160,
+            y: 54,
+            width: 17,
+            height: 17,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart5,
+            },
+          },
+          position: {
+            x: 171,
+            y: 60,
+            width: 15,
+            height: 15,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Wall3',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 185,
+            height: 15,
+            width: 300,
+          },
+        },
+      ],
+    },
+  },
+  {
     name: 'Virus1',
     route: 'Virus1',
     bg: VirusesBg,
