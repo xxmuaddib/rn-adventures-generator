@@ -10,7 +10,7 @@ import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { generateStyle } from './StyleGenerator';
+import { generateStyle, pointX, pointY } from './StyleGenerator';
 import {
   ObjectPropTypes,
   ObjectsPropTypes,
@@ -86,6 +86,7 @@ const ObjectGrid = ({
               {type !== ITEMS.DRAGGABLE &&
                 type !== ITEMS.NAV &&
                 type !== ITEMS.BLANK &&
+                type !== ITEMS.RECEIVER &&
                 isResolved &&
                 !hideResolved &&
                 !collectableShouldHide && (
@@ -107,11 +108,6 @@ const ObjectGrid = ({
                             return handleSequence(
                               group,
                               id,
-                              logical && logical.setProgressOnResolved,
-                            );
-                          case ITEMS.RECEIVER:
-                            return receive(
-                              logical.expectedValue,
                               logical && logical.setProgressOnResolved,
                             );
                           case ITEMS.SLOT:
@@ -176,11 +172,18 @@ const ObjectGrid = ({
                     </StyledTouchableWithoutFeedback>
                   </View>
                 )}
+              {type === ITEMS.RECEIVER && (
+                <View style={generateStyle(position)}>
+                  <StyledView>
+                    <Element element={element} position={position} />
+                  </StyledView>
+                </View>
+              )}
               {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
                 <Draggable
                   style={generateStyle(position)}
-                  x={position.x}
-                  y={position.y}
+                  x={position.x * pointX}
+                  y={position.y * pointY}
                   z={position.zIndex}
                   disabled={isDeactive || !isActive}
                   onDragRelease={(evt, g) => {
