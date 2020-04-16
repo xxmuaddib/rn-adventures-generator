@@ -348,10 +348,9 @@ function screenGenerator(scene, index) {
         setState,
       } = this.props;
 
-      console.error(evt.nativeEvent.locationX);
+      const moveX = (g.moveX - evt.nativeEvent.locationX) / pointX;
+      const moveY = (g.moveY - evt.nativeEvent.locationY) / pointY;
 
-      const moveX = g.moveX / pointX;
-      const moveY = g.moveY / pointY;
       const receiver = objects.itemsMap.find(
         item =>
           item.type === ITEMS.RECEIVER &&
