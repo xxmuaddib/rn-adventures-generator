@@ -43,10 +43,10 @@ import { arrayIncludesSorted, objCompare } from './Utils';
 
 let { width, height } = Dimensions.get('window');
 if (isIphoneX()) {
-  width -= 65;
   height -= 55;
 }
-width = Math.round((height * 16) / 9);
+const gameWidth = Math.round((height * 16) / 9);
+const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 
 function screenGenerator(scene, index) {
   class ScreenGenerator extends React.PureComponent {
@@ -603,7 +603,7 @@ const Container = styled(View)`
 `;
 
 const SceneBackground = styled(ImageBackground)`
-  width: ${width}px;
+  width: ${gameWidth}px;
   height: ${height}px;
 `;
 

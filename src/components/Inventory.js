@@ -10,6 +10,7 @@ import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
+import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import { pointX, pointY } from '../helpers/StyleGenerator';
 import { Element } from '../helpers/ElementGenerator';
@@ -19,8 +20,10 @@ import {
 } from '../proptypes/ObjectGridPropTypes';
 import { PlatformSpecificMeasurement } from '../helpers/PlatformSpecificUtils';
 
-const { width, height } = Dimensions.get('window');
-
+let { width, height } = Dimensions.get('window');
+if (isIphoneX()) {
+  height -= 55;
+}
 const gameWidth = Math.round((height * 16) / 9);
 const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 
@@ -38,6 +41,7 @@ export const Inventory = ({
     const receiver = objects.itemsMap.find(
       ({ logical }) => logical && logical.expectedValue.includes(itemId),
     );
+    console.error(moveX);
     if (
       !!Object.keys(receiver).length &&
       moveX > receiver.position.x &&
