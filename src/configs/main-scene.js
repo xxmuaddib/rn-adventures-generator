@@ -361,7 +361,7 @@ const SCENES = [
         },
         {
           type: 'decorative',
-          id: 'decorative4',
+          id: 'wandow2-closed',
           element: {
             type: 'image',
             image: {
@@ -376,12 +376,12 @@ const SCENES = [
             zIndex: 4,
           },
           logical: {
-            hideOnResolved: ['decorative4'],
+            hideOnResolved: ['wandow2-closed'],
           },
         },
         {
           type: 'decorative',
-          id: 'decorative5',
+          id: 'window2-opened',
           element: {
             type: 'image',
             image: {
@@ -396,12 +396,12 @@ const SCENES = [
             zIndex: 2,
           },
           logical: {
-            showOnResolved: ['decorative4'],
+            showOnResolved: ['wandow2-closed'],
           },
         },
         {
           type: 'collectable',
-          id: 'collectable5',
+          id: 'skeleton-foot',
           element: {
             type: 'image',
             image: {
@@ -456,7 +456,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'collectable6',
+          id: 'skeleton-arm',
           element: {
             type: 'image',
             image: {
@@ -638,7 +638,7 @@ const SCENES = [
         },
         {
           type: 'receiver',
-          id: 'receiver1',
+          id: 'safe-door',
           element: {
             type: 'image',
             image: {
@@ -653,13 +653,13 @@ const SCENES = [
             zIndex: 3,
           },
           logical: {
-            expectedValue: 'collectable1',
-            hideOnResolved: ['receiver1'],
+            expectedValue: ['safe-green-key'],
+            hideOnResolved: ['safe-door'],
           },
         },
         {
           type: 'collectable',
-          id: 'collectable2',
+          id: 'skeleton-skull',
           element: {
             type: 'image',
             image: {
@@ -679,7 +679,7 @@ const SCENES = [
         },
         {
           type: 'decorative',
-          id: 'decorative3',
+          id: 'safe-door2',
           element: {
             type: 'image',
             image: {
@@ -694,7 +694,7 @@ const SCENES = [
             zIndex: 3,
           },
           logical: {
-            hideOnResolved: ['decorative3'],
+            hideOnResolved: ['safe-door2'],
           },
         },
         {
@@ -968,7 +968,7 @@ const SCENES = [
         },
         {
           type: 'dialog',
-          id: 'dialog2',
+          id: 'virus1-dialog',
           element: {
             type: 'image',
             image: {
@@ -1095,7 +1095,7 @@ const SCENES = [
         },
         {
           type: 'dialog',
-          id: 'dialog2',
+          id: 'virus2-dialog',
           element: {
             type: 'image',
             image: {
@@ -1239,7 +1239,7 @@ const SCENES = [
         },
         {
           type: 'dialog',
-          id: 'dialog2',
+          id: 'virus3-dialog',
           element: {
             type: 'image',
             image: {
@@ -1362,7 +1362,7 @@ const SCENES = [
         },
         {
           type: 'decorative',
-          id: 'decorative2',
+          id: 'gum-width-key',
           element: {
             type: 'image',
             image: {
@@ -1377,12 +1377,12 @@ const SCENES = [
             zIndex: 2,
           },
           logical: {
-            hideOnResolved: ['decorative2'],
+            hideOnResolved: ['gum-width-key'],
           },
         },
         {
           type: 'collectable',
-          id: 'collectable1',
+          id: 'safe-green-key',
           element: {
             type: 'image',
             image: {
@@ -1397,13 +1397,13 @@ const SCENES = [
             zIndex: 2,
           },
           logical: {
-            showOnResolved: ['decorative2'],
+            showOnResolved: ['gum-width-key'],
             countOfUse: 1,
           },
         },
         {
           type: 'decorative',
-          id: 'decorative6',
+          id: 'pink-gum',
           element: {
             type: 'image',
             image: {
@@ -1417,7 +1417,7 @@ const SCENES = [
             height: 20,
           },
           logical: {
-            showOnResolved: ['decorative2'],
+            showOnResolved: ['gum-width-key'],
           },
         },
       ],

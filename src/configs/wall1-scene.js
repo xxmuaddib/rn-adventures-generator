@@ -109,7 +109,7 @@ export const WALL1_SCENE = {
       },
       {
         type: 'dialog',
-        id: 'dialog1',
+        id: 'death-diolog',
         element: {
           type: 'image',
           image: {
