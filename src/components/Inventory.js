@@ -21,8 +21,10 @@ import {
 import { PlatformSpecificMeasurement } from '../helpers/PlatformSpecificUtils';
 
 let { width, height } = Dimensions.get('window');
+let top = 0;
 if (isIphoneX()) {
   height -= 55;
+  top = 55 / 2;
 }
 const gameWidth = Math.round((height * 16) / 9);
 const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
@@ -36,13 +38,17 @@ export const Inventory = ({
 }) => {
   const onDragRelease = async (_, g) => {
     const moveX = (g.moveX - left) / pointX;
-    const moveY = g.moveY / pointY;
+    const moveY = (g.moveY - top) / pointY;
     const itemId = await AsyncStorage.getItem('selectedItem');
     const receiver = objects.itemsMap.find(
-      ({ logical }) => logical && logical.expectedValue.includes(itemId),
+      ({ logical }) =>
+        logical &&
+        logical.expectedValue &&
+        !!logical.expectedValue.length &&
+        logical.expectedValue.includes(itemId),
     );
-    console.error(moveX);
     if (
+      receiver &&
       !!Object.keys(receiver).length &&
       moveX > receiver.position.x &&
       moveX < receiver.position.x + receiver.position.width &&

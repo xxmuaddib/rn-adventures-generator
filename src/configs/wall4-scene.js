@@ -3,6 +3,8 @@ import Wall4Door from '../assets/images/wall4-door.png';
 import Wall4Picture1 from '../assets/images/wall4-picture1.png';
 import BlankPicture from '../assets/images/blank-picture.png';
 import Wall4Time from '../assets/images/wall4-time.png';
+import SkeletonSpine from '../assets/images/skeleton-spine.png';
+import ImagePart5 from '../assets/images/image-part5.png';
 import ArrowLeft from '../assets/images/arrow-left.png';
 import ArrowRight from '../assets/images/arrow-right.png';
 import ArrowUp from '../assets/images/arrow-up.png';
@@ -137,6 +139,7 @@ export const WALL4_SCENE = {
             'picture-part2',
             'picture-part3',
             'picture-part4',
+            'picture-part5',
           ],
           hideOnResolved: ['plaguePicture'],
         },
@@ -162,8 +165,7 @@ export const WALL4_SCENE = {
         },
       },
       {
-        type: 'nav',
-        route: '',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
@@ -175,6 +177,44 @@ export const WALL4_SCENE = {
           y: 15,
           width: 30,
           height: 40,
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'picture-part5',
+        element: {
+          type: 'image',
+          image: {
+            src: ImagePart5,
+          },
+        },
+        position: {
+          x: 184,
+          y: 18,
+          width: 6,
+          height: 8,
+        },
+        logical: {
+          countOfUse: 1,
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'skeleton-spine',
+        element: {
+          type: 'image',
+          image: {
+            src: SkeletonSpine,
+          },
+        },
+        position: {
+          x: 173,
+          y: 17,
+          width: 4,
+          height: 17,
+        },
+        logical: {
+          countOfUse: 1,
         },
       },
       {

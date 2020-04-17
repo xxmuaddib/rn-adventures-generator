@@ -4,6 +4,7 @@ import ImagePart2Large from '../assets/images/image-part2-large.png';
 import ImagePart3Large from '../assets/images/image-part3-large.png';
 import ImagePart4Large from '../assets/images/image-part4-large.png';
 import ImagePart5Large from '../assets/images/image-part5-large.png';
+import ArrowDown from '../assets/images/arrow-down.png';
 
 export const PLAGUE_PICTURE_SCENE = {
   name: 'PlaguePictureScene',
@@ -12,19 +13,44 @@ export const PLAGUE_PICTURE_SCENE = {
   objects: {
     itemsMap: [
       {
-        type: 'receiver',
-        id: 'image-part1-receiver',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
-            src: PlaguePictureBg,
+            src: ArrowDown,
           },
         },
         position: {
-          x: 100,
-          y: 100,
-          width: 20,
-          height: 20,
+          x: 145,
+          y: 188,
+          width: 10,
+          height: 10,
+        },
+      },
+      {
+        type: 'nav',
+        route: 'Wall4',
+        element: {
+          type: 'trigger',
+        },
+        position: {
+          x: 10,
+          y: 185,
+          width: 280,
+          height: 15,
+        },
+      },
+      {
+        type: 'receiver',
+        id: 'image-part1-receiver',
+        element: {
+          type: 'trigger',
+        },
+        position: {
+          x: 108,
+          y: 105,
+          width: 70,
+          height: 68,
         },
         logical: {
           expectedValue: ['image-part1-large'],
@@ -34,16 +60,13 @@ export const PLAGUE_PICTURE_SCENE = {
         type: 'receiver',
         id: 'image-part2-receiver',
         element: {
-          type: 'image',
-          image: {
-            src: PlaguePictureBg,
-          },
+          type: 'trigger',
         },
         position: {
-          x: 150,
-          y: 150,
-          width: 10,
-          height: 10,
+          x: 100,
+          y: 60,
+          width: 65,
+          height: 68,
         },
         logical: {
           expectedValue: ['image-part2-large'],
@@ -53,16 +76,13 @@ export const PLAGUE_PICTURE_SCENE = {
         type: 'receiver',
         id: 'image-part3-receiver',
         element: {
-          type: 'image',
-          image: {
-            src: PlaguePictureBg,
-          },
+          type: 'trigger',
         },
         position: {
-          x: 50,
-          y: 100,
-          width: 10,
-          height: 10,
+          x: 108,
+          y: 20,
+          width: 60,
+          height: 60,
         },
         logical: {
           expectedValue: ['image-part3-large'],
@@ -72,16 +92,13 @@ export const PLAGUE_PICTURE_SCENE = {
         type: 'receiver',
         id: 'image-part4-receiver',
         element: {
-          type: 'image',
-          image: {
-            src: PlaguePictureBg,
-          },
+          type: 'trigger',
         },
         position: {
-          x: 70,
-          y: 90,
-          width: 10,
-          height: 10,
+          x: 142,
+          y: 80,
+          width: 65,
+          height: 65,
         },
         logical: {
           expectedValue: ['image-part4-large'],
@@ -91,19 +108,17 @@ export const PLAGUE_PICTURE_SCENE = {
         type: 'receiver',
         id: 'image-part5-receiver',
         element: {
-          type: 'image',
-          image: {
-            src: PlaguePictureBg,
-          },
+          type: 'trigger',
         },
         position: {
-          x: 150,
-          y: 40,
-          width: 10,
-          height: 10,
+          x: 145,
+          y: 20,
+          width: 60,
+          height: 67,
         },
         logical: {
-          expectedValue: ['image-part1-large'],
+          expectedValue: ['image-part5-large'],
+          hideOnResolved: ['plague-picture-images'],
         },
       },
       {

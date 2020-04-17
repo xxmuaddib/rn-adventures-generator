@@ -42,8 +42,10 @@ import { internationalizeScene } from '../localization';
 import { arrayIncludesSorted, objCompare } from './Utils';
 
 let { width, height } = Dimensions.get('window');
+let top;
 if (isIphoneX()) {
   height -= 55;
+  top = 55 / 2;
 }
 const gameWidth = Math.round((height * 16) / 9);
 const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
@@ -347,10 +349,9 @@ function screenGenerator(scene, index) {
         resolved,
         setState,
       } = this.props;
-
-      const moveX = (g.moveX - evt.nativeEvent.locationX) / pointX;
-      const moveY = (g.moveY - evt.nativeEvent.locationY) / pointY;
-
+      const moveX = (g.moveX - evt.nativeEvent.locationX - left) / pointX;
+      const moveY = (g.moveY - evt.nativeEvent.locationY - top) / pointY;
+      // console.error(id);
       const receiver = objects.itemsMap.find(
         item =>
           item.type === ITEMS.RECEIVER &&
@@ -359,7 +360,10 @@ function screenGenerator(scene, index) {
           !!item.logical.expectedValue.length &&
           item.logical.expectedValue.includes(id),
       );
+
       if (
+        receiver &&
+        !!Object.keys(receiver).length &&
         moveX > receiver.position.x &&
         moveX < receiver.position.x + receiver.position.width &&
         moveY > receiver.position.y &&
@@ -375,6 +379,7 @@ function screenGenerator(scene, index) {
         );
 
         if (groupIsResolved) {
+          console.error('YEEEE');
           resolvedWithId.push(group);
         }
 
