@@ -493,7 +493,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'collectable7',
+          id: 'picture-part3',
           element: {
             type: 'image',
             image: {
@@ -733,7 +733,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'collectable4',
+          id: 'picture-part1',
           element: {
             type: 'image',
             image: {
@@ -769,7 +769,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'collectable9',
+          id: 'picture-part4',
           element: {
             type: 'image',
             image: {
@@ -1265,7 +1265,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'collectable3',
+          id: 'picture-part2',
           element: {
             type: 'image',
             image: {
@@ -1425,6 +1425,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Wall1';
+const INITIAL_SCREEN = 'Wall4';
 
 export { SCENES, INITIAL_SCREEN };

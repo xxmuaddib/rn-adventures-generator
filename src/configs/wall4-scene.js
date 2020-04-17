@@ -120,7 +120,7 @@ export const WALL4_SCENE = {
       },
       {
         type: 'receiver',
-        id: 'plaguePicture',
+        id: 'plague-picture-parts',
         element: {
           type: 'image',
           image: {
@@ -141,7 +141,7 @@ export const WALL4_SCENE = {
             'picture-part4',
             'picture-part5',
           ],
-          hideOnResolved: ['plaguePicture'],
+          hideOnResolved: ['plague-picture-parts'],
         },
       },
       {
@@ -161,7 +161,26 @@ export const WALL4_SCENE = {
           height: 60,
         },
         logical: {
-          showOnResolved: ['plaguePicture'],
+          showOnResolved: ['plague-picture-parts'],
+          hideOnResolved: ['plague-picture-puzzle'],
+        },
+      },
+      {
+        id: 'plaguePictureFull',
+        element: {
+          type: 'image',
+          image: {
+            src: PlaguePicture,
+          },
+        },
+        position: {
+          x: 198,
+          y: 55,
+          width: 37,
+          height: 63,
+        },
+        logical: {
+          showOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
