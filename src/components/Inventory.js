@@ -47,6 +47,7 @@ export const Inventory = ({
         !!logical.expectedValue.length &&
         logical.expectedValue.includes(itemId),
     );
+    console.error(moveX);
     if (
       receiver &&
       !!Object.keys(receiver).length &&

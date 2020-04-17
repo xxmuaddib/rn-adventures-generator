@@ -474,26 +474,26 @@ const SCENES = [
             countOfUse: 1,
           },
         },
-        // {
-        //   type: 'nav',
-        //   route: '',
-        //   element: {
-        //     type: 'image',
-        //     image: {
-        //       src: Wall2Picture3,
-        //     },
-        //   },
-        //   position: {
-        //     x: 125,
-        //     y: 70,
-        //     width: 30,
-        //     height: 25,
-        //     zIndex: 2,
-        //   },
-        // },
+        {
+          type: 'nav',
+          route: '',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Picture3,
+            },
+          },
+          position: {
+            x: 125,
+            y: 70,
+            width: 30,
+            height: 25,
+            zIndex: 2,
+          },
+        },
         {
           type: 'collectable',
-          id: 'plague-picture-part3',
+          id: 'collectable7',
           element: {
             type: 'image',
             image: {
@@ -733,7 +733,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'plague-picture-part1',
+          id: 'collectable4',
           element: {
             type: 'image',
             image: {
@@ -769,7 +769,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'plague-picture-part4',
+          id: 'collectable9',
           element: {
             type: 'image',
             image: {
@@ -1151,9 +1151,6 @@ const SCENES = [
             height: 38,
             zIndex: 3,
           },
-          logical: {
-            countOfUse: 1,
-          },
         },
         {
           type: 'blank',
@@ -1268,7 +1265,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'plague-picture-part2',
+          id: 'collectable3',
           element: {
             type: 'image',
             image: {
