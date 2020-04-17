@@ -41,7 +41,6 @@ export const Inventory = ({
     const receiver = objects.itemsMap.find(
       ({ logical }) => logical && logical.expectedValue.includes(itemId),
     );
-    console.error(moveX);
     if (
       !!Object.keys(receiver).length &&
       moveX > receiver.position.x &&

@@ -4,6 +4,8 @@ import ImagePart2Large from '../assets/images/image-part2-large.png';
 import ImagePart3Large from '../assets/images/image-part3-large.png';
 import ImagePart4Large from '../assets/images/image-part4-large.png';
 import ImagePart5Large from '../assets/images/image-part5-large.png';
+import PlaguePicture from '../assets/images/plague-picture.png';
+import ArrowDown from '../assets/images/arrow-down.png';
 
 export const PLAGUE_PICTURE_SCENE = {
   name: 'PlaguePictureScene',
@@ -12,104 +14,122 @@ export const PLAGUE_PICTURE_SCENE = {
   objects: {
     itemsMap: [
       {
-        type: 'receiver',
-        id: 'image-part1-receiver',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
-            src: PlaguePictureBg,
+            src: ArrowDown,
           },
         },
         position: {
-          x: 100,
-          y: 100,
-          width: 20,
-          height: 20,
+          x: 145,
+          y: 188,
+          width: 10,
+          height: 10,
+        },
+      },
+      {
+        type: 'nav',
+        route: 'Wall4',
+        element: {
+          type: 'trigger',
+        },
+        position: {
+          x: 10,
+          y: 185,
+          width: 280,
+          height: 15,
+        },
+      },
+      {
+        type: 'receiver',
+        id: 'image-part1-receiver',
+        element: {
+          type: 'trigger',
+        },
+        position: {
+          x: 110,
+          y: 110,
+          width: 10,
+          height: 10,
         },
         logical: {
           expectedValue: ['image-part1-large'],
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
         type: 'receiver',
         id: 'image-part2-receiver',
         element: {
-          type: 'image',
-          image: {
-            src: PlaguePictureBg,
-          },
+          type: 'trigger',
         },
         position: {
-          x: 150,
-          y: 150,
+          x: 110,
+          y: 50,
           width: 10,
           height: 10,
         },
         logical: {
           expectedValue: ['image-part2-large'],
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
         type: 'receiver',
         id: 'image-part3-receiver',
         element: {
-          type: 'image',
-          image: {
-            src: PlaguePictureBg,
-          },
+          type: 'trigger',
         },
         position: {
-          x: 50,
-          y: 100,
+          x: 110,
+          y: 20,
           width: 10,
           height: 10,
         },
         logical: {
           expectedValue: ['image-part3-large'],
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
         type: 'receiver',
         id: 'image-part4-receiver',
         element: {
-          type: 'image',
-          image: {
-            src: PlaguePictureBg,
-          },
+          type: 'trigger',
         },
         position: {
-          x: 70,
-          y: 90,
+          x: 155,
+          y: 85,
           width: 10,
           height: 10,
         },
         logical: {
           expectedValue: ['image-part4-large'],
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
         type: 'receiver',
         id: 'image-part5-receiver',
         element: {
-          type: 'image',
-          image: {
-            src: PlaguePictureBg,
-          },
+          type: 'trigger',
         },
         position: {
-          x: 150,
-          y: 40,
+          x: 155,
+          y: 20,
           width: 10,
           height: 10,
         },
         logical: {
-          expectedValue: ['image-part1-large'],
+          expectedValue: ['image-part5-large'],
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
         type: 'draggable',
         id: 'image-part1-large',
-        group: 'plague-picture-images',
+        group: 'plague-picture-puzzle',
         element: {
           type: 'image',
           image: {
@@ -119,15 +139,18 @@ export const PLAGUE_PICTURE_SCENE = {
         position: {
           x: 20,
           y: 20,
-          width: 60,
-          height: 60,
+          width: 85,
+          height: 55,
           zIndex: 1,
+        },
+        logical: {
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
         type: 'draggable',
         id: 'image-part2-large',
-        group: 'plague-picture-images',
+        group: 'plague-picture-puzzle',
         element: {
           type: 'image',
           image: {
@@ -137,15 +160,18 @@ export const PLAGUE_PICTURE_SCENE = {
         position: {
           x: 30,
           y: 80,
-          width: 50,
-          height: 50,
+          width: 53,
+          height: 65,
           zIndex: 1,
+        },
+        logical: {
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
         type: 'draggable',
         id: 'image-part3-large',
-        group: 'plague-picture-images',
+        group: 'plague-picture-puzzle',
         element: {
           type: 'image',
           image: {
@@ -155,15 +181,18 @@ export const PLAGUE_PICTURE_SCENE = {
         position: {
           x: 25,
           y: 140,
-          width: 50,
-          height: 50,
+          width: 60,
+          height: 40,
           zIndex: 1,
+        },
+        logical: {
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
         type: 'draggable',
         id: 'image-part4-large',
-        group: 'plague-picture-images',
+        group: 'plague-picture-puzzle',
         element: {
           type: 'image',
           image: {
@@ -173,15 +202,18 @@ export const PLAGUE_PICTURE_SCENE = {
         position: {
           x: 240,
           y: 50,
-          width: 50,
-          height: 50,
+          width: 38,
+          height: 60,
           zIndex: 1,
+        },
+        logical: {
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
         type: 'draggable',
         id: 'image-part5-large',
-        group: 'plague-picture-images',
+        group: 'plague-picture-puzzle',
         element: {
           type: 'image',
           image: {
@@ -191,9 +223,32 @@ export const PLAGUE_PICTURE_SCENE = {
         position: {
           x: 230,
           y: 130,
-          width: 50,
-          height: 50,
+          width: 40,
+          height: 58,
           zIndex: 1,
+        },
+        logical: {
+          hideOnResolved: ['plague-picture-puzzle'],
+        },
+      },
+      {
+        type: 'blank',
+        id: 'plague-picture-full',
+        element: {
+          type: 'image',
+          image: {
+            src: PlaguePicture,
+          },
+        },
+        position: {
+          x: 96,
+          y: 12,
+          width: 121,
+          height: 192,
+          zIndex: 1,
+        },
+        logical: {
+          showOnResolved: ['plague-picture-puzzle'],
         },
       },
     ],
