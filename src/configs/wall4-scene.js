@@ -8,6 +8,7 @@ import ImagePart5 from '../assets/images/image-part5.png';
 import ArrowLeft from '../assets/images/arrow-left.png';
 import ArrowRight from '../assets/images/arrow-right.png';
 import ArrowUp from '../assets/images/arrow-up.png';
+import PlaguePicture from '../assets/images/plague-picture.png';
 
 export const WALL4_SCENE = {
   name: 'Wall4',
@@ -120,7 +121,7 @@ export const WALL4_SCENE = {
       },
       {
         type: 'receiver',
-        id: 'plaguePicture',
+        id: 'plague-picture-parts',
         element: {
           type: 'image',
           image: {
@@ -141,7 +142,7 @@ export const WALL4_SCENE = {
             'picture-part4',
             'picture-part5',
           ],
-          hideOnResolved: ['plaguePicture'],
+          hideOnResolved: ['plague-picture-parts'],
         },
       },
       {
@@ -161,7 +162,26 @@ export const WALL4_SCENE = {
           height: 60,
         },
         logical: {
-          showOnResolved: ['plaguePicture'],
+          showOnResolved: ['plague-picture-parts'],
+          hideOnResolved: ['plague-picture-puzzle'],
+        },
+      },
+      {
+        id: 'plaguePictureFull',
+        element: {
+          type: 'image',
+          image: {
+            src: PlaguePicture,
+          },
+        },
+        position: {
+          x: 198,
+          y: 55,
+          width: 37,
+          height: 63,
+        },
+        logical: {
+          showOnResolved: ['plague-picture-puzzle'],
         },
       },
       {

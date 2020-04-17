@@ -172,7 +172,7 @@ const ObjectGrid = ({
                     </StyledTouchableWithoutFeedback>
                   </View>
                 )}
-              {type === ITEMS.RECEIVER && (
+              {type === ITEMS.RECEIVER && isResolved && !hideResolved && (
                 <View style={generateStyle(position)}>
                   <StyledView>
                     <Element element={element} position={position} />

@@ -53,7 +53,7 @@ const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 function screenGenerator(scene, index) {
   class ScreenGenerator extends React.PureComponent {
     async componentDidMount() {
-      const { setState } = this.props;
+      const { setState, resolved } = this.props;
       const sceneCopy = _.cloneDeep(scene);
       internationalizeScene(`SCENES_${index}`, sceneCopy);
 
@@ -65,6 +65,7 @@ function screenGenerator(scene, index) {
         scene.name,
       );
       this.setBgSound();
+      console.error(resolved);
     }
 
     setBgSound = async () => {
@@ -120,11 +121,14 @@ function screenGenerator(scene, index) {
     };
 
     collect = async (item, progress) => {
-      const { collectedItems, setState } = this.props;
+      const { collectedItems, resolved, setState } = this.props;
       if (progress) {
         this.saveProgress(progress);
       }
-      setState({ collectedItems: [...collectedItems, item] });
+      setState({
+        collectedItems: [...collectedItems, item],
+        resolved: [...resolved, `collected-${item.id}`],
+      });
     };
 
     receive = async (expectedValue, progress) => {
@@ -351,7 +355,7 @@ function screenGenerator(scene, index) {
       } = this.props;
       const moveX = (g.moveX - evt.nativeEvent.locationX - left) / pointX;
       const moveY = (g.moveY - evt.nativeEvent.locationY - top) / pointY;
-      // console.error(id);
+
       const receiver = objects.itemsMap.find(
         item =>
           item.type === ITEMS.RECEIVER &&
@@ -379,7 +383,6 @@ function screenGenerator(scene, index) {
         );
 
         if (groupIsResolved) {
-          console.error('YEEEE');
           resolvedWithId.push(group);
         }
 

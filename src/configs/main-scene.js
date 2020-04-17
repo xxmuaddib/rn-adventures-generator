@@ -474,26 +474,26 @@ const SCENES = [
             countOfUse: 1,
           },
         },
-        {
-          type: 'nav',
-          route: '',
-          element: {
-            type: 'image',
-            image: {
-              src: Wall2Picture3,
-            },
-          },
-          position: {
-            x: 125,
-            y: 70,
-            width: 30,
-            height: 25,
-            zIndex: 2,
-          },
-        },
+        // {
+        //   type: 'nav',
+        //   route: '',
+        //   element: {
+        //     type: 'image',
+        //     image: {
+        //       src: Wall2Picture3,
+        //     },
+        //   },
+        //   position: {
+        //     x: 125,
+        //     y: 70,
+        //     width: 30,
+        //     height: 25,
+        //     zIndex: 2,
+        //   },
+        // },
         {
           type: 'collectable',
-          id: 'picture-part3',
+          id: 'plague-picture-part3',
           element: {
             type: 'image',
             image: {
@@ -733,7 +733,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'picture-part1',
+          id: 'plague-picture-part1',
           element: {
             type: 'image',
             image: {
@@ -769,7 +769,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'picture-part4',
+          id: 'plague-picture-part4',
           element: {
             type: 'image',
             image: {
@@ -1151,6 +1151,9 @@ const SCENES = [
             height: 38,
             zIndex: 3,
           },
+          logical: {
+            countOfUse: 1,
+          },
         },
         {
           type: 'blank',
@@ -1265,7 +1268,7 @@ const SCENES = [
         },
         {
           type: 'collectable',
-          id: 'picture-part2',
+          id: 'plague-picture-part2',
           element: {
             type: 'image',
             image: {
@@ -1425,6 +1428,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Wall4';
+const INITIAL_SCREEN = 'Wall1';
 
 export { SCENES, INITIAL_SCREEN };

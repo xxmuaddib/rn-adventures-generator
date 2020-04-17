@@ -79,7 +79,7 @@ export const WALL1_SCENE = {
         },
       },
       {
-        type: 'nav',
+        type: 'blank',
         route: 'Roof',
         element: {
           type: 'trigger',
@@ -109,7 +109,7 @@ export const WALL1_SCENE = {
       },
       {
         type: 'dialog',
-        id: 'death-diolog',
+        id: 'death-dialog',
         element: {
           type: 'image',
           image: {
@@ -123,6 +123,7 @@ export const WALL1_SCENE = {
           height: 120,
         },
         logical: {
+          hideOnResolved: ['plague-picture-puzzle'],
           dialogProperties: {
             character: {
               translations: {
@@ -198,6 +199,68 @@ export const WALL1_SCENE = {
                     setProgressOnResolved: 'plaguePictureShouldBeSolved',
                   },
                 ],
+              },
+            ],
+          },
+        },
+      },
+      {
+        type: 'dialog',
+        id: 'death-dialog-2',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall1Death,
+          },
+        },
+        position: {
+          x: 50,
+          y: 40,
+          width: 50,
+          height: 120,
+        },
+        logical: {
+          showOnResolved: ['plague-picture-puzzle'],
+          dialogProperties: {
+            character: {
+              translations: {
+                en:
+                  'Wow, thank you! You have some pottential, huh... Take this thing and put it on your corona.',
+              },
+            },
+            characterElement: {
+              type: 'image',
+              image: {
+                src: DeathAvatar1,
+              },
+              bg: 'rgba(255, 255, 255, .8)',
+              color: 'rgb(0, 0, 0)',
+            },
+            heroElement: {
+              bg: 'rgba(255, 255, 255, .8)',
+              color: 'rgb(0, 0, 0)',
+            },
+            dialog: [
+              {
+                hero: {
+                  translations: {
+                    en: 'Wow! Thanks!',
+                  },
+                },
+                drop: true,
+                resolve: 'death-dialog-2',
+                characterElement: {
+                  type: 'image',
+                  image: {
+                    src: DeathAvatar1,
+                  },
+                  bg: 'rgba(255, 255, 255, .8)',
+                  color: 'rgb(0, 0, 0)',
+                },
+                heroElement: {
+                  bg: 'rgba(255, 255, 255, .8)',
+                  color: 'rgb(0, 0, 0)',
+                },
               },
             ],
           },
