@@ -8,6 +8,7 @@ import ImagePart5 from '../assets/images/image-part5.png';
 import ArrowLeft from '../assets/images/arrow-left.png';
 import ArrowRight from '../assets/images/arrow-right.png';
 import ArrowUp from '../assets/images/arrow-up.png';
+import PlaguePicture from '../assets/images/plague-picture.png';
 
 export const WALL4_SCENE = {
   name: 'Wall4',
