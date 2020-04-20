@@ -29,7 +29,8 @@ export const PLAGUE_PICTURE_SCENE = {
         },
       },
       {
-        type: 'blank',
+        type: 'nav',
+        route: 'Wall4',
         element: {
           type: 'trigger',
         },
@@ -38,6 +39,7 @@ export const PLAGUE_PICTURE_SCENE = {
           y: 188,
           width: 10,
           height: 10,
+          zIndex: 5,
         },
       },
       {

@@ -120,13 +120,31 @@ function screenGenerator(scene, index) {
     };
 
     collect = async (item, progress) => {
-      const { collectedItems, resolved, setState } = this.props;
+      const {
+        currentScene: {
+          scene: { objects },
+        },
+        collectedItems,
+        resolved,
+        setState,
+      } = this.props;
       if (progress) {
         this.saveProgress(progress);
       }
+      let newResolved = [];
+      if (
+        item.logical &&
+        item.logical.resolveOnCollect &&
+        !!item.logical.resolveOnCollect.length
+      ) {
+        item.logical.resolveOnCollect.forEach(el => {
+          newResolved = [...newResolved, el];
+        });
+      }
+      newResolved = [...resolved, ...newResolved, `collected-${item.id}`];
       setState({
         collectedItems: [...collectedItems, item],
-        resolved: [...resolved, `collected-${item.id}`],
+        resolved: [...newResolved],
       });
     };
 

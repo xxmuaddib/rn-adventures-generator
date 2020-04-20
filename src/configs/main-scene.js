@@ -44,6 +44,7 @@ import Wall2Foot from '../assets/images/wall2-foot.png';
 import Wall2Picture1 from '../assets/images/wall2-picture1.png';
 import Wall2Picture2 from '../assets/images/wall2-picture2.png';
 import Wall2Picture3 from '../assets/images/wall2-picture3.png';
+import Wall2Picture3Flipped from '../assets/images/wall2-picture3-flipped.png';
 import Wall2Arm from '../assets/images/wall2-arm.png';
 import ImagePart3 from '../assets/images/image-part3.png';
 
@@ -58,6 +59,8 @@ import Wall3SafeDoor2Opened from '../assets/images/wall3-safe-door2-opened.png';
 import Wall3Skull from '../assets/images/wall3-skull.png';
 import ImagePart1 from '../assets/images/image-part1.png';
 import Wall3Vase from '../assets/images/wall3-vase.png';
+import SkeletonArm from '../assets/images/skeleton-arm.svg';
+import SkeletonSpine from '../assets/images/skeleton-spine.png';
 
 import MirrorSceneBackground from '../assets/images/mirror-scene-bg.png';
 import MirrorSceneMirror from '../assets/images/mirror-scene-mirror.png';
@@ -412,11 +415,11 @@ const SCENES = [
             x: 221,
             y: 35,
             width: 8,
-            height: 90,
+            height: 85,
             zIndex: 3,
           },
           logical: {
-            showOnResolved: ['decorative4'],
+            showOnResolved: ['wandow2-closed'],
             countOfUse: 1,
           },
         },
@@ -438,8 +441,7 @@ const SCENES = [
           },
         },
         {
-          type: 'nav',
-          route: '',
+          type: 'blank',
           element: {
             type: 'image',
             image: {
@@ -472,11 +474,12 @@ const SCENES = [
           },
           logical: {
             countOfUse: 1,
+            resolveOnCollect: ['decorative-picture'],
           },
         },
         {
-          type: 'nav',
-          route: '',
+          type: 'blank',
+          id: 'picture3',
           element: {
             type: 'image',
             image: {
@@ -490,6 +493,28 @@ const SCENES = [
             height: 25,
             zIndex: 2,
           },
+          logical: {
+            hideOnResolved: ['decorative-picture'],
+          },
+        },
+        {
+          type: 'blank',
+          id: 'picture3-flipped',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Picture3Flipped,
+            },
+          },
+          position: {
+            x: 135,
+            y: 70,
+            width: 34,
+            height: 40,
+          },
+          logical: {
+            showOnResolved: ['decorative-picture'],
+          },
         },
         {
           type: 'collectable',
@@ -501,7 +526,7 @@ const SCENES = [
             },
           },
           position: {
-            x: 129,
+            x: 124,
             y: 76,
             width: 5,
             height: 8,
@@ -799,6 +824,74 @@ const SCENES = [
             y: 50,
             width: 35,
             height: 130,
+          },
+        },
+        {
+          type: 'receiver',
+          id: 'skeleton-foot-receiver',
+          group: 'skeleton-group',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 213,
+            y: 95,
+            width: 15,
+            height: 15,
+          },
+          logical: {
+            expectedValue: ['skeleton-foot'],
+          },
+        },
+        {
+          type: 'receiver',
+          id: 'skeleton-arm-receiver',
+          group: 'skeleton-group',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 190,
+            y: 58,
+            width: 10,
+            height: 10,
+          },
+          logical: {
+            expectedValue: ['skeleton-arm'],
+          },
+        },
+        {
+          type: 'receiver',
+          id: 'skeleton-skull-receiver',
+          group: 'skeleton-group',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 208,
+            y: 25,
+            width: 10,
+            height: 10,
+          },
+          logical: {
+            expectedValue: ['skeleton-skull'],
+          },
+        },
+        {
+          type: 'receiver',
+          id: 'skeleton-spine-receiver',
+          group: 'skeleton-group',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 208,
+            y: 43,
+            width: 15,
+            height: 15,
+          },
+          logical: {
+            expectedValue: ['skeleton-spine'],
           },
         },
         {
