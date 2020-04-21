@@ -148,7 +148,7 @@ function screenGenerator(scene, index) {
       });
     };
 
-    receive = async (expectedValue, progress) => {
+    receive = async (receiver, progress) => {
       const {
         resolved,
         currentScene: {
@@ -158,52 +158,44 @@ function screenGenerator(scene, index) {
         setState,
       } = this.props;
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
-      if (expectedValue.includes(selectedItemId)) {
+      if (receiver.logical.expectedValue.includes(selectedItemId)) {
         await AsyncStorage.removeItem('selectedItem');
 
-        const receiverMatch = objects.itemsMap.find(
-          el => el.type === ITEMS.RECEIVER,
-        );
-        if (receiverMatch) {
-          const newResolved = [
-            ...resolved,
-            `${receiverMatch.id}-${selectedItemId}`,
-          ];
+        const newResolved = [...resolved, `${receiver.id}-${selectedItemId}`];
+        setState({
+          resolved: newResolved,
+        });
+
+        if (
+          receiver.logical.expectedValue.every(val =>
+            newResolved.includes(`${receiver.id}-${val}`),
+          )
+        ) {
           setState({
-            resolved: newResolved,
+            resolved: [...newResolved, receiver.id],
           });
-
-          if (
-            receiverMatch.logical.expectedValue.every(val =>
-              newResolved.includes(`${receiverMatch.id}-${val}`),
-            )
-          ) {
-            setState({
-              resolved: [...newResolved, receiverMatch.id],
-            });
-          }
-
-          if (progress) {
-            this.saveProgress(progress);
-          }
-
-          const collectedItemsCopy = [...collectedItems];
-
-          const i = collectedItemsCopy.findIndex(
-            item => item.id === selectedItemId,
-          );
-          if (i !== -1 && collectedItemsCopy[i].logical) {
-            collectedItemsCopy[i] = {
-              ...collectedItemsCopy[i],
-              logical: {
-                ...collectedItemsCopy[i].logical,
-                countOfUse: collectedItemsCopy[i].logical.countOfUse - 1,
-              },
-            };
-          }
-
-          setState({ collectedItems: collectedItemsCopy });
         }
+
+        if (progress) {
+          this.saveProgress(progress);
+        }
+
+        const collectedItemsCopy = [...collectedItems];
+
+        const i = collectedItemsCopy.findIndex(
+          item => item.id === selectedItemId,
+        );
+        if (i !== -1 && collectedItemsCopy[i].logical) {
+          collectedItemsCopy[i] = {
+            ...collectedItemsCopy[i],
+            logical: {
+              ...collectedItemsCopy[i].logical,
+              countOfUse: collectedItemsCopy[i].logical.countOfUse - 1,
+            },
+          };
+        }
+
+        setState({ collectedItems: collectedItemsCopy });
       }
     };
 

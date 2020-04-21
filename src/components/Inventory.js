@@ -47,7 +47,7 @@ export const Inventory = ({
         !!logical.expectedValue.length &&
         logical.expectedValue.includes(itemId),
     );
-    console.error(moveX);
+
     if (
       receiver &&
       !!Object.keys(receiver).length &&
@@ -56,7 +56,7 @@ export const Inventory = ({
       moveY > receiver.position.y &&
       moveY < receiver.position.y + receiver.position.height
     ) {
-      receive(itemId);
+      receive(receiver);
     }
   };
 

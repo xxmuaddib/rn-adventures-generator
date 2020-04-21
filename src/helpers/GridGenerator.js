@@ -55,7 +55,7 @@ const ObjectGrid = ({
             !logical ||
             !logical.showOnResolved ||
             !logical.showOnResolved.length ||
-            logical.showOnResolved.some(item => resolved.includes(item));
+            logical.showOnResolved.every(item => resolved.includes(item));
           const hideResolved =
             !logical ||
             !logical.hideOnResolved ||
