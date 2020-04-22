@@ -89,15 +89,17 @@ function screenGenerator(scene, index) {
         },
         setState,
         reset,
+        navigation,
       } = this.props;
       reset();
+      navigation.navigate(INITIAL_SCREEN);
       const sceneCopy = _.cloneDeep(scene);
       internationalizeScene(`SCENES_${index}`, sceneCopy);
-
       setState(
         {
           scene: sceneCopy,
           originalScene: sceneCopy,
+          currentRoute: INITIAL_SCREEN,
         },
         scene.name,
       );

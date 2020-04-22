@@ -2,7 +2,11 @@ import React from 'react';
 import { YellowBox, AsyncStorage } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { createSwitchNavigator, createAppContainer, SwitchActions } from 'react-navigation';
+import {
+  createSwitchNavigator,
+  createAppContainer,
+  SwitchActions,
+} from 'react-navigation';
 import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
 import { Screens, InitialScreen } from './src/helpers/ScreenGenerator';
@@ -80,9 +84,11 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <AppContainer ref={navigatorRef => {
-          NavigationService.setTopLevelNavigator(navigatorRef);
-        }} />
+        <AppContainer
+          ref={navigatorRef => {
+            NavigationService.setTopLevelNavigator(navigatorRef);
+          }}
+        />
       </Provider>
     );
   }
