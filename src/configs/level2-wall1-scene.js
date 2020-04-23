@@ -2,10 +2,8 @@ import ArrowLeft from '../assets/images/arrow-left.png';
 import ArrowRight from '../assets/images/arrow-right.png';
 import ArrowUp from '../assets/images/arrow-up.png';
 
-import Wall1Bg from '../assets/images/wall1-bg.png';
-import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
-import Wall1Death from '../assets/images/wall1-death.png';
-import Wall1Floor from '../assets/images/wall1-floor.png';
+import Level2Wall1Bg from '../assets/images/level2-wall1-bg.png';
+import Level2Wall1Teacher from '../assets/images/level2-teacher.png';
 import Wall1Table1 from '../assets/images/wall1-table1.png';
 import Wall1Table2 from '../assets/images/wall1-table2.png';
 import Wall1Chair from '../assets/images/wall1-chair.png';
@@ -13,11 +11,12 @@ import Wall1Virus1 from '../assets/images/wall1-virus1.png';
 import Wall1Virus2 from '../assets/images/wall1-virus2.png';
 import Wall1Virus3 from '../assets/images/wall1-virus3.png';
 import DeathAvatar1 from '../assets/images/death-avatar1.png';
+import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
 
-export const WALL1_SCENE = {
-  name: 'Wall1',
-  route: 'Wall1',
-  bg: Wall1Bg,
+export const LEVEL2_WALL1_SCENE = {
+  name: 'Level2-wall1',
+  route: 'Level2-wall1',
+  bg: Level2Wall1Bg,
   objects: {
     itemsMap: [
       {
@@ -67,7 +66,7 @@ export const WALL1_SCENE = {
       },
       {
         type: 'nav',
-        route: 'Wall4',
+        route: 'Level2-wall4',
         element: {
           type: 'trigger',
         },
@@ -80,7 +79,7 @@ export const WALL1_SCENE = {
       },
       {
         type: 'nav',
-        route: 'Roof',
+        route: 'Level2-roof',
         element: {
           type: 'trigger',
         },
@@ -92,38 +91,21 @@ export const WALL1_SCENE = {
         },
       },
       {
-        type: 'nav',
-        route: 'Wall1Blackboard',
-        element: {
-          type: 'image',
-          image: {
-            src: Wall1Blackboard,
-          },
-        },
-        position: {
-          x: 110,
-          y: 10,
-          width: 145,
-          height: 90,
-        },
-      },
-      {
         type: 'dialog',
-        id: 'death-dialog',
+        id: 'wall2-teacher-dialog',
         element: {
           type: 'image',
           image: {
-            src: Wall1Death,
+            src: Level2Wall1Teacher,
           },
         },
         position: {
-          x: 50,
+          x: 40,
           y: 40,
-          width: 50,
+          width: 70,
           height: 120,
         },
         logical: {
-          hideOnResolved: ['plague-picture-puzzle'],
           dialogProperties: {
             character: {
               translations: {
@@ -205,68 +187,6 @@ export const WALL1_SCENE = {
         },
       },
       {
-        type: 'dialog',
-        id: 'death-dialog-2',
-        element: {
-          type: 'image',
-          image: {
-            src: Wall1Death,
-          },
-        },
-        position: {
-          x: 50,
-          y: 40,
-          width: 50,
-          height: 120,
-        },
-        logical: {
-          showOnResolved: ['plague-picture-puzzle'],
-          dialogProperties: {
-            character: {
-              translations: {
-                en:
-                  'Wow, thank you! You have some pottential, huh... Take this thing and put it on your corona.',
-              },
-            },
-            characterElement: {
-              type: 'image',
-              image: {
-                src: DeathAvatar1,
-              },
-              bg: 'rgba(255, 255, 255, .8)',
-              color: 'rgb(0, 0, 0)',
-            },
-            heroElement: {
-              bg: 'rgba(255, 255, 255, .8)',
-              color: 'rgb(0, 0, 0)',
-            },
-            dialog: [
-              {
-                hero: {
-                  translations: {
-                    en: 'Wow! Thanks!',
-                  },
-                },
-                drop: true,
-                resolve: 'death-dialog-2',
-                characterElement: {
-                  type: 'image',
-                  image: {
-                    src: DeathAvatar1,
-                  },
-                  bg: 'rgba(255, 255, 255, .8)',
-                  color: 'rgb(0, 0, 0)',
-                },
-                heroElement: {
-                  bg: 'rgba(255, 255, 255, .8)',
-                  color: 'rgb(0, 0, 0)',
-                },
-              },
-            ],
-          },
-        },
-      },
-      {
         type: 'blank',
         element: {
           type: 'image',
@@ -282,8 +202,23 @@ export const WALL1_SCENE = {
         },
       },
       {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall1Blackboard,
+          },
+        },
+        position: {
+          x: 110,
+          y: 10,
+          width: 145,
+          height: 90,
+        },
+      },
+      {
         type: 'nav',
-        route: 'Wall2',
+        route: 'Level2-wall2',
         element: {
           type: 'trigger',
         },
@@ -326,23 +261,6 @@ export const WALL1_SCENE = {
         },
       },
       {
-        type: 'nav',
-        route: 'Virus1',
-        element: {
-          type: 'image',
-          image: {
-            src: Wall1Virus1,
-          },
-        },
-        position: {
-          x: 40,
-          y: 115,
-          width: 55,
-          height: 80,
-          zIndex: 1,
-        },
-      },
-      {
         type: 'blank',
         element: {
           type: 'image',
@@ -374,8 +292,7 @@ export const WALL1_SCENE = {
         },
       },
       {
-        type: 'nav',
-        route: 'Virus2',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
@@ -422,8 +339,8 @@ export const WALL1_SCENE = {
         },
       },
       {
-        type: 'nav',
-        route: 'Virus3',
+        type: 'receiver',
+        id: 'virus3-receiver',
         element: {
           type: 'image',
           image: {
@@ -436,6 +353,9 @@ export const WALL1_SCENE = {
           width: 55,
           height: 80,
           zIndex: 1,
+        },
+        logical: {
+          expectedValue: ['knife'],
         },
       },
     ],

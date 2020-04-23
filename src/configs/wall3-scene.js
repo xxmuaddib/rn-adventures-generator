@@ -116,8 +116,7 @@ export const WALL3_SCENE = {
         },
       },
       {
-        type: 'nav',
-        route: '',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
