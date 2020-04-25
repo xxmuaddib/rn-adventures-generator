@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import {
-  ScrollView,
   View,
   TouchableOpacity,
   Dimensions,
   AsyncStorage,
+  Image,
 } from 'react-native';
 import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
-import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 
@@ -19,6 +18,9 @@ import {
   ObjectsPropTypes,
 } from '../proptypes/ObjectGridPropTypes';
 import { PlatformSpecificMeasurement } from '../helpers/PlatformSpecificUtils';
+import InventoryIcon from '../assets/icons/inventory.png';
+import InventoryArrowDown from '../assets/icons/inventory-arrow-down.png';
+import InventoryArrowUp from '../assets/icons/inventory-arrow-up.png';
 
 let { width, height } = Dimensions.get('window');
 let top = 0;
@@ -36,6 +38,8 @@ export const Inventory = ({
   receive,
   objects,
 }) => {
+  const [currentOffset, setCurrentOffset] = useState(0);
+
   const onDragRelease = async (_, g) => {
     const moveX = (g.moveX - left) / pointX;
     const moveY = (g.moveY - top) / pointY;
@@ -64,56 +68,77 @@ export const Inventory = ({
     AsyncStorage.setItem('selectedItem', itemId);
   };
 
-  const generarateElementTop = index => {
-    if (index === 0) {
-      return 30;
-    } else {
-      let totalHeight = 20;
-      collectedItems.slice(0, index).forEach(item => {
-        totalHeight += item.position.height + 20;
-      });
-      return totalHeight;
-    }
-  };
+  const changePage = useCallback(
+    a => {
+      if (a === 'next') {
+        setCurrentOffset(currentOffset + 4);
+      } else {
+        setCurrentOffset(currentOffset - 4);
+      }
+    },
+    [currentOffset, setCurrentOffset],
+  );
+
+  const filteredCollectedItems = collectedItems.filter(
+    el => !!el.logical.countOfUse,
+  );
 
   if (open) {
     return (
       <InventoryContainer>
-        <InventoryOpen
-          persistentScrollbar
-          height={collectedItems.length * 80}
-        />
-        {collectedItems
-          .filter(el => !!el.logical.countOfUse)
+        <InventoryCloseIcon onPress={onPress}>
+          <Icon source={InventoryIcon} />
+        </InventoryCloseIcon>
+        {[0, 1, 2, 3].map(i => (
+          <InventorySpace first={i === 0} key={`InventorySpace${i}`} />
+        ))}
+        {currentOffset > 0 && (
+          <InventoryArrowContainer
+            onPress={() => changePage('prev')}
+            smallMargin={filteredCollectedItems.length > currentOffset + 4}
+          >
+            <InventoryArrowImage source={InventoryArrowUp} />
+          </InventoryArrowContainer>
+        )}
+        {filteredCollectedItems.length > currentOffset + 4 && (
+          <InventoryArrowContainer
+            onPress={() => changePage('next')}
+            both={currentOffset > 0}
+          >
+            <InventoryArrowImage source={InventoryArrowDown} />
+          </InventoryArrowContainer>
+        )}
+
+        {filteredCollectedItems
+          .filter(
+            (_, index) => index >= currentOffset && index < currentOffset + 4,
+          )
           .map(
             (item, index) =>
               !!item.logical.countOfUse && (
                 <Draggable
                   onDragRelease={onDragRelease}
                   shouldReverse
-                  y={index * 60 + 20}
+                  y={index === 0 ? 70 : 85 + (index * 60 + 15 * (index - 1))}
                   z={140}
                   onDrag={() => onDrag(item.id)}
                 >
-                  <InventoryItem
-                    key={item.id}
-                    onPress={() => handleInvetoryItemPress(item.id)}
-                    top={generarateElementTop(index)}
-                  >
-                    <Element element={item.element} position={item.position} />
+                  <InventoryItem key={item.id}>
+                    <Element
+                      element={item.element}
+                      position={{ ...item.position, width: 30, height: 30 }}
+                      isInventoryItem
+                    />
                   </InventoryItem>
                 </Draggable>
               ),
           )}
-        <InventoryCloseIcon onPress={() => onPress()}>
-          <FontAwesome name="chevron-right" size={30} color="#E4CDBA" />
-        </InventoryCloseIcon>
       </InventoryContainer>
     );
   }
   return (
     <InventoryClosed onPress={onPress}>
-      <FontAwesome name="briefcase" size={20} color="#664422" />
+      <Icon source={InventoryIcon} />
     </InventoryClosed>
   );
 };
@@ -132,44 +157,64 @@ Inventory.defaultProps = {
   receive: () => undefined,
 };
 
-const InventoryItem = styled(TouchableOpacity)`
-  margin-top: ${p => p.top}px;
+const InventoryItem = styled(View)`
   width: 60px;
   height: 60px;
-  padding-left: 15px;
-  padding-right: 5px;
+  margin-horizontal: 10px;
   justify-content: center;
   align-items: center;
 `;
 
 const InventoryContainer = styled(View)`
+  display: flex;
+  align-items: center;
   position: absolute;
   height: ${height}px;
   width: 80px;
   top: 0;
   right: 0;
+  background-color: rgba(45, 51, 36, 0.5);
 `;
 
-const InventoryOpen = styled(ScrollView).attrs(p => ({
-  contentContainerStyle: {
-    height: p.height > height ? p.height : height,
-    flexGrow: 1,
-  },
-}))`
-  width: 80px;
-  border-left-color: #e4cdba;
-  border-left-width: 5px;
-  background-color: #fff1e6;
+const InventorySpace = styled(View)`
+  background-color: rgba(45, 51, 36, 0.5);
+  border-radius: 5px;
+  margin-top: ${p => (p.first ? '40px' : '15px')};
+  width: 60px;
+  height: 60px;
 `;
 
 const InventoryCloseIcon = styled(TouchableOpacity)`
-  position: absolute;
-  top: ${height / 2 - 10}px;
-  left: -4px;
+  top: 20px;
+`;
+
+const InventoryArrowContainer = styled(TouchableOpacity)`
+  margin-top: ${p => (p.smallMargin ? '10px' : !p.both ? '20px' : 0)};
+`;
+
+const InventoryArrowImage = styled(Image)`
+  width: 30px;
+  height: 20px;
+  resize-mode: contain;
+`;
+
+const Icon = styled(Image)`
+  width: 30px;
+  height: 30px;
+  resize-mode: contain;
 `;
 
 const InventoryClosed = styled(TouchableOpacity)`
   position: absolute;
-  top: ${PlatformSpecificMeasurement(20)};
-  right: 20px;
+  top: 0;
+  right: 0;
+  background-color: rgba(45, 51, 36, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-right: 15px;
+  padding-top: 15px;
+  width: 70px;
+  height: 70px;
+  border-bottom-left-radius: 60px;
 `;

@@ -13,13 +13,16 @@ const Element = ({
   element: { type, image, name, animation },
   position,
   animationRef,
+  isInventoryItem,
 }) => {
   switch (type) {
     case ELEMENT_VARIANTS.IMAGE:
       return (
         <StyledImage
-          source={image.src}
-          resizeMode="stretch"
+          source={
+            isInventoryItem ? image.inventoryImage || image.src : image.src
+          }
+          resizeMode={isInventoryItem ? 'contain' : 'stretch'}
           imagePosition={position}
         />
       );
@@ -28,6 +31,15 @@ const Element = ({
     case ELEMENT_VARIANTS.TEXT:
       return <Text>{name}</Text>;
     case ELEMENT_VARIANTS.ANIMATABLE:
+      if (isInventoryItem) {
+        return (
+          <StyledImage
+            source={animation.inventoryImage}
+            resizeMode="contain"
+            imagePosition={position}
+          />
+        );
+      }
       return (
         <View>
           <StyledLottieView
@@ -50,10 +62,12 @@ Element.propTypes = {
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]),
+  isInventoryItem: PropTypes.bool,
 };
 
 Element.defaultProps = {
   animationRef: null,
+  isInventoryItem: false,
 };
 
 const StyledTrigger = styled(View)`

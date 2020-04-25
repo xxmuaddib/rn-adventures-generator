@@ -2,9 +2,10 @@ import React from 'react';
 import { YellowBox, AsyncStorage } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { createSwitchNavigator, createAppContainer, SwitchActions } from 'react-navigation';
-import { Notifications } from 'expo';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
+import { Notifications, AppLoading } from 'expo';
 import * as Permissions from 'expo-permissions';
+import * as Font from 'expo-font';
 import { Screens, InitialScreen } from './src/helpers/ScreenGenerator';
 import { FetchApi } from './src/helpers/FetchApi';
 import {
@@ -13,6 +14,7 @@ import {
   setStateAction,
 } from './src/helpers/ReducersGenerator';
 import NavigationService from './src/helpers/NavigationService';
+import AcmeFont from './src/assets/fonts/Acme-Regular.ttf';
 
 async function registerForPushNotificationsAsync() {
   const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
@@ -26,6 +28,11 @@ async function registerForPushNotificationsAsync() {
     FetchApi.post('/expo', { token });
   }
 }
+
+const fetchFonts = () =>
+  Font.loadAsync({
+    acme: AcmeFont,
+  });
 
 registerForPushNotificationsAsync();
 
@@ -60,7 +67,9 @@ Object.keys(store.getState()).forEach(scene => {
       if (scene === 'app') {
         store.dispatch(setStateAction(savedState));
         if (savedState.currentRoute) {
-          NavigationService.navigate(savedState.currentRoute);
+          setTimeout(() => {
+            NavigationService.navigate(savedState.currentRoute);
+          }, 100);
         }
         store.dispatch(setStateAction({ loading: false }));
       } else {
@@ -77,12 +86,27 @@ const SwitchNavigator = createSwitchNavigator(Screens(), {
 const AppContainer = createAppContainer(SwitchNavigator);
 
 export default class App extends React.Component {
+  state = {
+    fontsLoaded: false,
+  };
+
   render() {
+    const { fontsLoaded } = this.state;
+    if (!fontsLoaded) {
+      return (
+        <AppLoading
+          startAsync={fetchFonts}
+          onFinish={() => this.setState({ fontsLoaded: true })}
+        />
+      );
+    }
     return (
       <Provider store={store}>
-        <AppContainer ref={navigatorRef => {
-          NavigationService.setTopLevelNavigator(navigatorRef);
-        }} />
+        <AppContainer
+          ref={navigatorRef => {
+            NavigationService.setTopLevelNavigator(navigatorRef);
+          }}
+        />
       </Provider>
     );
   }

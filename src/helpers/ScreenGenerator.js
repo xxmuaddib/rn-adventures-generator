@@ -8,11 +8,11 @@ import {
   View,
   StatusBar,
   Platform,
+  Image,
 } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Audio } from 'expo-av';
-import { FontAwesome } from '@expo/vector-icons';
 import styled from 'styled-components';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 import { AdMobRewarded } from 'expo-ads-admob';
@@ -40,6 +40,7 @@ import {
 } from '../proptypes/ObjectGridPropTypes';
 import { internationalizeScene } from '../localization';
 import { arrayIncludesSorted, objCompare } from './Utils';
+import MainMenuIcon from '../assets/icons/main-menu.png';
 
 let { width, height } = Dimensions.get('window');
 let top;
@@ -516,7 +517,7 @@ function screenGenerator(scene, index) {
               />
             )}
             <MainMenuButton onPress={this.openMainMenu}>
-              <FontAwesome name="gear" size={20} color="#664422" />
+              <Icon source={MainMenuIcon} />
             </MainMenuButton>
             <Inventory
               open={inventoryOpen}
@@ -626,8 +627,23 @@ const SceneBackground = styled(ImageBackground)`
 
 const MainMenuButton = styled(TouchableOpacity)`
   position: absolute;
-  top: ${PlatformSpecificMeasurement(20)};
-  left: 20px;
+  top: 0;
+  left: 0;
+  background-color: rgba(45, 51, 36, 0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 15px;
+  padding-top: 15px;
+  width: 70px;
+  height: 70px;
+  border-bottom-right-radius: 60px;
+`;
+
+const Icon = styled(Image)`
+  width: 30px;
+  height: 30px;
+  resize-mode: contain;
 `;
 
 const generateAllScreens = () =>

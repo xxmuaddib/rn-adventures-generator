@@ -12,6 +12,7 @@
     "expo": "~36.0.0",
     "expo-ads-admob": "~8.0.0",
     "expo-av": "~8.0.0",
+    "expo-font": "~8.0.0",
     "expo-localization": "~8.0.0",
     "i18n-js": "^3.5.1",
     "lodash": "^4.17.11",
