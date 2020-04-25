@@ -62,10 +62,10 @@ export const PLAGUE_PICTURE_SCENE = {
           type: 'trigger',
         },
         position: {
-          x: 110,
-          y: 110,
-          width: 10,
-          height: 10,
+          x: 105,
+          y: 105,
+          width: 15,
+          height: 15,
         },
         logical: {
           expectedValue: ['image-part1-large'],
@@ -79,10 +79,10 @@ export const PLAGUE_PICTURE_SCENE = {
           type: 'trigger',
         },
         position: {
-          x: 110,
-          y: 50,
-          width: 10,
-          height: 10,
+          x: 105,
+          y: 45,
+          width: 15,
+          height: 15,
         },
         logical: {
           expectedValue: ['image-part2-large'],
@@ -96,10 +96,10 @@ export const PLAGUE_PICTURE_SCENE = {
           type: 'trigger',
         },
         position: {
-          x: 110,
-          y: 20,
-          width: 10,
-          height: 10,
+          x: 105,
+          y: 15,
+          width: 15,
+          height: 15,
         },
         logical: {
           expectedValue: ['image-part3-large'],
@@ -113,10 +113,10 @@ export const PLAGUE_PICTURE_SCENE = {
           type: 'trigger',
         },
         position: {
-          x: 155,
-          y: 85,
-          width: 10,
-          height: 10,
+          x: 150,
+          y: 80,
+          width: 15,
+          height: 15,
         },
         logical: {
           expectedValue: ['image-part4-large'],
@@ -130,10 +130,10 @@ export const PLAGUE_PICTURE_SCENE = {
           type: 'trigger',
         },
         position: {
-          x: 155,
-          y: 20,
-          width: 10,
-          height: 10,
+          x: 150,
+          y: 15,
+          width: 15,
+          height: 15,
         },
         logical: {
           expectedValue: ['image-part5-large'],

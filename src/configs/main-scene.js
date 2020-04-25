@@ -331,8 +331,7 @@ const SCENES = [
           },
         },
         {
-          type: 'nav',
-          route: '',
+          type: 'blank',
           element: {
             type: 'image',
             image: {
@@ -408,8 +407,7 @@ const SCENES = [
           },
         },
         {
-          type: 'nav',
-          route: 'blank',
+          type: 'blank',
           element: {
             type: 'image',
             image: {
@@ -1144,6 +1142,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Wall4';
+const INITIAL_SCREEN = 'Level2-wall1';
 
 export { SCENES, INITIAL_SCREEN };

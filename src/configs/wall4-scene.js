@@ -104,8 +104,7 @@ export const WALL4_SCENE = {
         },
       },
       {
-        type: 'nav',
-        route: '',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
