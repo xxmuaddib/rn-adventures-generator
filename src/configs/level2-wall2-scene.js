@@ -184,7 +184,8 @@ export const LEVEL2_WALL2_SCENE = {
         },
       },
       {
-        type: 'blank',
+        type: 'nav',
+        route: 'Chemistry',
         element: {
           type: 'image',
           image: {

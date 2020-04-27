@@ -9,6 +9,7 @@ import { LEVEL2_WALL2_SCENE } from './level2-wall2-scene';
 import { LEVEL2_WALL3_SCENE } from './level2-wall3-scene';
 import { LEVEL2_WALL4_SCENE } from './level2-wall4-scene';
 import { LEVEL2_ROOF_SCENE } from './level2-roof-scene';
+import { CHEMISTRY_SCENE } from './level2-chemistry';
 
 SCENES.push(
   WALL1_SCENE,
@@ -21,6 +22,7 @@ SCENES.push(
   LEVEL2_WALL3_SCENE,
   LEVEL2_WALL4_SCENE,
   LEVEL2_ROOF_SCENE,
+  CHEMISTRY_SCENE,
 );
 
 export {
@@ -35,4 +37,5 @@ export {
   LEVEL2_WALL3_SCENE,
   LEVEL2_WALL4_SCENE,
   LEVEL2_ROOF_SCENE,
+  CHEMISTRY_SCENE,
 };
