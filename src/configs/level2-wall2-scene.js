@@ -9,6 +9,11 @@ import Wall2Picture1 from '../assets/images/wall2-picture1.png';
 import Wall2Picture2 from '../assets/images/wall2-picture2.png';
 import Wall2Picture3Flipped from '../assets/images/wall2-picture3-flipped.png';
 import Level2Wall2Bg from '../assets/images/level2-wall2-bg.png';
+import Level2Cabinet from '../assets/images/level2-cabinet.png';
+import Level2Rack from '../assets/images/level2-rack.png';
+import Match from '../assets/images/match.png';
+import Knife from '../assets/images/knife.png';
+import EmptyChemicalContainers from '../assets/images/empty-chemical-containers.png';
 
 export const LEVEL2_WALL2_SCENE = {
   name: 'Level2-wall2',
@@ -176,6 +181,117 @@ export const LEVEL2_WALL2_SCENE = {
           y: 45,
           width: 34,
           height: 40,
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: EmptyChemicalContainers,
+          },
+        },
+        position: {
+          x: 127,
+          y: 81,
+          height: 30,
+          width: 53,
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: Level2Cabinet,
+          },
+        },
+        position: {
+          x: 125,
+          y: 110,
+          width: 58,
+          height: 71,
+          zIndex: 1,
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'match-collectalbe',
+        element: {
+          type: 'image',
+          image: {
+            src: Match,
+          },
+        },
+        position: {
+          x: 138,
+          y: 121,
+          width: 10,
+          height: 10,
+          zIndex: 2,
+        },
+        logical: {
+          countOfUse: 1,
+        },
+      },
+      {
+        type: 'decorative',
+        id: 'level2-cabinet-rack1',
+        element: {
+          type: 'image',
+          image: {
+            src: Level2Rack,
+          },
+        },
+        position: {
+          x: 131,
+          y: 117,
+          width: 23,
+          height: 19,
+          zIndex: 3,
+        },
+        logical: {
+          hideOnResolved: ['level2-cabinet-rack1'],
+        },
+      },
+      {
+        type: 'decorative',
+        id: 'level2-cabinet-rack2',
+        element: {
+          type: 'image',
+          image: {
+            src: Level2Rack,
+          },
+        },
+        position: {
+          x: 154,
+          y: 158,
+          width: 23,
+          height: 20,
+          zIndex: 3,
+        },
+        logical: {
+          hideOnResolved: ['level2-cabinet-rack2'],
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'level2-knife',
+        element: {
+          type: 'image',
+          image: {
+            src: Knife,
+          },
+        },
+        position: {
+          x: 158,
+          y: 162,
+          width: 16,
+          height: 12,
+          zIndex: 2,
+        },
+        logical: {
+          countOfUse: 1,
         },
       },
     ],

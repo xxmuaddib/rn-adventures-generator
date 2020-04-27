@@ -45,6 +45,7 @@ import Wall2Picture3 from '../assets/images/wall2-picture3.png';
 import Wall2Picture3Flipped from '../assets/images/wall2-picture3-flipped.png';
 import Wall2Arm from '../assets/images/wall2-arm.png';
 import ImagePart3 from '../assets/images/image-part3.png';
+import Level2Virus2Bg from '../assets/images/level2-virus2-bg.png';
 
 import MirrorSceneBackground from '../assets/images/mirror-scene-bg.png';
 import MirrorSceneMirror from '../assets/images/mirror-scene-mirror.png';
@@ -1135,6 +1136,150 @@ const SCENES = [
           },
           logical: {
             showOnResolved: ['gum-width-key'],
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level2-virus2',
+    route: 'Level2-virus2',
+    bg: Level2Virus2Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'dialog',
+          id: 'level2-virus2-dialog',
+          element: {
+            type: 'image',
+            image: {
+              src: Virus2Front,
+            },
+          },
+          position: {
+            x: 100,
+            y: 5,
+            width: 100,
+            height: 150,
+            zIndex: 1,
+          },
+          logical: {
+            dialogProperties: {
+              character: {
+                translations: {
+                  en: 'Ill kill your time',
+                },
+              },
+            },
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFront,
+            },
+          },
+          position: {
+            x: 80,
+            y: 80,
+            width: 150,
+            height: 100,
+            zIndex: 1,
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'collectable10',
+          element: {
+            type: 'image',
+            image: {
+              src: Virus2Image,
+            },
+          },
+          position: {
+            x: 95,
+            y: 92,
+            width: 38,
+            height: 38,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart1,
+            },
+          },
+          position: {
+            x: 80,
+            y: 135,
+            width: 148,
+            height: 30,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart2,
+            },
+          },
+          position: {
+            x: 80,
+            y: 155,
+            width: 15,
+            height: 30,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart2,
+            },
+          },
+          position: {
+            x: 213,
+            y: 155,
+            width: 15,
+            height: 30,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Level2-wall1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 185,
+            height: 15,
+            width: 300,
           },
         },
       ],
