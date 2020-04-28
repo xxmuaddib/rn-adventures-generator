@@ -4,8 +4,6 @@ import Wall3Mirror from '../assets/images/wall3-mirror.png';
 import Wall3Safe from '../assets/images/wall3-safe.png';
 import Wall3SafeDoor1 from '../assets/images/wall3-safe-door1.png';
 import Wall3SafeDoor2 from '../assets/images/wall3-safe-door2.png';
-import Wall3SafeDoor1Opened from '../assets/images/wall3-safe-door1-opened.png';
-import Wall3SafeDoor2Opened from '../assets/images/wall3-safe-door2-opened.png';
 import Wall3Skull from '../assets/images/wall3-skull.png';
 import ImagePart1 from '../assets/images/image-part1.png';
 import PlagueImagePart1Inventory from '../assets/images/plague-picture-part1-inventory.png';
@@ -140,9 +138,9 @@ export const WALL3_SCENE = {
           },
         },
         position: {
-          x: 55,
+          x: 54,
           y: 50,
-          width: 40,
+          width: 42,
           height: 55,
           zIndex: 3,
         },
@@ -181,50 +179,50 @@ export const WALL3_SCENE = {
           },
         },
         position: {
-          x: 55,
-          y: 110,
-          width: 40,
-          height: 55,
+          x: 54,
+          y: 107,
+          width: 42,
+          height: 58,
           zIndex: 3,
         },
         logical: {
           hideOnResolved: ['safe-door2'],
         },
       },
-      {
-        type: 'blank',
-        id: 'blank1',
-        element: {
-          type: 'image',
-          image: {
-            src: Wall3SafeDoor1Opened,
-          },
-        },
-        position: {
-          x: 55,
-          y: 50,
-          width: 40,
-          height: 55,
-          zIndex: 1,
-        },
-      },
-      {
-        type: 'blank',
-        id: 'blank1',
-        element: {
-          type: 'image',
-          image: {
-            src: Wall3SafeDoor2Opened,
-          },
-        },
-        position: {
-          x: 55,
-          y: 110,
-          width: 40,
-          height: 55,
-          zIndex: 1,
-        },
-      },
+      // {
+      //   type: 'blank',
+      //   id: 'blank1',
+      //   element: {
+      //     type: 'image',
+      //     image: {
+      //       src: Wall3SafeDoor1Opened,
+      //     },
+      //   },
+      //   position: {
+      //     x: 55,
+      //     y: 50,
+      //     width: 40,
+      //     height: 55,
+      //     zIndex: 1,
+      //   },
+      // },
+      // {
+      //   type: 'blank',
+      //   id: 'blank1',
+      //   element: {
+      //     type: 'image',
+      //     image: {
+      //       src: Wall3SafeDoor2Opened,
+      //     },
+      //   },
+      //   position: {
+      //     x: 55,
+      //     y: 110,
+      //     width: 40,
+      //     height: 55,
+      //     zIndex: 1,
+      //   },
+      // },
       {
         type: 'collectable',
         id: 'picture-part1',

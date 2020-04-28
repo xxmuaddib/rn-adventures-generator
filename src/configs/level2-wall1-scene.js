@@ -7,11 +7,12 @@ import Level2Wall1Teacher from '../assets/images/level2-teacher.png';
 import Wall1Table1 from '../assets/images/wall1-table1.png';
 import Wall1Table2 from '../assets/images/wall1-table2.png';
 import Wall1Chair from '../assets/images/wall1-chair.png';
-import Wall1Virus1 from '../assets/images/wall1-virus1.png';
 import Wall1Virus2 from '../assets/images/wall1-virus2.png';
 import Wall1Virus3 from '../assets/images/wall1-virus3.png';
+import Level2Virus3 from '../assets/images/level2-virus3.png';
 import DeathAvatar1 from '../assets/images/death-avatar1.png';
 import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
+import Virus3Blood from '../assets/images/virus3-blood.png';
 
 export const LEVEL2_WALL1_SCENE = {
   name: 'Level2-wall1',
@@ -292,7 +293,8 @@ export const LEVEL2_WALL1_SCENE = {
         },
       },
       {
-        type: 'blank',
+        type: 'nav',
+        route: 'Level2-virus2',
         element: {
           type: 'image',
           image: {
@@ -340,7 +342,7 @@ export const LEVEL2_WALL1_SCENE = {
       },
       {
         type: 'receiver',
-        id: 'virus3-receiver',
+        id: 'level2-virus3',
         element: {
           type: 'image',
           image: {
@@ -355,7 +357,47 @@ export const LEVEL2_WALL1_SCENE = {
           zIndex: 1,
         },
         logical: {
-          expectedValue: ['knife'],
+          expectedValue: ['level2-knife'],
+          hideOnResolved: ['level2-virus3'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: Level2Virus3,
+          },
+        },
+        position: {
+          x: 210,
+          y: 115,
+          width: 55,
+          height: 80,
+          zIndex: 1,
+        },
+        logical: {
+          showOnResolved: ['level2-virus3'],
+        },
+      },
+      {
+        type: 'receiver',
+        id: 'virus3-blood',
+        element: {
+          type: 'image',
+          image: {
+            src: Virus3Blood,
+          },
+        },
+        position: {
+          x: 214,
+          y: 170,
+          width: 30,
+          height: 30,
+          zIndex: 3,
+        },
+        logical: {
+          showOnResolved: ['level2-virus3'],
         },
       },
     ],
