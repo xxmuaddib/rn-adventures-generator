@@ -67,9 +67,7 @@ Object.keys(store.getState()).forEach(scene => {
       if (scene === 'app') {
         store.dispatch(setStateAction(savedState));
         if (savedState.currentRoute) {
-          setTimeout(() => {
-            NavigationService.navigate(savedState.currentRoute);
-          }, 100);
+          NavigationService.navigate(savedState.currentRoute);
         }
         store.dispatch(setStateAction({ loading: false }));
       } else {

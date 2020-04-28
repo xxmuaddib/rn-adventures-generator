@@ -8,15 +8,15 @@ import Wall3SafeDoor1Opened from '../assets/images/wall3-safe-door1-opened.png';
 import Wall3SafeDoor2Opened from '../assets/images/wall3-safe-door2-opened.png';
 import Wall3Skull from '../assets/images/wall3-skull.png';
 import ImagePart1 from '../assets/images/image-part1.png';
+import PlagueImagePart1Inventory from '../assets/images/plague-picture-part1-inventory.png';
 import Wall3Vase from '../assets/images/wall3-vase.png';
-import SkeletonArm from '../assets/images/skeleton-arm.svg';
-import SkeletonSpine from '../assets/images/skeleton-spine.png';
 import SkeletonSkullBig from '../assets/images/skeleton-skull-big.png';
 import SkeletonArmBig from '../assets/images/skeleton-arm-big.png';
 import SkeletonFootBig from '../assets/images/skeleton-foot-big.png';
 import SkeletonSpineBig from '../assets/images/skeleton-spine-big.png';
 import SkeletonFull from '../assets/images/skeleton-full.png';
 import ImagePart4 from '../assets/images/image-part4.png';
+import PlagueImagePart4Inventory from '../assets/images/plague-picture-part4-inventory.png';
 
 import ArrowLeft from '../assets/images/arrow-left.png';
 import ArrowRight from '../assets/images/arrow-right.png';
@@ -232,6 +232,7 @@ export const WALL3_SCENE = {
           type: 'image',
           image: {
             src: ImagePart1,
+            inventoryImage: PlagueImagePart1Inventory,
           },
         },
         position: {
@@ -268,6 +269,7 @@ export const WALL3_SCENE = {
           type: 'image',
           image: {
             src: ImagePart4,
+            inventoryImage: PlagueImagePart4Inventory,
           },
         },
         position: {

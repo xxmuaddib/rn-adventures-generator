@@ -43,7 +43,7 @@ import { arrayIncludesSorted, objCompare } from './Utils';
 import MainMenuIcon from '../assets/icons/main-menu.png';
 
 let { width, height } = Dimensions.get('window');
-let top;
+let top = 0;
 if (isIphoneX()) {
   height -= 55;
   top = 55 / 2;
@@ -54,7 +54,7 @@ const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 function screenGenerator(scene, index) {
   class ScreenGenerator extends React.PureComponent {
     async componentDidMount() {
-      const { setState, resolved } = this.props;
+      const { setState, resolved, reset } = this.props;
       const sceneCopy = _.cloneDeep(scene);
       internationalizeScene(`SCENES_${index}`, sceneCopy);
 
@@ -379,7 +379,7 @@ function screenGenerator(scene, index) {
 
       if (
         receiver &&
-        !!Object.keys(receiver).length &&
+        receiver.position &&
         moveX > receiver.position.x &&
         moveX < receiver.position.x + receiver.position.width &&
         moveY > receiver.position.y &&

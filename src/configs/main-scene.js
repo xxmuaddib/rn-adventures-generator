@@ -31,8 +31,12 @@ import VirusesTableFrontPart2 from '../assets/images/viruses-table-front-part2.p
 import GumWithKey from '../assets/images/gum-with-key.png';
 import Gum from '../assets/images/gum.png';
 import GreenKey from '../assets/images/green-key.png';
+import GreenKeyInventory from '../assets/images/green-key-inventory.png';
 import ImagePart2 from '../assets/images/image-part2.png';
+import PlagueImagePart2Inventory from '../assets/images/plague-picture-part2-inventory.png';
+
 import Virus2Image from '../assets/images/virus2-image.png';
+import SkeletonArmInventory from '../assets/images/skeleton-arm-inventory.png';
 
 import Wall2Bg from '../assets/images/wall2-bg.png';
 import Wall2Window1 from '../assets/images/wall2-window1.png';
@@ -45,6 +49,7 @@ import Wall2Picture3 from '../assets/images/wall2-picture3.png';
 import Wall2Picture3Flipped from '../assets/images/wall2-picture3-flipped.png';
 import Wall2Arm from '../assets/images/wall2-arm.png';
 import ImagePart3 from '../assets/images/image-part3.png';
+import PlagueImagePart3Inventory from '../assets/images/plague-picture-part3-inventory.png';
 
 import MirrorSceneBackground from '../assets/images/mirror-scene-bg.png';
 import MirrorSceneMirror from '../assets/images/mirror-scene-mirror.png';
@@ -445,6 +450,7 @@ const SCENES = [
             type: 'image',
             image: {
               src: Wall2Arm,
+              inventoryImage: SkeletonArmInventory,
             },
           },
           position: {
@@ -505,6 +511,7 @@ const SCENES = [
             type: 'image',
             image: {
               src: ImagePart3,
+              inventoryImage: PlagueImagePart3Inventory,
             },
           },
           position: {
@@ -830,7 +837,7 @@ const SCENES = [
             dialogProperties: {
               character: {
                 translations: {
-                  en: 'Ill kill your time',
+                  en: "I'll kill your time",
                 },
               },
             },
@@ -987,6 +994,7 @@ const SCENES = [
             type: 'image',
             image: {
               src: ImagePart2,
+              inventoryImage: PlagueImagePart2Inventory,
             },
           },
           position: {
@@ -1103,6 +1111,7 @@ const SCENES = [
           element: {
             type: 'image',
             image: {
+              inventoryImage: GreenKeyInventory,
               src: GreenKey,
             },
           },
@@ -1142,6 +1151,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Level2-wall1';
+const INITIAL_SCREEN = 'Wall1';
 
 export { SCENES, INITIAL_SCREEN };

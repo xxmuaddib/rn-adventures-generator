@@ -247,6 +247,11 @@ export const WALL1_SCENE = {
                     en: 'Wow! Thanks!',
                   },
                 },
+                character: {
+                  translations: {
+                    en: 'Bye bye.',
+                  },
+                },
                 drop: true,
                 resolve: 'death-dialog-2',
                 characterElement: {

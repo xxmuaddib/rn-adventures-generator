@@ -4,7 +4,9 @@ import Wall4Picture1 from '../assets/images/wall4-picture1.png';
 import BlankPicture from '../assets/images/blank-picture.png';
 import Wall4Time from '../assets/images/wall4-time.png';
 import SkeletonSpine from '../assets/images/skeleton-spine.png';
+import SkeletonSpineInventory from '../assets/images/skeleton-spine-inventory.png';
 import ImagePart5 from '../assets/images/image-part5.png';
+import PlagueImagePart5Inventory from '../assets/images/plague-picture-part5-inventory.png';
 import ArrowLeft from '../assets/images/arrow-left.png';
 import ArrowRight from '../assets/images/arrow-right.png';
 import ArrowUp from '../assets/images/arrow-up.png';
@@ -205,6 +207,7 @@ export const WALL4_SCENE = {
           type: 'image',
           image: {
             src: ImagePart5,
+            inventoryImage: PlagueImagePart5Inventory,
           },
         },
         position: {
@@ -224,6 +227,7 @@ export const WALL4_SCENE = {
           type: 'image',
           image: {
             src: SkeletonSpine,
+            inventoryImage: SkeletonSpineInventory,
           },
         },
         position: {

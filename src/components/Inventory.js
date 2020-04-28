@@ -80,7 +80,7 @@ export const Inventory = ({
   );
 
   const filteredCollectedItems = collectedItems.filter(
-    el => !!el.logical.countOfUse,
+    el => el.logical && !!el.logical.countOfUse,
   );
 
   if (open) {
@@ -115,6 +115,7 @@ export const Inventory = ({
           )
           .map(
             (item, index) =>
+              item.logical &&
               !!item.logical.countOfUse && (
                 <Draggable
                   onDragRelease={onDragRelease}
