@@ -48,7 +48,7 @@ if (isIphoneX()) {
   gameHeight -= 55;
   top = 55 / 2;
 }
-const gameWidth = Math.round((height * 16) / 9);
+const gameWidth = Math.round((gameHeight * 16) / 9);
 const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 
 function screenGenerator(scene, index) {

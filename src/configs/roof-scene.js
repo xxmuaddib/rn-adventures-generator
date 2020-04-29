@@ -510,10 +510,10 @@ export const ROOF_SCENE = {
           },
         },
         position: {
-          x: 55,
-          y: 45,
-          width: 180,
-          height: 120,
+          x: 59,
+          y: 54,
+          width: 168,
+          height: 105,
         },
         logical: {
           hideOnResolved: ['slot2'],
