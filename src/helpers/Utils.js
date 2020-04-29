@@ -46,8 +46,8 @@ function decycle(obj, stack = []) {
   return Array.isArray(obj)
     ? obj.map(x => decycle(x, s))
     : Object.fromEntries(
-      Object.entries(obj)
-        .map(([k, v]) => [k, decycle(v, s)]));
+        Object.entries(obj).map(([k, v]) => [k, decycle(v, s)]),
+      );
 }
 
 export { arrayIncludesSorted, objCompare, decycle };

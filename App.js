@@ -6,6 +6,8 @@ import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { Notifications, AppLoading } from 'expo';
 import * as Permissions from 'expo-permissions';
 import * as Font from 'expo-font';
+import { cloneDeep } from 'lodash';
+
 import { Screens, InitialScreen } from './src/helpers/ScreenGenerator';
 import { FetchApi } from './src/helpers/FetchApi';
 import {
@@ -15,6 +17,8 @@ import {
 } from './src/helpers/ReducersGenerator';
 import NavigationService from './src/helpers/NavigationService';
 import AcmeFont from './src/assets/fonts/Acme-Regular.ttf';
+import { SCENES } from './src/configs/scenes-combiner';
+import { internationalizeScene } from './src/localization';
 
 async function registerForPushNotificationsAsync() {
   const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
@@ -60,6 +64,9 @@ store.subscribe(() => {
 
 generateActions();
 
+const SCENES_INTERNATIONALIZED = cloneDeep(SCENES);
+internationalizeScene('SCENES', SCENES_INTERNATIONALIZED);
+
 Object.keys(store.getState()).forEach(scene => {
   AsyncStorage.getItem(`store_${scene}`).then(savedStateRaw => {
     if (savedStateRaw) {
@@ -69,6 +76,11 @@ Object.keys(store.getState()).forEach(scene => {
         store.dispatch(setStateAction({ loading: false }));
       } else {
         store.dispatch(setStateAction(savedState, scene));
+      }
+    } else if (scene !== 'app') {
+      const sceneMatch = SCENES_INTERNATIONALIZED.find(s => s.name === scene);
+      if (sceneMatch) {
+        store.dispatch(setStateAction(sceneMatch, sceneMatch));
       }
     }
   });

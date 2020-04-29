@@ -43,12 +43,12 @@ import MainMenuIcon from '../assets/icons/main-menu.png';
 
 const { width, height } = Dimensions.get('window');
 let top = 0;
-let realHeight = height;
+let gameHeight = height;
 if (isIphoneX()) {
-  realHeight -= 55;
+  gameHeight -= 55;
   top = 55 / 2;
 }
-const gameWidth = Math.round((realHeight * 16) / 9);
+const gameWidth = Math.round((height * 16) / 9);
 const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 
 function screenGenerator(scene, index) {
@@ -116,14 +116,7 @@ function screenGenerator(scene, index) {
     };
 
     collect = async (item, progress) => {
-      const {
-        currentScene: {
-          scene: { objects },
-        },
-        collectedItems,
-        resolved,
-        setState,
-      } = this.props;
+      const { collectedItems, resolved, setState } = this.props;
       if (progress) {
         this.saveProgress(progress);
       }
@@ -146,9 +139,7 @@ function screenGenerator(scene, index) {
 
     receive = async (receiver, progress) => {
       const { resolved, collectedItems, setState } = this.props;
-
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
-
       if (receiver.logical.expectedValue.includes(selectedItemId)) {
         await AsyncStorage.removeItem('selectedItem');
 
@@ -613,7 +604,7 @@ const Container = styled(View)`
 
 const SceneBackground = styled(ImageBackground)`
   width: ${gameWidth}px;
-  height: ${realHeight}px;
+  height: ${gameHeight}px;
 `;
 
 const MainMenuButton = styled(TouchableOpacity)`
