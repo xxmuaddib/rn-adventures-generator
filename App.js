@@ -66,9 +66,6 @@ Object.keys(store.getState()).forEach(scene => {
       const savedState = JSON.parse(savedStateRaw);
       if (scene === 'app') {
         store.dispatch(setStateAction(savedState));
-        if (savedState.currentRoute) {
-          NavigationService.navigate(savedState.currentRoute);
-        }
         store.dispatch(setStateAction({ loading: false }));
       } else {
         store.dispatch(setStateAction(savedState, scene));

@@ -7,7 +7,6 @@ import Roof from '../assets/images/roof.png';
 import MoleculeWhite from '../assets/images/molecule-white.png';
 import MoleculeOrange from '../assets/images/molecule-orange.png';
 import MoleculeBlue from '../assets/images/molecule-blue.png';
-import MoleculeBlack from '../assets/images/molecule-black.png';
 import MoleculeLines from '../assets/images/molecule-lines.png';
 import MoleculeLinesFull from '../assets/images/molecule-lines-full.png';
 import MoleculesFull from '../assets/images/molecules-full.png';
@@ -530,7 +529,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -543,39 +542,39 @@ export const ROOF_SCENE = {
         logical: {
           scenario: {
             slot2_1: 1,
-            slot2_2: 4,
+            slot2_2: 1,
             slot2_3: 1,
             slot2_4: 3,
             slot2_5: 2,
             slot2_6: 2,
-            slot2_7: 4,
+            slot2_7: 1,
             slot2_8: 3,
-            slot2_9: 4,
-            slot2_10: 4,
-            slot2_11: 4,
+            slot2_9: 1,
+            slot2_10: 1,
+            slot2_11: 1,
             slot2_12: 3,
-            slot2_13: 4,
+            slot2_13: 1,
             slot2_14: 3,
             slot2_15: 3,
             slot2_16: 1,
             slot2_17: 2,
             slot2_18: 2,
             slot2_19: 1,
-            slot2_20: 4,
+            slot2_20: 1,
             slot2_21: 1,
             slot2_22: 2,
-            slot2_23: 4,
+            slot2_23: 1,
             slot2_24: 2,
             slot2_25: 3,
-            slot2_26: 4,
+            slot2_26: 1,
             slot2_27: 3,
-            slot2_28: 4,
+            slot2_28: 1,
             slot2_29: 1,
             slot2_30: 1,
-            slot2_31: 4,
+            slot2_31: 1,
             slot2_32: 3,
             slot2_33: 1,
-            slot2_34: 4,
+            slot2_34: 1,
             slot2_35: 2,
           },
           hideOnResolved: ['slot2'],
@@ -587,7 +586,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -609,15 +608,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -628,7 +618,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -648,7 +638,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -670,15 +660,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -689,7 +670,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -709,7 +690,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -731,15 +712,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -750,7 +722,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -770,7 +742,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -792,15 +764,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -811,7 +774,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -831,7 +794,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -853,15 +816,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -872,7 +826,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -892,7 +846,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -914,15 +868,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -933,7 +878,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -953,7 +898,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -975,15 +920,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -994,7 +930,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1014,7 +950,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1036,15 +972,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1055,7 +982,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1075,7 +1002,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1097,15 +1024,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1116,7 +1034,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1136,7 +1054,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1158,15 +1076,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1177,7 +1086,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1197,7 +1106,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1219,15 +1128,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1238,7 +1138,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1258,7 +1158,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1280,15 +1180,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1299,7 +1190,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1319,7 +1210,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1341,15 +1232,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1360,7 +1242,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1380,7 +1262,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1402,15 +1284,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1421,7 +1294,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1441,7 +1314,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1463,15 +1336,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1482,7 +1346,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1502,7 +1366,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1524,15 +1388,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1543,7 +1398,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1563,7 +1418,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1585,15 +1440,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1604,7 +1450,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1625,7 +1471,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1647,15 +1493,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1666,7 +1503,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1686,7 +1523,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1708,15 +1545,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1727,7 +1555,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1747,7 +1575,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1769,15 +1597,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1788,7 +1607,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1808,7 +1627,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1830,15 +1649,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1849,7 +1659,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1869,7 +1679,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1891,15 +1701,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1910,7 +1711,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1930,7 +1731,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -1952,15 +1753,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -1971,7 +1763,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -1991,7 +1783,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2013,15 +1805,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2032,7 +1815,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2052,7 +1835,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2074,15 +1857,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2093,7 +1867,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2113,7 +1887,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2135,15 +1909,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2154,7 +1919,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2174,7 +1939,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2196,15 +1961,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2215,7 +1971,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2235,7 +1991,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2257,15 +2013,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2276,7 +2023,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2296,7 +2043,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2318,15 +2065,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2337,7 +2075,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2357,7 +2095,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2379,15 +2117,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2398,7 +2127,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2418,7 +2147,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2440,15 +2169,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2459,7 +2179,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2479,7 +2199,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2501,15 +2221,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2520,7 +2231,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2540,7 +2251,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2562,15 +2273,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2581,7 +2283,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2601,7 +2303,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2623,15 +2325,6 @@ export const ROOF_SCENE = {
                 },
               },
             },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
-                },
-              },
-            },
           ],
         },
       },
@@ -2642,7 +2335,7 @@ export const ROOF_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: MoleculeBlack,
+            src: MoleculeWhite,
           },
         },
         position: {
@@ -2662,7 +2355,7 @@ export const ROOF_SCENE = {
               element: {
                 type: 'image',
                 image: {
-                  src: MoleculeBlack,
+                  src: MoleculeWhite,
                 },
               },
             },
@@ -2681,15 +2374,6 @@ export const ROOF_SCENE = {
                 type: 'image',
                 image: {
                   src: MoleculeOrange,
-                },
-              },
-            },
-            {
-              id: 4,
-              element: {
-                type: 'image',
-                image: {
-                  src: MoleculeWhite,
                 },
               },
             },

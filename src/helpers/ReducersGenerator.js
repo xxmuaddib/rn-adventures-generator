@@ -53,7 +53,7 @@ export const generateReducers = () => {
           ...filteredAction,
         };
       },
-      [`RESET`]: (state, action) => {
+      RESET: (state, action) => {
         const filteredAction = { ...action };
         delete filteredAction.type;
         return initialState;

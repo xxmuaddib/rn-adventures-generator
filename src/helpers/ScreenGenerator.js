@@ -25,7 +25,6 @@ import { Dialog } from '../components/Dialog';
 import { Paper } from '../components/Paper';
 import { Hint } from '../components/Hint';
 import { MainMenuModal } from '../components/MainMenuModal';
-import { PlatformSpecificMeasurement } from './PlatformSpecificUtils';
 import {
   setStateAction,
   findHelperFunction,
@@ -42,25 +41,26 @@ import { internationalizeScene } from '../localization';
 import { arrayIncludesSorted, objCompare } from './Utils';
 import MainMenuIcon from '../assets/icons/main-menu.png';
 
-let { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 let top = 0;
+let realHeight = height;
 if (isIphoneX()) {
-  height -= 55;
+  realHeight -= 55;
   top = 55 / 2;
 }
-const gameWidth = Math.round((height * 16) / 9);
+const gameWidth = Math.round((realHeight * 16) / 9);
 const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 
 function screenGenerator(scene, index) {
   class ScreenGenerator extends React.PureComponent {
     async componentDidMount() {
-      const { setState, resolved, reset } = this.props;
+      const { setState, currentScene } = this.props;
       const sceneCopy = _.cloneDeep(scene);
-      internationalizeScene(`SCENES_${index}`, sceneCopy);
+      internationalizeScene(`SCENES_${index}`, currentScene.scene);
 
       setState(
         {
-          scene: sceneCopy,
+          scene: currentScene.scene,
           originalScene: sceneCopy,
         },
         scene.name,
@@ -83,15 +83,7 @@ function screenGenerator(scene, index) {
     };
 
     resetFunction = async () => {
-      const {
-        currentScene: {
-          scene: { objects, name: sceneName },
-          originalScene,
-        },
-        setState,
-        reset,
-        navigation,
-      } = this.props;
+      const { setState, reset, navigation } = this.props;
       reset();
       navigation.navigate(INITIAL_SCREEN);
       const sceneCopy = _.cloneDeep(scene);
@@ -152,15 +144,10 @@ function screenGenerator(scene, index) {
     };
 
     receive = async (receiver, progress) => {
-      const {
-        resolved,
-        currentScene: {
-          scene: { objects },
-        },
-        collectedItems,
-        setState,
-      } = this.props;
+      const { resolved, collectedItems, setState } = this.props;
+
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
+
       if (receiver.logical.expectedValue.includes(selectedItemId)) {
         await AsyncStorage.removeItem('selectedItem');
 
@@ -570,6 +557,7 @@ function screenGenerator(scene, index) {
       navigate: PropTypes.func.isRequired,
     }).isRequired,
     setState: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired,
     currentScene: SceneReducerPropTypes.isRequired,
     resolved: PropTypes.arrayOf(PropTypes.string).isRequired,
     collectedItems: PropTypes.arrayOf(ObjectPropTypes).isRequired,
@@ -624,7 +612,7 @@ const Container = styled(View)`
 
 const SceneBackground = styled(ImageBackground)`
   width: ${gameWidth}px;
-  height: ${height}px;
+  height: ${realHeight}px;
 `;
 
 const MainMenuButton = styled(TouchableOpacity)`

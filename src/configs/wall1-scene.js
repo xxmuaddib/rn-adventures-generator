@@ -4,6 +4,8 @@ import ArrowUp from '../assets/images/arrow-up.png';
 
 import Wall1Bg from '../assets/images/wall1-bg.png';
 import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
+import Wall1BlackboardMolecula from '../assets/images/wall1-blackboard-molecula.png';
+import Wall1BlackboardMoleculaColors from '../assets/images/wall1-blackboard-molecula-colors.png';
 import Wall1Death from '../assets/images/wall1-death.png';
 import Wall1Floor from '../assets/images/wall1-floor.png';
 import Wall1Table1 from '../assets/images/wall1-table1.png';
@@ -13,6 +15,9 @@ import Wall1Virus1 from '../assets/images/wall1-virus1.png';
 import Wall1Virus2 from '../assets/images/wall1-virus2.png';
 import Wall1Virus3 from '../assets/images/wall1-virus3.png';
 import DeathAvatar1 from '../assets/images/death-avatar1.png';
+import PlagueWithHand from '../assets/images/plague-with-hand.png';
+import CrownWithHand from '../assets/images/crown-with-hand.png';
+import VirusRewardInventory from '../assets/images/virus-reward-inventory.png';
 
 export const WALL1_SCENE = {
   name: 'Wall1',
@@ -105,6 +110,43 @@ export const WALL1_SCENE = {
           y: 10,
           width: 145,
           height: 90,
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall1BlackboardMolecula,
+          },
+        },
+        position: {
+          x: 135,
+          y: 25,
+          width: 100,
+          height: 64,
+        },
+        logical: {
+          showOnResolved: ['death-dialog-2'],
+          hideOnResolved: ['slot1'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall1BlackboardMoleculaColors,
+          },
+        },
+        position: {
+          x: 135,
+          y: 25,
+          width: 100,
+          height: 64,
+        },
+        logical: {
+          showOnResolved: ['slot1'],
         },
       },
       {
@@ -220,6 +262,7 @@ export const WALL1_SCENE = {
           height: 120,
         },
         logical: {
+          hideOnResolved: ['death-dialog-2'],
           showOnResolved: ['plague-picture-puzzle'],
           dialogProperties: {
             character: {
@@ -269,6 +312,154 @@ export const WALL1_SCENE = {
               },
             ],
           },
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: PlagueWithHand,
+          },
+        },
+        position: {
+          x: 50,
+          y: 40,
+          width: 50,
+          height: 120,
+        },
+        logical: {
+          showOnResolved: ['death-dialog-2'],
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'crown-virus-part1',
+        element: {
+          type: 'image',
+          image: {
+            src: CrownWithHand,
+            inventoryImage: VirusRewardInventory,
+          },
+        },
+        position: {
+          x: 75,
+          y: 90,
+          width: 20,
+          height: 20,
+          zIndex: 2,
+        },
+        logical: {
+          showOnResolved: ['death-dialog-2'],
+          countOfUse: 1,
+        },
+      },
+      {
+        type: 'dialog',
+        id: 'death-dialog-3',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall1Death,
+          },
+        },
+        position: {
+          x: 50,
+          y: 40,
+          width: 50,
+          height: 120,
+        },
+        logical: {
+          showOnResolved: ['collected-crown-virus-part1'],
+          hideOnResolved: ['slot2'],
+          dialogProperties: {
+            character: {
+              translations: {
+                en:
+                  "On the blackboard you can see the deadly molecula. There is a similar one somewhere in this room, but it's not finished. I think you could finish it.",
+              },
+            },
+            characterElement: {
+              type: 'image',
+              image: {
+                src: DeathAvatar1,
+              },
+              bg: 'rgba(255, 255, 255, .8)',
+              color: 'rgb(0, 0, 0)',
+            },
+            heroElement: {
+              bg: 'rgba(255, 255, 255, .8)',
+              color: 'rgb(0, 0, 0)',
+            },
+            dialog: [
+              {
+                hero: {
+                  translations: {
+                    en: "Well, i'll try",
+                  },
+                },
+                character: {
+                  translations: {
+                    en: 'Fly, little virus, fly. And make us proud!',
+                  },
+                },
+                drop: true,
+                resolve: 'death-dialog-3',
+                characterElement: {
+                  type: 'image',
+                  image: {
+                    src: DeathAvatar1,
+                  },
+                  bg: 'rgba(255, 255, 255, .8)',
+                  color: 'rgb(0, 0, 0)',
+                },
+                heroElement: {
+                  bg: 'rgba(255, 255, 255, .8)',
+                  color: 'rgb(0, 0, 0)',
+                },
+              },
+            ],
+          },
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: PlagueWithHand,
+          },
+        },
+        position: {
+          x: 50,
+          y: 40,
+          width: 50,
+          height: 120,
+        },
+        logical: {
+          showOnResolved: ['slot2'],
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'crown-virus-part2',
+        element: {
+          type: 'image',
+          image: {
+            src: CrownWithHand,
+            inventoryImage: VirusRewardInventory,
+          },
+        },
+        position: {
+          x: 75,
+          y: 90,
+          width: 20,
+          height: 20,
+          zIndex: 2,
+        },
+        logical: {
+          showOnResolved: ['slot2'],
+          countOfUse: 1,
         },
       },
       {

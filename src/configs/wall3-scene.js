@@ -9,6 +9,7 @@ import ImagePart1 from '../assets/images/image-part1.png';
 import PlagueImagePart1Inventory from '../assets/images/plague-picture-part1-inventory.png';
 import Wall3Vase from '../assets/images/wall3-vase.png';
 import SkeletonSkullBig from '../assets/images/skeleton-skull-big.png';
+import SkeletonSkullInventory from '../assets/images/skeleton-skull-inventory.png';
 import SkeletonArmBig from '../assets/images/skeleton-arm-big.png';
 import SkeletonFootBig from '../assets/images/skeleton-foot-big.png';
 import SkeletonSpineBig from '../assets/images/skeleton-spine-big.png';
@@ -156,6 +157,7 @@ export const WALL3_SCENE = {
           type: 'image',
           image: {
             src: Wall3Skull,
+            inventoryImage: SkeletonSkullInventory,
           },
         },
         position: {

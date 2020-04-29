@@ -549,7 +549,8 @@ const SCENES = [
     objects: {
       itemsMap: [
         {
-          type: 'blank',
+          type: 'receiver',
+          id: 'mirror',
           element: {
             type: 'image',
             image: {
@@ -561,6 +562,15 @@ const SCENES = [
             y: 15,
             width: 120,
             height: 170,
+          },
+          logical: {
+            expectedValue: [
+              'crown-virus-part1',
+              'crown-virus-part2',
+              'crown-virus-part3',
+              'crown-virus-part4',
+              'crown-virus-part5',
+            ],
           },
         },
         {
@@ -576,6 +586,9 @@ const SCENES = [
             y: 58,
             width: 15,
             height: 15,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part1'],
           },
         },
         {
@@ -593,6 +606,9 @@ const SCENES = [
             height: 16,
             zIndex: 2,
           },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part2'],
+          },
         },
         {
           type: 'blank',
@@ -607,6 +623,9 @@ const SCENES = [
             y: 46,
             width: 18,
             height: 18,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part3'],
           },
         },
         {
@@ -623,6 +642,9 @@ const SCENES = [
             width: 17,
             height: 17,
           },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part4'],
+          },
         },
         {
           type: 'blank',
@@ -637,6 +659,9 @@ const SCENES = [
             y: 60,
             width: 15,
             height: 15,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part5'],
           },
         },
         {
