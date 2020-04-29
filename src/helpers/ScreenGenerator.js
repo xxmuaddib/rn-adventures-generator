@@ -56,11 +56,12 @@ function screenGenerator(scene, index) {
     async componentDidMount() {
       const { setState, currentScene } = this.props;
       const sceneCopy = _.cloneDeep(scene);
-      internationalizeScene(`SCENES_${index}`, currentScene.scene);
+      const currentSceneCopy = _.cloneDeep(currentScene.scene);
+      internationalizeScene(`SCENES_${index}`, currentSceneCopy);
 
       setState(
         {
-          scene: currentScene.scene,
+          scene: currentSceneCopy,
           originalScene: sceneCopy,
         },
         scene.name,

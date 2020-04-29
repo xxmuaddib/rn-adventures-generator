@@ -48,7 +48,9 @@ export const Dialog = ({
               onPress={() => showDialogAnswer(dialogModalContent)}
               bg={dialogModalContent.characterElement.bg}
             >
-              <AnswerText color={dialogModalContent.characterElement.color}>{dialogAnswer}</AnswerText>
+              <AnswerText color={dialogModalContent.characterElement.color}>
+                {dialogAnswer}
+              </AnswerText>
             </AnswerTextTouchableOpacity>
           )}
           {dialogModalContent &&
@@ -64,7 +66,9 @@ export const Dialog = ({
                     activeOpacity={0.6}
                     bg={item.heroElement.bg}
                   >
-                    <QuestionText color={item.heroElement.color}>{item.hero}</QuestionText>
+                    <QuestionText color={item.heroElement.color}>
+                      {item.hero}
+                    </QuestionText>
                   </DialogTouchableOpacity>
                 ),
             )}
