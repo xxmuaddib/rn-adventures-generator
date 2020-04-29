@@ -86,8 +86,14 @@ Object.keys(store.getState()).forEach(scene => {
   });
 });
 
+const SplashScreenMatch = SCENES_INTERNATIONALIZED.find(
+  s => s.type === 'splash',
+);
+
 const SwitchNavigator = createSwitchNavigator(Screens(), {
-  initialRouteName: store.getState().app.currentRoute || InitialScreen,
+  initialRouteName: SplashScreenMatch
+    ? SplashScreenMatch.name
+    : store.getState().app.currentRoute || InitialScreen,
 });
 
 const AppContainer = createAppContainer(SwitchNavigator);

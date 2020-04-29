@@ -10,8 +10,10 @@ import { LEVEL2_WALL3_SCENE } from './level2-wall3-scene';
 import { LEVEL2_WALL4_SCENE } from './level2-wall4-scene';
 import { LEVEL2_ROOF_SCENE } from './level2-roof-scene';
 import { CHEMISTRY_SCENE } from './level2-chemistry';
+import { SPLASH_SCREEN_SCENE } from './splash-screen';
 
 SCENES.push(
+  SPLASH_SCREEN_SCENE,
   WALL1_SCENE,
   WALL4_SCENE,
   ROOF_SCENE,
@@ -28,6 +30,7 @@ SCENES.push(
 export {
   SCENES,
   INITIAL_SCREEN,
+  SPLASH_SCREEN_SCENE,
   WALL1_SCENE,
   WALL4_SCENE,
   PLAGUE_PICTURE_SCENE,

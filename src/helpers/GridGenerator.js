@@ -45,6 +45,9 @@ const ObjectGrid = ({
     }
   };
   const animationRef = useRef(null);
+  if (!objects && !objects.itemsMap) {
+    return null;
+  }
   const itemsMapCopy = [...objects.itemsMap];
   itemsMapCopy.sort((a, b) => a.position.zIndex - b.position.zIndex);
   return (
