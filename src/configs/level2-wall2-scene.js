@@ -217,7 +217,7 @@ export const LEVEL2_WALL2_SCENE = {
       },
       {
         type: 'collectable',
-        id: 'match-collectalbe',
+        id: 'match',
         element: {
           type: 'image',
           image: {

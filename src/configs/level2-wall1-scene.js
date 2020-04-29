@@ -13,6 +13,7 @@ import Level2Virus3 from '../assets/images/level2-virus3.png';
 import DeathAvatar1 from '../assets/images/death-avatar1.png';
 import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
 import Virus3Blood from '../assets/images/virus3-blood.png';
+import BloodInventory from '../assets/images/blood-inventory.png';
 
 export const LEVEL2_WALL1_SCENE = {
   name: 'Level2-wall1',
@@ -381,12 +382,13 @@ export const LEVEL2_WALL1_SCENE = {
         },
       },
       {
-        type: 'receiver',
-        id: 'virus3-blood',
+        type: 'collectable',
+        id: 'blood',
         element: {
           type: 'image',
           image: {
             src: Virus3Blood,
+            inventoryImage: BloodInventory,
           },
         },
         position: {
@@ -398,6 +400,7 @@ export const LEVEL2_WALL1_SCENE = {
         },
         logical: {
           showOnResolved: ['level2-virus3'],
+          countOfUse: 1,
         },
       },
     ],
