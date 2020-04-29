@@ -47,7 +47,7 @@ import Wall2Picture1 from '../assets/images/wall2-picture1.png';
 import Wall2Picture2 from '../assets/images/wall2-picture2.png';
 import Wall2Picture3 from '../assets/images/wall2-picture3.png';
 import Wall2Picture3Flipped from '../assets/images/wall2-picture3-flipped.png';
-import Wall2Arm from '../assets/images/wall2-arm.png';
+import Wall2Arm from '../assets/images/skeleton-arm.png';
 import ImagePart3 from '../assets/images/image-part3.png';
 import Level2Virus2Bg from '../assets/images/level2-virus2-bg.png';
 import PlagueImagePart3Inventory from '../assets/images/plague-picture-part3-inventory.png';
@@ -1321,6 +1321,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Level2-wall1';
+const INITIAL_SCREEN = 'Wall1';
 
 export { SCENES, INITIAL_SCREEN };

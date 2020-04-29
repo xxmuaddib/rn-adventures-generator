@@ -6,6 +6,7 @@ import Wall1Bg from '../assets/images/wall1-bg.png';
 import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
 import Wall1BlackboardMolecula from '../assets/images/wall1-blackboard-molecula.png';
 import Wall1BlackboardMoleculaColors from '../assets/images/wall1-blackboard-molecula-colors.png';
+import BlackboardSymbol from '../assets/images/blackboard-symbol.png';
 import Wall1Death from '../assets/images/wall1-death.png';
 import Wall1Floor from '../assets/images/wall1-floor.png';
 import Wall1Table1 from '../assets/images/wall1-table1.png';
@@ -110,6 +111,24 @@ export const WALL1_SCENE = {
           y: 10,
           width: 145,
           height: 90,
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: BlackboardSymbol,
+          },
+        },
+        position: {
+          x: 120,
+          y: 20,
+          width: 8,
+          height: 8,
+        },
+        logical: {
+          showOnResolved: ['slot1'],
         },
       },
       {

@@ -54,14 +54,13 @@ const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 function screenGenerator(scene, index) {
   class ScreenGenerator extends React.PureComponent {
     async componentDidMount() {
-      const { setState, currentScene } = this.props;
+      const { setState, resolved, reset } = this.props;
       const sceneCopy = _.cloneDeep(scene);
-      const currentSceneCopy = _.cloneDeep(currentScene.scene);
-      internationalizeScene(`SCENES_${index}`, currentSceneCopy);
+      internationalizeScene(`SCENES_${index}`, sceneCopy);
 
       setState(
         {
-          scene: currentSceneCopy,
+          scene: sceneCopy,
           originalScene: sceneCopy,
         },
         scene.name,
