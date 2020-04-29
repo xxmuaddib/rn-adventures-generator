@@ -66,7 +66,23 @@ function screenGenerator(scene, index) {
         scene.name,
       );
       this.setBgSound();
+      this.redirectIfSplashScreen();
     }
+
+    redirectIfSplashScreen = () => {
+      const {
+        navigation,
+        currentRoute,
+        currentScene: {
+          scene: { type },
+        },
+      } = this.props;
+      if (type === 'splash') {
+        setTimeout(() => {
+          navigation.navigate(currentRoute || INITIAL_SCREEN);
+        }, 2000);
+      }
+    };
 
     setBgSound = async () => {
       if (scene.bgSound) {
@@ -563,6 +579,7 @@ function screenGenerator(scene, index) {
     dialogAnswer: PropTypes.string.isRequired,
     dialogShouldBeDropped: PropTypes.bool.isRequired,
     hintModalVisible: PropTypes.bool.isRequired,
+    currentRoute: PropTypes.string.isRequired,
     tmp: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
     progress: PropTypes.string.isRequired,
   };
@@ -582,6 +599,7 @@ function screenGenerator(scene, index) {
     dialogShouldBeDropped: app.dialogShouldBeDropped,
     hintModalVisible: app.hintModalVisible,
     dialogAnswer: app.dialogAnswer,
+    currentRoute: app.currentRoute,
     tmp: app.tmp,
     progress: app.progress,
   });
@@ -633,7 +651,11 @@ const generateAllScreens = () =>
     {},
   );
 const Screens = () => generateAllScreens();
-const InitialScreen = INITIAL_SCREEN;
+const SplashScreen = SCENES.find(s => s.type === 'splash');
+let InitialScreen = INITIAL_SCREEN;
+if (SplashScreen) {
+  InitialScreen = SplashScreen.name;
+}
 
 export { Screens, InitialScreen };
 export default screenGenerator;
