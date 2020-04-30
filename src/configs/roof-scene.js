@@ -2381,6 +2381,24 @@ export const ROOF_SCENE = {
         },
       },
       {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: MoleculesFull,
+          },
+        },
+        position: {
+          x: 55,
+          y: 45,
+          width: 180,
+          height: 120,
+        },
+        logical: {
+          showOnResolved: ['slot2'],
+        },
+      },
+      {
         type: 'nav',
         route: 'Wall3',
         element: {
