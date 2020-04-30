@@ -56,16 +56,17 @@ function screenGenerator(scene, index) {
     async componentDidMount() {
       const { setState, currentScene } = this.props;
       const sceneCopy = _.cloneDeep(scene);
-      const currentSceneCopy = _.cloneDeep(currentScene.scene);
-      internationalizeScene(`SCENES_${index}`, currentSceneCopy);
+      internationalizeScene(`SCENES_${index}`, sceneCopy);
 
-      setState(
-        {
-          scene: currentSceneCopy,
-          originalScene: sceneCopy,
-        },
-        scene.name,
-      );
+      if (!currentScene.scene) {
+        setState(
+          {
+            scene: sceneCopy,
+            originalScene: sceneCopy,
+          },
+          scene.name,
+        );
+      }
       this.setBgSound();
       this.redirectIfSplashScreen();
     }
