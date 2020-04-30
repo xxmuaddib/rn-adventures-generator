@@ -120,14 +120,19 @@ export const Inventory = ({
                 <Draggable
                   onDragRelease={onDragRelease}
                   shouldReverse
-                  y={index === 0 ? 70 : 85 + (index * 60 + 15 * (index - 1))}
+                  y={
+                    index === 0
+                      ? 0.24 * height
+                      : 0.24 * height +
+                        (index * 0.16 * height + 0.03 * height * (index - 1))
+                  }
                   z={140}
                   onDrag={() => onDrag(item.id)}
                 >
                   <InventoryItem key={item.id}>
                     <Element
                       element={item.element}
-                      position={{ ...item.position, width: 30, height: 30 }}
+                      position={{ ...item.position, width: 30, height: 25 }}
                       isInventoryItem
                     />
                   </InventoryItem>
@@ -160,7 +165,7 @@ Inventory.defaultProps = {
 
 const InventoryItem = styled(View)`
   width: 60px;
-  height: 60px;
+  height: 25%;
   margin-horizontal: 10px;
   justify-content: center;
   align-items: center;
@@ -171,6 +176,7 @@ const InventoryContainer = styled(View)`
   align-items: center;
   position: absolute;
   height: ${height}px;
+  overflow: hidden;
   width: 80px;
   top: 0;
   right: 0;
@@ -180,9 +186,9 @@ const InventoryContainer = styled(View)`
 const InventorySpace = styled(View)`
   background-color: rgba(45, 51, 36, 0.5);
   border-radius: 5px;
-  margin-top: ${p => (p.first ? '40px' : '15px')};
+  margin-top: ${p => (p.first ? `38%` : `10%`)};
   width: 60px;
-  height: 60px;
+  height: 15%;
 `;
 
 const InventoryCloseIcon = styled(TouchableOpacity)`
@@ -190,12 +196,12 @@ const InventoryCloseIcon = styled(TouchableOpacity)`
 `;
 
 const InventoryArrowContainer = styled(TouchableOpacity)`
-  margin-top: ${p => (p.smallMargin ? '10px' : !p.both ? '20px' : 0)};
+  margin-top: ${p => (p.smallMargin ? '10px' : !p.both ? '10px' : 0)};
 `;
 
 const InventoryArrowImage = styled(Image)`
-  width: 30px;
-  height: 20px;
+  width: 25px;
+  height: 15px;
   resize-mode: contain;
 `;
 

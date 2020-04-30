@@ -50,7 +50,7 @@ import Wall2Picture3Flipped from '../assets/images/wall2-picture3-flipped.png';
 import Wall2Arm from '../assets/images/skeleton-arm.png';
 import ImagePart3 from '../assets/images/image-part3.png';
 import Level2Virus2Bg from '../assets/images/level2-virus2-bg.png';
-import PlagueImagePart3Inventory from '../assets/images/plague-picture-part3-inventory.png';
+import ImagePart3Inventory from '../assets/images/image-part3-inventory.png';
 
 import MirrorSceneBackground from '../assets/images/mirror-scene-bg.png';
 import MirrorSceneMirror from '../assets/images/mirror-scene-mirror.png';
@@ -512,7 +512,7 @@ const SCENES = [
             type: 'image',
             image: {
               src: ImagePart3,
-              inventoryImage: PlagueImagePart3Inventory,
+              inventoryImage: ImagePart3Inventory,
             },
           },
           position: {
@@ -886,8 +886,7 @@ const SCENES = [
           },
         },
         {
-          type: 'collectable',
-          id: 'collectable10',
+          type: 'blank',
           element: {
             type: 'image',
             image: {
@@ -1321,6 +1320,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Level2-wall1';
+const INITIAL_SCREEN = 'Farm1';
 
 export { SCENES, INITIAL_SCREEN };

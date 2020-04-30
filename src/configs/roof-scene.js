@@ -115,7 +115,7 @@ export const ROOF_SCENE = {
         },
       },
       {
-        type: 'decorative',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
