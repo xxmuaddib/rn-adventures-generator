@@ -14,6 +14,7 @@ import Level2Rack from '../assets/images/level2-rack.png';
 import Match from '../assets/images/match.png';
 import Knife from '../assets/images/knife.png';
 import EmptyChemicalContainers from '../assets/images/empty-chemical-containers.png';
+import Level2Safe from '../assets/images/level2-safe.png';
 
 export const LEVEL2_WALL2_SCENE = {
   name: 'Level2-wall2',
@@ -166,6 +167,22 @@ export const LEVEL2_WALL2_SCENE = {
           width: 25,
           height: 30,
           zIndex: 1,
+        },
+      },
+      {
+        type: 'nav',
+        route: 'Level2-safe',
+        element: {
+          type: 'image',
+          image: {
+            src: Level2Safe,
+          },
+        },
+        position: {
+          x: 171,
+          y: 37,
+          width: 24,
+          height: 25,
         },
       },
       {
