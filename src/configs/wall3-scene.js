@@ -191,40 +191,6 @@ export const WALL3_SCENE = {
           hideOnResolved: ['safe-door2'],
         },
       },
-      // {
-      //   type: 'blank',
-      //   id: 'blank1',
-      //   element: {
-      //     type: 'image',
-      //     image: {
-      //       src: Wall3SafeDoor1Opened,
-      //     },
-      //   },
-      //   position: {
-      //     x: 55,
-      //     y: 50,
-      //     width: 40,
-      //     height: 55,
-      //     zIndex: 1,
-      //   },
-      // },
-      // {
-      //   type: 'blank',
-      //   id: 'blank1',
-      //   element: {
-      //     type: 'image',
-      //     image: {
-      //       src: Wall3SafeDoor2Opened,
-      //     },
-      //   },
-      //   position: {
-      //     x: 55,
-      //     y: 110,
-      //     width: 40,
-      //     height: 55,
-      //     zIndex: 1,
-      //   },
-      // },
       {
         type: 'collectable',
         id: 'picture-part1',

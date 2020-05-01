@@ -11,6 +11,11 @@ import ArrowLeft from '../assets/images/arrow-left.png';
 import ArrowRight from '../assets/images/arrow-right.png';
 import ArrowUp from '../assets/images/arrow-up.png';
 import PlaguePicture from '../assets/images/plague-picture.png';
+import PuzzleImagePart1 from '../assets/images/puzzle-image-part1.png';
+import PuzzleImagePart2 from '../assets/images/puzzle-image-part2.png';
+import PuzzleImagePart3 from '../assets/images/puzzle-image-part3.png';
+import PuzzleImagePart4 from '../assets/images/puzzle-image-part4.png';
+import PuzzleImagePart5 from '../assets/images/puzzle-image-part5.png';
 
 export const WALL4_SCENE = {
   name: 'Wall4',
@@ -143,7 +148,7 @@ export const WALL4_SCENE = {
             'picture-part4',
             'picture-part5',
           ],
-          hideOnResolved: ['plague-picture-parts'],
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
@@ -151,16 +156,14 @@ export const WALL4_SCENE = {
         route: 'PlaguePictureScene',
         id: 'plaguePictureNav',
         element: {
-          type: 'image',
-          image: {
-            src: BlankPicture,
-          },
+          type: 'trigger',
         },
         position: {
           x: 200,
           y: 55,
           width: 35,
           height: 60,
+          zIndex: 2,
         },
         logical: {
           showOnResolved: ['plague-picture-parts'],
@@ -183,6 +186,101 @@ export const WALL4_SCENE = {
         },
         logical: {
           showOnResolved: ['plague-picture-puzzle'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: PuzzleImagePart1,
+          },
+        },
+        position: {
+          x: 205,
+          y: 64,
+          width: 16,
+          height: 14,
+        },
+        logical: {
+          showOnResolved: ['plague-picture-parts-picture-part3'],
+          hideOnResolved: ['plague-picture-puzzle'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: PuzzleImagePart2,
+          },
+        },
+        position: {
+          x: 221,
+          y: 60,
+          width: 11,
+          height: 22,
+        },
+        logical: {
+          showOnResolved: ['plague-picture-parts-picture-part5'],
+          hideOnResolved: ['plague-picture-puzzle'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: PuzzleImagePart3,
+          },
+        },
+        position: {
+          x: 203,
+          y: 75,
+          width: 16,
+          height: 20,
+        },
+        logical: {
+          showOnResolved: ['plague-picture-parts-picture-part2'],
+          hideOnResolved: ['plauge-picture-puzzle'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: PuzzleImagePart4,
+          },
+        },
+        position: {
+          x: 221,
+          y: 85,
+          width: 10,
+          height: 15,
+        },
+        logical: {
+          showOnResolved: ['plague-picture-parts-picture-part4'],
+          hideOnResolved: ['plague-picture-puzzle'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: PuzzleImagePart5,
+          },
+        },
+        position: {
+          x: 206,
+          y: 97,
+          width: 25,
+          height: 10,
+        },
+        logical: {
+          showOnResolved: ['plague-picture-parts-picture-part1'],
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {
