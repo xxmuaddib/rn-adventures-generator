@@ -12,7 +12,9 @@ import Level2Wall2Bg from '../assets/images/level2-wall2-bg.png';
 import Level2Cabinet from '../assets/images/level2-cabinet.png';
 import Level2Rack from '../assets/images/level2-rack.png';
 import Match from '../assets/images/match.png';
+import MatchInventory from '../assets/images/match-inventory.png';
 import Knife from '../assets/images/knife.png';
+import KnifeInventory from '../assets/images/knife-inventory.png';
 import EmptyChemicalContainers from '../assets/images/empty-chemical-containers.png';
 import Level2Safe from '../assets/images/level2-safe.png';
 
@@ -239,6 +241,7 @@ export const LEVEL2_WALL2_SCENE = {
           type: 'image',
           image: {
             src: Match,
+            inventoryImage: MatchInventory,
           },
         },
         position: {
@@ -299,6 +302,7 @@ export const LEVEL2_WALL2_SCENE = {
           type: 'image',
           image: {
             src: Knife,
+            inventoryImage: KnifeInventory,
           },
         },
         position: {
