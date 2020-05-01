@@ -55,9 +55,9 @@ function screenGenerator(scene, index) {
   class ScreenGenerator extends React.PureComponent {
     async componentDidMount() {
       const { setState, currentScene } = this.props;
-      const sceneCopy = _.cloneDeep(scene);
-      internationalizeScene(`SCENES_${index}`, sceneCopy);
       if (!currentScene.scene) {
+        const sceneCopy = _.cloneDeep(scene);
+        internationalizeScene(`SCENES_${scene.name}`, sceneCopy);
         setState(
           {
             scene: sceneCopy,
@@ -104,7 +104,7 @@ function screenGenerator(scene, index) {
       reset();
       navigation.navigate(INITIAL_SCREEN);
       const sceneCopy = _.cloneDeep(scene);
-      internationalizeScene(`SCENES_${index}`, sceneCopy);
+      internationalizeScene(`SCENES_${scene.name}`, sceneCopy);
       setState(
         {
           scene: sceneCopy,

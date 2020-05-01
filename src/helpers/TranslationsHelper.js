@@ -7,7 +7,10 @@ const getTranslationsFromScene = (
 
   Object.keys(obj).forEach(objkey => {
     if (typeof obj[objkey] === 'object') {
-      const key = `${lastkey}_${objkey}`;
+      const key =
+        lastkey === 'SCENES'
+          ? `${lastkey}_${obj[objkey].name}`
+          : `${lastkey}_${objkey}`;
       if (objkey === 'translations') {
         // eslint-disable-next-line no-param-reassign
         translationsObj[lastkey] = obj[objkey];
