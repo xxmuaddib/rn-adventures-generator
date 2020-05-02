@@ -4,7 +4,6 @@ import ArrowUp from '../assets/images/arrow-up.png';
 
 import Wall2Bg from '../assets/images/wall2-bg.png';
 import Wall2Window1 from '../assets/images/wall2-window1.png';
-import Wall2Window2 from '../assets/images/wall2-window2.png';
 import Wall2Picture1 from '../assets/images/wall2-picture1.png';
 import Wall2Picture2 from '../assets/images/wall2-picture2.png';
 import Wall2Picture3Flipped from '../assets/images/wall2-picture3-flipped.png';
@@ -17,6 +16,17 @@ import Knife from '../assets/images/knife.png';
 import KnifeInventory from '../assets/images/knife-inventory.png';
 import EmptyChemicalContainers from '../assets/images/empty-chemical-containers.png';
 import Level2Safe from '../assets/images/level2-safe.png';
+import Window2WithoutFoot from '../assets/images/window2-without-foot.png';
+import Candle from '../assets/images/candle.png';
+import CandleFired from '../assets/images/candle-fired.png';
+import ChemicalContainers from '../assets/images/chemical-containers.png';
+import ChemicalContainerSmall from '../assets/images/chemical-container-small.png';
+import BloodContainer from '../assets/images/blood-container.png';
+import WaterContainer from '../assets/images/blood-container.png';
+import BloodContainerFull from '../assets/images/blood-container-full.png';
+import WaterContainerFull from '../assets/images/water-container-full.png';
+import WaterChemicalContainerSmall from '../assets/images/water-chemical-container-small.png';
+import BloodChemicalContainerSmall from '../assets/images/blood-chemical-container-small.png';
 
 export const LEVEL2_WALL2_SCENE = {
   name: 'Level2-wall2',
@@ -128,7 +138,7 @@ export const LEVEL2_WALL2_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: Wall2Window2,
+            src: Window2WithoutFoot,
           },
         },
         position: {
@@ -200,6 +210,22 @@ export const LEVEL2_WALL2_SCENE = {
           y: 45,
           width: 34,
           height: 40,
+        },
+      },
+      {
+        type: 'nav',
+        route: 'Chemistry',
+        element: {
+          type: 'image',
+          image: {
+            src: EmptyChemicalContainers,
+          },
+        },
+        position: {
+          x: 127,
+          y: 81,
+          height: 30,
+          width: 53,
         },
       },
       {

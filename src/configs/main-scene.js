@@ -60,6 +60,10 @@ import CrownPart3 from '../assets/images/crown-part3.png';
 import CrownPart4 from '../assets/images/crown-part4.png';
 import CrownPart5 from '../assets/images/crown-part5.png';
 
+import TreeBg from '../assets/images/tree-bg.png';
+import TreeImage from '../assets/images/tree-image.png';
+import TreeImageZoomed from '../assets/images/tree-image-zoomed.png';
+
 const SCENES = [
   {
     name: 'Farm1',
@@ -1238,8 +1242,9 @@ const SCENES = [
           },
         },
         {
-          type: 'collectable',
-          id: 'collectable10',
+          type: 'nav',
+          id: 'tree-navigation',
+          route: 'Tree',
           element: {
             type: 'image',
             image: {
@@ -1313,6 +1318,101 @@ const SCENES = [
             y: 185,
             height: 15,
             width: 300,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Tree',
+    route: 'Tree',
+    bg: TreeBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'nav',
+          id: 'back-from-tree-image',
+          route: 'Level2-virus2',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 10,
+            y: 185,
+            width: 280,
+            height: 15,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'nav',
+          id: 'tree-zoomed-navigation',
+          route: 'Tree-zoomed',
+          element: {
+            type: 'image',
+            image: {
+              src: TreeImage,
+            },
+          },
+          position: {
+            x: 10,
+            y: 5,
+            height: 190,
+            width: 280,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Tree-zoomed',
+    route: 'Tree-zoomed',
+    bg: TreeImageZoomed,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          id: 'back-from-tree-zoomed',
+          route: 'Tree',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 10,
+            y: 185,
+            width: 280,
+            height: 15,
           },
         },
       ],
