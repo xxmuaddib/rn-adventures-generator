@@ -122,9 +122,9 @@ export const Inventory = ({
                   shouldReverse
                   y={
                     index === 0
-                      ? 0.24 * height
-                      : 0.24 * height +
-                        (index * 0.16 * height + 0.03 * height * (index - 1))
+                      ? 0.242 * height
+                      : 0.242 * height +
+                        (index * 0.169 * height + 0.03 * height * (index - 1))
                   }
                   z={140}
                   onDrag={() => onDrag(item.id)}
@@ -176,7 +176,6 @@ const InventoryContainer = styled(View)`
   align-items: center;
   position: absolute;
   height: ${height}px;
-  overflow: hidden;
   width: 80px;
   top: 0;
   right: 0;
