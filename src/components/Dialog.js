@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import { DialogPropType } from '../proptypes/ObjectGridPropTypes';
+import { i18n } from '../localization';
 
 const { height, width } = Dimensions.get('window');
 const iphoneX = isIphoneX();
@@ -21,7 +22,9 @@ export const Dialog = ({
   setDialog,
   showDialog,
   showDialogAnswer,
-}) => (
+  dialogKey,
+}) => dialogModalVisible && (
+
   <StyledModal isVisible={dialogModalVisible} hasBackdrop={false}>
     <Container
       shouldBeJustified={
@@ -49,7 +52,7 @@ export const Dialog = ({
               bg={dialogModalContent.characterElement.bg}
             >
               <AnswerText color={dialogModalContent.characterElement.color}>
-                {dialogAnswer}
+                {i18n.t(`${dialogKey}_character`)}
               </AnswerText>
             </AnswerTextTouchableOpacity>
           )}
@@ -58,16 +61,16 @@ export const Dialog = ({
             dialogModalContent.dialog &&
             !!dialogModalContent.dialog.length &&
             dialogModalContent.dialog.map(
-              item =>
+              (item, index) =>
                 !resolved.includes(item.hideOnResolved) && (
                   <DialogTouchableOpacity
                     key={item.hero}
-                    onPress={() => setDialog(item)}
+                    onPress={() => setDialog(item, index)}
                     activeOpacity={0.6}
                     bg={item.heroElement.bg}
                   >
                     <QuestionText color={item.heroElement.color}>
-                      {item.hero}
+                      {i18n.t(`${dialogKey}_dialog_${index}_hero`)}
                     </QuestionText>
                   </DialogTouchableOpacity>
                 ),
@@ -173,6 +176,7 @@ Dialog.propTypes = {
   setDialog: PropTypes.func.isRequired,
   showDialog: PropTypes.func.isRequired,
   showDialogAnswer: PropTypes.func.isRequired,
+  dialogKey: PropTypes.string.isRequired,
 };
 
 Dialog.defaultProps = {

@@ -478,6 +478,7 @@ export const WALL1_SCENE = {
         },
         logical: {
           showOnResolved: ['slot2'],
+          navigateOnResolved: 'Level2-wall1',
           countOfUse: 1,
         },
       },

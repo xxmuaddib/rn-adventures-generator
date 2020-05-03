@@ -17,18 +17,18 @@ import {
   ObjectPropTypes,
   ObjectsPropTypes,
 } from '../proptypes/ObjectGridPropTypes';
-import { PlatformSpecificMeasurement } from '../helpers/PlatformSpecificUtils';
 import InventoryIcon from '../assets/icons/inventory.png';
 import InventoryArrowDown from '../assets/icons/inventory-arrow-down.png';
 import InventoryArrowUp from '../assets/icons/inventory-arrow-up.png';
 
-let { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 let top = 0;
+let gameHeight = height;
 if (isIphoneX()) {
-  height -= 55;
+  gameHeight -= 55;
   top = 55 / 2;
 }
-const gameWidth = Math.round((height * 16) / 9);
+const gameWidth = Math.round((gameHeight * 16) / 9);
 const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 
 export const Inventory = ({
@@ -122,9 +122,9 @@ export const Inventory = ({
                   shouldReverse
                   y={
                     index === 0
-                      ? 0.24 * height
-                      : 0.24 * height +
-                        (index * 0.16 * height + 0.03 * height * (index - 1))
+                      ? 0.24 * gameHeight
+                      : 0.24 * gameHeight +
+                        (index * 0.16 * gameHeight + 0.03 * gameHeight * (index - 1))
                   }
                   z={140}
                   onDrag={() => onDrag(item.id)}
@@ -175,8 +175,7 @@ const InventoryContainer = styled(View)`
   display: flex;
   align-items: center;
   position: absolute;
-  height: ${height}px;
-  overflow: hidden;
+  height: ${gameHeight}px;
   width: 80px;
   top: 0;
   right: 0;
@@ -186,7 +185,7 @@ const InventoryContainer = styled(View)`
 const InventorySpace = styled(View)`
   background-color: rgba(45, 51, 36, 0.5);
   border-radius: 5px;
-  margin-top: ${p => (p.first ? `38%` : `10%`)};
+  margin-top: ${p => (p.first ? '38%' : '10%')};
   width: 60px;
   height: 15%;
 `;

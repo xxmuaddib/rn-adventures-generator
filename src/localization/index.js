@@ -16,22 +16,4 @@ const translations = generateTranslationsObject(allLanguages, everyTranslation);
 
 i18n.translations = translations;
 
-export const internationalizeScene = (lasti18nindex, obj) => {
-  if (typeof obj === 'object') {
-    Object.keys(obj).forEach(key => {
-      if (typeof obj[key] === 'object') {
-        const nexti18nindex =
-          lasti18nindex === 'SCENES'
-            ? `${lasti18nindex}_${obj[key].name}`
-            : `${lasti18nindex}_${key}`;
-
-        if (obj[key].translations !== undefined) {
-          // eslint-disable-next-line no-param-reassign
-          console.log(nexti18nindex);
-          obj[key] = i18n.t(nexti18nindex);
-        }
-        internationalizeScene(nexti18nindex, obj[key]);
-      }
-    });
-  }
-};
+export { i18n };

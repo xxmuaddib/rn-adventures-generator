@@ -37,7 +37,6 @@ import {
   PaperPropType,
   DialogPropType,
 } from '../proptypes/ObjectGridPropTypes';
-import { internationalizeScene } from '../localization';
 import { arrayIncludesSorted, objCompare } from './Utils';
 import MainMenuIcon from '../assets/icons/main-menu.png';
 
@@ -51,13 +50,12 @@ if (isIphoneX()) {
 const gameWidth = Math.round((gameHeight * 16) / 9);
 const left = width >= gameWidth ? (width - gameWidth) / 2 : 0;
 
-function screenGenerator(scene, index) {
+function screenGenerator(scene) {
   class ScreenGenerator extends React.PureComponent {
     async componentDidMount() {
       const { setState, currentScene } = this.props;
       if (!currentScene.scene) {
         const sceneCopy = _.cloneDeep(scene);
-        internationalizeScene(`SCENES_${scene.name}`, sceneCopy);
         setState(
           {
             scene: sceneCopy,
@@ -73,13 +71,13 @@ function screenGenerator(scene, index) {
     redirectIfSplashScreen = () => {
       const {
         navigation,
-        currentRoute,
         currentScene: {
           scene: { type },
         },
       } = this.props;
       if (type === 'splash') {
         setTimeout(() => {
+          const { currentRoute } = this.props;
           navigation.navigate(currentRoute || INITIAL_SCREEN);
         }, 2000);
       }
@@ -104,7 +102,6 @@ function screenGenerator(scene, index) {
       reset();
       navigation.navigate(INITIAL_SCREEN);
       const sceneCopy = _.cloneDeep(scene);
-      internationalizeScene(`SCENES_${scene.name}`, sceneCopy);
       setState(
         {
           scene: sceneCopy,
@@ -127,7 +124,12 @@ function screenGenerator(scene, index) {
       if (progress) {
         this.saveProgress(progress);
       }
-      setState({ currentRoute: route });
+
+      const routeMatch = SCENES.find(s => s.name === route);
+
+      if (routeMatch && routeMatch.type !== 'splash') {
+        setState({ currentRoute: route });
+      }
       navigation.navigate(route);
     };
 
@@ -147,6 +149,9 @@ function screenGenerator(scene, index) {
         });
       }
       newResolved = [...resolved, ...newResolved, `collected-${item.id}`];
+      if (item.logical && item.logical.navigateOnResolved) {
+        this.onRoutePress(item.logical.navigateOnResolved);
+      }
       setState({
         collectedItems: [...collectedItems, item],
         resolved: [...newResolved],
@@ -304,6 +309,7 @@ function screenGenerator(scene, index) {
       allSlots.forEach(item => {
         currentPosition[item.id] = item.logical.selected;
       });
+
       if (objCompare(slotScenario, currentPosition)) {
         if (progress) {
           this.saveProgress(progress);
@@ -407,13 +413,14 @@ function screenGenerator(scene, index) {
       }
     };
 
-    showDialog = (item = null) => {
-      const { dialogModalVisible, setState } = this.props;
+    showDialog = (item = null, index) => {
+      const { dialogModalVisible, setState, currentScene } = this.props;
       setState({
         dialogModalVisible: !dialogModalVisible,
         dialogModalContent: item,
         originalDialogContent: item,
-        dialogAnswer: item.character,
+        dialogAnswer: true,
+        dialogKey: `SCENES_${currentScene.scene.name}_objects_itemsMap_${index}_logical_dialogProperties`,
       });
     };
 
@@ -425,7 +432,8 @@ function screenGenerator(scene, index) {
           dialogModalVisible: false,
           dialogModalContent: null,
           dialogShouldBeDropped: false,
-          dialogAnswer: '',
+          dialogAnswer: false,
+          dialogKey: '',
         });
       }
 
@@ -434,8 +442,8 @@ function screenGenerator(scene, index) {
       });
     };
 
-    setDialog = async item => {
-      const { resolved, originalDialogContent, setState } = this.props;
+    setDialog = (item, index) => {
+      const { resolved, originalDialogContent, setState, dialogKey } = this.props;
       if (item.resolve) {
         setState({ resolved: [...resolved, item.resolve] });
         if (item.setProgressOnResolved) {
@@ -446,7 +454,8 @@ function screenGenerator(scene, index) {
       setState({
         dialogModalContent: item.dialog ? item : originalDialogContent,
         dialogShouldBeDropped: !!item.drop,
-        dialogAnswer: item.character,
+        dialogAnswer: true,
+        dialogKey: `${dialogKey}_dialog_${index}`,
       });
     };
 
@@ -485,6 +494,7 @@ function screenGenerator(scene, index) {
         paperModalContent,
         dialogModalContent,
         dialogAnswer,
+        dialogKey,
         hintModalVisible,
         resolved,
         progress,
@@ -545,6 +555,7 @@ function screenGenerator(scene, index) {
                 setDialog={this.setDialog}
                 showDialog={this.showDialog}
                 showDialogAnswer={this.showDialogAnswer}
+                dialogKey={dialogKey}
               />
             )}
             {hintModalVisible && (
@@ -577,12 +588,17 @@ function screenGenerator(scene, index) {
     paperModalContent: PaperPropType.isRequired,
     dialogModalContent: DialogPropType.isRequired,
     originalDialogContent: DialogPropType.isRequired,
-    dialogAnswer: PropTypes.string.isRequired,
+    dialogAnswer: PropTypes.bool.isRequired,
     dialogShouldBeDropped: PropTypes.bool.isRequired,
+    dialogKey: PropTypes.string,
     hintModalVisible: PropTypes.bool.isRequired,
     currentRoute: PropTypes.string.isRequired,
     tmp: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
     progress: PropTypes.string.isRequired,
+  };
+
+  ScreenGenerator.defaultProps = {
+    dialogKey: '',
   };
 
   const mapStateToProps = ({ app, [scene.name]: currentScene }) => ({
@@ -600,6 +616,7 @@ function screenGenerator(scene, index) {
     dialogShouldBeDropped: app.dialogShouldBeDropped,
     hintModalVisible: app.hintModalVisible,
     dialogAnswer: app.dialogAnswer,
+    dialogKey: app.dialogKey,
     currentRoute: app.currentRoute,
     tmp: app.tmp,
     progress: app.progress,

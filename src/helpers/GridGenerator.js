@@ -26,7 +26,6 @@ const ObjectGrid = ({
   onRoutePress,
   collect,
   handleSlot,
-  receive,
   handleSequence,
   handleDecorative,
   showModal,
@@ -53,7 +52,7 @@ const ObjectGrid = ({
   return (
     <ObjectGridContainer>
       {itemsMapCopy.map(
-        ({ type, id, element, position, logical, group, sound, route }) => {
+        ({ type, id, element, position, logical, group, sound, route }, index) => {
           const isResolved =
             !logical ||
             !logical.showOnResolved ||
@@ -127,7 +126,7 @@ const ObjectGrid = ({
                           case ITEMS.DIALOG:
                             return showDialog(
                               logical.dialogProperties,
-                              logical && logical.setProgressOnResolved,
+                              index,
                             );
                           case ITEMS.COLLECTABLE:
                             return collect(
@@ -219,7 +218,6 @@ ObjectGrid.propTypes = {
   onRoutePress: PropTypes.func,
   collect: PropTypes.func,
   handleSlot: PropTypes.func,
-  receive: PropTypes.func,
   handleSequence: PropTypes.func,
   showModal: PropTypes.func,
   onDragRelease: PropTypes.func,
@@ -232,7 +230,6 @@ ObjectGrid.defaultProps = {
   onRoutePress: () => undefined,
   collect: () => undefined,
   handleSlot: () => undefined,
-  receive: () => undefined,
   handleSequence: () => undefined,
   showModal: () => undefined,
   onDragRelease: () => undefined,

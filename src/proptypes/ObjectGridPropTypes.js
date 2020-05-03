@@ -35,8 +35,9 @@ export const LogicalPropType = PropTypes.shape({
   deactivateOnResolved: PropTypes.arrayOf(PropTypes.string),
   activateOnResolved: PropTypes.arrayOf(PropTypes.string),
   dialogProperties: DialogPropType,
-  expectedValue: PropTypes.string,
+  expectedValue: PropTypes.arrayOf(PropTypes.string),
   scenario: PropTypes.arrayOf(PropTypes.string),
+  navigateOnResolved: PropTypes.string,
 });
 
 export const ObjectPropTypes = PropTypes.shape({
