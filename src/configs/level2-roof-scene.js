@@ -6,6 +6,7 @@ import ArrowDown from '../assets/images/arrow-down.png';
 import Level2RoofBg from '../assets/images/level2-roof-bg.png';
 import Level2RoofMolecules from '../assets/images/level2-roof-molecules.png';
 import RainAnimation from '../assets/animations/rain.json';
+import BlackboardSymbol from '../assets/images/blackboard-symbol.png';
 
 export const LEVEL2_ROOF_SCENE = {
   name: 'Level2-roof',
@@ -128,19 +129,17 @@ export const LEVEL2_ROOF_SCENE = {
       {
         type: 'blank',
         element: {
-          type: 'animatable',
-          animation: {
-            src: RainAnimation,
-            autoPlay: true,
-            loop: true,
+          type: 'image',
+          image: {
+            src: BlackboardSymbol,
           },
         },
         position: {
-          x: 20,
-          y: 20,
-          width: 30,
-          height: 30,
-          zIndex: 4,
+          x: 40,
+          y: 40,
+          width: 8,
+          height: 8,
+          zIndex: 3,
         },
       },
       {

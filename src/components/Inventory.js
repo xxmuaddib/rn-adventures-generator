@@ -122,9 +122,9 @@ export const Inventory = ({
                   shouldReverse
                   y={
                     index === 0
-                      ? 0.24 * gameHeight
-                      : 0.24 * gameHeight +
-                        (index * 0.16 * gameHeight + 0.03 * gameHeight * (index - 1))
+                      ? 0.242 * gameHeight
+                      : 0.242 * gameHeight +
+                        (index * 0.169 * gameHeight + 0.03 * gameHeight * (index - 1))
                   }
                   z={140}
                   onDrag={() => onDrag(item.id)}
