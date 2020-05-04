@@ -379,13 +379,11 @@ export const LEVEL2_WALL1_SCENE = {
         },
       },
       {
-        type: 'collectable',
-        id: 'blood',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
             src: Virus3Blood,
-            inventoryImage: BloodInventory,
           },
         },
         position: {
@@ -397,7 +395,6 @@ export const LEVEL2_WALL1_SCENE = {
         },
         logical: {
           showOnResolved: ['level2-virus3'],
-          countOfUse: 1,
         },
       },
     ],
