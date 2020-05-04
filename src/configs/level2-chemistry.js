@@ -1,17 +1,18 @@
 import ArrowDown from '../assets/images/arrow-down.png';
 
 import ChemistryBg from '../assets/images/chemistry-bg.png';
+import ChemicalContainerMixBig from '../assets/images/chemical-container-mix-big.png';
 import EmptyChemicalContainerMixBig from '../assets/images/empty-chemical-container-mix-big.png';
 import Candle from '../assets/images/candle.png';
 import CandleFired from '../assets/images/candle-fired.png';
 import ChemicalContainers from '../assets/images/chemical-containers.png';
 import ChemicalContainerSmall from '../assets/images/chemical-container-small.png';
 import BloodContainer from '../assets/images/blood-container.png';
-import WaterContainer from '../assets/images/blood-container.png';
 import BloodContainerFull from '../assets/images/blood-container-full.png';
 import WaterContainerFull from '../assets/images/water-container-full.png';
 import WaterChemicalContainerSmall from '../assets/images/water-chemical-container-small.png';
 import BloodChemicalContainerSmall from '../assets/images/blood-chemical-container-small.png';
+import MixSmallContainer from '../assets/images/mix-small-container.png';
 
 export const CHEMISTRY_SCENE = {
   name: 'Chemistry',
@@ -75,6 +76,30 @@ export const CHEMISTRY_SCENE = {
           y: 40,
           width: 25,
           height: 45,
+        },
+        logical: {
+          hideOnResolved: ['water-receiver', 'blood-receiver', 'candle'],
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'water-blood-mix',
+        element: {
+          type: 'image',
+          image: {
+            src: ChemicalContainerMixBig,
+          },
+        },
+        position: {
+          x: 85,
+          y: 40,
+          width: 25,
+          height: 45,
+        },
+        logical: {
+          showOnResolved: ['water-receiver', 'blood-receiver', 'candle'],
+          resolveOnCollect: ['hide-water-blood-mix'],
+          countOfUse: 1,
         },
       },
       {
@@ -166,8 +191,28 @@ export const CHEMISTRY_SCENE = {
           width: 8,
           height: 34,
         },
+        logical: {
+          hideOnResolved: ['water-receiver'],
+        },
       },
-
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: WaterChemicalContainerSmall,
+          },
+        },
+        position: {
+          x: 146,
+          y: 52,
+          width: 8,
+          height: 34,
+        },
+        logical: {
+          showOnResolved: ['water-receiver'],
+        },
+      },
       {
         type: 'blank',
         element: {
@@ -182,15 +227,33 @@ export const CHEMISTRY_SCENE = {
           width: 8,
           height: 34,
         },
+        logical: {
+          hideOnResolved: ['water-receiver', 'blood-receiver'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: MixSmallContainer,
+          },
+        },
+        position: {
+          x: 143,
+          y: 99,
+          width: 8,
+          height: 34,
+        },
+        logical: {
+          showOnResolved: ['water-receiver', 'blood-receiver'],
+        },
       },
       {
         type: 'receiver',
         id: 'blood-receiver',
         element: {
-          type: 'image',
-          image: {
-            src: BloodContainer,
-          },
+          type: 'trigger',
         },
         position: {
           x: 178,
@@ -199,8 +262,7 @@ export const CHEMISTRY_SCENE = {
           height: 46,
         },
         logical: {
-          expectedValue: ['blood'],
-          hideOnResolved: ['blood-receiver'],
+          expectedValue: ['blood-container-full'],
         },
       },
       {
@@ -222,11 +284,27 @@ export const CHEMISTRY_SCENE = {
         },
       },
       {
+        type: 'receiver',
+        id: 'water-receiver',
+        element: {
+          type: 'trigger',
+        },
+        position: {
+          x: 203,
+          y: 35,
+          width: 21,
+          height: 58,
+        },
+        logical: {
+          expectedValue: ['water-container'],
+        },
+      },
+      {
         type: 'blank',
         element: {
           type: 'image',
           image: {
-            src: WaterContainer,
+            src: WaterContainerFull,
           },
         },
         position: {
@@ -234,6 +312,9 @@ export const CHEMISTRY_SCENE = {
           y: 35,
           width: 21,
           height: 58,
+        },
+        logical: {
+          showOnResolved: ['water-receiver'],
         },
       },
     ],

@@ -11,6 +11,8 @@ import Symbol6 from '../assets/images/symbol6.png';
 import Symbol7 from '../assets/images/symbol7.png';
 import Symbol8 from '../assets/images/symbol8.png';
 import WaterCup from '../assets/images/water-cup.png';
+import Level2SafeOpened from '../assets/images/level2-safe-opened.png';
+import BloodContainer from '../assets/images/blood-container.png';
 
 export const LEVEL2_SAFE_SCENE = {
   name: 'Level2-safe',
@@ -55,7 +57,7 @@ export const LEVEL2_SAFE_SCENE = {
           },
         },
         position: {
-          x: 158,
+          x: 153,
           y: 105,
           width: 90,
           height: 80,
@@ -76,7 +78,7 @@ export const LEVEL2_SAFE_SCENE = {
           },
         },
         position: {
-          x: 166,
+          x: 161,
           y: 149,
           width: 14,
           height: 18,
@@ -177,7 +179,7 @@ export const LEVEL2_SAFE_SCENE = {
           },
         },
         position: {
-          x: 186,
+          x: 181,
           y: 149,
           width: 14,
           height: 18,
@@ -272,7 +274,7 @@ export const LEVEL2_SAFE_SCENE = {
           },
         },
         position: {
-          x: 206,
+          x: 201,
           y: 149,
           width: 14,
           height: 18,
@@ -367,7 +369,7 @@ export const LEVEL2_SAFE_SCENE = {
           },
         },
         position: {
-          x: 226,
+          x: 221,
           y: 149,
           width: 14,
           height: 18,
@@ -452,22 +454,41 @@ export const LEVEL2_SAFE_SCENE = {
         },
       },
       {
-        type: 'collectable',
-        id: 'water-cup',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
-            src: WaterCup,
+            src: Level2SafeOpened,
           },
         },
         position: {
-          x: 195,
-          y: 130,
-          width: 20,
-          height: 20,
+          x: 153,
+          y: 105,
+          width: 90,
+          height: 80,
         },
         logical: {
           showOnResolved: ['slot3'],
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'blood-container',
+        element: {
+          type: 'image',
+          image: {
+            src: BloodContainer,
+          },
+        },
+        position: {
+          x: 188,
+          y: 133,
+          width: 20,
+          height: 25,
+        },
+        logical: {
+          showOnResolved: ['slot3'],
+          countOfUse: 1,
         },
       },
     ],

@@ -2,7 +2,6 @@ import ArrowLeft from '../assets/images/arrow-left.png';
 import ArrowRight from '../assets/images/arrow-right.png';
 import ArrowUp from '../assets/images/arrow-up.png';
 
-import Wall2Bg from '../assets/images/wall2-bg.png';
 import Wall2Window1 from '../assets/images/wall2-window1.png';
 import Wall2Picture1 from '../assets/images/wall2-picture1.png';
 import Wall2Picture2 from '../assets/images/wall2-picture2.png';
@@ -22,15 +21,20 @@ import CandleFired from '../assets/images/candle-fired.png';
 import ChemicalContainers from '../assets/images/chemical-containers.png';
 import ChemicalContainerSmall from '../assets/images/chemical-container-small.png';
 import BloodContainer from '../assets/images/blood-container.png';
-import WaterContainer from '../assets/images/blood-container.png';
-import BloodContainerFull from '../assets/images/blood-container-full.png';
+import WaterContainer from '../assets/images/water-container.png';
 import WaterContainerFull from '../assets/images/water-container-full.png';
+import BloodContainerFull from '../assets/images/blood-container-full.png';
 import WaterChemicalContainerSmall from '../assets/images/water-chemical-container-small.png';
 import BloodChemicalContainerSmall from '../assets/images/blood-chemical-container-small.png';
 import Wall2Window2 from '../assets/images/wall2-window2.png';
 import Wall2Window2Opened from '../assets/images/wall2-window2-opened.png';
 import Wall2Foot from '../assets/images/wall2-foot.png';
 import SkeletonFootInventory from '../assets/images/skeleton-foot-inventory.png';
+import Rain from '../assets/animations/rain.json';
+import Level2Window2Opened from '../assets/images/level2-window2-opened.png';
+import EmptyChemicalContainerMixBig from '../assets/images/empty-chemical-container-mix-big.png';
+import ChemicalContainerMixBig from '../assets/images/chemical-container-mix-big.png';
+import MixSmallContainer from '../assets/images/mix-small-container.png';
 
 export const LEVEL2_WALL2_SCENE = {
   name: 'Level2-wall2',
@@ -138,66 +142,109 @@ export const LEVEL2_WALL2_SCENE = {
         },
       },
       {
-          type: 'decorative',
-          id: 'wandow2-closed',
-          element: {
-            type: 'image',
-            image: {
-              src: Wall2Window2,
-            },
-          },
-          position: {
-            x: 200,
-            y: 30,
-            width: 50,
-            height: 100,
-            zIndex: 4,
-          },
-          logical: {
-            hideOnResolved: ['wandow2-closed'],
+        type: 'decorative',
+        id: 'wandow2-closed',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall2Window2,
           },
         },
-        {
-          type: 'decorative',
-          id: 'window2-opened',
-          element: {
-            type: 'image',
-            image: {
-              src: Wall2Window2Opened,
-            },
-          },
-          position: {
-            x: 190,
-            y: 25,
-            width: 70,
-            height: 105,
-            zIndex: 2,
-          },
-          logical: {
-            showOnResolved: ['wandow2-closed'],
+        position: {
+          x: 200,
+          y: 30,
+          width: 50,
+          height: 100,
+          zIndex: 4,
+        },
+        logical: {
+          hideOnResolved: ['wandow2-closed'],
+        },
+      },
+      {
+        type: 'receiver',
+        id: 'rain-receiver',
+        element: {
+          type: 'animatable',
+          animation: {
+            src: Rain,
+            loop: true,
+            autoPlay: true,
           },
         },
-        {
-          type: 'collectable',
-          id: 'skeleton-foot',
-          element: {
-            type: 'image',
-            image: {
-              src: Wall2Foot,
-            },
-          },
-          position: {
-            x: 221,
-            y: 35,
-            width: 8,
-            height: 85,
-            zIndex: 3,
-          },
-          logical: {
-            showOnResolved: ['wandow2-closed'],
-            countOfUse: 1,
+        position: {
+          x: 200,
+          y: 30,
+          width: 20,
+          height: 100,
+          zIndex: 3,
+        },
+        logical: {
+          expectedValue: ['empty-water-container'],
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'water-container',
+        element: {
+          type: 'image',
+          image: {
+            src: WaterContainerFull,
           },
         },
+        position: {
+          x: 234,
+          y: 108,
+          width: 10,
+          height: 15,
+          zIndex: 5,
+        },
+        logical: {
+          showOnResolved: ['rain-receiver'],
+          countOfUse: 1,
+        },
+      },
+      {
+        type: 'decorative',
+        id: 'window2-opened',
+        element: {
+          type: 'image',
+          image: {
+            src: Level2Window2Opened,
+          },
+        },
+        position: {
+          x: 190,
+          y: 25,
+          width: 70,
+          height: 105,
+          zIndex: 2,
+        },
+        logical: {
+          showOnResolved: ['wandow2-closed'],
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'skeleton-foot',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall2Foot,
+          },
+        },
+        position: {
+          x: 221,
+          y: 35,
+          width: 8,
+          height: 85,
+          zIndex: 4,
+        },
+        logical: {
+          showOnResolved: ['wandow2-closed'],
+          countOfUse: 1,
+        },
+      },
       {
         type: 'blank',
         element: {
@@ -267,30 +314,195 @@ export const LEVEL2_WALL2_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: EmptyChemicalContainers,
+            src: ChemicalContainers,
           },
         },
         position: {
           x: 127,
           y: 81,
-          height: 30,
           width: 53,
+          height: 30,
         },
       },
       {
-        type: 'nav',
-        route: 'Chemistry',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
-            src: EmptyChemicalContainers,
+            src: Candle,
           },
         },
         position: {
-          x: 127,
-          y: 81,
-          height: 30,
-          width: 53,
+          x: 134,
+          y: 99,
+          width: 5,
+          height: 5,
+        },
+        logical: {
+          hideOnResolved: ['candle'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: CandleFired,
+          },
+        },
+        position: {
+          x: 134,
+          y: 99,
+          width: 5,
+          height: 5,
+        },
+        logical: {
+          showOnResolved: ['candle'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: Candle,
+          },
+        },
+        position: {
+          x: 134,
+          y: 99,
+          width: 5,
+          height: 5,
+        },
+        logical: {
+          showOnResolved: ['candle'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: EmptyChemicalContainerMixBig,
+          },
+        },
+        position: {
+          x: 133,
+          y: 87,
+          width: 7,
+          height: 11,
+        },
+        logical: {
+          hideOnResolved: ['water-receiver', 'blood-receiver', 'candle'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: ChemicalContainerMixBig,
+          },
+        },
+        position: {
+          x: 133,
+          y: 87,
+          width: 7,
+          height: 11,
+        },
+        logical: {
+          showOnResolved: ['water-receiver', 'blood-receiver', 'candle'],
+          hideOnResolved: ['hide-water-blood-mix'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: BloodChemicalContainerSmall,
+          },
+        },
+        position: {
+          x: 149,
+          y: 90,
+          width: 2,
+          height: 9,
+        },
+        logical: {
+          showOnResolved: ['blood-receiver'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: WaterChemicalContainerSmall,
+          },
+        },
+        position: {
+          x: 151,
+          y: 90,
+          width: 2,
+          height: 9,
+        },
+        logical: {
+          showOnResolved: ['water-receiver'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: WaterContainerFull,
+          },
+        },
+        position: {
+          x: 167,
+          y: 86,
+          width: 8,
+          height: 13,
+        },
+        logical: {
+          showOnResolved: ['water-receiver'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: MixSmallContainer,
+          },
+        },
+        position: {
+          x: 150,
+          y: 101,
+          width: 2,
+          height: 8,
+        },
+        logical: {
+          showOnResolved: ['water-receiver', 'blood-receiver'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: BloodContainerFull,
+          },
+        },
+        position: {
+          x: 159,
+          y: 88,
+          width: 8,
+          height: 11,
+        },
+        logical: {
+          showOnResolved: ['blood-receiver'],
         },
       },
       {
@@ -352,6 +564,46 @@ export const LEVEL2_WALL2_SCENE = {
       },
       {
         type: 'decorative',
+        id: 'level2-cabinet-rack3',
+        element: {
+          type: 'image',
+          image: {
+            src: Level2Rack,
+          },
+        },
+        position: {
+          x: 155,
+          y: 117,
+          width: 22,
+          height: 19,
+          zIndex: 3,
+        },
+        logical: {
+          hideOnResolved: ['level2-cabinet-rack3'],
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'empty-water-container',
+        element: {
+          type: 'image',
+          image: {
+            src: WaterContainer,
+          },
+        },
+        position: {
+          x: 160,
+          y: 120,
+          width: 10,
+          height: 15,
+          zIndex: 2,
+        },
+        logical: {
+          countOfUse: 1,
+        },
+      },
+      {
+        type: 'decorative',
         id: 'level2-cabinet-rack2',
         element: {
           type: 'image',
@@ -360,10 +612,10 @@ export const LEVEL2_WALL2_SCENE = {
           },
         },
         position: {
-          x: 154,
+          x: 155,
           y: 158,
-          width: 23,
-          height: 20,
+          width: 22,
+          height: 19,
           zIndex: 3,
         },
         logical: {

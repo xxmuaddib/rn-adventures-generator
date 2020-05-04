@@ -67,7 +67,7 @@ import Level2MirrorBackground from '../assets/images/level2-mirror-bg.png';
 import Virus3Blood from '../assets/images/virus3-blood.png';
 import BloodInventory from '../assets/images/blood-inventory.png';
 import SkeletonFootInventory from '../assets/images/skeleton-foot-inventory.png';
-
+import BloodContainerFull from '../assets/images/blood-container-full.png';
 
 const SCENES = [
   {
@@ -1340,7 +1340,7 @@ const SCENES = [
   {
     name: 'Level2-virus3',
     route: 'Level2-virus3',
-    bg: VirusesBg,
+    bg: Level2Virus2Bg,
     objects: {
       itemsMap: [
         {
@@ -1379,13 +1379,12 @@ const SCENES = [
           },
         },
         {
-          type: 'collectable',
-          id: 'blood',
+          type: 'receiver',
+          id: 'Virus3Blood',
           element: {
             type: 'image',
             image: {
               src: Virus3Blood,
-              inventoryImage: BloodInventory,
             },
           },
           position: {
@@ -1396,8 +1395,29 @@ const SCENES = [
             zIndex: 3,
           },
           logical: {
+            expectedValue: ['blood-container'],
             showOnResolved: ['level2-virus3'],
+            hideOnResolved: ['Virus3Blood'],
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'blood-container-full',
+          element: {
+            type: 'image',
+            image: {
+              src: BloodContainerFull,
+            },
+          },
+          position: {
+            x: 120,
+            y: 170,
+            width: 20,
+            height: 25,
+          },
+          logical: {
             countOfUse: 1,
+            showOnResolved: ['Virus3Blood'],
           },
         },
         {
@@ -1804,6 +1824,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Farm1';
+const INITIAL_SCREEN = 'Level2-wall1';
 
 export { SCENES, INITIAL_SCREEN };
