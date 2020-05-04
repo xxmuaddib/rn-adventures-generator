@@ -6,6 +6,9 @@ import Level2Wall3Bg from '../assets/images/level2-wall3-bg.png';
 import Level2Skeleton from '../assets/images/level2-skeleton.png';
 import Wall3Safe from '../assets/images/wall3-safe.png';
 import Wall3Mirror from '../assets/images/wall3-mirror.png';
+import SkeletonSkullInventory from '../assets/images/skeleton-skull-inventory.png';
+import Wall3Skull from '../assets/images/wall3-skull.png';
+import Wall3SafeDoor1 from '../assets/images/wall3-safe-door1.png';
 
 export const LEVEL2_WALL3_SCENE = {
   name: 'Level2-wall3',
@@ -114,7 +117,7 @@ export const LEVEL2_WALL3_SCENE = {
       },
       {
         type: 'nav',
-        route: 'Mirror',
+        route: 'Mirror2',
         element: {
           type: 'image',
           image: {
@@ -141,6 +144,48 @@ export const LEVEL2_WALL3_SCENE = {
           y: 27,
           width: 40,
           height: 153,
+        },
+      },
+      {
+        type: 'receiver',
+        id: 'safe-door',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall3SafeDoor1,
+          },
+        },
+        position: {
+          x: 54,
+          y: 50,
+          width: 42,
+          height: 55,
+          zIndex: 3,
+        },
+        logical: {
+          expectedValue: ['safe-green-key'],
+          hideOnResolved: ['safe-door'],
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'skeleton-skull',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall3Skull,
+            inventoryImage: SkeletonSkullInventory,
+          },
+        },
+        position: {
+          x: 68,
+          y: 63,
+          width: 15,
+          height: 25,
+          zIndex: 2,
+        },
+        logical: {
+          countOfUse: 1,
         },
       },
     ],

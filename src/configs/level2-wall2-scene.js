@@ -27,6 +27,10 @@ import BloodContainerFull from '../assets/images/blood-container-full.png';
 import WaterContainerFull from '../assets/images/water-container-full.png';
 import WaterChemicalContainerSmall from '../assets/images/water-chemical-container-small.png';
 import BloodChemicalContainerSmall from '../assets/images/blood-chemical-container-small.png';
+import Wall2Window2 from '../assets/images/wall2-window2.png';
+import Wall2Window2Opened from '../assets/images/wall2-window2-opened.png';
+import Wall2Foot from '../assets/images/wall2-foot.png';
+import SkeletonFootInventory from '../assets/images/skeleton-foot-inventory.png';
 
 export const LEVEL2_WALL2_SCENE = {
   name: 'Level2-wall2',
@@ -134,21 +138,66 @@ export const LEVEL2_WALL2_SCENE = {
         },
       },
       {
-        type: 'blank',
-        element: {
-          type: 'image',
-          image: {
-            src: Window2WithoutFoot,
+          type: 'decorative',
+          id: 'wandow2-closed',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Window2,
+            },
+          },
+          position: {
+            x: 200,
+            y: 30,
+            width: 50,
+            height: 100,
+            zIndex: 4,
+          },
+          logical: {
+            hideOnResolved: ['wandow2-closed'],
           },
         },
-        position: {
-          x: 200,
-          y: 30,
-          width: 50,
-          height: 100,
-          zIndex: 4,
+        {
+          type: 'decorative',
+          id: 'window2-opened',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Window2Opened,
+            },
+          },
+          position: {
+            x: 190,
+            y: 25,
+            width: 70,
+            height: 105,
+            zIndex: 2,
+          },
+          logical: {
+            showOnResolved: ['wandow2-closed'],
+          },
         },
-      },
+        {
+          type: 'collectable',
+          id: 'skeleton-foot',
+          element: {
+            type: 'image',
+            image: {
+              src: Wall2Foot,
+            },
+          },
+          position: {
+            x: 221,
+            y: 35,
+            width: 8,
+            height: 85,
+            zIndex: 3,
+          },
+          logical: {
+            showOnResolved: ['wandow2-closed'],
+            countOfUse: 1,
+          },
+        },
       {
         type: 'blank',
         element: {

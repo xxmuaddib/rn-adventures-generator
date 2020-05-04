@@ -342,8 +342,8 @@ export const LEVEL2_WALL1_SCENE = {
         },
       },
       {
-        type: 'receiver',
-        id: 'level2-virus3',
+        type: 'nav',
+        route: 'Level2-virus3',
         element: {
           type: 'image',
           image: {
@@ -357,13 +357,10 @@ export const LEVEL2_WALL1_SCENE = {
           height: 80,
           zIndex: 1,
         },
-        logical: {
-          expectedValue: ['level2-knife'],
-          hideOnResolved: ['level2-virus3'],
-        },
       },
       {
-        type: 'blank',
+        type: 'nav',
+        route: 'Level2-virus3',
         element: {
           type: 'image',
           image: {

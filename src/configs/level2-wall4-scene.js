@@ -7,6 +7,8 @@ import Level2Wall4Door from '../assets/images/level2-wall4-door.png';
 import Wall4Time from '../assets/images/wall4-time.png';
 import PlaguePicture from '../assets/images/plague-picture.png';
 import Wall4Picture1 from '../assets/images/wall4-picture1.png';
+import SkeletonSpine from '../assets/images/skeleton-spine.png';
+import SkeletonSpineInventory from '../assets/images/skeleton-spine-inventory.png';
 
 export const LEVEL2_WALL4_SCENE = {
   name: 'Level2-wall4',
@@ -157,6 +159,26 @@ export const LEVEL2_WALL4_SCENE = {
           y: 15,
           width: 30,
           height: 40,
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'skeleton-spine',
+        element: {
+          type: 'image',
+          image: {
+            src: SkeletonSpine,
+            inventoryImage: SkeletonSpineInventory,
+          },
+        },
+        position: {
+          x: 173,
+          y: 17,
+          width: 4,
+          height: 17,
+        },
+        logical: {
+          countOfUse: 1,
         },
       },
     ],

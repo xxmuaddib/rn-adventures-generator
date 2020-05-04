@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { createReducer, createAction } from '@reduxjs/toolkit';
+import { cloneDeep } from 'lodash';
 import { SCENES } from '../configs/scenes-combiner';
 
 const appInitialState = {
@@ -41,8 +42,8 @@ export const generateReducers = () => {
   const sceneReducers = {};
   SCENES.forEach(scene => {
     const initialState = {
-      scene: { ...scene },
-      originalScene: { ...scene },
+      scene: cloneDeep(scene),
+      originalScene: cloneDeep(scene),
     };
     sceneReducers[scene.name] = createReducer(initialState, {
       [`${scene.name}_SET_STATE`]: (state, action) => {

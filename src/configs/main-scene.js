@@ -63,6 +63,11 @@ import CrownPart5 from '../assets/images/crown-part5.png';
 import TreeBg from '../assets/images/tree-bg.png';
 import TreeImage from '../assets/images/tree-image.png';
 import TreeImageZoomed from '../assets/images/tree-image-zoomed.png';
+import Level2MirrorBackground from '../assets/images/level2-mirror-bg.png';
+import Virus3Blood from '../assets/images/virus3-blood.png';
+import BloodInventory from '../assets/images/blood-inventory.png';
+import SkeletonFootInventory from '../assets/images/skeleton-foot-inventory.png';
+
 
 const SCENES = [
   {
@@ -402,6 +407,7 @@ const SCENES = [
             type: 'image',
             image: {
               src: Wall2Foot,
+              inventoryImage: SkeletonFootInventory,
             },
           },
           position: {
@@ -686,6 +692,159 @@ const SCENES = [
         {
           type: 'nav',
           route: 'Wall3',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 185,
+            height: 15,
+            width: 300,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Mirror2',
+    route: 'Mirror2',
+    bg: Level2MirrorBackground,
+    objects: {
+      itemsMap: [
+        {
+          type: 'receiver',
+          id: 'mirror',
+          element: {
+            type: 'image',
+            image: {
+              src: MirrorSceneMirror,
+            },
+          },
+          position: {
+            x: 90,
+            y: 15,
+            width: 120,
+            height: 170,
+          },
+          logical: {
+            expectedValue: [
+              'crown-virus-part1',
+              'crown-virus-part2',
+              'crown-virus-part3',
+              'crown-virus-part4',
+              'crown-virus-part5',
+            ],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart1,
+            },
+          },
+          position: {
+            x: 120,
+            y: 58,
+            width: 15,
+            height: 15,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part1'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart2,
+            },
+          },
+          position: {
+            x: 130,
+            y: 52,
+            width: 16,
+            height: 16,
+            zIndex: 2,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part2'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart3,
+            },
+          },
+          position: {
+            x: 144,
+            y: 46,
+            width: 18,
+            height: 18,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part3'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart4,
+            },
+          },
+          position: {
+            x: 160,
+            y: 54,
+            width: 17,
+            height: 17,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part4'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart5,
+            },
+          },
+          position: {
+            x: 171,
+            y: 60,
+            width: 15,
+            height: 15,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part5'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Level2-wall3',
           element: {
             type: 'trigger',
           },
@@ -1104,6 +1263,231 @@ const SCENES = [
         {
           type: 'nav',
           route: 'Wall1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 185,
+            height: 15,
+            width: 300,
+          },
+        },
+        {
+          type: 'decorative',
+          id: 'gum-width-key',
+          element: {
+            type: 'image',
+            image: {
+              src: GumWithKey,
+            },
+          },
+          position: {
+            x: 90,
+            y: 155,
+            width: 20,
+            height: 20,
+            zIndex: 2,
+          },
+          logical: {
+            hideOnResolved: ['gum-width-key'],
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'safe-green-key',
+          element: {
+            type: 'image',
+            image: {
+              inventoryImage: GreenKeyInventory,
+              src: GreenKey,
+            },
+          },
+          position: {
+            x: 90,
+            y: 160,
+            width: 30,
+            height: 20,
+            zIndex: 2,
+          },
+          logical: {
+            showOnResolved: ['gum-width-key'],
+            countOfUse: 1,
+          },
+        },
+        {
+          type: 'decorative',
+          id: 'pink-gum',
+          element: {
+            type: 'image',
+            image: {
+              src: Gum,
+            },
+          },
+          position: {
+            x: 90,
+            y: 180,
+            width: 20,
+            height: 20,
+          },
+          logical: {
+            showOnResolved: ['gum-width-key'],
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level2-virus3',
+    route: 'Level2-virus3',
+    bg: VirusesBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'receiver',
+          id: 'level2-virus3',
+          element: {
+            type: 'image',
+            image: {
+              src: Virus3Front,
+            },
+          },
+          position: {
+            x: 100,
+            y: 5,
+            width: 100,
+            height: 150,
+            zIndex: 1,
+          },
+          logical: {
+            expectedValue: ['level2-knife'],
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'blood',
+          element: {
+            type: 'image',
+            image: {
+              src: Virus3Blood,
+              inventoryImage: BloodInventory,
+            },
+          },
+          position: {
+            x: 100,
+            y: 140,
+            width: 50,
+            height: 50,
+            zIndex: 3,
+          },
+          logical: {
+            showOnResolved: ['level2-virus3'],
+            countOfUse: 1,
+          },
+        },
+        {
+          type: 'collectable',
+          id: 'picture-part2',
+          element: {
+            type: 'image',
+            image: {
+              src: ImagePart2,
+              inventoryImage: PlagueImagePart2Inventory,
+            },
+          },
+          position: {
+            x: 200,
+            y: 110,
+            width: 15,
+            height: 15,
+            zIndex: 4,
+          },
+          logical: {
+            countOfUse: 1,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFront,
+            },
+          },
+          position: {
+            x: 80,
+            y: 80,
+            width: 150,
+            height: 100,
+            zIndex: 1,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart1,
+            },
+          },
+          position: {
+            x: 80,
+            y: 135,
+            width: 148,
+            height: 30,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart2,
+            },
+          },
+          position: {
+            x: 80,
+            y: 155,
+            width: 15,
+            height: 30,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: VirusesTableFrontPart2,
+            },
+          },
+          position: {
+            x: 213,
+            y: 155,
+            width: 15,
+            height: 30,
+            zIndex: 3,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Level2-wall1',
           element: {
             type: 'trigger',
           },
