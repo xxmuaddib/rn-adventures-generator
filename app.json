@@ -4,10 +4,7 @@
     "slug": "AdventuresGenerator",
     "privacy": "public",
     "sdkVersion": "36.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
@@ -19,9 +16,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "description": "",
     "githubUrl": "https://github.com/xxmuaddib/rn-adventures-generator",
     "android": {
@@ -30,6 +25,9 @@
       "googleServicesFile": "./google-services.json",
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-2994481870952435~9586267010"
+      },
+      "androidNavigationBar": {
+        "visible": false
       }
     },
     "ios": {
