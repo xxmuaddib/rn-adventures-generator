@@ -178,6 +178,7 @@ export const LEVEL2_WALL4_SCENE = {
           height: 17,
         },
         logical: {
+          hideOnResolved: ['skeleton-spine-receiver'],
           countOfUse: 1,
         },
       },
