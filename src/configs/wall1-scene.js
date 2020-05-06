@@ -19,6 +19,7 @@ import DeathAvatar1 from '../assets/images/death-avatar1.png';
 import PlagueWithHand from '../assets/images/plague-with-hand.png';
 import CrownWithHand from '../assets/images/crown-with-hand.png';
 import VirusRewardInventory from '../assets/images/virus-reward-inventory.png';
+import HeroAvatar from '../assets/images/hero-avatar.png';
 
 export const WALL1_SCENE = {
   name: 'Wall1',
@@ -201,6 +202,10 @@ export const WALL1_SCENE = {
               color: 'rgb(0, 0, 0)',
             },
             heroElement: {
+              type: 'image',
+              image: {
+                src: HeroAvatar,
+              },
               bg: 'rgba(255, 255, 255, .8)',
               color: 'rgb(0, 0, 0)',
             },
@@ -227,6 +232,10 @@ export const WALL1_SCENE = {
                   color: 'rgb(0, 0, 0)',
                 },
                 heroElement: {
+                  type: 'image',
+                  image: {
+                    src: HeroAvatar,
+                  },
                   bg: 'rgba(255, 255, 255, .8)',
                   color: 'rgb(0, 0, 0)',
                 },
@@ -252,6 +261,10 @@ export const WALL1_SCENE = {
                       color: 'rgb(0, 0, 0)',
                     },
                     heroElement: {
+                      type: 'image',
+                      image: {
+                        src: HeroAvatar,
+                      },
                       bg: 'rgba(255, 255, 255, .8)',
                       color: 'rgb(0, 0, 0)',
                     },
@@ -299,6 +312,10 @@ export const WALL1_SCENE = {
               color: 'rgb(0, 0, 0)',
             },
             heroElement: {
+              type: 'image',
+              image: {
+                src: HeroAvatar,
+              },
               bg: 'rgba(255, 255, 255, .8)',
               color: 'rgb(0, 0, 0)',
             },
@@ -325,6 +342,10 @@ export const WALL1_SCENE = {
                   color: 'rgb(0, 0, 0)',
                 },
                 heroElement: {
+                  type: 'image',
+                  image: {
+                    src: HeroAvatar,
+                  },
                   bg: 'rgba(255, 255, 255, .8)',
                   color: 'rgb(0, 0, 0)',
                 },
@@ -407,6 +428,10 @@ export const WALL1_SCENE = {
               color: 'rgb(0, 0, 0)',
             },
             heroElement: {
+              type: 'image',
+              image: {
+                src: HeroAvatar,
+              },
               bg: 'rgba(255, 255, 255, .8)',
               color: 'rgb(0, 0, 0)',
             },
@@ -433,6 +458,10 @@ export const WALL1_SCENE = {
                   color: 'rgb(0, 0, 0)',
                 },
                 heroElement: {
+                  type: 'image',
+                  image: {
+                    src: HeroAvatar,
+                  },
                   bg: 'rgba(255, 255, 255, .8)',
                   color: 'rgb(0, 0, 0)',
                 },
