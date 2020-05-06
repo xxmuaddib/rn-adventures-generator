@@ -120,6 +120,7 @@ const DialogContainer = styled(View)`
 
 const CharacterAvatar = styled(Image)`
   height: 100px;
+  resize-mode: contain;
   ${p =>
     p.isLeft &&
     (iphoneX ? `margin-left: ${left + 40}px` : `margin-left: ${left + 20}px`)};
