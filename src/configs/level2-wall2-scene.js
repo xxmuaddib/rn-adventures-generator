@@ -231,6 +231,7 @@ export const LEVEL2_WALL2_SCENE = {
           type: 'image',
           image: {
             src: Wall2Foot,
+            inventoryImage: SkeletonFootInventory,
           },
         },
         position: {
@@ -242,6 +243,7 @@ export const LEVEL2_WALL2_SCENE = {
         },
         logical: {
           showOnResolved: ['wandow2-closed'],
+          hideOnResolved: ['skeleton-foot-receiver'],
           countOfUse: 1,
         },
       },
@@ -348,24 +350,6 @@ export const LEVEL2_WALL2_SCENE = {
           type: 'image',
           image: {
             src: CandleFired,
-          },
-        },
-        position: {
-          x: 134,
-          y: 99,
-          width: 5,
-          height: 5,
-        },
-        logical: {
-          showOnResolved: ['candle'],
-        },
-      },
-      {
-        type: 'blank',
-        element: {
-          type: 'image',
-          image: {
-            src: Candle,
           },
         },
         position: {

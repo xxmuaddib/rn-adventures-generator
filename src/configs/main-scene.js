@@ -1421,27 +1421,6 @@ const SCENES = [
           },
         },
         {
-          type: 'collectable',
-          id: 'picture-part2',
-          element: {
-            type: 'image',
-            image: {
-              src: ImagePart2,
-              inventoryImage: PlagueImagePart2Inventory,
-            },
-          },
-          position: {
-            x: 200,
-            y: 110,
-            width: 15,
-            height: 15,
-            zIndex: 4,
-          },
-          logical: {
-            countOfUse: 1,
-          },
-        },
-        {
           type: 'blank',
           element: {
             type: 'image',
@@ -1824,6 +1803,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Level2-wall1';
+const INITIAL_SCREEN = 'Wall1';
 
 export { SCENES, INITIAL_SCREEN };
