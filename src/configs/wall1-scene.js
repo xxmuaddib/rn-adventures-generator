@@ -19,6 +19,7 @@ import DeathAvatar1 from '../assets/images/death-avatar1.png';
 import PlagueWithHand from '../assets/images/plague-with-hand.png';
 import CrownWithHand from '../assets/images/crown-with-hand.png';
 import VirusRewardInventory from '../assets/images/virus-reward-inventory.png';
+import HeroAvatar from '../assets/images/hero-avatar.png';
 
 export const WALL1_SCENE = {
   name: 'Wall1',
@@ -201,8 +202,12 @@ export const WALL1_SCENE = {
               color: 'rgb(0, 0, 0)',
             },
             heroElement: {
-              bg: 'rgba(255, 255, 255, .8)',
-              color: 'rgb(0, 0, 0)',
+              type: 'image',
+              image: {
+                src: HeroAvatar,
+              },
+              bg: 'rgba(131, 146, 130, .8)',
+              color: 'rgb(255, 255, 255)',
             },
             dialog: [
               {
@@ -227,8 +232,12 @@ export const WALL1_SCENE = {
                   color: 'rgb(0, 0, 0)',
                 },
                 heroElement: {
-                  bg: 'rgba(255, 255, 255, .8)',
-                  color: 'rgb(0, 0, 0)',
+                  type: 'image',
+                  image: {
+                    src: HeroAvatar,
+                  },
+                  bg: 'rgba(131, 146, 130, .8)',
+                  color: 'rgb(255, 255, 255)',
                 },
                 dialog: [
                   {
@@ -252,8 +261,12 @@ export const WALL1_SCENE = {
                       color: 'rgb(0, 0, 0)',
                     },
                     heroElement: {
-                      bg: 'rgba(255, 255, 255, .8)',
-                      color: 'rgb(0, 0, 0)',
+                      type: 'image',
+                      image: {
+                        src: HeroAvatar,
+                      },
+                      bg: 'rgba(131, 146, 130, .8)',
+                      color: 'rgb(255, 255, 255)',
                     },
                     drop: true,
                     resolve: 'dialog1',
@@ -287,7 +300,7 @@ export const WALL1_SCENE = {
             character: {
               translations: {
                 en:
-                  'Wow, thank you! You have some pottential, huh... Take this thing and put it on your corona.',
+                  'Now I remember. When I was young, I was a real stallion, you know? Since 541 everybody talked about me... For almost 2 decades... But my days are in past. This is your reward.',
               },
             },
             characterElement: {
@@ -299,19 +312,23 @@ export const WALL1_SCENE = {
               color: 'rgb(0, 0, 0)',
             },
             heroElement: {
-              bg: 'rgba(255, 255, 255, .8)',
-              color: 'rgb(0, 0, 0)',
+              type: 'image',
+              image: {
+                src: HeroAvatar,
+              },
+              bg: 'rgba(131, 146, 130, .8)',
+              color: 'rgb(255, 255, 255)',
             },
             dialog: [
               {
                 hero: {
                   translations: {
-                    en: 'Wow! Thanks!',
+                    en: 'Thank you! Is there anything I could do for you?',
                   },
                 },
                 character: {
                   translations: {
-                    en: 'Bye bye.',
+                    en: 'I remember a formula, which can help you in your mission. I\'ll draw it on the blackboard',
                   },
                 },
                 drop: true,
@@ -325,8 +342,12 @@ export const WALL1_SCENE = {
                   color: 'rgb(0, 0, 0)',
                 },
                 heroElement: {
-                  bg: 'rgba(255, 255, 255, .8)',
-                  color: 'rgb(0, 0, 0)',
+                  type: 'image',
+                  image: {
+                    src: HeroAvatar,
+                  },
+                  bg: 'rgba(131, 146, 130, .8)',
+                  color: 'rgb(255, 255, 255)',
                 },
               },
             ],
@@ -407,8 +428,12 @@ export const WALL1_SCENE = {
               color: 'rgb(0, 0, 0)',
             },
             heroElement: {
-              bg: 'rgba(255, 255, 255, .8)',
-              color: 'rgb(0, 0, 0)',
+              type: 'image',
+              image: {
+                src: HeroAvatar,
+              },
+              bg: 'rgba(131, 146, 130, .8)',
+              color: 'rgb(255, 255, 255)',
             },
             dialog: [
               {
@@ -433,8 +458,12 @@ export const WALL1_SCENE = {
                   color: 'rgb(0, 0, 0)',
                 },
                 heroElement: {
-                  bg: 'rgba(255, 255, 255, .8)',
-                  color: 'rgb(0, 0, 0)',
+                  type: 'image',
+                  image: {
+                    src: HeroAvatar,
+                  },
+                  bg: 'rgba(131, 146, 130, .8)',
+                  color: 'rgb(255, 255, 255)',
                 },
               },
             ],

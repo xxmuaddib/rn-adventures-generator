@@ -437,9 +437,19 @@ function screenGenerator(scene) {
         });
       }
 
-      setState({
-        dialogModalContent: { ...item, questionsShouldBeShown: true },
-      });
+      if (item.dialog) {
+        setState({
+          dialogModalContent: { ...item, questionsShouldBeShown: true },
+        });
+      } else {
+        setState({
+          dialogModalVisible: false,
+          dialogModalContent: null,
+          dialogShouldBeDropped: false,
+          dialogAnswer: false,
+          dialogKey: '',
+        });
+      }
     };
 
     setDialog = (item, index) => {

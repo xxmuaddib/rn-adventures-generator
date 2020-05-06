@@ -69,6 +69,7 @@ import BloodInventory from '../assets/images/blood-inventory.png';
 import SkeletonFootInventory from '../assets/images/skeleton-foot-inventory.png';
 import BloodContainerFull from '../assets/images/blood-container-full.png';
 import Tooth from '../assets/images/tooth.png';
+import HeroAvatar from '../assets/images/hero-avatar.png';
 
 const SCENES = [
   {
@@ -917,11 +918,58 @@ const SCENES = [
           },
           logical: {
             dialogProperties: {
+              characterElement: {
+                type: 'image',
+                image: {
+                  src: Virus1Front,
+                },
+                bg: 'rgba(255, 255, 255, .8)',
+                color: 'rgb(0, 0, 0)',
+              },
               character: {
                 translations: {
-                  en: 'Ill kill your time',
+                  en: 'The Plague is too mean to me. She says, that I am a bad student. She says that an eye can\'t be deadly and they are going to deduct me.',
                 },
               },
+              heroElement: {
+                type: 'image',
+                image: {
+                  src: HeroAvatar,
+                },
+                bg: 'rgba(131, 146, 130, .8)',
+                color: 'rgb(255, 255, 255)',
+              },
+              dialog: [
+                {
+                  heroElement: {
+                    type: 'image',
+                    image: {
+                      src: HeroAvatar,
+                    },
+                    bg: 'rgba(131, 146, 130, .8)',
+                    color: 'rgb(255, 255, 255)',
+                  },
+                  hero: {
+                    translations: {
+                      en: 'I hope everything will be ok.',
+                    },
+                  },
+                  characterElement: {
+                    type: 'image',
+                    image: {
+                      src: Virus1Front,
+                    },
+                    bg: 'rgba(255, 255, 255, .8)',
+                    color: 'rgb(0, 0, 0)',
+                  },
+                  character: {
+                    translations: {
+                      en: 'You reassured me, thanks!',
+                    },
+                  },
+                  drop: true,
+                },
+              ],
             },
           },
         },
@@ -1044,11 +1092,58 @@ const SCENES = [
           },
           logical: {
             dialogProperties: {
+              characterElement: {
+                type: 'image',
+                image: {
+                  src: Virus2Front,
+                },
+                bg: 'rgba(255, 255, 255, .8)',
+                color: 'rgb(0, 0, 0)',
+              },
               character: {
                 translations: {
-                  en: "I'll kill your time",
+                  en: 'They say, that trees are like lungs... I\'m looking at this photo and can\'t understand how. Can you take a look?',
                 },
               },
+              heroElement: {
+                type: 'image',
+                image: {
+                  src: HeroAvatar,
+                },
+                bg: 'rgba(131, 146, 130, .8)',
+                color: 'rgb(255, 255, 255)',
+              },
+              dialog: [
+                {
+                  heroElement: {
+                    type: 'image',
+                    image: {
+                      src: HeroAvatar,
+                    },
+                    bg: 'rgba(131, 146, 130, .8)',
+                    color: 'rgb(255, 255, 255)',
+                  },
+                  hero: {
+                    translations: {
+                      en: 'Well, i may take a look. But that\'s a strange assumption',
+                    },
+                  },
+                  characterElement: {
+                    type: 'image',
+                    image: {
+                      src: Virus2Front,
+                    },
+                    bg: 'rgba(255, 255, 255, .8)',
+                    color: 'rgb(0, 0, 0)',
+                  },
+                  character: {
+                    translations: {
+                      en: 'Strange, very strange...',
+                    },
+                  },
+                  drop: true,
+                },
+              ],
             },
           },
         },
@@ -1187,11 +1282,58 @@ const SCENES = [
           },
           logical: {
             dialogProperties: {
+              characterElement: {
+                type: 'image',
+                image: {
+                  src: Virus3Front,
+                },
+                bg: 'rgba(255, 255, 255, .8)',
+                color: 'rgb(0, 0, 0)',
+              },
               character: {
                 translations: {
-                  en: 'Ill kill your time',
+                  en: 'Did you know that teeth is the most important thing to be a real deadly super-duper killer virus?',
                 },
               },
+              heroElement: {
+                type: 'image',
+                image: {
+                  src: HeroAvatar,
+                },
+                bg: 'rgba(131, 146, 130, .8)',
+                color: 'rgb(255, 255, 255)',
+              },
+              dialog: [
+                {
+                  heroElement: {
+                    type: 'image',
+                    image: {
+                      src: HeroAvatar,
+                    },
+                    bg: 'rgba(131, 146, 130, .8)',
+                    color: 'rgb(255, 255, 255)',
+                  },
+                  hero: {
+                    translations: {
+                      en: 'No, I didn\'t know',
+                    },
+                  },
+                  characterElement: {
+                    type: 'image',
+                    image: {
+                      src: Virus3Front,
+                    },
+                    bg: 'rgba(255, 255, 255, .8)',
+                    color: 'rgb(0, 0, 0)',
+                  },
+                  character: {
+                    translations: {
+                      en: 'You have no brains then, hah!',
+                    },
+                  },
+                  drop: true,
+                },
+              ],
             },
           },
         },
@@ -1643,11 +1785,58 @@ const SCENES = [
           },
           logical: {
             dialogProperties: {
+              characterElement: {
+                type: 'image',
+                image: {
+                  src: Virus2Front,
+                },
+                bg: 'rgba(255, 255, 255, .8)',
+                color: 'rgb(0, 0, 0)',
+              },
               character: {
                 translations: {
-                  en: 'Ill kill your time',
+                  en: 'They say, that trees are like lungs... I\'m looking at this photo and can\'t understand how. Can you take a look?',
                 },
               },
+              heroElement: {
+                type: 'image',
+                image: {
+                  src: HeroAvatar,
+                },
+                bg: 'rgba(131, 146, 130, .8)',
+                color: 'rgb(255, 255, 255)',
+              },
+              dialog: [
+                {
+                  heroElement: {
+                    type: 'image',
+                    image: {
+                      src: HeroAvatar,
+                    },
+                    bg: 'rgba(131, 146, 130, .8)',
+                    color: 'rgb(255, 255, 255)',
+                  },
+                  hero: {
+                    translations: {
+                      en: 'Well, i may take a look. But that\'s a strange assumption',
+                    },
+                  },
+                  characterElement: {
+                    type: 'image',
+                    image: {
+                      src: Virus2Front,
+                    },
+                    bg: 'rgba(255, 255, 255, .8)',
+                    color: 'rgb(0, 0, 0)',
+                  },
+                  character: {
+                    translations: {
+                      en: 'Strange, very strange...',
+                    },
+                  },
+                  drop: true,
+                },
+              ],
             },
           },
         },
@@ -1846,6 +2035,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Wall1';
+const INITIAL_SCREEN = 'Farm1';
 
 export { SCENES, INITIAL_SCREEN };
