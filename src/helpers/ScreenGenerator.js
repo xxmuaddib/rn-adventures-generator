@@ -443,7 +443,12 @@ function screenGenerator(scene) {
     };
 
     setDialog = (item, index) => {
-      const { resolved, originalDialogContent, setState, dialogKey } = this.props;
+      const {
+        resolved,
+        originalDialogContent,
+        setState,
+        dialogKey,
+      } = this.props;
       if (item.resolve) {
         setState({ resolved: [...resolved, item.resolve] });
         if (item.setProgressOnResolved) {
@@ -532,6 +537,7 @@ function screenGenerator(scene) {
               onPress={this.openInventory}
               receive={this.receive}
               objects={objects}
+              resolved={resolved}
             />
             <MainMenuModal
               mainMenuVisible={mainMenuVisible}

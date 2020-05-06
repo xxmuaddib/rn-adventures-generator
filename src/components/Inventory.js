@@ -37,6 +37,7 @@ export const Inventory = ({
   onPress,
   receive,
   objects,
+  resolved,
 }) => {
   const [currentOffset, setCurrentOffset] = useState(0);
 
@@ -55,6 +56,9 @@ export const Inventory = ({
     if (
       receiver &&
       !!Object.keys(receiver).length &&
+      (!receiver.logical.showOnResolved ||
+        (!!receiver.logical.showOnResolved.length &&
+          receiver.logical.showOnResolved.every(i => resolved.includes(i)))) &&
       moveX > receiver.position.x &&
       moveX < receiver.position.x + receiver.position.width &&
       moveY > receiver.position.y &&
@@ -124,7 +128,8 @@ export const Inventory = ({
                     index === 0
                       ? 0.242 * gameHeight
                       : 0.242 * gameHeight +
-                        (index * 0.169 * gameHeight + 0.03 * gameHeight * (index - 1))
+                        (index * 0.169 * gameHeight +
+                          0.03 * gameHeight * (index - 1))
                   }
                   z={140}
                   onDrag={() => onDrag(item.id)}
