@@ -23,82 +23,86 @@ export const Dialog = ({
   showDialog,
   showDialogAnswer,
   dialogKey,
-}) => dialogModalVisible && (
-
-  <StyledModal isVisible={dialogModalVisible} hasBackdrop={false}>
-    <Container
-      shouldBeJustified={
-        dialogModalContent.characterElement &&
-        dialogModalContent.heroElement &&
-        dialogModalContent.questionsShouldBeShown
-      }
-    >
-      {dialogModalContent.characterElement && dialogModalContent.characterElement.image && (
-        <CharacterAvatar
-          source={dialogModalContent.characterElement.image.src}
-          isLeft
-        />
-      )}
-      <DialogContainer>
-        <>
-          {!!dialogAnswer && (
-            <AnswerTextTouchableOpacity
-              isLarge={
-                dialogModalContent && dialogModalContent.questionsShouldBeShown
-              }
-              disabled={dialogModalContent.questionsShouldBeShown}
-              activeOpacity={0.6}
-              onPress={() => showDialogAnswer(dialogModalContent)}
-              bg={dialogModalContent.characterElement.bg}
-            >
-              <AnswerText color={dialogModalContent.characterElement.color}>
-                {i18n.t(`${dialogKey}_character`)}
-              </AnswerText>
-            </AnswerTextTouchableOpacity>
+}) =>
+  dialogModalVisible && (
+    <StyledModal isVisible={dialogModalVisible} hasBackdrop={false}>
+      <Container
+        shouldBeJustified={
+          dialogModalContent.characterElement &&
+          dialogModalContent.heroElement &&
+          dialogModalContent.questionsShouldBeShown
+        }
+      >
+        {dialogModalContent.characterElement &&
+          dialogModalContent.characterElement.image && (
+            <CharacterAvatar
+              source={dialogModalContent.characterElement.image.src}
+              isLeft
+            />
           )}
-          {dialogModalContent &&
-            dialogModalContent.questionsShouldBeShown &&
-            dialogModalContent.dialog &&
-            !!dialogModalContent.dialog.length &&
-            dialogModalContent.dialog.map(
-              (item, index) =>
-                !resolved.includes(item.hideOnResolved) && (
-                  <DialogTouchableOpacity
-                    key={item.hero}
-                    onPress={() => setDialog(item, index)}
-                    activeOpacity={0.6}
-                    bg={item.heroElement.bg}
-                  >
-                    <QuestionText color={item.heroElement.color}>
-                      {i18n.t(`${dialogKey}_dialog_${index}_hero`)}
-                    </QuestionText>
-                  </DialogTouchableOpacity>
-                ),
+        <DialogContainer>
+          <>
+            {!!dialogAnswer && (
+              <AnswerTextTouchableOpacity
+                isLarge={
+                  dialogModalContent &&
+                  dialogModalContent.questionsShouldBeShown
+                }
+                disabled={dialogModalContent.questionsShouldBeShown}
+                activeOpacity={0.6}
+                onPress={() => showDialogAnswer(dialogModalContent)}
+                bg={dialogModalContent.characterElement.bg}
+              >
+                <AnswerText color={dialogModalContent.characterElement.color}>
+                  {i18n.t(`${dialogKey}_character`)}
+                </AnswerText>
+              </AnswerTextTouchableOpacity>
             )}
-          {dialogModalContent && dialogModalContent.questionsShouldBeShown && (
-            <DialogTouchableOpacity
-              color={dialogModalContent.heroElement.color}
-              onPress={showDialog}
-              bg={dialogModalContent.heroElement.bg}
-            >
-              <ClosingDialogButton color={dialogModalContent.heroElement.color}>
-                Ok, gotta go. We'll chat later.
-              </ClosingDialogButton>
-            </DialogTouchableOpacity>
+            {dialogModalContent &&
+              dialogModalContent.questionsShouldBeShown &&
+              dialogModalContent.dialog &&
+              !!dialogModalContent.dialog.length &&
+              dialogModalContent.dialog.map(
+                (item, index) =>
+                  !resolved.includes(item.hideOnResolved) && (
+                    <DialogTouchableOpacity
+                      key={item.hero}
+                      onPress={() => setDialog(item, index)}
+                      activeOpacity={0.6}
+                      bg={item.heroElement.bg}
+                    >
+                      <QuestionText color={item.heroElement.color}>
+                        {i18n.t(`${dialogKey}_dialog_${index}_hero`)}
+                      </QuestionText>
+                    </DialogTouchableOpacity>
+                  ),
+              )}
+            {dialogModalContent && dialogModalContent.questionsShouldBeShown && (
+              <DialogTouchableOpacity
+                color={dialogModalContent.heroElement.color}
+                onPress={showDialog}
+                bg={dialogModalContent.heroElement.bg}
+              >
+                <ClosingDialogButton
+                  color={dialogModalContent.heroElement.color}
+                >
+                  Ok, gotta go. We'll chat later.
+                </ClosingDialogButton>
+              </DialogTouchableOpacity>
+            )}
+          </>
+        </DialogContainer>
+        {dialogModalContent.heroElement &&
+          dialogModalContent.heroElement.image &&
+          dialogModalContent.questionsShouldBeShown && (
+            <CharacterAvatar
+              source={dialogModalContent.heroElement.image.src}
+              isRight
+            />
           )}
-        </>
-      </DialogContainer>
-      {dialogModalContent.heroElement &&
-        dialogModalContent.heroElement.image &&
-        dialogModalContent.questionsShouldBeShown && (
-          <CharacterAvatar
-            source={dialogModalContent.heroElement.image.src}
-            isRight
-          />
-        )}
-    </Container>
-  </StyledModal>
-);
+      </Container>
+    </StyledModal>
+  );
 
 const Container = styled(View)`
   display: flex;
@@ -120,7 +124,7 @@ const DialogContainer = styled(View)`
 
 const CharacterAvatar = styled(Image)`
   height: 100px;
-  width: 110px;
+  width: 11%;
   resize-mode: contain;
   ${p =>
     p.isLeft &&
