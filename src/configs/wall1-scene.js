@@ -300,7 +300,7 @@ export const WALL1_SCENE = {
             character: {
               translations: {
                 en:
-                  'Wow, thank you! You have some pottential, huh... Take this thing and put it on your corona.',
+                  'Now I remember. When I was young, I was a real stallion, you know? Since 541 everybody talked about me... For almost 2 decades... But my days are in past. This is your reward.',
               },
             },
             characterElement: {
@@ -323,12 +323,12 @@ export const WALL1_SCENE = {
               {
                 hero: {
                   translations: {
-                    en: 'Wow! Thanks!',
+                    en: 'Thank you! Is there anything I could do for you?',
                   },
                 },
                 character: {
                   translations: {
-                    en: 'Bye bye.',
+                    en: 'I remember a formula, which can help you in your mission. I\'ll draw it on the blackboard',
                   },
                 },
                 drop: true,

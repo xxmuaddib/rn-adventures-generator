@@ -33,7 +33,7 @@ export const Dialog = ({
         dialogModalContent.questionsShouldBeShown
       }
     >
-      {dialogModalContent.characterElement && (
+      {dialogModalContent.characterElement && dialogModalContent.characterElement.image && (
         <CharacterAvatar
           source={dialogModalContent.characterElement.image.src}
           isLeft
@@ -120,6 +120,7 @@ const DialogContainer = styled(View)`
 
 const CharacterAvatar = styled(Image)`
   height: 100px;
+  width: 110px;
   resize-mode: contain;
   ${p =>
     p.isLeft &&
