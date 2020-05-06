@@ -206,8 +206,8 @@ export const WALL1_SCENE = {
               image: {
                 src: HeroAvatar,
               },
-              bg: 'rgba(255, 255, 255, .8)',
-              color: 'rgb(0, 0, 0)',
+              bg: 'rgba(131, 146, 130, .8)',
+              color: 'rgb(255, 255, 255)',
             },
             dialog: [
               {
@@ -236,8 +236,8 @@ export const WALL1_SCENE = {
                   image: {
                     src: HeroAvatar,
                   },
-                  bg: 'rgba(255, 255, 255, .8)',
-                  color: 'rgb(0, 0, 0)',
+                  bg: 'rgba(131, 146, 130, .8)',
+                  color: 'rgb(255, 255, 255)',
                 },
                 dialog: [
                   {
@@ -265,8 +265,8 @@ export const WALL1_SCENE = {
                       image: {
                         src: HeroAvatar,
                       },
-                      bg: 'rgba(255, 255, 255, .8)',
-                      color: 'rgb(0, 0, 0)',
+                      bg: 'rgba(131, 146, 130, .8)',
+                      color: 'rgb(255, 255, 255)',
                     },
                     drop: true,
                     resolve: 'dialog1',
@@ -316,8 +316,8 @@ export const WALL1_SCENE = {
               image: {
                 src: HeroAvatar,
               },
-              bg: 'rgba(255, 255, 255, .8)',
-              color: 'rgb(0, 0, 0)',
+              bg: 'rgba(131, 146, 130, .8)',
+              color: 'rgb(255, 255, 255)',
             },
             dialog: [
               {
@@ -346,8 +346,8 @@ export const WALL1_SCENE = {
                   image: {
                     src: HeroAvatar,
                   },
-                  bg: 'rgba(255, 255, 255, .8)',
-                  color: 'rgb(0, 0, 0)',
+                  bg: 'rgba(131, 146, 130, .8)',
+                  color: 'rgb(255, 255, 255)',
                 },
               },
             ],
@@ -432,8 +432,8 @@ export const WALL1_SCENE = {
               image: {
                 src: HeroAvatar,
               },
-              bg: 'rgba(255, 255, 255, .8)',
-              color: 'rgb(0, 0, 0)',
+              bg: 'rgba(131, 146, 130, .8)',
+              color: 'rgb(255, 255, 255)',
             },
             dialog: [
               {
@@ -462,8 +462,8 @@ export const WALL1_SCENE = {
                   image: {
                     src: HeroAvatar,
                   },
-                  bg: 'rgba(255, 255, 255, .8)',
-                  color: 'rgb(0, 0, 0)',
+                  bg: 'rgba(131, 146, 130, .8)',
+                  color: 'rgb(255, 255, 255)',
                 },
               },
             ],
