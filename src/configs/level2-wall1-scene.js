@@ -14,6 +14,7 @@ import DeathAvatar1 from '../assets/images/death-avatar1.png';
 import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
 import Virus3Blood from '../assets/images/virus3-blood.png';
 import BloodInventory from '../assets/images/blood-inventory.png';
+import Tooth from '../assets/images/tooth.png';
 
 export const LEVEL2_WALL1_SCENE = {
   name: 'Level2-wall1',
@@ -94,7 +95,7 @@ export const LEVEL2_WALL1_SCENE = {
       },
       {
         type: 'dialog',
-        id: 'wall2-teacher-dialog',
+        id: 'wall2-teacher-dialog1',
         element: {
           type: 'image',
           image: {
@@ -108,11 +109,11 @@ export const LEVEL2_WALL1_SCENE = {
           height: 120,
         },
         logical: {
+          hideOnResolved: ['mirror-tooth'],
           dialogProperties: {
             character: {
               translations: {
-                en:
-                  'Hi class! I am your new teacher. They call me The Plague. Introduce yourselves, insects!',
+                en: 'Tooth!',
               },
             },
             characterElement: {
@@ -131,58 +132,119 @@ export const LEVEL2_WALL1_SCENE = {
               {
                 hero: {
                   translations: {
-                    en:
-                      "Well, I don't have a name yet. But I am a fan of you... Can you teach me being as deadly as you are?",
+                    en: 'Ok!',
                   },
                 },
-                character: {
-                  translations: {
-                    en:
-                      "No, I am too old and I have Parkinson's... Unfortunately I remember not much of my previous days. But if you help me, then maybe I will help you...",
-                  },
-                },
-                characterElement: {
-                  type: 'image',
-                  image: {
-                    src: DeathAvatar1,
-                  },
-                  bg: 'rgba(255, 255, 255, .8)',
-                  color: 'rgb(0, 0, 0)',
-                },
+                drop: true,
                 heroElement: {
                   bg: 'rgba(255, 255, 255, .8)',
                   color: 'rgb(0, 0, 0)',
                 },
-                dialog: [
-                  {
-                    hero: {
-                      translations: {
-                        en: 'Well, what should I do then?',
-                      },
-                    },
-                    character: {
-                      translations: {
-                        en:
-                          "I don't know... But I just want to remember good ol' days",
-                      },
-                    },
-                    characterElement: {
-                      type: 'image',
-                      image: {
-                        src: DeathAvatar1,
-                      },
-                      bg: 'rgba(255, 255, 255, .8)',
-                      color: 'rgb(0, 0, 0)',
-                    },
-                    heroElement: {
-                      bg: 'rgba(255, 255, 255, .8)',
-                      color: 'rgb(0, 0, 0)',
-                    },
-                    drop: true,
-                    resolve: 'dialog1',
-                    setProgressOnResolved: 'plaguePictureShouldBeSolved',
+              },
+            ],
+          },
+        },
+      },
+      {
+        type: 'dialog',
+        id: 'wall2-teacher-dialog2',
+        element: {
+          type: 'image',
+          image: {
+            src: Level2Wall1Teacher,
+          },
+        },
+        position: {
+          x: 40,
+          y: 40,
+          width: 70,
+          height: 120,
+        },
+        logical: {
+          showOnResolved: ['mirror-tooth'],
+          hideOnResolved: ['mix-container-receiver'],
+          dialogProperties: {
+            character: {
+              translations: {
+                en: 'Skeleton!',
+              },
+            },
+            characterElement: {
+              type: 'image',
+              image: {
+                src: DeathAvatar1,
+              },
+              bg: 'rgba(255, 255, 255, .8)',
+              color: 'rgb(0, 0, 0)',
+            },
+            heroElement: {
+              bg: 'rgba(255, 255, 255, .8)',
+              color: 'rgb(0, 0, 0)',
+            },
+            dialog: [
+              {
+                hero: {
+                  translations: {
+                    en: 'Ok!',
                   },
-                ],
+                },
+                drop: true,
+                heroElement: {
+                  bg: 'rgba(255, 255, 255, .8)',
+                  color: 'rgb(0, 0, 0)',
+                },
+              },
+            ],
+          },
+        },
+      },
+      {
+        type: 'dialog',
+        id: 'wall2-teacher-dialog3',
+        element: {
+          type: 'image',
+          image: {
+            src: Level2Wall1Teacher,
+          },
+        },
+        position: {
+          x: 40,
+          y: 40,
+          width: 70,
+          height: 120,
+        },
+        logical: {
+          showOnResolved: ['mix-container-receiver'],
+          dialogProperties: {
+            character: {
+              translations: {
+                en: 'Lungs!',
+              },
+            },
+            characterElement: {
+              type: 'image',
+              image: {
+                src: DeathAvatar1,
+              },
+              bg: 'rgba(255, 255, 255, .8)',
+              color: 'rgb(0, 0, 0)',
+            },
+            heroElement: {
+              bg: 'rgba(255, 255, 255, .8)',
+              color: 'rgb(0, 0, 0)',
+            },
+            dialog: [
+              {
+                hero: {
+                  translations: {
+                    en: 'Ok!',
+                  },
+                },
+                drop: true,
+                heroElement: {
+                  bg: 'rgba(255, 255, 255, .8)',
+                  color: 'rgb(0, 0, 0)',
+                },
               },
             ],
           },
@@ -395,6 +457,27 @@ export const LEVEL2_WALL1_SCENE = {
         },
         logical: {
           showOnResolved: ['level2-virus3'],
+          hideOnResolved: ['blood-should-hide'],
+        },
+      },
+      {
+        type: 'blank',
+        element: {
+          type: 'image',
+          image: {
+            src: Tooth,
+          },
+        },
+        position: {
+          x: 230,
+          y: 190,
+          width: 5,
+          height: 5,
+          zIndex: 4,
+        },
+        logical: {
+          showOnResolved: ['level2-virus3'],
+          hideOnResolved: ['tooth-should-hide'],
         },
       },
     ],

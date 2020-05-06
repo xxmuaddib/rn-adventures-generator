@@ -68,6 +68,7 @@ import Virus3Blood from '../assets/images/virus3-blood.png';
 import BloodInventory from '../assets/images/blood-inventory.png';
 import SkeletonFootInventory from '../assets/images/skeleton-foot-inventory.png';
 import BloodContainerFull from '../assets/images/blood-container-full.png';
+import Tooth from '../assets/images/tooth.png';
 
 const SCENES = [
   {
@@ -733,6 +734,7 @@ const SCENES = [
               'crown-virus-part3',
               'crown-virus-part4',
               'crown-virus-part5',
+              'tooth',
             ],
           },
         },
@@ -825,6 +827,24 @@ const SCENES = [
           },
           logical: {
             showOnResolved: ['mirror-crown-virus-part5'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: Tooth,
+            },
+          },
+          position: {
+            x: 147,
+            y: 159,
+            width: 8,
+            height: 8,
+          },
+          logical: {
+            showOnResolved: ['mirror-tooth'],
           },
         },
         {
@@ -1402,6 +1422,28 @@ const SCENES = [
         },
         {
           type: 'collectable',
+          id: 'tooth',
+          element: {
+            type: 'image',
+            image: {
+              src: Tooth,
+            },
+          },
+          position: {
+            x: 130,
+            y: 170,
+            width: 8,
+            height: 8,
+            zIndex: 4,
+          },
+          logical: {
+            showOnResolved: ['level2-virus3'],
+            resolveOnCollect: ['tooth-should-hide'],
+            countOfUse: 1,
+          },
+        },
+        {
+          type: 'collectable',
           id: 'blood-container-full',
           element: {
             type: 'image',
@@ -1418,6 +1460,7 @@ const SCENES = [
           logical: {
             countOfUse: 1,
             showOnResolved: ['Virus3Blood'],
+            resolveOnCollect: ['blood-should-hide'],
           },
         },
         {
