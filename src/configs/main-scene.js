@@ -69,6 +69,7 @@ import BloodInventory from '../assets/images/blood-inventory.png';
 import SkeletonFootInventory from '../assets/images/skeleton-foot-inventory.png';
 import BloodContainerFull from '../assets/images/blood-container-full.png';
 import Tooth from '../assets/images/tooth.png';
+import ToothInventory from '../assets/images/tooth-inventory.png';
 import HeroAvatar from '../assets/images/hero-avatar.png';
 
 const SCENES = [
@@ -749,7 +750,7 @@ const SCENES = [
           },
           position: {
             x: 120,
-            y: 58,
+            y: 48,
             width: 15,
             height: 15,
           },
@@ -767,7 +768,7 @@ const SCENES = [
           },
           position: {
             x: 130,
-            y: 52,
+            y: 42,
             width: 16,
             height: 16,
             zIndex: 2,
@@ -786,7 +787,7 @@ const SCENES = [
           },
           position: {
             x: 144,
-            y: 46,
+            y: 36,
             width: 18,
             height: 18,
           },
@@ -804,7 +805,7 @@ const SCENES = [
           },
           position: {
             x: 160,
-            y: 54,
+            y: 44,
             width: 17,
             height: 17,
           },
@@ -822,7 +823,7 @@ const SCENES = [
           },
           position: {
             x: 171,
-            y: 60,
+            y: 50,
             width: 15,
             height: 15,
           },
@@ -846,6 +847,7 @@ const SCENES = [
           },
           logical: {
             showOnResolved: ['mirror-tooth'],
+            inventoryImage: ToothInventory,
           },
         },
         {
@@ -928,7 +930,8 @@ const SCENES = [
               },
               character: {
                 translations: {
-                  en: 'The Plague is too mean to me. She says, that I am a bad student. She says that an eye can\'t be deadly and they are going to deduct me.',
+                  en:
+                    "The Plague is too mean to me. She says, that I am a bad student. She says that an eye can't be deadly and they are going to deduct me.",
                 },
               },
               heroElement: {
@@ -1102,7 +1105,8 @@ const SCENES = [
               },
               character: {
                 translations: {
-                  en: 'They say, that trees are like lungs... I\'m looking at this photo and can\'t understand how. Can you take a look?',
+                  en:
+                    "They say, that trees are like lungs... I'm looking at this photo and can't understand how. Can you take a look?",
                 },
               },
               heroElement: {
@@ -1125,7 +1129,8 @@ const SCENES = [
                   },
                   hero: {
                     translations: {
-                      en: 'Well, i may take a look. But that\'s a strange assumption',
+                      en:
+                        "Well, i may take a look. But that's a strange assumption",
                     },
                   },
                   characterElement: {
@@ -1164,7 +1169,9 @@ const SCENES = [
           },
         },
         {
-          type: 'blank',
+          type: 'nav',
+          route: 'Tree',
+          id: 'tree-navigation',
           element: {
             type: 'image',
             image: {
@@ -1292,7 +1299,8 @@ const SCENES = [
               },
               character: {
                 translations: {
-                  en: 'Did you know that teeth is the most important thing to be a real deadly super-duper killer virus?',
+                  en:
+                    'Did you know that teeth is the most important thing to be a real deadly super-duper killer virus?',
                 },
               },
               heroElement: {
@@ -1315,7 +1323,7 @@ const SCENES = [
                   },
                   hero: {
                     translations: {
-                      en: 'No, I didn\'t know',
+                      en: "No, I didn't know",
                     },
                   },
                   characterElement: {
@@ -1795,7 +1803,8 @@ const SCENES = [
               },
               character: {
                 translations: {
-                  en: 'They say, that trees are like lungs... I\'m looking at this photo and can\'t understand how. Can you take a look?',
+                  en:
+                    "They say, that trees are like lungs... I'm looking at this photo and can't understand how. Can you take a look?",
                 },
               },
               heroElement: {
@@ -1818,7 +1827,8 @@ const SCENES = [
                   },
                   hero: {
                     translations: {
-                      en: 'Well, i may take a look. But that\'s a strange assumption',
+                      en:
+                        "Well, i may take a look. But that's a strange assumption",
                     },
                   },
                   characterElement: {
@@ -1941,7 +1951,7 @@ const SCENES = [
   {
     name: 'Tree',
     route: 'Tree',
-    bg: TreeBg,
+    bg: VirusesBg,
     objects: {
       itemsMap: [
         {
@@ -1963,7 +1973,7 @@ const SCENES = [
         {
           type: 'nav',
           id: 'back-from-tree-image',
-          route: 'Level2-virus2',
+          route: 'Virus2',
           element: {
             type: 'trigger',
           },
@@ -2033,8 +2043,103 @@ const SCENES = [
       ],
     },
   },
+  {
+    name: 'Level2-tree',
+    route: 'Level2-tree',
+    bg: TreeBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'nav',
+          id: 'back-from-level2-tree-image',
+          route: 'Level2-virus2',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 10,
+            y: 185,
+            width: 280,
+            height: 15,
+            zIndex: 2,
+          },
+        },
+        {
+          type: 'nav',
+          id: 'level2-tree-zoomed-navigation',
+          route: 'Level2-tree-zoomed',
+          element: {
+            type: 'image',
+            image: {
+              src: TreeImage,
+            },
+          },
+          position: {
+            x: 10,
+            y: 5,
+            height: 190,
+            width: 280,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level2-tree-zoomed',
+    route: 'Level2-tree-zoomed',
+    bg: TreeImageZoomed,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          id: 'back-from-level2-tree-zoomed',
+          route: 'Level2-tree',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 10,
+            y: 185,
+            width: 280,
+            height: 15,
+          },
+        },
+      ],
+    },
+  },
 ];
 
-const INITIAL_SCREEN = 'Farm1';
+const INITIAL_SCREEN = 'Level2-wall1';
 
 export { SCENES, INITIAL_SCREEN };

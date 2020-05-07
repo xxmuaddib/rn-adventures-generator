@@ -4,6 +4,8 @@ import ArrowUp from '../assets/images/arrow-up.png';
 
 import Level2Wall1Bg from '../assets/images/level2-wall1-bg.png';
 import Level2Wall1Teacher from '../assets/images/level2-teacher.png';
+import Teacher2WithHand from '../assets/images/teacher2-with-hand.png';
+import Teacher2Crown1 from '../assets/images/teacher2-crown1.png';
 import Wall1Table1 from '../assets/images/wall1-table1.png';
 import Wall1Table2 from '../assets/images/wall1-table2.png';
 import Wall1Chair from '../assets/images/wall1-chair.png';
@@ -146,6 +148,27 @@ export const LEVEL2_WALL1_SCENE = {
         },
       },
       {
+        type: 'collectable',
+        id: 'crown-virus-part4',
+        element: {
+          type: 'image',
+          image: {
+            src: Teacher2Crown1,
+          },
+        },
+        position: {
+          x: 90,
+          y: 100,
+          width: 20,
+          height: 20,
+          zIndex: 2,
+        },
+        logical: {
+          showOnResolved: ['mirror-tooth'],
+          countOfUse: 1,
+        },
+      },
+      {
         type: 'dialog',
         id: 'wall2-teacher-dialog2',
         element: {
@@ -196,6 +219,27 @@ export const LEVEL2_WALL1_SCENE = {
               },
             ],
           },
+        },
+      },
+      {
+        type: 'collectable',
+        id: 'crown-virus-part5',
+        element: {
+          type: 'image',
+          image: {
+            src: Teacher2Crown1,
+          },
+        },
+        position: {
+          x: 90,
+          y: 100,
+          width: 20,
+          height: 20,
+          zIndex: 2,
+        },
+        logical: {
+          showOnResolved: ['mix-container-receiver'],
+          countOfUse: 1,
         },
       },
       {
