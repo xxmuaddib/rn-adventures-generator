@@ -370,27 +370,6 @@ export const LEVEL2_WALL3_SCENE = {
         },
       },
       {
-        type: 'receiver',
-        id: 'safe-door',
-        element: {
-          type: 'image',
-          image: {
-            src: Wall3SafeDoor1,
-          },
-        },
-        position: {
-          x: 54,
-          y: 50,
-          width: 42,
-          height: 55,
-          zIndex: 3,
-        },
-        logical: {
-          expectedValue: ['safe-green-key'],
-          hideOnResolved: ['safe-door'],
-        },
-      },
-      {
         type: 'collectable',
         id: 'skeleton-skull',
         element: {
@@ -410,6 +389,27 @@ export const LEVEL2_WALL3_SCENE = {
         logical: {
           countOfUse: 1,
           hideOnResolved: ['skeleton-skull-receiver'],
+        },
+      },
+      {
+        type: 'receiver',
+        id: 'safe-door',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall3SafeDoor1,
+          },
+        },
+        position: {
+          x: 54,
+          y: 50,
+          width: 42,
+          height: 55,
+          zIndex: 3,
+        },
+        logical: {
+          expectedValue: ['safe-green-key'],
+          hideOnResolved: ['safe-door'],
         },
       },
     ],

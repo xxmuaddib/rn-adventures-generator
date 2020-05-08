@@ -151,6 +151,26 @@ export const WALL3_SCENE = {
         },
       },
       {
+        type: 'decorative',
+        id: 'safe-door2',
+        element: {
+          type: 'image',
+          image: {
+            src: Wall3SafeDoor2,
+          },
+        },
+        position: {
+          x: 54,
+          y: 107,
+          width: 42,
+          height: 58,
+          zIndex: 3,
+        },
+        logical: {
+          hideOnResolved: ['safe-door2'],
+        },
+      },
+      {
         type: 'collectable',
         id: 'skeleton-skull',
         element: {
@@ -169,26 +189,6 @@ export const WALL3_SCENE = {
         },
         logical: {
           countOfUse: 1,
-        },
-      },
-      {
-        type: 'decorative',
-        id: 'safe-door2',
-        element: {
-          type: 'image',
-          image: {
-            src: Wall3SafeDoor2,
-          },
-        },
-        position: {
-          x: 54,
-          y: 107,
-          width: 42,
-          height: 58,
-          zIndex: 3,
-        },
-        logical: {
-          hideOnResolved: ['safe-door2'],
         },
       },
       {
