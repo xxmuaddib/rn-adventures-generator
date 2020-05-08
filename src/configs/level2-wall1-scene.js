@@ -12,11 +12,12 @@ import Wall1Chair from '../assets/images/wall1-chair.png';
 import Wall1Virus2 from '../assets/images/wall1-virus2.png';
 import Wall1Virus3 from '../assets/images/wall1-virus3.png';
 import Level2Virus3 from '../assets/images/level2-virus3.png';
-import DeathAvatar1 from '../assets/images/death-avatar1.png';
+import SpanishFluAvatar from '../assets/images/spanish-flu-avatar.png';
 import Wall1Blackboard from '../assets/images/wall1-blackboard.png';
 import Virus3Blood from '../assets/images/virus3-blood.png';
 import BloodInventory from '../assets/images/blood-inventory.png';
 import Tooth from '../assets/images/tooth.png';
+import HeroAvatar from '../assets/images/hero-avatar.png';
 
 export const LEVEL2_WALL1_SCENE = {
   name: 'Level2-wall1',
@@ -115,33 +116,84 @@ export const LEVEL2_WALL1_SCENE = {
           dialogProperties: {
             character: {
               translations: {
-                en: 'Tooth!',
+                en: 'The plague was of a very high opinion of you... But I look at your face, and I see you can\'t be deadly...',
               },
             },
             characterElement: {
               type: 'image',
               image: {
-                src: DeathAvatar1,
+                src: SpanishFluAvatar,
               },
               bg: 'rgba(255, 255, 255, .8)',
               color: 'rgb(0, 0, 0)',
             },
             heroElement: {
-              bg: 'rgba(255, 255, 255, .8)',
-              color: 'rgb(0, 0, 0)',
+              type: 'image',
+              image: {
+                src: HeroAvatar,
+              },
+              bg: 'rgba(131, 146, 130, .8)',
+              color: 'rgb(255, 255, 255)',
             },
             dialog: [
               {
                 hero: {
                   translations: {
-                    en: 'Ok!',
+                    en: 'What do you mean, teacher?',
                   },
                 },
-                drop: true,
-                heroElement: {
+                character: {
+                  translations: {
+                    en: 'Any self-respecting virus should be able to nibble. If you can\'t do that, then I can\'t help you.',
+                  },
+                },
+                characterElement: {
+                  type: 'image',
+                  image: {
+                    src: SpanishFluAvatar,
+                  },
                   bg: 'rgba(255, 255, 255, .8)',
                   color: 'rgb(0, 0, 0)',
                 },
+                heroElement: {
+                  type: 'image',
+                  image: {
+                    src: HeroAvatar,
+                  },
+                  bg: 'rgba(131, 146, 130, .8)',
+                  color: 'rgb(255, 255, 255)',
+                },
+                dialog: [
+                  {
+                    hero: {
+                      translations: {
+                        en: 'I will nibble, teacher. Believe me!',
+                      },
+                    },
+                    character: {
+                      translations: {
+                        en: 'Don\'t return before that, nothingness!',
+                      },
+                    },
+                    drop: true,
+                    characterElement: {
+                      type: 'image',
+                      image: {
+                        src: SpanishFluAvatar,
+                      },
+                      bg: 'rgba(255, 255, 255, .8)',
+                      color: 'rgb(0, 0, 0)',
+                    },
+                    heroElement: {
+                      type: 'image',
+                      image: {
+                        src: HeroAvatar,
+                      },
+                      bg: 'rgba(131, 146, 130, .8)',
+                      color: 'rgb(255, 255, 255)',
+                    },
+                  },
+                ],
               },
             ],
           },
@@ -189,32 +241,45 @@ export const LEVEL2_WALL1_SCENE = {
           dialogProperties: {
             character: {
               translations: {
-                en: 'Skeleton!',
+                en: 'Now I can see, you will stop at nothing. Great! Now you need to train. There is a skeleton in this classroom. But it is not ready. Can you fix it?',
               },
             },
             characterElement: {
               type: 'image',
               image: {
-                src: DeathAvatar1,
+                src: SpanishFluAvatar,
               },
               bg: 'rgba(255, 255, 255, .8)',
               color: 'rgb(0, 0, 0)',
             },
             heroElement: {
-              bg: 'rgba(255, 255, 255, .8)',
-              color: 'rgb(0, 0, 0)',
+              type: 'image',
+              image: {
+                src: HeroAvatar,
+              },
+              bg: 'rgba(131, 146, 130, .8)',
+              color: 'rgb(255, 255, 255)',
             },
             dialog: [
               {
                 hero: {
                   translations: {
-                    en: 'Ok!',
+                    en: 'Yes, of course, my teacher!',
+                  },
+                },
+                character: {
+                  translations: {
+                    en: 'Come back quickly!',
                   },
                 },
                 drop: true,
                 heroElement: {
-                  bg: 'rgba(255, 255, 255, .8)',
-                  color: 'rgb(0, 0, 0)',
+                  type: 'image',
+                  image: {
+                    src: HeroAvatar,
+                  },
+                  bg: 'rgba(131, 146, 130, .8)',
+                  color: 'rgb(255, 255, 255)',
                 },
               },
             ],
@@ -268,7 +333,7 @@ export const LEVEL2_WALL1_SCENE = {
             characterElement: {
               type: 'image',
               image: {
-                src: DeathAvatar1,
+                src: SpanishFluAvatar,
               },
               bg: 'rgba(255, 255, 255, .8)',
               color: 'rgb(0, 0, 0)',
