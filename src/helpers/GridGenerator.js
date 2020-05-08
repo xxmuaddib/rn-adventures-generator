@@ -52,7 +52,8 @@ const ObjectGrid = ({
   return (
     <ObjectGridContainer>
       {itemsMapCopy.map(
-        ({ type, id, element, position, logical, group, sound, route }, index) => {
+        ({ type, id, element, position, logical, group, sound, route }) => {
+          const index = objects.itemsMap.findIndex(item => item.id === id);
           const isResolved =
             !logical ||
             !logical.showOnResolved ||
