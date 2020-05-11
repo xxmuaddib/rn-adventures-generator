@@ -116,7 +116,8 @@ export const LEVEL2_WALL1_SCENE = {
           dialogProperties: {
             character: {
               translations: {
-                en: 'The plague was of a very high opinion of you... But I look at your face, and I see you can\'t be deadly...',
+                en:
+                  "The plague was of a very high opinion of you... But I look at your face, and I see you can't be deadly...",
               },
             },
             characterElement: {
@@ -144,7 +145,8 @@ export const LEVEL2_WALL1_SCENE = {
                 },
                 character: {
                   translations: {
-                    en: 'Any self-respecting virus should be able to nibble. If you can\'t do that, then I can\'t help you.',
+                    en:
+                      "Any self-respecting virus should be able to nibble. If you can't do that, then I can't help you.",
                   },
                 },
                 characterElement: {
@@ -172,7 +174,7 @@ export const LEVEL2_WALL1_SCENE = {
                     },
                     character: {
                       translations: {
-                        en: 'Don\'t return before that, nothingness!',
+                        en: "Don't return before that, nothingness!",
                       },
                     },
                     drop: true,
@@ -209,8 +211,8 @@ export const LEVEL2_WALL1_SCENE = {
           },
         },
         position: {
-          x: 90,
-          y: 100,
+          x: 80,
+          y: 120,
           width: 20,
           height: 20,
           zIndex: 2,
@@ -226,7 +228,7 @@ export const LEVEL2_WALL1_SCENE = {
         element: {
           type: 'image',
           image: {
-            src: Level2Wall1Teacher,
+            src: Teacher2WithHand,
           },
         },
         position: {
@@ -241,7 +243,8 @@ export const LEVEL2_WALL1_SCENE = {
           dialogProperties: {
             character: {
               translations: {
-                en: 'Now I can see, you will stop at nothing. Great! Now you need to train. There is a skeleton in this classroom. But it is not ready. Can you fix it?',
+                en:
+                  'Now I can see, you will stop at nothing. Great! Now you need to train. There is a skeleton in this classroom. But it is not ready. Can you fix it?',
               },
             },
             characterElement: {
