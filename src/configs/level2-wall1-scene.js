@@ -18,6 +18,7 @@ import Virus3Blood from '../assets/images/virus3-blood.png';
 import BloodInventory from '../assets/images/blood-inventory.png';
 import Tooth from '../assets/images/tooth.png';
 import HeroAvatar from '../assets/images/hero-avatar.png';
+import VirusRewardInventory from '../assets/images/virus-reward-inventory.png';
 
 export const LEVEL2_WALL1_SCENE = {
   name: 'Level2-wall1',
@@ -208,6 +209,7 @@ export const LEVEL2_WALL1_SCENE = {
           type: 'image',
           image: {
             src: Teacher2Crown1,
+            inventoryImage: VirusRewardInventory,
           },
         },
         position: {
@@ -219,6 +221,7 @@ export const LEVEL2_WALL1_SCENE = {
         },
         logical: {
           showOnResolved: ['mirror-tooth'],
+          resolveOnCollect: ['teacher2-crown1-was-collected'],
           countOfUse: 1,
         },
       },
@@ -238,7 +241,27 @@ export const LEVEL2_WALL1_SCENE = {
           height: 120,
         },
         logical: {
+          hideOnResolved: ['teacher2-crown1-was-collected'],
           showOnResolved: ['mirror-tooth'],
+        },
+      },
+      {
+        type: 'dialog',
+        id: 'wall2-teacher-dialog2',
+        element: {
+          type: 'image',
+          image: {
+            src: Level2Wall1Teacher,
+          },
+        },
+        position: {
+          x: 40,
+          y: 40,
+          width: 70,
+          height: 120,
+        },
+        logical: {
+          showOnResolved: ['teacher2-crown1-was-collected'],
           hideOnResolved: ['mix-container-receiver'],
           dialogProperties: {
             character: {
@@ -296,6 +319,7 @@ export const LEVEL2_WALL1_SCENE = {
           type: 'image',
           image: {
             src: Teacher2Crown1,
+            inventoryImage: VirusRewardInventory,
           },
         },
         position: {
@@ -307,7 +331,28 @@ export const LEVEL2_WALL1_SCENE = {
         },
         logical: {
           showOnResolved: ['mix-container-receiver'],
+          resolveOnCollect: ['teacher2-crown2-was-collected'],
           countOfUse: 1,
+        },
+      },
+      {
+        type: 'dialog',
+        id: 'wall2-teacher-dialog3',
+        element: {
+          type: 'image',
+          image: {
+            src: Teacher2WithHand,
+          },
+        },
+        position: {
+          x: 40,
+          y: 40,
+          width: 70,
+          height: 120,
+        },
+        logical: {
+          showOnResolved: ['mix-container-receiver'],
+          hideOnResolved: ['teacher2-crown2-was-collected'],
         },
       },
       {
@@ -326,7 +371,7 @@ export const LEVEL2_WALL1_SCENE = {
           height: 120,
         },
         logical: {
-          showOnResolved: ['mix-container-receiver'],
+          showOnResolved: ['teacher2-crown2-was-collected'],
           dialogProperties: {
             character: {
               translations: {
