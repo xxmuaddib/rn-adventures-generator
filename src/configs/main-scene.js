@@ -3162,6 +3162,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Lung3';
+const INITIAL_SCREEN = 'Level2-wall1';
 
 export { SCENES, INITIAL_SCREEN };
