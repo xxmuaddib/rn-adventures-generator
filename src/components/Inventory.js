@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 
-import { pointX, pointY } from '../helpers/StyleGenerator';
+import { generateStyle, pointX, pointY } from '../helpers/StyleGenerator';
 import { Element } from '../helpers/ElementGenerator';
 import {
   ObjectPropTypes,
@@ -189,7 +189,7 @@ const InventoryContainer = styled(View)`
 
 const InventorySpace = styled(View)`
   background-color: rgba(45, 51, 36, 0.5);
-  border-radius: 5px;
+  border-radius: ${6 * pointX}px;
   margin-top: ${p => (p.first ? '38%' : '10%')};
   width: 60px;
   height: 15%;
@@ -227,5 +227,5 @@ const InventoryClosed = styled(TouchableOpacity)`
   padding-top: 15px;
   width: 70px;
   height: 70px;
-  border-bottom-left-radius: 60px;
+  border-bottom-left-radius: ${Math.round(60 * pointX)}px;
 `;

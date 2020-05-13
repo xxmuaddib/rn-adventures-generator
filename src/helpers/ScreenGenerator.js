@@ -670,7 +670,7 @@ const MainMenuButton = styled(TouchableOpacity)`
   padding-top: 15px;
   width: 70px;
   height: 70px;
-  border-bottom-right-radius: 60px;
+  border-bottom-right-radius: ${Math.round(60 * pointX)}px;
 `;
 
 const Icon = styled(Image)`

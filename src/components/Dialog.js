@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Dimensions, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
 import styled from 'styled-components';
+import { pointX, pointY } from '../helpers/StyleGenerator';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import { DialogPropType } from '../proptypes/ObjectGridPropTypes';
@@ -141,7 +142,7 @@ const DialogTouchableOpacity = styled(TouchableOpacity)`
   width: 100%;
   background-color: ${p => p.bg};
   padding: 10px 20px;
-  border-radius: 13px;
+  border-radius: ${Math.round(20 * pointX)}px;
   margin-bottom: 10px;
 `;
 
