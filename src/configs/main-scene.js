@@ -69,8 +69,34 @@ import BloodInventory from '../assets/images/blood-inventory.png';
 import SkeletonFootInventory from '../assets/images/skeleton-foot-inventory.png';
 import BloodContainerFull from '../assets/images/blood-container-full.png';
 import Tooth from '../assets/images/tooth.png';
+import VirusRewardInventory from '../assets/images/virus-reward-inventory.png';
 import ToothInventory from '../assets/images/tooth-inventory.png';
 import HeroAvatar from '../assets/images/hero-avatar.png';
+import Lung3 from '../assets/images/lung3.png';
+import Lung4 from '../assets/images/lung4.png';
+import Lung5 from '../assets/images/lung5.png';
+import Lung6 from '../assets/images/lung6.png';
+import Lung7 from '../assets/images/lung7.png';
+import Lung8 from '../assets/images/lung8.png';
+import Lung8Virus from '../assets/images/lung8-virus.png';
+import Lung8VirusCover from '../assets/images/lung8-virus-cover.png';
+import Լevel3MirrorBg from '../assets/images/level3-mirror-bg.png';
+import Level3_1Bg from '../assets/images/level3-1-bg.png';
+import Level3_1Mirror from '../assets/images/level3-1-mirror.png';
+import Level3_1Catapult from '../assets/images/level3-1-catapult.png';
+import Level3_2 from '../assets/images/level3-2.png';
+import AimBg from '../assets/images/aim-bg.png';
+import Aim1 from '../assets/images/aim1.png';
+import Aim2 from '../assets/images/aim2.png';
+import Aim3 from '../assets/images/aim3.png';
+import Aim4 from '../assets/images/aim4.png';
+import Level3_3 from '../assets/images/level3-3.png';
+import Level3_4 from '../assets/images/level3-4.png';
+import Level3_5 from '../assets/images/level3-5.png';
+import Level3_6 from '../assets/images/level3-6.png';
+import Level3_7 from '../assets/images/level3-7.png';
+import Level3_8 from '../assets/images/level3-8.png';
+import Level3_9 from '../assets/images/level3-9.png';
 
 const SCENES = [
   {
@@ -2138,8 +2164,1004 @@ const SCENES = [
       ],
     },
   },
+  {
+    name: 'Lung3',
+    route: 'Lung3',
+    bg: Lung3,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Lung4',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Lung4',
+    route: 'Lung4',
+    bg: Lung4,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Lung5',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Lung5',
+    route: 'Lung5',
+    bg: Lung5,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Lung6',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Lung6',
+    route: 'Lung6',
+    bg: Lung6,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Lung7',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Lung7',
+    route: 'Lung7',
+    bg: Lung7,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Lung8',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Lung8',
+    route: 'Lung8',
+    bg: Lung8,
+    objects: {
+      itemsMap: [
+        {
+          type: 'collectable',
+          id: 'crown-virus-part3',
+          element: {
+            type: 'image',
+            image: {
+              src: Lung8Virus,
+              inventoryImage: VirusRewardInventory,
+            },
+          },
+          position: {
+            x: 40,
+            y: 60,
+            width: 10,
+            height: 10,
+            zIndex: 1,
+          },
+          logical: {
+            resolveOnCollect: ['lung8-route-must-be-showen'],
+            countOfUse: 1,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: Lung8VirusCover,
+            },
+          },
+          position: {
+            x: 42,
+            y: 50,
+            width: 2,
+            height: 12,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Level3-1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+          logical: {
+            showOnResolved: ['lung8-route-must-be-showen'],
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Mirror3',
+    route: 'Mirror3',
+    bg: Լevel3MirrorBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'receiver',
+          id: 'mirror',
+          element: {
+            type: 'image',
+            image: {
+              src: MirrorSceneMirror,
+            },
+          },
+          position: {
+            x: 90,
+            y: 15,
+            width: 120,
+            height: 170,
+          },
+          logical: {
+            expectedValue: [
+              'crown-virus-part1',
+              'crown-virus-part2',
+              'crown-virus-part3',
+              'crown-virus-part4',
+              'crown-virus-part5',
+              'tooth',
+            ],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart1,
+            },
+          },
+          position: {
+            x: 120,
+            y: 48,
+            width: 15,
+            height: 15,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part1'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart2,
+            },
+          },
+          position: {
+            x: 130,
+            y: 42,
+            width: 16,
+            height: 16,
+            zIndex: 2,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part2'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart3,
+            },
+          },
+          position: {
+            x: 144,
+            y: 36,
+            width: 18,
+            height: 18,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part3'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart4,
+            },
+          },
+          position: {
+            x: 160,
+            y: 44,
+            width: 17,
+            height: 17,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part4'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: CrownPart5,
+            },
+          },
+          position: {
+            x: 171,
+            y: 50,
+            width: 15,
+            height: 15,
+          },
+          logical: {
+            showOnResolved: ['mirror-crown-virus-part5'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: Tooth,
+            },
+          },
+          position: {
+            x: 147,
+            y: 159,
+            width: 8,
+            height: 8,
+          },
+          logical: {
+            showOnResolved: ['mirror-tooth'],
+            inventoryImage: ToothInventory,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Level3-1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 185,
+            height: 15,
+            width: 300,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level3-1',
+    route: 'Level3-1',
+    bg: Level3_1Bg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: Level3_1Catapult,
+            },
+          },
+          position: {
+            x: 30,
+            y: 70,
+            width: 100,
+            height: 90,
+          },
+          logical: {
+            hideOnResolved: [
+              'mirror-crown-virus-part1',
+              'mirrorcrown-virus-part2',
+              'mirror-crown-virus-part3',
+              'mirror-crown-virus-part3',
+              'mirror-crown-virus-part5',
+              'mirror-tooth',
+            ],
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Level3-2',
+          element: {
+            type: 'image',
+            image: {
+              src: Level3_1Catapult,
+            },
+          },
+          position: {
+            x: 30,
+            y: 70,
+            width: 100,
+            height: 90,
+          },
+          logical: {
+            showOnResolved: [
+              'mirror-crown-virus-part1',
+              'mirrorcrown-virus-part2',
+              'mirror-crown-virus-part3',
+              'mirror-crown-virus-part3',
+              'mirror-crown-virus-part5',
+              'mirror-tooth',
+            ],
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Mirror3',
+          element: {
+            type: 'image',
+            image: {
+              src: Level3_1Mirror,
+            },
+          },
+          position: {
+            x: 140,
+            y: 40,
+            width: 40,
+            height: 60,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level3-2',
+    route: 'Level3-2',
+    bg: Level3_2,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Aim1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Aim1',
+    route: 'Aim1',
+    bg: AimBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowRight,
+            },
+          },
+          position: {
+            x: 284,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowLeft,
+            },
+          },
+          position: {
+            x: 5,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim4',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim2',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 270,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Aim1',
+    route: 'Aim1',
+    bg: AimBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowRight,
+            },
+          },
+          position: {
+            x: 284,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowLeft,
+            },
+          },
+          position: {
+            x: 5,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim4',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim2',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 270,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: Aim1,
+            },
+          },
+          position: {
+            x: 100,
+            y: 45,
+            width: 100,
+            height: 105,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Aim2',
+    route: 'Aim2',
+    bg: AimBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowRight,
+            },
+          },
+          position: {
+            x: 284,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowLeft,
+            },
+          },
+          position: {
+            x: 5,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim3',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 270,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: Aim2,
+            },
+          },
+          position: {
+            x: 100,
+            y: 45,
+            width: 100,
+            height: 105,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Aim3',
+    route: 'Aim3',
+    bg: AimBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowRight,
+            },
+          },
+          position: {
+            x: 284,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowLeft,
+            },
+          },
+          position: {
+            x: 5,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim2',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim4',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 270,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: Aim3,
+            },
+          },
+          position: {
+            x: 100,
+            y: 45,
+            width: 100,
+            height: 105,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Aim4',
+    route: 'Aim4',
+    bg: AimBg,
+    objects: {
+      itemsMap: [
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowRight,
+            },
+          },
+          position: {
+            x: 284,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowLeft,
+            },
+          },
+          position: {
+            x: 5,
+            y: 95,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim3',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Aim1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 270,
+            y: 0,
+            width: 30,
+            height: 200,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Level3-3',
+          element: {
+            type: 'image',
+            image: {
+              src: Aim4,
+            },
+          },
+          position: {
+            x: 100,
+            y: 45,
+            width: 100,
+            height: 105,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level3-3',
+    route: 'Level3-3',
+    bg: Level3_3,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Level3-4',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level3-4',
+    route: 'Level3-4',
+    bg: Level3_4,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Level3-5',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level3-5',
+    route: 'Level3-5',
+    bg: Level3_5,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Level3-6',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level3-6',
+    route: 'Level3-6',
+    bg: Level3_6,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Level3-7',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level3-7',
+    route: 'Level3-7',
+    bg: Level3_7,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Level3-8',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level3-8',
+    route: 'Level3-8',
+    bg: Level3_8,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Level3-9',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
+  {
+    name: 'Level3-9',
+    route: 'Level3-9',
+    bg: Level3_9,
+    objects: {
+      itemsMap: [
+        {
+          type: 'nav',
+          route: 'Level3-10',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400,
+          },
+        },
+      ],
+    },
+  },
 ];
 
-const INITIAL_SCREEN = 'Level2-wall1';
+const INITIAL_SCREEN = 'Lung3';
 
 export { SCENES, INITIAL_SCREEN };
