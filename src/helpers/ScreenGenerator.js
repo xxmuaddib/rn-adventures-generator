@@ -203,7 +203,7 @@ function screenGenerator(scene) {
     };
 
     handleSequence = async (group, id, progress) => {
-      const { tmp, resolved, setState } = this.props;
+      let { tmp, resolved, setState } = this.props;
       const findFunction = s =>
         s.objects.itemsMap.find(item => item.group === group && item.main);
       const mainSequence = findHelperFunction(findFunction);
@@ -218,6 +218,7 @@ function screenGenerator(scene) {
             [mainSequence.group]: [],
           },
         });
+        tmp = { ...tmp, [mainSequence.group]: [] };
       }
 
       const currentSequence = tmp[mainSequence.group]
@@ -232,7 +233,6 @@ function screenGenerator(scene) {
           resolved: [...resolved, group],
         });
       }
-
       setState({
         tmp: {
           ...tmp,

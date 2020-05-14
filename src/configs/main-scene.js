@@ -72,7 +72,8 @@ import Tooth from '../assets/images/tooth.png';
 import VirusRewardInventory from '../assets/images/virus-reward-inventory.png';
 import ToothInventory from '../assets/images/tooth-inventory.png';
 import HeroAvatar from '../assets/images/hero-avatar.png';
-import Lung3 from '../assets/images/lung3.png';
+import Lung2 from '../assets/images/lung2.png';
+import LungPoint from '../assets/images/lung-point.png';
 import Lung4 from '../assets/images/lung4.png';
 import Lung5 from '../assets/images/lung5.png';
 import Lung6 from '../assets/images/lung6.png';
@@ -2165,11 +2166,173 @@ const SCENES = [
     },
   },
   {
-    name: 'Lung3',
-    route: 'Lung3',
-    bg: Lung3,
+    name: 'Lung2',
+    route: 'Lung2',
+    bg: Lung2,
     objects: {
       itemsMap: [
+        {
+          type: 'sequence',
+          id: 'sequence1_1',
+          group: 'sequence1',
+          main: true,
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 85,
+            y: 50,
+            width: 30,
+            height: 25,
+          },
+          logical: {
+            hideOnResolved: ['sequence1'],
+            scenario: [
+              'sequence1_5',
+              'sequence1_2',
+              'sequence1_1',
+              'sequence1_7',
+              'sequence1_4',
+              'sequence1_6',
+              'sequence1_8',
+              'sequence1_3',
+            ],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_2',
+          group: 'sequence1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 75,
+            y: 75,
+            width: 35,
+            height: 30,
+          },
+          logical: {
+            hideOnResolved: ['sequence1'],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_3',
+          group: 'sequence1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 70,
+            y: 115,
+            width: 30,
+            height: 37,
+          },
+          logical: {
+            hideOnResolved: ['sequence1'],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_4',
+          group: 'sequence1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 105,
+            y: 120,
+            width: 20,
+            height: 25,
+          },
+          logical: {
+            hideOnResolved: ['sequence1'],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_5',
+          group: 'sequence1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 175,
+            y: 50,
+            width: 30,
+            height: 30,
+          },
+          logical: {
+            hideOnResolved: ['sequence1'],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_6',
+          group: 'sequence1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 185,
+            y: 82,
+            width: 25,
+            height: 25,
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_7',
+          group: 'sequence1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 190,
+            y: 115,
+            width: 30,
+            height: 37,
+          },
+          logical: {
+            hideOnResolved: ['sequence1'],
+          },
+        },
+        {
+          type: 'sequence',
+          id: 'sequence1_8',
+          group: 'sequence1',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 165,
+            y: 122,
+            width: 20,
+            height: 25,
+          },
+          logical: {
+            hideOnResolved: ['sequence1'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: LungPoint,
+            },
+          },
+          position: {
+            x: 100,
+            y: 45,
+            width: 6,
+            height: 6,
+          },
+          logical: {
+            showOnResolved: ['sequence1'],
+          },
+        },
         {
           type: 'nav',
           route: 'Lung4',
@@ -2177,10 +2340,13 @@ const SCENES = [
             type: 'trigger',
           },
           position: {
-            x: 0,
-            y: 0,
-            width: 400,
-            height: 400,
+            x: 95,
+            y: 40,
+            width: 15,
+            height: 15,
+          },
+          logical: {
+            showOnResolved: ['sequence1'],
           },
         },
       ],
@@ -3162,6 +3328,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Wall1';
+const INITIAL_SCREEN = 'Lung2';
 
 export { SCENES, INITIAL_SCREEN };
