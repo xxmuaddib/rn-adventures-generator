@@ -242,7 +242,7 @@ export const WALL4_SCENE = {
         },
         logical: {
           showOnResolved: ['plague-picture-parts-picture-part2'],
-          hideOnResolved: ['plauge-picture-puzzle'],
+          hideOnResolved: ['plague-picture-puzzle'],
         },
       },
       {

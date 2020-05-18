@@ -610,6 +610,7 @@ const SCENES = [
               'crown-virus-part3',
               'crown-virus-part4',
               'crown-virus-part5',
+              'tooth',
             ],
           },
         },
@@ -623,7 +624,7 @@ const SCENES = [
           },
           position: {
             x: 120,
-            y: 58,
+            y: 48,
             width: 15,
             height: 15,
           },
@@ -641,7 +642,7 @@ const SCENES = [
           },
           position: {
             x: 130,
-            y: 52,
+            y: 42,
             width: 16,
             height: 16,
             zIndex: 2,
@@ -660,7 +661,7 @@ const SCENES = [
           },
           position: {
             x: 144,
-            y: 46,
+            y: 36,
             width: 18,
             height: 18,
           },
@@ -678,7 +679,7 @@ const SCENES = [
           },
           position: {
             x: 160,
-            y: 54,
+            y: 44,
             width: 17,
             height: 17,
           },
@@ -696,12 +697,31 @@ const SCENES = [
           },
           position: {
             x: 171,
-            y: 60,
+            y: 50,
             width: 15,
             height: 15,
           },
           logical: {
             showOnResolved: ['mirror-crown-virus-part5'],
+          },
+        },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: Tooth,
+            },
+          },
+          position: {
+            x: 147,
+            y: 159,
+            width: 8,
+            height: 8,
+          },
+          logical: {
+            showOnResolved: ['mirror-tooth'],
+            inventoryImage: ToothInventory,
           },
         },
         {
@@ -721,7 +741,7 @@ const SCENES = [
         },
         {
           type: 'nav',
-          route: 'Wall3',
+          route: 'Level2-wall3',
           element: {
             type: 'trigger',
           },
@@ -3330,6 +3350,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Lung2';
+const INITIAL_SCREEN = 'Wall1';
 
 export { SCENES, INITIAL_SCREEN };
