@@ -328,11 +328,13 @@ export const WALL1_SCENE = {
                 },
                 character: {
                   translations: {
-                    en: 'I remember a formula, which can help you in your mission. I\'ll draw it on the blackboard',
+                    en:
+                      "I remember a formula, which can help you in your mission. I'll draw it on the blackboard",
                   },
                 },
                 drop: true,
                 resolve: 'death-dialog-2',
+                setProgressOnResolved: 'blackboard',
                 characterElement: {
                   type: 'image',
                   image: {

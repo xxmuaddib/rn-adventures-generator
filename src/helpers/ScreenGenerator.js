@@ -202,8 +202,17 @@ function screenGenerator(scene) {
       }
     };
 
-    handleSequence = async (group, id, progress) => {
-      let { tmp, resolved, setState } = this.props;
+    handleSequence = async (group, id) => {
+      let {
+        currentScene: {
+          scene: {
+            objects: { itemsMap },
+          },
+        },
+        tmp,
+        resolved,
+        setState,
+      } = this.props;
       const findFunction = s =>
         s.objects.itemsMap.find(item => item.group === group && item.main);
       const mainSequence = findHelperFunction(findFunction);
@@ -226,8 +235,15 @@ function screenGenerator(scene) {
         : [id];
 
       if (arrayIncludesSorted(scenario, currentSequence)) {
-        if (progress) {
-          this.saveProgress(progress);
+        const mainProgress = itemsMap.find(
+          el =>
+            el.group === group &&
+            el.main &&
+            el.logical &&
+            el.logical.setProgressOnResolved,
+        );
+        if (mainProgress) {
+          this.saveProgress(mainProgress.logical.setProgressOnResolved);
         }
         return setState({
           resolved: [...resolved, group],
@@ -241,7 +257,7 @@ function screenGenerator(scene) {
       });
     };
 
-    handleSlot = async (group, id, progress) => {
+    handleSlot = async (group, id) => {
       const {
         currentScene: {
           scene: oldScene,
@@ -311,8 +327,15 @@ function screenGenerator(scene) {
       });
 
       if (objCompare(slotScenario, currentPosition)) {
-        if (progress) {
-          this.saveProgress(progress);
+        const mainProgress = itemsMapCopy.find(
+          el =>
+            el.group === group &&
+            el.main &&
+            el.logical &&
+            el.logical.setProgressOnResolved,
+        ).logical.setProgressOnResolved;
+        if (mainProgress) {
+          this.saveProgress(mainProgress);
         }
         return setState({
           resolved: [...resolved, group],

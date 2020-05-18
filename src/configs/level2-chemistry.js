@@ -98,6 +98,7 @@ export const CHEMISTRY_SCENE = {
         },
         logical: {
           showOnResolved: ['water-receiver', 'blood-receiver', 'candle'],
+          setProgressOnResolved: 'lungs',
           resolveOnCollect: ['hide-water-blood-mix'],
           countOfUse: 1,
         },

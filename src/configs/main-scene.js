@@ -2187,6 +2187,7 @@ const SCENES = [
           },
           logical: {
             hideOnResolved: ['sequence1'],
+            setProgressOnResolved: 'last-crown',
             scenario: [
               'sequence1_5',
               'sequence1_2',
@@ -2464,6 +2465,7 @@ const SCENES = [
             zIndex: 1,
           },
           logical: {
+            setProgressOnResolved: 'choose-right-face',
             resolveOnCollect: ['lung8-route-must-be-showen'],
             countOfUse: 1,
           },

@@ -108,27 +108,16 @@ const ObjectGrid = ({
                         }
                         switch (type) {
                           case ITEMS.SEQUENCE:
-                            return handleSequence(
-                              group,
-                              id,
-                              logical && logical.setProgressOnResolved,
-                            );
+                            return handleSequence(group, id);
                           case ITEMS.SLOT:
-                            return handleSlot(
-                              group,
-                              id,
-                              logical && logical.setProgressOnResolved,
-                            );
+                            return handleSlot(group, id);
                           case ITEMS.PAPER:
                             return showModal(
                               logical,
                               logical && logical.setProgressOnResolved,
                             );
                           case ITEMS.DIALOG:
-                            return showDialog(
-                              logical.dialogProperties,
-                              index,
-                            );
+                            return showDialog(logical.dialogProperties, index);
                           case ITEMS.COLLECTABLE:
                             return collect(
                               objects.itemsMap.find(item => item.id === id),
