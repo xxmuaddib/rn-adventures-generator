@@ -670,7 +670,7 @@ const SCENES = [
         },
         {
           type: 'nav',
-          route: 'Level2-wall3',
+          route: 'Wall3',
           element: {
             type: 'trigger',
           },
@@ -1445,19 +1445,19 @@ const SCENES = [
           element: {
             type: 'image',
             image: {
+              src: GumWithKey,
               inventoryImage: GreenKeyInventory,
-              src: GreenKey,
             },
           },
           position: {
             x: 90,
-            y: 160,
-            width: 30,
+            y: 180,
+            width: 20,
             height: 20,
-            zIndex: 2,
           },
           logical: {
             showOnResolved: ['gum-width-key'],
+            resolveOnCollect: ['key-was-collected'],
             countOfUse: 1,
           },
         },
@@ -1477,7 +1477,7 @@ const SCENES = [
             height: 20,
           },
           logical: {
-            showOnResolved: ['gum-width-key'],
+            showOnResolved: ['key-was-collected'],
           },
         },
       ],
@@ -3330,6 +3330,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Farm1';
+const INITIAL_SCREEN = 'Wall1';
 
 export { SCENES, INITIAL_SCREEN };
