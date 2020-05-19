@@ -5,17 +5,11 @@ import ArrowDown from '../assets/images/arrow-down.png';
 
 import Farm1Bg from '../assets/images/farm1-bg.png';
 
-import Farm2Bg from '../assets/images/farm2-bg.png';
-
-import Farm3Bg from '../assets/images/farm3-bg.png';
-
 import Farm4Bg from '../assets/images/farm4-bg.png';
 
 import CityBg from '../assets/images/city-bg.png';
 
 import University1Bg from '../assets/images/university1-bg.png';
-
-import University2Bg from '../assets/images/university2-bg.png';
 
 import University3Bg from '../assets/images/university3-bg.png';
 
@@ -109,50 +103,6 @@ const SCENES = [
       itemsMap: [
         {
           type: 'nav',
-          route: 'Farm2',
-          element: {
-            type: 'trigger',
-          },
-          position: {
-            x: 0,
-            y: 0,
-            width: 400,
-            height: 400,
-          },
-        },
-      ],
-    },
-  },
-  {
-    name: 'Farm2',
-    route: 'Farm2',
-    bg: Farm2Bg,
-    objects: {
-      itemsMap: [
-        {
-          type: 'nav',
-          route: 'Farm3',
-          element: {
-            type: 'trigger',
-          },
-          position: {
-            x: 0,
-            y: 0,
-            width: 400,
-            height: 400,
-          },
-        },
-      ],
-    },
-  },
-  {
-    name: 'Farm3',
-    route: 'Farm3',
-    bg: Farm3Bg,
-    objects: {
-      itemsMap: [
-        {
-          type: 'nav',
           route: 'Farm4',
           element: {
             type: 'trigger',
@@ -215,28 +165,6 @@ const SCENES = [
     name: 'University1',
     route: 'University1',
     bg: University1Bg,
-    objects: {
-      itemsMap: [
-        {
-          type: 'nav',
-          route: 'University2',
-          element: {
-            type: 'trigger',
-          },
-          position: {
-            x: 0,
-            y: 0,
-            width: 400,
-            height: 400,
-          },
-        },
-      ],
-    },
-  },
-  {
-    name: 'University2',
-    route: 'University2',
-    bg: University2Bg,
     objects: {
       itemsMap: [
         {
@@ -3402,6 +3330,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Lung2';
+const INITIAL_SCREEN = 'Farm1';
 
 export { SCENES, INITIAL_SCREEN };
