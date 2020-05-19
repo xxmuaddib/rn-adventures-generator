@@ -72,8 +72,9 @@ import Tooth from '../assets/images/tooth.png';
 import VirusRewardInventory from '../assets/images/virus-reward-inventory.png';
 import ToothInventory from '../assets/images/tooth-inventory.png';
 import HeroAvatar from '../assets/images/hero-avatar.png';
-import Lung2 from '../assets/images/lung2.png';
 import LungPoint from '../assets/images/lung-point.png';
+import LungSequence from '../assets/images/lung-sequence.png';
+import LungSequenceRight from '../assets/images/lung-sequence-right.png';
 import Lung4 from '../assets/images/lung4.png';
 import Lung5 from '../assets/images/lung5.png';
 import Lung6 from '../assets/images/lung6.png';
@@ -2188,14 +2189,54 @@ const SCENES = [
   {
     name: 'Lung2',
     route: 'Lung2',
-    bg: Lung2,
+    bg: Level2Virus2Bg,
     objects: {
       itemsMap: [
+        {
+          type: 'blank',
+          id: 'sequence1-default-image',
+          element: {
+            type: 'image',
+            image: {
+              src: LungSequence,
+            },
+          },
+          position: {
+            x: 60,
+            y: 9,
+            width: 165,
+            height: 180,
+          },
+          logical: {
+            itemShouldHide: false,
+          },
+        },
+        {
+          type: 'blank',
+          id: 'sequence1-right-way-image',
+          element: {
+            type: 'image',
+            image: {
+              src: LungSequenceRight,
+            },
+          },
+          position: {
+            x: 60,
+            y: 9,
+            width: 165,
+            height: 180,
+          },
+          logical: {
+            itemShouldHide: true,
+          },
+        },
         {
           type: 'sequence',
           id: 'sequence1_1',
           group: 'sequence1',
           main: true,
+          defaultImage: 'sequence1-default-image',
+          rightImage: 'sequence1-right-way-image',
           element: {
             type: 'trigger',
           },
@@ -2204,6 +2245,7 @@ const SCENES = [
             y: 50,
             width: 30,
             height: 25,
+            zIndex: 2,
           },
           logical: {
             hideOnResolved: ['sequence1'],
@@ -2232,6 +2274,7 @@ const SCENES = [
             y: 75,
             width: 35,
             height: 30,
+            zIndex: 2,
           },
           logical: {
             hideOnResolved: ['sequence1'],
@@ -2249,6 +2292,7 @@ const SCENES = [
             y: 115,
             width: 30,
             height: 37,
+            zIndex: 2,
           },
           logical: {
             hideOnResolved: ['sequence1'],
@@ -2266,6 +2310,7 @@ const SCENES = [
             y: 120,
             width: 20,
             height: 25,
+            zIndex: 2,
           },
           logical: {
             hideOnResolved: ['sequence1'],
@@ -2283,6 +2328,7 @@ const SCENES = [
             y: 50,
             width: 30,
             height: 30,
+            zIndex: 2,
           },
           logical: {
             hideOnResolved: ['sequence1'],
@@ -2300,6 +2346,10 @@ const SCENES = [
             y: 82,
             width: 25,
             height: 25,
+            zIndex: 2,
+          },
+          logical: {
+            hideOnResolved: ['sequence1'],
           },
         },
         {
@@ -2314,6 +2364,7 @@ const SCENES = [
             y: 115,
             width: 30,
             height: 37,
+            zIndex: 2,
           },
           logical: {
             hideOnResolved: ['sequence1'],
@@ -2331,6 +2382,7 @@ const SCENES = [
             y: 122,
             width: 20,
             height: 25,
+            zIndex: 2,
           },
           logical: {
             hideOnResolved: ['sequence1'],
@@ -3350,6 +3402,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Wall1';
+const INITIAL_SCREEN = 'Lung2';
 
 export { SCENES, INITIAL_SCREEN };

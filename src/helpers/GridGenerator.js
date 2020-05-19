@@ -60,11 +60,13 @@ const ObjectGrid = ({
             !logical.showOnResolved.length ||
             logical.showOnResolved.every(item => resolved.includes(item));
           const hideResolved =
-            !logical ||
-            !logical.hideOnResolved ||
-            !logical.hideOnResolved.length
+            (!logical || !logical.itemShouldHide) &&
+            (!logical ||
+              !logical.hideOnResolved ||
+              !logical.hideOnResolved.length)
               ? false
-              : logical.hideOnResolved.every(item => resolved.includes(item));
+              : logical.itemShouldHide ||
+                logical.hideOnResolved.every(item => resolved.includes(item));
           const collectableShouldHide =
             type === ITEMS.COLLECTABLE &&
             !!collectedItems.find(collectedItem => collectedItem.id === id);

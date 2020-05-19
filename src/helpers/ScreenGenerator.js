@@ -205,7 +205,10 @@ function screenGenerator(scene) {
     handleSequence = async (group, id) => {
       let {
         currentScene: {
+          scene: oldScene,
           scene: {
+            name: sceneName,
+            objects,
             objects: { itemsMap },
           },
         },
@@ -219,6 +222,7 @@ function screenGenerator(scene) {
       const scenario =
         mainSequence && mainSequence.logical && mainSequence.logical.scenario;
       if (!scenario) return false;
+      const itemsMapCopy = _.cloneDeep(itemsMap);
 
       if (!tmp[mainSequence.group]) {
         setState({
@@ -230,10 +234,62 @@ function screenGenerator(scene) {
         tmp = { ...tmp, [mainSequence.group]: [] };
       }
 
-      const currentSequence = tmp[mainSequence.group]
+      const currentSequence = !!tmp[mainSequence.group].length
         ? [...tmp[mainSequence.group], id]
         : [id];
 
+      const defaultImage = itemsMapCopy.findIndex(
+        el => el.id === mainSequence.defaultImage,
+      );
+      const rightImage = itemsMapCopy.findIndex(
+        el => el.id === mainSequence.rightImage,
+      );
+      let isGoingRight = true;
+      for (let i = 0; i < currentSequence.length; i++) {
+        if (currentSequence[i] !== scenario[i]) {
+          isGoingRight = false;
+          break;
+        }
+      }
+
+      if (isGoingRight) {
+        itemsMapCopy[defaultImage].logical.itemShouldHide = true;
+        itemsMapCopy[rightImage].logical.itemShouldHide = false;
+        setState(
+          {
+            scene: {
+              ...oldScene,
+              objects: {
+                ...objects,
+                itemsMap: itemsMapCopy,
+              },
+            },
+          },
+          sceneName,
+        );
+      } else {
+        itemsMapCopy[defaultImage].logical.itemShouldHide = false;
+        itemsMapCopy[rightImage].logical.itemShouldHide = true;
+
+        setState(
+          {
+            scene: {
+              ...oldScene,
+              objects: {
+                ...objects,
+                itemsMap: itemsMapCopy,
+              },
+            },
+          },
+          sceneName,
+        );
+        return setState({
+          tmp: {
+            ...tmp,
+            [mainSequence.group]: [],
+          },
+        });
+      }
       if (arrayIncludesSorted(scenario, currentSequence)) {
         const mainProgress = itemsMap.find(
           el =>
