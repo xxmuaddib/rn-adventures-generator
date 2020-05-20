@@ -142,7 +142,7 @@ const DialogTouchableOpacity = styled(TouchableOpacity)`
   width: 100%;
   background-color: ${p => p.bg};
   padding: 10px 20px;
-  border-radius: ${Math.round(20 * pointX)}px;
+  border-radius: 16px;
   margin-bottom: 10px;
 `;
 
