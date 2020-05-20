@@ -7,8 +7,8 @@ import {
   Dimensions,
   View,
   StatusBar,
-  Platform,
   Image,
+  Platform,
 } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -66,6 +66,23 @@ function screenGenerator(scene) {
       }
       this.setBgSound();
       this.redirectIfSplashScreen();
+      if (Platform.OS === 'ios') {
+        AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/3552369374');
+      } else {
+        AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/5683229761');
+      }
+      AdMobRewarded.addEventListener('rewardedVideoDidRewardUser', async () => {
+        this.openMainMenu();
+        setState({
+          hintModalVisible: true,
+        });
+        await AdMobRewarded.requestAdAsync();
+      });
+      await AdMobRewarded.requestAdAsync();
+    }
+
+    componentWillUnmount() {
+      AdMobRewarded.removeAllListeners();
     }
 
     redirectIfSplashScreen = () => {
@@ -554,20 +571,12 @@ function screenGenerator(scene) {
     };
 
     showHint = async () => {
-      if (Platform.OS === 'ios') {
-        AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/3552369374');
-      } else {
-        AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/5683229761');
+      try {
+        await AdMobRewarded.showAdAsync();
+      } catch (e) {
+        await AdMobRewarded.requestAdAsync();
+        await AdMobRewarded.showAdAsync();
       }
-      AdMobRewarded.addEventListener('rewardedVideoDidRewardUser', () => {
-        setTimeout(() => {
-          this.openMainMenu();
-          this.showHintModal();
-          AdMobRewarded.removeAllListeners();
-        }, 100);
-      });
-      await AdMobRewarded.requestAdAsync();
-      await AdMobRewarded.showAdAsync();
     };
 
     showHintModal = () => {
