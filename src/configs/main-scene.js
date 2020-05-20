@@ -650,7 +650,6 @@ const SCENES = [
           },
           logical: {
             showOnResolved: ['mirror-tooth'],
-            inventoryImage: ToothInventory,
           },
         },
         {
@@ -823,7 +822,6 @@ const SCENES = [
           },
           logical: {
             showOnResolved: ['mirror-tooth'],
-            inventoryImage: ToothInventory,
           },
         },
         {
@@ -1553,6 +1551,7 @@ const SCENES = [
             type: 'image',
             image: {
               src: Tooth,
+              inventoryImage: ToothInventory,
             },
           },
           position: {
@@ -1692,19 +1691,19 @@ const SCENES = [
           element: {
             type: 'image',
             image: {
+              src: GumWithKey,
               inventoryImage: GreenKeyInventory,
-              src: GreenKey,
             },
           },
           position: {
             x: 90,
-            y: 160,
-            width: 30,
+            y: 180,
+            width: 20,
             height: 20,
-            zIndex: 2,
           },
           logical: {
             showOnResolved: ['gum-width-key'],
+            resolveOnCollect: ['key-was-collected'],
             countOfUse: 1,
           },
         },
@@ -1724,7 +1723,7 @@ const SCENES = [
             height: 20,
           },
           logical: {
-            showOnResolved: ['gum-width-key'],
+            showOnResolved: ['key-was-collected'],
           },
         },
       ],
@@ -2643,7 +2642,6 @@ const SCENES = [
           },
           logical: {
             showOnResolved: ['mirror-tooth'],
-            inventoryImage: ToothInventory,
           },
         },
         {
@@ -2684,31 +2682,6 @@ const SCENES = [
     objects: {
       itemsMap: [
         {
-          type: 'blank',
-          element: {
-            type: 'image',
-            image: {
-              src: Level3_1Catapult,
-            },
-          },
-          position: {
-            x: 30,
-            y: 70,
-            width: 100,
-            height: 90,
-          },
-          logical: {
-            hideOnResolved: [
-              'mirror-crown-virus-part1',
-              'mirrorcrown-virus-part2',
-              'mirror-crown-virus-part3',
-              'mirror-crown-virus-part3',
-              'mirror-crown-virus-part5',
-              'mirror-tooth',
-            ],
-          },
-        },
-        {
           type: 'nav',
           route: 'Level3-2',
           element: {
@@ -2724,11 +2697,11 @@ const SCENES = [
             height: 90,
           },
           logical: {
-            showOnResolved: [
+            activateOnResolved: [
               'mirror-crown-virus-part1',
-              'mirrorcrown-virus-part2',
+              'mirror-crown-virus-part2',
               'mirror-crown-virus-part3',
-              'mirror-crown-virus-part3',
+              'mirror-crown-virus-part4',
               'mirror-crown-virus-part5',
               'mirror-tooth',
             ],
@@ -3330,6 +3303,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Wall1';
+const INITIAL_SCREEN = 'Level2-wall1';
 
 export { SCENES, INITIAL_SCREEN };

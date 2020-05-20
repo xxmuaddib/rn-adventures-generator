@@ -161,6 +161,7 @@ export const ROOF_SCENE = {
           },
           selected: 1,
           hideOnResolved: ['slot1'],
+          activateOnResolved: ['collected-crown-virus-part1'],
           options: [
             {
               id: 1,
@@ -220,6 +221,7 @@ export const ROOF_SCENE = {
         },
         logical: {
           hideOnResolved: ['slot1'],
+          activateOnResolved: ['collected-crown-virus-part1'],
           selected: 1,
           options: [
             {
@@ -280,6 +282,7 @@ export const ROOF_SCENE = {
         },
         logical: {
           hideOnResolved: ['slot1'],
+          activateOnResolved: ['collected-crown-virus-part1'],
           selected: 1,
           options: [
             {
@@ -340,6 +343,7 @@ export const ROOF_SCENE = {
         },
         logical: {
           hideOnResolved: ['slot1'],
+          activateOnResolved: ['collected-crown-virus-part1'],
           selected: 1,
           options: [
             {
@@ -400,6 +404,7 @@ export const ROOF_SCENE = {
         },
         logical: {
           hideOnResolved: ['slot1'],
+          activateOnResolved: ['collected-crown-virus-part1'],
           selected: 1,
           options: [
             {
@@ -460,6 +465,7 @@ export const ROOF_SCENE = {
         },
         logical: {
           hideOnResolved: ['slot1'],
+          activateOnResolved: ['collected-crown-virus-part1'],
           selected: 1,
           options: [
             {

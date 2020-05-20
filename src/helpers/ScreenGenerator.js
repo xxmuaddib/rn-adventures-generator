@@ -291,7 +291,7 @@ function screenGenerator(scene) {
         });
       }
       if (arrayIncludesSorted(scenario, currentSequence)) {
-        const mainProgress = itemsMap.find(
+        const mainProgress = itemsMapCopy.find(
           el =>
             el.group === group &&
             el.main &&
@@ -389,9 +389,9 @@ function screenGenerator(scene) {
             el.main &&
             el.logical &&
             el.logical.setProgressOnResolved,
-        ).logical.setProgressOnResolved;
+        );
         if (mainProgress) {
-          this.saveProgress(mainProgress);
+          this.saveProgress(mainProgress.logical.setProgressOnResolved);
         }
         return setState({
           resolved: [...resolved, group],

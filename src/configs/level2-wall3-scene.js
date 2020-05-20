@@ -350,7 +350,9 @@ export const LEVEL2_WALL3_SCENE = {
         },
       },
       {
-        type: 'blanks',
+        type: 'nav',
+        id: 'nav-to-lungs',
+        route: 'Lung2',
         element: {
           type: 'image',
           image: {
@@ -365,38 +367,11 @@ export const LEVEL2_WALL3_SCENE = {
         },
         logical: {
           showOnResolved: ['mix-container-receiver'],
-          hideOnResolved: [
-            'mirror-crown-virus-part1',
-            'mirror-crown-virus-part2',
-            'mirror-crown-virus-part3',
-            'mirror-crown-virus-part5',
-            'mirror-tooth',
-          ],
-        },
-      },
-      {
-        type: 'nav',
-        id: 'nav-to-lungs',
-        route: 'somewhere',
-        element: {
-          type: 'image',
-          image: {
-            src: Level2SkeletonBlood,
-          },
-        },
-        position: {
-          x: 196,
-          y: 27,
-          width: 40,
-          height: 153,
-        },
-        logical: {
-          showOnResolved: [
-            'mirror-crown-virus-part1',
-            'mirrorcrown-virus-part2',
-            'mirror-crown-virus-part3',
-            'mirror-crown-virus-part5',
-            'mirror-tooth',
+          activateOnResolved: [
+            'collected-crown-virus-part1',
+            'collected-crown-virus-part2',
+            'collected-crown-virus-part4',
+            'collected-crown-virus-part5',
           ],
         },
       },

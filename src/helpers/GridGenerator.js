@@ -100,7 +100,7 @@ const ObjectGrid = ({
                       activeOpacity={isDeactive ? 1 : 0.9}
                       disabled={
                         isDeactive ||
-                        !isResolved ||
+                        !isActive ||
                         hideResolved ||
                         collectableShouldHide
                       }
@@ -148,6 +148,7 @@ const ObjectGrid = ({
                 !hideResolved && (
                   <View style={generateStyle(position)}>
                     <StyledTouchableWithoutFeedback
+                      disabled={isDeactive || !isActive || hideResolved}
                       onPress={() => {
                         if (sound) {
                           playAudio(sound);

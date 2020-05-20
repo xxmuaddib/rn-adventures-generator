@@ -223,12 +223,11 @@ export const LEVEL2_WALL1_SCENE = {
         },
         logical: {
           showOnResolved: ['mirror-tooth'],
-          resolveOnCollect: ['teacher2-crown1-was-collected'],
           countOfUse: 1,
         },
       },
       {
-        type: 'dialog',
+        type: 'blank',
         id: 'wall2-teacher-dialog2',
         element: {
           type: 'image',
@@ -243,7 +242,7 @@ export const LEVEL2_WALL1_SCENE = {
           height: 120,
         },
         logical: {
-          hideOnResolved: ['teacher2-crown1-was-collected'],
+          hideOnResolved: ['collected-crown-virus-part4'],
           showOnResolved: ['mirror-tooth'],
         },
       },
@@ -263,7 +262,7 @@ export const LEVEL2_WALL1_SCENE = {
           height: 120,
         },
         logical: {
-          showOnResolved: ['teacher2-crown1-was-collected'],
+          showOnResolved: ['collected-crown-virus-part4'],
           hideOnResolved: ['mix-container-receiver'],
           dialogProperties: {
             character: {
@@ -333,13 +332,11 @@ export const LEVEL2_WALL1_SCENE = {
         },
         logical: {
           showOnResolved: ['mix-container-receiver'],
-          resolveOnCollect: ['teacher2-crown2-was-collected'],
           countOfUse: 1,
         },
       },
       {
-        type: 'dialog',
-        id: 'wall2-teacher-dialog3',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
@@ -354,7 +351,7 @@ export const LEVEL2_WALL1_SCENE = {
         },
         logical: {
           showOnResolved: ['mix-container-receiver'],
-          hideOnResolved: ['teacher2-crown2-was-collected'],
+          hideOnResolved: ['collected-crown-virus-part5'],
         },
       },
       {
@@ -373,7 +370,7 @@ export const LEVEL2_WALL1_SCENE = {
           height: 120,
         },
         logical: {
-          showOnResolved: ['teacher2-crown2-was-collected'],
+          showOnResolved: ['collected-crown-virus-part5'],
           dialogProperties: {
             character: {
               translations: {

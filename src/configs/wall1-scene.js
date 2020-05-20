@@ -99,8 +99,7 @@ export const WALL1_SCENE = {
         },
       },
       {
-        type: 'nav',
-        route: 'Wall1Blackboard',
+        type: 'blank',
         element: {
           type: 'image',
           image: {
@@ -147,7 +146,7 @@ export const WALL1_SCENE = {
           height: 64,
         },
         logical: {
-          showOnResolved: ['death-dialog-2'],
+          showOnResolved: ['collected-crown-virus-part1'],
           hideOnResolved: ['slot1'],
         },
       },
@@ -270,7 +269,6 @@ export const WALL1_SCENE = {
                     },
                     drop: true,
                     resolve: 'dialog1',
-                    setProgressOnResolved: 'plaguePictureShouldBeSolved',
                   },
                 ],
               },
