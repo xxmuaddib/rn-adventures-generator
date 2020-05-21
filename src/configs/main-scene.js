@@ -2349,6 +2349,34 @@ const SCENES = [
             showOnResolved: ['sequence1'],
           },
         },
+        {
+          type: 'blank',
+          element: {
+            type: 'image',
+            image: {
+              src: ArrowDown,
+            },
+          },
+          position: {
+            x: 145,
+            y: 188,
+            width: 10,
+            height: 10,
+          },
+        },
+        {
+          type: 'nav',
+          route: 'Level2-wall3',
+          element: {
+            type: 'trigger',
+          },
+          position: {
+            x: 0,
+            y: 185,
+            height: 15,
+            width: 300,
+          },
+        },
       ],
     },
   },
