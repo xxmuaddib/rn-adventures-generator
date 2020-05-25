@@ -1844,7 +1844,7 @@ const SCENES = [
         {
           type: 'nav',
           id: 'tree-navigation',
-          route: 'Tree',
+          route: 'Level2-tree',
           element: {
             type: 'image',
             image: {
@@ -3331,6 +3331,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Level2-wall1';
+const INITIAL_SCREEN = 'Farm1';
 
 export { SCENES, INITIAL_SCREEN };
