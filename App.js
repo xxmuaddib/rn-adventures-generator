@@ -6,6 +6,7 @@ import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { Notifications, AppLoading } from 'expo';
 import * as Permissions from 'expo-permissions';
 import * as Font from 'expo-font';
+import * as Sentry from 'sentry-expo';
 
 import { Screens, InitialScreen } from './src/helpers/ScreenGenerator';
 import { FetchApi } from './src/helpers/FetchApi';
@@ -37,6 +38,13 @@ const fetchFonts = () =>
   });
 
 registerForPushNotificationsAsync();
+
+Sentry.init({
+  dsn:
+    'https://44fe9fe97f3746239348e3083ef0d142@o397798.ingest.sentry.io/5252668',
+  enableInExpoDevelopment: true,
+  debug: true,
+});
 
 YellowBox.ignoreWarnings(['Warning:']);
 
@@ -99,9 +107,7 @@ Object.keys(store.getState()).forEach(scene => {
   });
 });
 
-const SplashScreenMatch = SCENES.find(
-  s => s.type === 'splash',
-);
+const SplashScreenMatch = SCENES.find(s => s.type === 'splash');
 
 const SwitchNavigator = createSwitchNavigator(Screens(), {
   initialRouteName: SplashScreenMatch

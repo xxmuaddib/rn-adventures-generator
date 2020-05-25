@@ -4,10 +4,7 @@
     "slug": "AdventuresGenerator",
     "privacy": "public",
     "sdkVersion": "36.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
@@ -22,9 +19,7 @@
     "androidNavigationBar": {
       "visible": false
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "description": "",
     "githubUrl": "https://github.com/xxmuaddib/rn-adventures-generator",
     "android": {
@@ -41,6 +36,19 @@
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-2994481870952435~8576986419"
       }
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "sky-lab",
+            "project": "memoirs-of-coronavirus",
+            "authToken": "731b0c8089f94c42bc5058be89b27eb5851f0dea91c443b994b522bf82ec3914",
+            "url": "https://sentry.io/"
+          }
+        }
+      ]
     }
   }
 }
