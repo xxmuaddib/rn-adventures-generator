@@ -173,10 +173,10 @@ export const LEVEL2_WALL2_SCENE = {
           },
         },
         position: {
-          x: 200,
-          y: 30,
-          width: 20,
-          height: 100,
+          x: 205,
+          y: 38,
+          width: 5,
+          height: 82,
           zIndex: 3,
         },
         logical: {

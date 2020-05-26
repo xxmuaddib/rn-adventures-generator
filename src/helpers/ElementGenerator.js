@@ -48,6 +48,7 @@ const Element = ({
             autoPlay={animation.autoPlay}
             loop={animation.loop}
             imagePosition={position}
+            resizeMode="contain"
           />
         </View>
       );
