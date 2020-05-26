@@ -47,6 +47,7 @@ const Element = ({
             source={animation.src}
             autoPlay={animation.autoPlay}
             loop={animation.loop}
+            imagePosition={position}
           />
         </View>
       );
@@ -81,8 +82,9 @@ const StyledImage = styled(Image)`
 `;
 
 const StyledLottieView = styled(LottieView)`
-  width: 100px;
-  height: 100px;
+  resize-mode: cover;
+  width: ${p => p.imagePosition.width * pointX}px;
+  height: ${p => p.imagePosition.height * pointY}px;
 `;
 
 export { Element };
