@@ -99,7 +99,7 @@ function screenGenerator(scene) {
         setTimeout(() => {
           const { currentRoute } = this.props;
           navigation.navigate(currentRoute || INITIAL_SCREEN);
-        }, 2000);
+        }, 5000);
       }
     };
 
