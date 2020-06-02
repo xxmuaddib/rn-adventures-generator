@@ -85,7 +85,7 @@ function screenGenerator(scene) {
     }
 
     componentWillUnmount() {
-      // AdMobRewarded.removeAllListeners();
+      AdMobRewarded.removeAllListeners();
     }
 
     redirectIfSplashScreen = () => {
@@ -574,11 +574,12 @@ function screenGenerator(scene) {
     };
 
     showHint = async () => {
+      const { setState } = this.props;
+      setState({ adIsLoading: true });
       try {
         await AdMobRewarded.showAdAsync();
       } catch (e) {
-        await AdMobRewarded.requestAdAsync();
-        await AdMobRewarded.showAdAsync();
+        showHintModal();
       }
     };
 
@@ -586,6 +587,7 @@ function screenGenerator(scene) {
       const { hintModalVisible, setState } = this.props;
       setState({
         hintModalVisible: !hintModalVisible,
+        adIsLoading: false,
       });
     };
 
@@ -604,6 +606,7 @@ function screenGenerator(scene) {
         hintModalVisible,
         resolved,
         progress,
+        adIsLoading,
         currentScene: {
           scene: { objects, bg },
         },
@@ -642,6 +645,7 @@ function screenGenerator(scene) {
             />
             <MainMenuModal
               mainMenuVisible={mainMenuVisible}
+              adIsLoading={adIsLoading}
               openMainMenu={this.openMainMenu}
               reset={this.resetFunction}
               showHint={this.showHint}

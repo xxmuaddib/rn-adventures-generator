@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { Notifications, AppLoading } from 'expo';
-import * as Permissions from 'expo-permissions';
+import { NOTIFICATIONS, askAsync } from 'expo-permissions';
 import * as Font from 'expo-font';
 import * as Sentry from 'sentry-expo';
 
@@ -20,7 +20,7 @@ import AcmeFont from './src/assets/fonts/Acme-Regular.ttf';
 import { SCENES } from './src/configs/scenes-combiner';
 
 async function registerForPushNotificationsAsync() {
-  const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+  const { status } = await askAsync(NOTIFICATIONS);
   if (status !== 'granted') {
     return;
   }

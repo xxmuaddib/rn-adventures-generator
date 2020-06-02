@@ -3,25 +3,41 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Modal from 'react-native-modal';
+import LottieView from 'lottie-react-native';
 import * as Font from 'expo-font';
+import { pointX, pointY } from '../helpers/StyleGenerator';
+
+import { MainMenuLoader } from '../assets/animations/main-menu-loader.json';
 
 export const MainMenuModal = ({
   mainMenuVisible,
   openMainMenu,
   reset,
   showHint,
+  adIsLoading,
 }) => (
   <StyledModal isVisible={mainMenuVisible} onBackdropPress={openMainMenu}>
     <MainMenuContainer>
-      <MainMenuButton onPress={showHint}>
-        <StyledText isLoaded={Font.isLoaded('acme')}>Show hint</StyledText>
-      </MainMenuButton>
-      <MainMenuButton onPress={reset}>
-        <StyledText isLoaded={Font.isLoaded('acme')}>Reset the game</StyledText>
-      </MainMenuButton>
-      <MainMenuButton onPress={openMainMenu}>
-        <StyledText isLoaded={Font.isLoaded('acme')}>Close</StyledText>
-      </MainMenuButton>
+      {adIsLoading ? (
+        <StyledLottieView
+          source={MainMenuButton}
+          autoPlay
+          loop
+          style={{ aspectRatio: 16 / 9 }}
+        />
+      ) : (
+        <Cointainer>
+          <MainMenuButton onPress={showHint}>
+            <StyledText isLoaded={Font.isLoaded('acme')}>Show hint</StyledText>
+          </MainMenuButton>
+          <MainMenuButton onPress={reset}>
+            <StyledText isLoaded={Font.isLoaded('acme')}>Reset</StyledText>
+          </MainMenuButton>
+          <MainMenuButton onPress={openMainMenu}>
+            <StyledText isLoaded={Font.isLoaded('acme')}>Close</StyledText>
+          </MainMenuButton>
+        </Cointainer>
+      )}
     </MainMenuContainer>
   </StyledModal>
 );
@@ -38,6 +54,16 @@ const MainMenuContainer = styled(View)`
   padding: 40px 60px;
   display: flex;
   align-items: center;
+`;
+
+const Cointainer = styled(View)`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledLottieView = styled(LottieView)`
+  width: 50px;
+  height: 50px;
 `;
 
 const StyledText = styled(Text)`
