@@ -7,7 +7,7 @@ import LottieView from 'lottie-react-native';
 import * as Font from 'expo-font';
 import { pointX, pointY } from '../helpers/StyleGenerator';
 
-import { MainMenuLoader } from '../assets/animations/main-menu-loader.json';
+import MainMenuLoader from '../assets/animations/main-menu-loader.json';
 
 export const MainMenuModal = ({
   mainMenuVisible,
@@ -20,7 +20,7 @@ export const MainMenuModal = ({
     <MainMenuContainer>
       {adIsLoading ? (
         <StyledLottieView
-          source={MainMenuButton}
+          source={MainMenuLoader}
           autoPlay
           loop
           style={{ aspectRatio: 16 / 9 }}
