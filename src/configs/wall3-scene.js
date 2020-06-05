@@ -410,7 +410,7 @@ export const WALL3_SCENE = {
           x: 202,
           y: 25,
           width: 16,
-          height: 20,
+          height: 35,
         },
         logical: {
           expectedValue: ['skeleton-skull'],
