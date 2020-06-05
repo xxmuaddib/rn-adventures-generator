@@ -579,7 +579,7 @@ function screenGenerator(scene) {
       try {
         await AdMobRewarded.showAdAsync();
       } catch (e) {
-        showHintModal();
+        this.showHintModal();
       }
     };
 
