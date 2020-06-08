@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Rise Of Coronavirus",
-    "slug": "RiseOfCoronavirus",
+    "name": "The Virus Rise",
+    "slug": "TheVirusRise",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android"],
