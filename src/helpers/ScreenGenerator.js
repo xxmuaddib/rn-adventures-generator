@@ -71,9 +71,7 @@ function screenGenerator(scene) {
       } else {
         AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/5683229761');
       }
-      AdMobRewarded.addEventListener('rewardedVideoDidFailToLoad', () => {
-        this.showHint();
-      });
+
       AdMobRewarded.addEventListener('rewardedVideoDidRewardUser', async () => {
         this.openMainMenu();
         setState({
