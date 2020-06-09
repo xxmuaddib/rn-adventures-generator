@@ -23,8 +23,8 @@
     "description": "",
     "githubUrl": "https://github.com/xxmuaddib/rn-adventures-generator",
     "android": {
-      "package": "com.skylab.riseofcoronavirus",
-      "versionCode": 20060318,
+      "package": "com.skylab.thevirusrise",
+      "versionCode": 20060816,
       "googleServicesFile": "./google-services.json",
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-2994481870952435~9586267010"
@@ -32,7 +32,7 @@
       "permissions": []
     },
     "ios": {
-      "bundleIdentifier": "com.skylab.riseofcoronavirus",
+      "bundleIdentifier": "com.skylab.thevirusrise",
       "supportsTablet": true,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-2994481870952435~8576986419"
@@ -44,7 +44,7 @@
           "file": "sentry-expo/upload-sourcemaps",
           "config": {
             "organization": "sky-lab",
-            "project": "memoirs-of-coronavirus",
+            "project": "memoirs-of-the-virus",
             "authToken": "731b0c8089f94c42bc5058be89b27eb5851f0dea91c443b994b522bf82ec3914",
             "url": "https://sentry.io/"
           }
