@@ -400,7 +400,6 @@ export const LEVEL2_WALL3_SCENE = {
         },
         logical: {
           countOfUse: 1,
-          setProgressOnResolved: 'chemical',
           hideOnResolved: ['skeleton-skull-receiver'],
         },
       },

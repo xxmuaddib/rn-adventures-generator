@@ -20,8 +20,8 @@ import Candle from '../assets/images/candle.png';
 import CandleFired from '../assets/images/candle-fired.png';
 import ChemicalContainers from '../assets/images/chemical-containers.png';
 import ChemicalContainerSmall from '../assets/images/chemical-container-small.png';
-import BloodContainer from '../assets/images/blood-container.png';
 import WaterContainer from '../assets/images/water-container.png';
+import WaterContainerInventory from '../assets/images/water-container-inventory.png';
 import WaterContainerFull from '../assets/images/water-container-full.png';
 import BloodContainerFull from '../assets/images/blood-container-full.png';
 import WaterChemicalContainerSmall from '../assets/images/water-chemical-container-small.png';
@@ -573,6 +573,7 @@ export const LEVEL2_WALL2_SCENE = {
           type: 'image',
           image: {
             src: WaterContainer,
+            inventoryImage: WaterContainerInventory,
           },
         },
         position: {

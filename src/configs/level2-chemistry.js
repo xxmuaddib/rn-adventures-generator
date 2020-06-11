@@ -2,12 +2,12 @@ import ArrowDown from '../assets/images/arrow-down.png';
 
 import ChemistryBg from '../assets/images/chemistry-bg.png';
 import ChemicalContainerMixBig from '../assets/images/chemical-container-mix-big.png';
+import ChemicalContainerMixBigInventory from '../assets/images/chemical-container-mix-big-inventory.png';
 import EmptyChemicalContainerMixBig from '../assets/images/empty-chemical-container-mix-big.png';
 import Candle from '../assets/images/candle.png';
 import CandleFired from '../assets/images/candle-fired.png';
 import ChemicalContainers from '../assets/images/chemical-containers.png';
 import ChemicalContainerSmall from '../assets/images/chemical-container-small.png';
-import BloodContainer from '../assets/images/blood-container.png';
 import BloodContainerFull from '../assets/images/blood-container-full.png';
 import WaterContainerFull from '../assets/images/water-container-full.png';
 import WaterChemicalContainerSmall from '../assets/images/water-chemical-container-small.png';
@@ -88,6 +88,7 @@ export const CHEMISTRY_SCENE = {
           type: 'image',
           image: {
             src: ChemicalContainerMixBig,
+            inventoryImage: ChemicalContainerMixBigInventory,
           },
         },
         position: {

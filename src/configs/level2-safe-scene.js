@@ -10,9 +10,9 @@ import Symbol5 from '../assets/images/symbol5.png';
 import Symbol6 from '../assets/images/symbol6.png';
 import Symbol7 from '../assets/images/symbol7.png';
 import Symbol8 from '../assets/images/symbol8.png';
-import WaterCup from '../assets/images/water-cup.png';
 import Level2SafeOpened from '../assets/images/level2-safe-opened.png';
 import BloodContainer from '../assets/images/blood-container.png';
+import BloodContainerInventory from '../assets/images/blood-container-inventory.png';
 
 export const LEVEL2_SAFE_SCENE = {
   name: 'Level2-safe',
@@ -478,6 +478,7 @@ export const LEVEL2_SAFE_SCENE = {
           type: 'image',
           image: {
             src: BloodContainer,
+            inventoryImage: BloodContainerInventory,
           },
         },
         position: {

@@ -507,6 +507,7 @@ export const WALL1_SCENE = {
         },
         logical: {
           showOnResolved: ['slot2'],
+          setProgressOnResolved: 'chemical',
           navigateOnResolved: 'Level2-wall1',
           countOfUse: 1,
         },
