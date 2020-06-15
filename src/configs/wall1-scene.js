@@ -248,7 +248,7 @@ export const WALL1_SCENE = {
                     character: {
                       translations: {
                         en:
-                          "I don't know... But I just want to remember good ol' days",
+                          "I don't know... But I just want to remember good ol' days.",
                       },
                     },
                     characterElement: {
@@ -327,7 +327,7 @@ export const WALL1_SCENE = {
                 character: {
                   translations: {
                     en:
-                      "I remember a formula, which can help you in your mission. I'll draw it on the blackboard",
+                      "I remember a formula, which can help you in your mission. I'll draw it on the blackboard.",
                   },
                 },
                 drop: true,
@@ -439,7 +439,7 @@ export const WALL1_SCENE = {
               {
                 hero: {
                   translations: {
-                    en: "Well, i'll try",
+                    en: "Well, i'll try.",
                   },
                 },
                 character: {

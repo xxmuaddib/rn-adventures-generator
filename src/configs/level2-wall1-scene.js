@@ -180,7 +180,6 @@ export const LEVEL2_WALL1_SCENE = {
                     },
                     drop: true,
                     resolve: 'wall2-teacher-dialog1',
-                    setProgressOnResolved: 'skeleton',
                     characterElement: {
                       type: 'image',
                       image: {

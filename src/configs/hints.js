@@ -16,10 +16,6 @@ export const HINTS = [
     image: BlackboardHint,
   },
   {
-    progress: 'skeleton',
-    image: SkeletonCollectHint,
-  },
-  {
     progress: 'chemical',
     image: ChemicalHint,
   },
