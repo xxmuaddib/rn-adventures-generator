@@ -230,7 +230,7 @@ export const LEVEL2_WALL1_SCENE = {
       },
       {
         type: 'blank',
-        id: 'wall2-teacher-dialog2',
+        id: 'wall2-teacher-blank',
         element: {
           type: 'image',
           image: {
