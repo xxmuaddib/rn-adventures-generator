@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
-import { Audio } from 'expo-av';
 import Draggable from 'react-native-draggable';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -25,6 +24,7 @@ const ObjectGrid = ({
   collectedItems,
   onRoutePress,
   collect,
+  playAudio,
   handleSlot,
   handleSequence,
   handleDecorative,
@@ -33,16 +33,6 @@ const ObjectGrid = ({
   showDialog,
   resolved,
 }) => {
-  const playAudio = async sound => {
-    const soundObject = new Audio.Sound();
-    try {
-      await soundObject.loadAsync(sound);
-      await soundObject.playAsync(sound);
-      await soundObject.setStatusAsync({ volume: 1 });
-    } catch (e) {
-      console.error(e);
-    }
-  };
   const animationRef = useRef(null);
   if (!objects && !objects.itemsMap) {
     return null;
@@ -210,6 +200,7 @@ ObjectGrid.propTypes = {
   collectedItems: PropTypes.arrayOf(ObjectPropTypes).isRequired,
   onRoutePress: PropTypes.func,
   collect: PropTypes.func,
+  playAudio: PropTypes.func,
   handleSlot: PropTypes.func,
   handleSequence: PropTypes.func,
   showModal: PropTypes.func,
@@ -222,6 +213,7 @@ ObjectGrid.propTypes = {
 ObjectGrid.defaultProps = {
   onRoutePress: () => undefined,
   collect: () => undefined,
+  playAudio: () => undefined,
   handleSlot: () => undefined,
   handleSequence: () => undefined,
   showModal: () => undefined,

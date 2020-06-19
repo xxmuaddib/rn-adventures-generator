@@ -10,6 +10,8 @@ import Wall4Picture1 from '../assets/images/wall4-picture1.png';
 import SkeletonSpine from '../assets/images/skeleton-spine.png';
 import SkeletonSpineInventory from '../assets/images/skeleton-spine-inventory.png';
 
+import SkeletonPartsCollect from '../assets/sounds/skeleton-parts-collect.wav';
+
 export const LEVEL2_WALL4_SCENE = {
   name: 'Level2-wall4',
   route: 'Level2-wall4',
@@ -181,6 +183,7 @@ export const LEVEL2_WALL4_SCENE = {
           hideOnResolved: ['skeleton-spine-receiver'],
           countOfUse: 1,
         },
+        sound: SkeletonPartsCollect,
       },
     ],
   },

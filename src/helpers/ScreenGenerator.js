@@ -108,10 +108,21 @@ function screenGenerator(scene) {
           await soundObject.loadAsync(scene.bgSound);
           await soundObject.playAsync(scene.bgSound);
           await soundObject.setIsLoopingAsync(true);
-          await soundObject.setStatusAsync({ volume: 0.2 });
+          await soundObject.setStatusAsync({ volume: 0.1 });
         } catch (e) {
           console.error(e);
         }
+      }
+    };
+
+    playAudio = async sound => {
+      const soundObject = new Audio.Sound();
+      try {
+        await soundObject.loadAsync(sound);
+        await soundObject.playAsync(sound);
+        await soundObject.setStatusAsync({ volume: 1 });
+      } catch (e) {
+        console.error(e);
       }
     };
 
@@ -186,7 +197,9 @@ function screenGenerator(scene) {
         setState({
           resolved: newResolved,
         });
-
+        if (receiver.sound) {
+          this.playAudio(receiver.sound);
+        }
         if (
           receiver.logical.expectedValue.every(val =>
             newResolved.includes(`${receiver.id}-${val}`),
@@ -620,6 +633,7 @@ function screenGenerator(scene) {
                 onRoutePress={this.onRoutePress}
                 collect={this.collect}
                 receive={this.receive}
+                playAudio={this.playAudio}
                 handleSequence={this.handleSequence}
                 handleSlot={this.handleSlot}
                 handleDecorative={this.handleDecorative}

@@ -20,6 +20,8 @@ import Tooth from '../assets/images/tooth.png';
 import HeroAvatar from '../assets/images/hero-avatar.png';
 import VirusRewardInventory from '../assets/images/virus-reward-inventory.png';
 
+import Correct from '../assets/sounds/correct.mp3';
+
 export const LEVEL2_WALL1_SCENE = {
   name: 'Level2-wall1',
   route: 'Level2-wall1',
@@ -224,6 +226,7 @@ export const LEVEL2_WALL1_SCENE = {
           showOnResolved: ['mirror-tooth'],
           countOfUse: 1,
         },
+        sound: Correct,
       },
       {
         type: 'blank',
@@ -333,6 +336,7 @@ export const LEVEL2_WALL1_SCENE = {
           showOnResolved: ['mix-container-receiver'],
           countOfUse: 1,
         },
+        sound: Correct,
       },
       {
         type: 'blank',

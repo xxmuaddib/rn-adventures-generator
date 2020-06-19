@@ -16,6 +16,9 @@ import SkeletonSpineBig from '../assets/images/skeleton-spine-big.png';
 import Wall3Skeleton from '../assets/images/wall3-skeleton.png';
 import Level2SkeletonBlood from '../assets/images/level2-skeleton-blood.png';
 
+import SkeletonPartsCollect from '../assets/sounds/skeleton-parts-collect.wav';
+import WaterFilling from '../assets/sounds/water-filling.wav';
+
 export const LEVEL2_WALL3_SCENE = {
   name: 'Level2-wall3',
   bg: Level2Wall3Bg,
@@ -202,6 +205,7 @@ export const LEVEL2_WALL3_SCENE = {
         logical: {
           expectedValue: ['skeleton-foot'],
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'blank',
@@ -243,6 +247,7 @@ export const LEVEL2_WALL3_SCENE = {
         logical: {
           expectedValue: ['skeleton-arm'],
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'blank',
@@ -285,6 +290,7 @@ export const LEVEL2_WALL3_SCENE = {
         logical: {
           expectedValue: ['skeleton-skull'],
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'blank',
@@ -327,6 +333,7 @@ export const LEVEL2_WALL3_SCENE = {
         logical: {
           expectedValue: ['skeleton-spine'],
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'receiver',
@@ -354,6 +361,7 @@ export const LEVEL2_WALL3_SCENE = {
           expectedValue: ['water-blood-mix'],
           hideOnResolved: ['mix-container-receiver'],
         },
+        sound: WaterFilling,
       },
       {
         type: 'nav',
@@ -402,6 +410,7 @@ export const LEVEL2_WALL3_SCENE = {
           countOfUse: 1,
           hideOnResolved: ['skeleton-skull-receiver'],
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'receiver',

@@ -21,6 +21,10 @@ import ArrowLeft from '../assets/images/arrow-left.png';
 import ArrowRight from '../assets/images/arrow-right.png';
 import ArrowUp from '../assets/images/arrow-up.png';
 
+import Paper from '../assets/sounds/paper.wav';
+import SkeletonPartsCollect from '../assets/sounds/skeleton-parts-collect.wav';
+import Wall1SafeOpen from '../assets/sounds/level1-safe-open.wav';
+
 export const WALL3_SCENE = {
   name: 'Wall3',
   route: 'Wall3',
@@ -149,6 +153,7 @@ export const WALL3_SCENE = {
           expectedValue: ['safe-green-key'],
           hideOnResolved: ['safe-door'],
         },
+        sound: Wall1SafeOpen,
       },
       {
         type: 'decorative',
@@ -169,6 +174,7 @@ export const WALL3_SCENE = {
         logical: {
           hideOnResolved: ['safe-door2'],
         },
+        sound: Wall1SafeOpen,
       },
       {
         type: 'collectable',
@@ -190,6 +196,7 @@ export const WALL3_SCENE = {
         logical: {
           countOfUse: 1,
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'collectable',
@@ -211,6 +218,7 @@ export const WALL3_SCENE = {
         logical: {
           countOfUse: 1,
         },
+        sound: Paper,
       },
       {
         type: 'nav',
@@ -247,6 +255,7 @@ export const WALL3_SCENE = {
         logical: {
           countOfUse: 1,
         },
+        sound: Paper,
       },
       {
         type: 'blank',
@@ -334,6 +343,7 @@ export const WALL3_SCENE = {
         logical: {
           expectedValue: ['skeleton-foot'],
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'blank',
@@ -374,6 +384,7 @@ export const WALL3_SCENE = {
         logical: {
           expectedValue: ['skeleton-arm'],
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'blank',
@@ -415,6 +426,7 @@ export const WALL3_SCENE = {
         logical: {
           expectedValue: ['skeleton-skull'],
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'blank',
@@ -456,6 +468,7 @@ export const WALL3_SCENE = {
         logical: {
           expectedValue: ['skeleton-spine'],
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'nav',

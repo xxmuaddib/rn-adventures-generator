@@ -14,6 +14,9 @@ import Level2SafeOpened from '../assets/images/level2-safe-opened.png';
 import BloodContainer from '../assets/images/blood-container.png';
 import BloodContainerInventory from '../assets/images/blood-container-inventory.png';
 
+import Level2SafeButtonPress from '../assets/sounds/level2-safe-button-press.wav';
+import GlassRing from '../assets/sounds/glass-ring.mp3';
+
 export const LEVEL2_SAFE_SCENE = {
   name: 'Level2-safe',
   route: 'Level2-safe',
@@ -167,6 +170,7 @@ export const LEVEL2_SAFE_SCENE = {
             },
           ],
         },
+        sound: Level2SafeButtonPress,
       },
       {
         type: 'slot',
@@ -262,6 +266,7 @@ export const LEVEL2_SAFE_SCENE = {
             },
           ],
         },
+        sound: Level2SafeButtonPress,
       },
       {
         type: 'slot',
@@ -357,6 +362,7 @@ export const LEVEL2_SAFE_SCENE = {
             },
           ],
         },
+        sound: Level2SafeButtonPress,
       },
       {
         type: 'slot',
@@ -452,6 +458,7 @@ export const LEVEL2_SAFE_SCENE = {
             },
           ],
         },
+        sound: Level2SafeButtonPress,
       },
       {
         type: 'blank',
@@ -491,6 +498,7 @@ export const LEVEL2_SAFE_SCENE = {
           showOnResolved: ['slot3'],
           countOfUse: 1,
         },
+        sound: GlassRing,
       },
     ],
   },
