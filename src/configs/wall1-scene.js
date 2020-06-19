@@ -21,6 +21,8 @@ import CrownWithHand from '../assets/images/crown-with-hand.png';
 import VirusRewardInventory from '../assets/images/virus-reward-inventory.png';
 import HeroAvatar from '../assets/images/hero-avatar.png';
 
+import Correct from '../assets/sounds/correct.mp3';
+
 export const WALL1_SCENE = {
   name: 'Wall1',
   route: 'Wall1',
@@ -393,6 +395,7 @@ export const WALL1_SCENE = {
           showOnResolved: ['death-dialog-2'],
           countOfUse: 1,
         },
+        sound: Correct,
       },
       {
         type: 'dialog',
@@ -511,6 +514,7 @@ export const WALL1_SCENE = {
           navigateOnResolved: 'Level2-wall1',
           countOfUse: 1,
         },
+        sound: Correct,
       },
       {
         type: 'blank',

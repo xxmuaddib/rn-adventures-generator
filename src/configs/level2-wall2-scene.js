@@ -36,6 +36,13 @@ import EmptyChemicalContainerMixBig from '../assets/images/empty-chemical-contai
 import ChemicalContainerMixBig from '../assets/images/chemical-container-mix-big.png';
 import MixSmallContainer from '../assets/images/mix-small-container.png';
 
+import WindowOpen from '../assets/sounds/window-open.wav';
+import Level2CabinetDoorOpen from '../assets/sounds/level2-cabinet-door-open.wav';
+import KnifeCollect from '../assets/sounds/knife-collect.wav';
+import GlassRing from '../assets/sounds/glass-ring.mp3';
+import MatchCollect from '../assets/sounds/match-collect.wav';
+import WaterFilling from '../assets/sounds/water-filling.wav';
+
 export const LEVEL2_WALL2_SCENE = {
   name: 'Level2-wall2',
   route: 'Level2-wall2',
@@ -160,6 +167,7 @@ export const LEVEL2_WALL2_SCENE = {
         logical: {
           hideOnResolved: ['wandow2-closed'],
         },
+        sound: WindowOpen,
       },
       {
         type: 'receiver',
@@ -182,6 +190,7 @@ export const LEVEL2_WALL2_SCENE = {
         logical: {
           expectedValue: ['empty-water-container'],
         },
+        sound: WaterFilling,
       },
       {
         type: 'collectable',
@@ -203,6 +212,7 @@ export const LEVEL2_WALL2_SCENE = {
           showOnResolved: ['rain-receiver'],
           countOfUse: 1,
         },
+        sound: GlassRing,
       },
       {
         type: 'decorative',
@@ -525,6 +535,7 @@ export const LEVEL2_WALL2_SCENE = {
         logical: {
           countOfUse: 1,
         },
+        sound: MatchCollect,
       },
       {
         type: 'decorative',
@@ -545,6 +556,7 @@ export const LEVEL2_WALL2_SCENE = {
         logical: {
           hideOnResolved: ['level2-cabinet-rack1'],
         },
+        sound: Level2CabinetDoorOpen,
       },
       {
         type: 'decorative',
@@ -565,6 +577,7 @@ export const LEVEL2_WALL2_SCENE = {
         logical: {
           hideOnResolved: ['level2-cabinet-rack3'],
         },
+        sound: Level2CabinetDoorOpen,
       },
       {
         type: 'collectable',
@@ -586,6 +599,7 @@ export const LEVEL2_WALL2_SCENE = {
         logical: {
           countOfUse: 1,
         },
+        sound: GlassRing,
       },
       {
         type: 'decorative',
@@ -606,6 +620,7 @@ export const LEVEL2_WALL2_SCENE = {
         logical: {
           hideOnResolved: ['level2-cabinet-rack2'],
         },
+        sound: Level2CabinetDoorOpen,
       },
       {
         type: 'collectable',
@@ -627,6 +642,7 @@ export const LEVEL2_WALL2_SCENE = {
         logical: {
           countOfUse: 1,
         },
+        sound: KnifeCollect,
       },
     ],
   },

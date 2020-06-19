@@ -14,6 +14,9 @@ import WaterChemicalContainerSmall from '../assets/images/water-chemical-contain
 import BloodChemicalContainerSmall from '../assets/images/blood-chemical-container-small.png';
 import MixSmallContainer from '../assets/images/mix-small-container.png';
 
+import GlassRing from '../assets/sounds/glass-ring.mp3';
+import CandleSound from '../assets/sounds/candle.wav';
+
 export const CHEMISTRY_SCENE = {
   name: 'Chemistry',
   route: 'Chemistry',
@@ -103,6 +106,7 @@ export const CHEMISTRY_SCENE = {
           resolveOnCollect: ['hide-water-blood-mix'],
           countOfUse: 1,
         },
+        sound: GlassRing,
       },
       {
         type: 'receiver',
@@ -123,6 +127,7 @@ export const CHEMISTRY_SCENE = {
           hideOnResolved: ['candle'],
           expectedValue: ['match'],
         },
+        sound: CandleSound,
       },
       {
         type: 'blank',
@@ -266,6 +271,7 @@ export const CHEMISTRY_SCENE = {
         logical: {
           expectedValue: ['blood-container-full'],
         },
+        sound: GlassRing,
       },
       {
         type: 'blank',
@@ -300,6 +306,7 @@ export const CHEMISTRY_SCENE = {
         logical: {
           expectedValue: ['water-container'],
         },
+        sound: GlassRing,
       },
       {
         type: 'blank',

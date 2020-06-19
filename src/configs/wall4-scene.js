@@ -17,6 +17,9 @@ import PuzzleImagePart3 from '../assets/images/puzzle-image-part3.png';
 import PuzzleImagePart4 from '../assets/images/puzzle-image-part4.png';
 import PuzzleImagePart5 from '../assets/images/puzzle-image-part5.png';
 
+import Paper from '../assets/sounds/paper.wav';
+import SkeletonPartsCollect from '../assets/sounds/skeleton-parts-collect.wav';
+
 export const WALL4_SCENE = {
   name: 'Wall4',
   route: 'Wall4',
@@ -150,6 +153,7 @@ export const WALL4_SCENE = {
           ],
           hideOnResolved: ['plague-picture-puzzle'],
         },
+        sound: Paper,
       },
       {
         type: 'nav',
@@ -317,6 +321,7 @@ export const WALL4_SCENE = {
         logical: {
           countOfUse: 1,
         },
+        sound: Paper,
       },
       {
         type: 'collectable',
@@ -337,6 +342,7 @@ export const WALL4_SCENE = {
         logical: {
           countOfUse: 1,
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'nav',

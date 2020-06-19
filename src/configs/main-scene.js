@@ -28,6 +28,7 @@ import GreenKey from '../assets/images/green-key.png';
 import GreenKeyInventory from '../assets/images/green-key-inventory.png';
 import ImagePart2 from '../assets/images/image-part2.png';
 import PlagueImagePart2Inventory from '../assets/images/plague-picture-part2-inventory.png';
+import KeysCollect from '../assets/sounds/keys-collect.wav';
 
 import Virus2Image from '../assets/images/virus2-image.png';
 import SkeletonArmInventory from '../assets/images/skeleton-arm-inventory.png';
@@ -59,7 +60,6 @@ import TreeImage from '../assets/images/tree-image.png';
 import TreeImageZoomed from '../assets/images/tree-image-zoomed.png';
 import Level2MirrorBackground from '../assets/images/level2-mirror-bg.png';
 import Virus3Blood from '../assets/images/virus3-blood.png';
-import BloodInventory from '../assets/images/blood-inventory.png';
 import SkeletonFootInventory from '../assets/images/skeleton-foot-inventory.png';
 import BloodContainerFull from '../assets/images/blood-container-full.png';
 import Tooth from '../assets/images/tooth.png';
@@ -74,6 +74,7 @@ import Lung5 from '../assets/images/lung5.png';
 import Lung6 from '../assets/images/lung6.png';
 import Lung7 from '../assets/images/lung7.png';
 import Lung8 from '../assets/images/lung8.png';
+import LungsBranches from '../assets/sounds/lungs-branches.wav';
 import Lung8Virus from '../assets/images/lung8-virus.png';
 import Lung8VirusCover from '../assets/images/lung8-virus-cover.png';
 import Լevel3MirrorBg from '../assets/images/level3-mirror-bg.png';
@@ -94,11 +95,21 @@ import Level3_7 from '../assets/images/level3-7.png';
 import Level3_8 from '../assets/images/level3-8.png';
 import Level3_9 from '../assets/images/level3-9.png';
 
+import SkeletonPartsCollect from '../assets/sounds/skeleton-parts-collect.wav';
+import Paper from '../assets/sounds/paper.wav';
+import GumFalling from '../assets/sounds/gum-falling.mp3';
+import WindowOpen from '../assets/sounds/window-open.wav';
+import WaterFilling from '../assets/sounds/water-filling.wav';
+import Correct from '../assets/sounds/correct.mp3';
+import GlassRing from '../assets/sounds/glass-ring.mp3';
+import Cut from '../assets/sounds/cut.wav';
+import BgSound from '../assets/sounds/bg-sound.mp3';
+
 const SCENES = [
   {
     name: 'Farm1',
     route: 'Farm1',
-    bg: Farm1Bg,
+    bgSound: BgSound,
     objects: {
       itemsMap: [
         {
@@ -338,6 +349,7 @@ const SCENES = [
           logical: {
             hideOnResolved: ['wandow2-closed'],
           },
+          sound: WindowOpen,
         },
         {
           type: 'decorative',
@@ -380,6 +392,7 @@ const SCENES = [
             showOnResolved: ['wandow2-closed'],
             countOfUse: 1,
           },
+          sound: SkeletonPartsCollect,
         },
         {
           type: 'blank',
@@ -434,6 +447,7 @@ const SCENES = [
             countOfUse: 1,
             resolveOnCollect: ['decorative-picture'],
           },
+          sound: SkeletonPartsCollect,
         },
         {
           type: 'blank',
@@ -494,6 +508,7 @@ const SCENES = [
           logical: {
             countOfUse: 1,
           },
+          sound: Paper,
         },
         {
           type: 'nav',
@@ -542,6 +557,7 @@ const SCENES = [
               'tooth',
             ],
           },
+          sound: Correct,
         },
         {
           type: 'blank',
@@ -714,6 +730,7 @@ const SCENES = [
               'tooth',
             ],
           },
+          sound: Correct,
         },
         {
           type: 'blank',
@@ -1339,6 +1356,7 @@ const SCENES = [
           logical: {
             countOfUse: 1,
           },
+          sound: Paper,
         },
         {
           type: 'blank',
@@ -1436,6 +1454,7 @@ const SCENES = [
           logical: {
             hideOnResolved: ['gum-width-key'],
           },
+          sound: GumFalling,
         },
         {
           type: 'collectable',
@@ -1458,6 +1477,7 @@ const SCENES = [
             resolveOnCollect: ['key-was-collected'],
             countOfUse: 1,
           },
+          sound: KeysCollect,
         },
         {
           type: 'decorative',
@@ -1521,6 +1541,7 @@ const SCENES = [
           logical: {
             expectedValue: ['level2-knife'],
           },
+          sound: Cut,
         },
         {
           type: 'receiver',
@@ -1543,6 +1564,7 @@ const SCENES = [
             showOnResolved: ['level2-virus3'],
             hideOnResolved: ['Virus3Blood'],
           },
+          sound: WaterFilling,
         },
         {
           type: 'collectable',
@@ -1566,6 +1588,7 @@ const SCENES = [
             resolveOnCollect: ['tooth-should-hide'],
             countOfUse: 1,
           },
+          sound: Correct,
         },
         {
           type: 'collectable',
@@ -1587,6 +1610,7 @@ const SCENES = [
             showOnResolved: ['Virus3Blood'],
             resolveOnCollect: ['blood-should-hide'],
           },
+          sound: GlassRing,
         },
         {
           type: 'blank',
@@ -1706,6 +1730,7 @@ const SCENES = [
             resolveOnCollect: ['key-was-collected'],
             countOfUse: 1,
           },
+          sound: KeysCollect,
         },
         {
           type: 'decorative',
@@ -2188,6 +2213,7 @@ const SCENES = [
               'sequence1_3',
             ],
           },
+          sound: LungsBranches,
         },
         {
           type: 'sequence',
@@ -2206,6 +2232,7 @@ const SCENES = [
           logical: {
             hideOnResolved: ['sequence1'],
           },
+          sound: LungsBranches,
         },
         {
           type: 'sequence',
@@ -2224,6 +2251,7 @@ const SCENES = [
           logical: {
             hideOnResolved: ['sequence1'],
           },
+          sound: Correct,
         },
         {
           type: 'sequence',
@@ -2242,6 +2270,7 @@ const SCENES = [
           logical: {
             hideOnResolved: ['sequence1'],
           },
+          sound: LungsBranches,
         },
         {
           type: 'sequence',
@@ -2260,6 +2289,7 @@ const SCENES = [
           logical: {
             hideOnResolved: ['sequence1'],
           },
+          sound: LungsBranches,
         },
         {
           type: 'sequence',
@@ -2278,6 +2308,7 @@ const SCENES = [
           logical: {
             hideOnResolved: ['sequence1'],
           },
+          sound: LungsBranches,
         },
         {
           type: 'sequence',
@@ -2296,6 +2327,7 @@ const SCENES = [
           logical: {
             hideOnResolved: ['sequence1'],
           },
+          sound: LungsBranches,
         },
         {
           type: 'sequence',
@@ -2314,6 +2346,7 @@ const SCENES = [
           logical: {
             hideOnResolved: ['sequence1'],
           },
+          sound: LungsBranches,
         },
         {
           type: 'blank',
@@ -2496,6 +2529,7 @@ const SCENES = [
             resolveOnCollect: ['lung8-route-must-be-showen'],
             countOfUse: 1,
           },
+          sound: Correct,
         },
         {
           type: 'blank',
@@ -2562,6 +2596,7 @@ const SCENES = [
               'tooth',
             ],
           },
+          sound: Correct,
         },
         {
           type: 'blank',
