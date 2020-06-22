@@ -399,6 +399,11 @@ export const LEVEL2_WALL1_SCENE = {
                     en: 'Ok!',
                   },
                 },
+                character: {
+                  translations: {
+                    en: 'Ok!',
+                  },
+                },
                 drop: true,
                 heroElement: {
                   bg: 'rgba(255, 255, 255, .8)',
