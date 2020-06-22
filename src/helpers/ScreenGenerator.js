@@ -108,7 +108,7 @@ function screenGenerator(scene) {
           await soundObject.loadAsync(scene.bgSound);
           await soundObject.playAsync(scene.bgSound);
           await soundObject.setIsLoopingAsync(true);
-          await soundObject.setStatusAsync({ volume: 0.1 });
+          await soundObject.setStatusAsync({ volume: 0.2 });
         } catch (e) {
           console.error(e);
         }

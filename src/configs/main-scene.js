@@ -103,13 +103,13 @@ import WaterFilling from '../assets/sounds/water-filling.wav';
 import Correct from '../assets/sounds/correct.mp3';
 import GlassRing from '../assets/sounds/glass-ring.mp3';
 import Cut from '../assets/sounds/cut.wav';
-import BgSound from '../assets/sounds/bg-sound.mp3';
+import Sneeze from '../assets/sounds/sneeze.wav';
 
 const SCENES = [
   {
     name: 'Farm1',
     route: 'Farm1',
-    bgSound: BgSound,
+    bg: Farm1Bg,
     objects: {
       itemsMap: [
         {
@@ -3294,6 +3294,7 @@ const SCENES = [
             width: 400,
             height: 400,
           },
+          sound: Sneeze,
         },
       ],
     },
