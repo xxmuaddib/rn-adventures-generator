@@ -496,19 +496,27 @@ function screenGenerator(scene) {
         moveY > receiver.position.y &&
         moveY < receiver.position.y + receiver.position.height
       ) {
+        let groupSound;
         const resolvedWithId = [...resolved, id];
         const groupItems = objects.itemsMap
           .filter(item => item.group === group)
-          .map(item => item.id);
-
+          .map(item => {
+            if (item.groupSound) {
+              groupSound = item.groupSound;
+            }
+            return item.id;
+          });
         const groupIsResolved = groupItems.every(item =>
           resolvedWithId.includes(item),
         );
 
         if (groupIsResolved) {
           resolvedWithId.push(group);
-        }
 
+          if (groupSound) {
+            this.playAudio(groupSound);
+          }
+        }
         setState({ resolved: resolvedWithId });
       } else if (resolved.includes(id)) {
         const resolvedCopy = [...resolved];

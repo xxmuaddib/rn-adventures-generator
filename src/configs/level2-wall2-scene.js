@@ -42,6 +42,7 @@ import KnifeCollect from '../assets/sounds/knife-collect.wav';
 import GlassRing from '../assets/sounds/glass-ring.mp3';
 import MatchCollect from '../assets/sounds/match-collect.wav';
 import WaterFilling from '../assets/sounds/water-filling.wav';
+import SkeletonPartsCollect from '../assets/sounds/skeleton-parts-collect.wav';
 
 export const LEVEL2_WALL2_SCENE = {
   name: 'Level2-wall2',
@@ -162,7 +163,7 @@ export const LEVEL2_WALL2_SCENE = {
           y: 30,
           width: 50,
           height: 100,
-          zIndex: 4,
+          zIndex: 5,
         },
         logical: {
           hideOnResolved: ['wandow2-closed'],
@@ -170,8 +171,8 @@ export const LEVEL2_WALL2_SCENE = {
         sound: WindowOpen,
       },
       {
-        type: 'receiver',
-        id: 'rain-receiver',
+        type: 'blank',
+        id: 'rain',
         element: {
           type: 'animatable',
           animation: {
@@ -185,6 +186,20 @@ export const LEVEL2_WALL2_SCENE = {
           y: 38,
           width: 5,
           height: 82,
+          zIndex: 4,
+        },
+      },
+      {
+        type: 'receiver',
+        id: 'rain-receiver',
+        element: {
+          type: 'trigger',
+        },
+        position: {
+          x: 203,
+          y: 36,
+          width: 44,
+          height: 87,
           zIndex: 3,
         },
         logical: {
@@ -206,7 +221,7 @@ export const LEVEL2_WALL2_SCENE = {
           y: 108,
           width: 10,
           height: 15,
-          zIndex: 5,
+          zIndex: 6,
         },
         logical: {
           showOnResolved: ['rain-receiver'],
@@ -256,6 +271,7 @@ export const LEVEL2_WALL2_SCENE = {
           hideOnResolved: ['skeleton-foot-receiver'],
           countOfUse: 1,
         },
+        sound: SkeletonPartsCollect,
       },
       {
         type: 'blank',

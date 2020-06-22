@@ -18,6 +18,7 @@ import Level2SkeletonBlood from '../assets/images/level2-skeleton-blood.png';
 
 import SkeletonPartsCollect from '../assets/sounds/skeleton-parts-collect.wav';
 import WaterFilling from '../assets/sounds/water-filling.wav';
+import Level1SafeOpen from '../assets/sounds/level1-safe-open.wav';
 
 export const LEVEL2_WALL3_SCENE = {
   name: 'Level2-wall3',
@@ -432,6 +433,7 @@ export const LEVEL2_WALL3_SCENE = {
           expectedValue: ['safe-green-key'],
           hideOnResolved: ['safe-door'],
         },
+        sound: Level1SafeOpen,
       },
     ],
   },

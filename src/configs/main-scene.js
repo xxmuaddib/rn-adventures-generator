@@ -1121,7 +1121,7 @@ const SCENES = [
                   hero: {
                     translations: {
                       en:
-                        "Well, i may take a look. But that's a strange assumption",
+                        "Well, i may take a look. But that's a strange assumption.",
                     },
                   },
                   characterElement: {
@@ -1314,7 +1314,7 @@ const SCENES = [
                   },
                   hero: {
                     translations: {
-                      en: "No, I didn't know",
+                      en: "No, I didn't know.",
                     },
                   },
                   characterElement: {
@@ -1708,6 +1708,7 @@ const SCENES = [
           logical: {
             hideOnResolved: ['gum-width-key'],
           },
+          sound: GumFalling,
         },
         {
           type: 'collectable',
@@ -1828,7 +1829,7 @@ const SCENES = [
                   hero: {
                     translations: {
                       en:
-                        "Well, i may take a look. But that's a strange assumption",
+                        "Well, i may take a look. But that's a strange assumption.",
                     },
                   },
                   characterElement: {

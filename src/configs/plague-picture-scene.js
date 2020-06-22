@@ -7,6 +7,8 @@ import ImagePart5Large from '../assets/images/image-part5-large.png';
 import PlaguePicture from '../assets/images/plague-picture.png';
 import ArrowDown from '../assets/images/arrow-down.png';
 
+import Correct from '../assets/sounds/correct.mp3';
+
 export const PLAGUE_PICTURE_SCENE = {
   name: 'PlaguePictureScene',
   route: 'PlaguePictureScene',
@@ -160,6 +162,7 @@ export const PLAGUE_PICTURE_SCENE = {
         logical: {
           hideOnResolved: ['plague-picture-puzzle'],
         },
+        groupSound: Correct,
       },
       {
         type: 'draggable',
