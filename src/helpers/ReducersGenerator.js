@@ -17,6 +17,7 @@ const appInitialState = {
   dialogAnswer: '',
   dialogShouldBeDropped: false,
   hintModalVisible: false,
+  aboutModalVisible: false,
   tmp: {},
   progress: '',
   currentRoute: '',

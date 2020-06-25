@@ -12,6 +12,7 @@ import MainMenuLoader from '../assets/animations/main-menu-loader.json';
 export const MainMenuModal = ({
   mainMenuVisible,
   openMainMenu,
+  openAboutModal,
   reset,
   showHint,
   adIsLoading,
@@ -32,6 +33,9 @@ export const MainMenuModal = ({
           </MainMenuButton>
           <MainMenuButton onPress={reset}>
             <StyledText isLoaded={Font.isLoaded('acme')}>Reset</StyledText>
+          </MainMenuButton>
+          <MainMenuButton onPress={openAboutModal}>
+            <StyledText isLoaded={Font.isLoaded('acme')}>About us</StyledText>
           </MainMenuButton>
           <MainMenuButton onPress={openMainMenu}>
             <StyledText isLoaded={Font.isLoaded('acme')}>Close</StyledText>
@@ -78,6 +82,7 @@ const MainMenuButton = styled(TouchableOpacity)`
 MainMenuModal.propTypes = {
   mainMenuVisible: PropTypes.bool,
   showHint: PropTypes.func,
+  openAboutModal: PropTypes.func,
   openMainMenu: PropTypes.func,
   reset: PropTypes.func,
 };
@@ -85,6 +90,7 @@ MainMenuModal.propTypes = {
 MainMenuModal.defaultProps = {
   mainMenuVisible: false,
   showHint: () => undefined,
+  openAboutModal: () => undefined,
   openMainMenu: () => undefined,
   reset: () => undefined,
 };

@@ -377,7 +377,8 @@ export const LEVEL2_WALL1_SCENE = {
           dialogProperties: {
             character: {
               translations: {
-                en: 'Lungs!',
+                en:
+                  'I think you’re ready. But one last thing… You’re indeed going to have a great journey. You have get prepared. Humans have an organ called lungs. This is where you need to go… You should test it on the skeleton.',
               },
             },
             characterElement: {
@@ -396,12 +397,12 @@ export const LEVEL2_WALL1_SCENE = {
               {
                 hero: {
                   translations: {
-                    en: 'Ok!',
+                    en: 'Ok, sure, I’ll do it! What then?',
                   },
                 },
                 character: {
                   translations: {
-                    en: 'Ok!',
+                    en: 'You will see… Now go!',
                   },
                 },
                 drop: true,

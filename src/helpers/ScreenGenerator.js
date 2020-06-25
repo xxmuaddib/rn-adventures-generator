@@ -25,6 +25,7 @@ import { Dialog } from '../components/Dialog';
 import { Paper } from '../components/Paper';
 import { Hint } from '../components/Hint';
 import { MainMenuModal } from '../components/MainMenuModal';
+import { AboutModal } from '../components/AboutModal';
 import {
   setStateAction,
   findHelperFunction,
@@ -468,6 +469,14 @@ function screenGenerator(scene) {
       });
     };
 
+    openAboutModal = () => {
+      const { setState, aboutModalVisible } = this.props;
+      setState({
+        aboutModalVisible: !aboutModalVisible,
+        mainMenuVisible: false,
+      });
+    };
+
     onDragRelease = async (evt, g, id, group, progress) => {
       const {
         currentScene: {
@@ -623,6 +632,7 @@ function screenGenerator(scene) {
         dialogAnswer,
         dialogKey,
         hintModalVisible,
+        aboutModalVisible,
         resolved,
         progress,
         adIsLoading,
@@ -667,6 +677,7 @@ function screenGenerator(scene) {
               mainMenuVisible={mainMenuVisible}
               adIsLoading={adIsLoading}
               openMainMenu={this.openMainMenu}
+              openAboutModal={this.openAboutModal}
               reset={this.resetFunction}
               showHint={this.showHint}
             />
@@ -696,6 +707,10 @@ function screenGenerator(scene) {
                 showHintModal={this.showHintModal}
               />
             )}
+            <AboutModal
+              aboutModalVisible={aboutModalVisible}
+              openAboutModal={this.openAboutModal}
+            />
           </SceneBackground>
         </Container>
       );
@@ -716,6 +731,7 @@ function screenGenerator(scene) {
     mainMenuVisible: PropTypes.bool.isRequired,
     paperModalVisible: PropTypes.bool.isRequired,
     dialogModalVisible: PropTypes.bool.isRequired,
+    aboutModalVisible: PropTypes.bool.isRequired,
     paperModalContent: PaperPropType.isRequired,
     dialogModalContent: DialogPropType.isRequired,
     originalDialogContent: DialogPropType.isRequired,
@@ -746,6 +762,7 @@ function screenGenerator(scene) {
     originalDialogContent: app.originalDialogContent,
     dialogShouldBeDropped: app.dialogShouldBeDropped,
     hintModalVisible: app.hintModalVisible,
+    aboutModalVisible: app.aboutModalVisible,
     dialogAnswer: app.dialogAnswer,
     dialogKey: app.dialogKey,
     currentRoute: app.currentRoute,
