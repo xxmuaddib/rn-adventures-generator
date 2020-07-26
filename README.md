@@ -1,5 +1,8 @@
 # Adventures generator
-Flexible generator for different adventures
+Flexible generator for different point and click adventures
+
+# Demo
+You can see it in action on https://play.google.com/store/apps/details?id=com.skylab.thevirusrise
 ## Prerequisites
 ```
 yarn global add expo-cli
@@ -14,8 +17,7 @@ Run
 yarn (yarn install)
 ```
 ## Deployment
-Activate expo tunnel
 ```
-yarn start --tunnel
+yarn start
 ```
-Scan QR-code via application
+Scan QR-code via expo application
