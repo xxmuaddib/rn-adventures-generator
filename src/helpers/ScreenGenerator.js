@@ -472,9 +472,13 @@ function screenGenerator(scene) {
     openAboutModal = () => {
       const { setState, aboutModalVisible } = this.props;
       setState({
-        aboutModalVisible: !aboutModalVisible,
         mainMenuVisible: false,
       });
+      setTimeout(() => {
+        setState({
+          aboutModalVisible: !aboutModalVisible,
+        });
+      }, 1000);
     };
 
     onDragRelease = async (evt, g, id, group, progress) => {
@@ -603,7 +607,12 @@ function screenGenerator(scene) {
 
     showHint = async () => {
       const { setState } = this.props;
-      setState({ adIsLoading: true });
+      setState({
+        mainMenuVisible: false,
+      });
+      setTimeout(() => {
+        setState({ adIsLoading: true });
+      }, 1000);
       try {
         await AdMobRewarded.showAdAsync();
       } catch (e) {
