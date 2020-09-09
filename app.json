@@ -5,7 +5,7 @@
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android"],
-    "version": "1.0.0",
+    "version": "1.0.5",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
     "splash": {
@@ -24,7 +24,7 @@
     "githubUrl": "https://github.com/xxmuaddib/rn-adventures-generator",
     "android": {
       "package": "com.skylab.thevirusrise",
-      "versionCode": 20060816,
+      "versionCode": 20062518,
       "googleServicesFile": "./google-services.json",
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-2994481870952435~9586267010"
@@ -34,6 +34,7 @@
     "ios": {
       "bundleIdentifier": "com.skylab.thevirusrise",
       "supportsTablet": true,
+      "icon": "assets/icon_ios.png",
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-2994481870952435~8576986419"
       }

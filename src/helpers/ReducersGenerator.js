@@ -22,6 +22,7 @@ const appInitialState = {
   progress: '',
   currentRoute: '',
   adIsLoading: false,
+  addWasRewarded: false,
 };
 
 const appReducer = createReducer(appInitialState, {

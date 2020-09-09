@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import Modal from 'react-native-modal';
 import LottieView from 'lottie-react-native';
 import * as Font from 'expo-font';
-import { pointX, pointY } from '../helpers/StyleGenerator';
 
 import MainMenuLoader from '../assets/animations/main-menu-loader.json';
 
@@ -85,6 +84,7 @@ MainMenuModal.propTypes = {
   openAboutModal: PropTypes.func,
   openMainMenu: PropTypes.func,
   reset: PropTypes.func,
+  adIsLoading: PropTypes.bool,
 };
 
 MainMenuModal.defaultProps = {
@@ -93,4 +93,5 @@ MainMenuModal.defaultProps = {
   openAboutModal: () => undefined,
   openMainMenu: () => undefined,
   reset: () => undefined,
+  adIsLoading: false,
 };

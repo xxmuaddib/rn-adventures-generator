@@ -16,6 +16,7 @@ import {
   setStateAction,
 } from './src/helpers/ReducersGenerator';
 import NavigationService from './src/helpers/NavigationService';
+import { CommonComponents } from './src/components/CommonComponents'
 import AcmeFont from './src/assets/fonts/Acme-Regular.ttf';
 import { SCENES } from './src/configs/scenes-combiner';
 
@@ -139,6 +140,7 @@ export default class App extends React.Component {
             NavigationService.setTopLevelNavigator(navigatorRef);
           }}
         />
+        <CommonComponents />
       </Provider>
     );
   }

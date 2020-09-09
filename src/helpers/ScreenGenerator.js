@@ -8,7 +8,6 @@ import {
   View,
   StatusBar,
   Image,
-  Platform,
 } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -23,9 +22,7 @@ import { ObjectGrid } from './GridGenerator';
 import { Inventory } from '../components/Inventory';
 import { Dialog } from '../components/Dialog';
 import { Paper } from '../components/Paper';
-import { Hint } from '../components/Hint';
 import { MainMenuModal } from '../components/MainMenuModal';
-import { AboutModal } from '../components/AboutModal';
 import {
   setStateAction,
   findHelperFunction,
@@ -67,20 +64,6 @@ function screenGenerator(scene) {
       }
       this.setBgSound();
       this.redirectIfSplashScreen();
-      if (Platform.OS === 'ios') {
-        AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/3552369374');
-      } else {
-        AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/5683229761');
-      }
-
-      AdMobRewarded.addEventListener('rewardedVideoDidRewardUser', async () => {
-        this.openMainMenu();
-        setState({
-          hintModalVisible: true,
-        });
-        await AdMobRewarded.requestAdAsync();
-      });
-      await AdMobRewarded.requestAdAsync();
     }
 
     componentWillUnmount() {
@@ -610,13 +593,13 @@ function screenGenerator(scene) {
       setState({
         mainMenuVisible: false,
       });
-      setTimeout(() => {
-        setState({ adIsLoading: true });
-      }, 1000);
       try {
+        await AdMobRewarded.requestAdAsync();
         await AdMobRewarded.showAdAsync();
       } catch (e) {
-        this.showHintModal();
+        setState({
+          hintModalVisible: true,
+        });
       }
     };
 
@@ -624,7 +607,6 @@ function screenGenerator(scene) {
       const { hintModalVisible, setState } = this.props;
       setState({
         hintModalVisible: !hintModalVisible,
-        adIsLoading: false,
       });
     };
 
@@ -640,10 +622,7 @@ function screenGenerator(scene) {
         dialogModalContent,
         dialogAnswer,
         dialogKey,
-        hintModalVisible,
-        aboutModalVisible,
         resolved,
-        progress,
         adIsLoading,
         currentScene: {
           scene: { objects, bg },
@@ -709,17 +688,6 @@ function screenGenerator(scene) {
                 dialogKey={dialogKey}
               />
             )}
-            {hintModalVisible && (
-              <Hint
-                hintModalVisible={hintModalVisible}
-                progress={progress}
-                showHintModal={this.showHintModal}
-              />
-            )}
-            <AboutModal
-              aboutModalVisible={aboutModalVisible}
-              openAboutModal={this.openAboutModal}
-            />
           </SceneBackground>
         </Container>
       );
@@ -740,17 +708,17 @@ function screenGenerator(scene) {
     mainMenuVisible: PropTypes.bool.isRequired,
     paperModalVisible: PropTypes.bool.isRequired,
     dialogModalVisible: PropTypes.bool.isRequired,
-    aboutModalVisible: PropTypes.bool.isRequired,
     paperModalContent: PaperPropType.isRequired,
     dialogModalContent: DialogPropType.isRequired,
     originalDialogContent: DialogPropType.isRequired,
     dialogAnswer: PropTypes.bool.isRequired,
     dialogShouldBeDropped: PropTypes.bool.isRequired,
     dialogKey: PropTypes.string,
-    hintModalVisible: PropTypes.bool.isRequired,
     currentRoute: PropTypes.string.isRequired,
     tmp: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
-    progress: PropTypes.string.isRequired,
+    hintModalVisible: PropTypes.bool.isRequired,
+    aboutModalVisible: PropTypes.bool.isRequired,
+    adIsLoading: PropTypes.bool.isRequired,
   };
 
   ScreenGenerator.defaultProps = {
@@ -770,13 +738,13 @@ function screenGenerator(scene) {
     dialogModalContent: app.dialogModalContent,
     originalDialogContent: app.originalDialogContent,
     dialogShouldBeDropped: app.dialogShouldBeDropped,
-    hintModalVisible: app.hintModalVisible,
-    aboutModalVisible: app.aboutModalVisible,
     dialogAnswer: app.dialogAnswer,
     dialogKey: app.dialogKey,
     currentRoute: app.currentRoute,
     tmp: app.tmp,
-    progress: app.progress,
+    hintModalVisible: app.hintModalVisible,
+    aboutModalVisible: app.aboutModalVisible,
+    adIsLoading: app.adIsLoading,
   });
 
   const mapDispatchToProps = {
