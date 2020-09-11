@@ -203,7 +203,8 @@ export const LEVEL2_WALL2_SCENE = {
           zIndex: 3,
         },
         logical: {
-          expectedValue: ['empty-water-container'],
+          expectedValue: ['empty-water-container', 'blood-container'],
+          resolveIfAnyExist: true,
         },
         sound: WaterFilling,
       },

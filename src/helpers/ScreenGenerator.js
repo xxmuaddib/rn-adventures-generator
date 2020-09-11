@@ -174,9 +174,9 @@ function screenGenerator(scene) {
     receive = async (receiver, progress) => {
       const { resolved, collectedItems, setState } = this.props;
       const selectedItemId = await AsyncStorage.getItem('selectedItem');
+      if (resolved.includes(receiver.id)) return;
       if (receiver.logical.expectedValue.includes(selectedItemId)) {
         await AsyncStorage.removeItem('selectedItem');
-
         const newResolved = [...resolved, `${receiver.id}-${selectedItemId}`];
         setState({
           resolved: newResolved,
@@ -185,6 +185,7 @@ function screenGenerator(scene) {
           this.playAudio(receiver.sound);
         }
         if (
+          receiver.logical.resolveIfAnyExist ||
           receiver.logical.expectedValue.every(val =>
             newResolved.includes(`${receiver.id}-${val}`),
           )

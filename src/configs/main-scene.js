@@ -1560,7 +1560,8 @@ const SCENES = [
             zIndex: 3,
           },
           logical: {
-            expectedValue: ['blood-container'],
+            expectedValue: ['blood-container', 'empty-water-container'],
+            resolveIfAnyExist: true,
             showOnResolved: ['level2-virus3'],
             hideOnResolved: ['Virus3Blood'],
           },
@@ -3368,6 +3369,6 @@ const SCENES = [
   },
 ];
 
-const INITIAL_SCREEN = 'Farm1';
+const INITIAL_SCREEN = 'Level2-wall2';
 
 export { SCENES, INITIAL_SCREEN };
