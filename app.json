@@ -3,9 +3,8 @@
     "name": "The Virus Rise",
     "slug": "TheVirusRise",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": ["ios", "android"],
-    "version": "1.0.5",
+    "version": "1.0.7",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
     "splash": {
@@ -17,7 +16,7 @@
       "fallbackToCacheTimeout": 0
     },
     "androidNavigationBar": {
-      "visible": false
+      "hidden": true
     },
     "assetBundlePatterns": ["**/*"],
     "description": "",

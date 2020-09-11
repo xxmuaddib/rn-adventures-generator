@@ -1,44 +1,28 @@
 import React from 'react';
-import { YellowBox, AsyncStorage } from 'react-native';
+import { YellowBox, AsyncStorage, Platform } from 'react-native';
+import { AdMobRewarded } from 'expo-ads-admob';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
-import { Notifications, AppLoading } from 'expo';
-import { NOTIFICATIONS, askAsync } from 'expo-permissions';
+import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import * as Sentry from 'sentry-expo';
 
 import { Screens, InitialScreen } from './src/helpers/ScreenGenerator';
-import { FetchApi } from './src/helpers/FetchApi';
 import {
   generateReducers,
   generateActions,
   setStateAction,
 } from './src/helpers/ReducersGenerator';
 import NavigationService from './src/helpers/NavigationService';
-import { CommonComponents } from './src/components/CommonComponents'
+import { CommonComponents } from './src/components/CommonComponents';
 import AcmeFont from './src/assets/fonts/Acme-Regular.ttf';
 import { SCENES } from './src/configs/scenes-combiner';
-
-async function registerForPushNotificationsAsync() {
-  const { status } = await askAsync(NOTIFICATIONS);
-  if (status !== 'granted') {
-    return;
-  }
-
-  const token = await Notifications.getExpoPushTokenAsync();
-
-  if (token) {
-    FetchApi.post('/expo', { token });
-  }
-}
 
 const fetchFonts = () =>
   Font.loadAsync({
     acme: AcmeFont,
   });
-
-registerForPushNotificationsAsync();
 
 Sentry.init({
   dsn:
@@ -117,6 +101,12 @@ const SwitchNavigator = createSwitchNavigator(Screens(), {
 });
 
 const AppContainer = createAppContainer(SwitchNavigator);
+
+if (Platform.OS === 'ios') {
+  AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/3552369374');
+} else {
+  AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/5683229761');
+}
 
 export default class App extends React.Component {
   state = {

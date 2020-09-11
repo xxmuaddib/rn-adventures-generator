@@ -590,15 +590,18 @@ function screenGenerator(scene) {
 
     showHint = async () => {
       const { setState } = this.props;
-      setState({
-        mainMenuVisible: false,
-      });
       try {
         await AdMobRewarded.requestAdAsync();
         await AdMobRewarded.showAdAsync();
+        setTimeout(() => {
+          setState({
+            mainMenuVisible: false,
+          });
+        }, 2000);
       } catch (e) {
         setState({
           hintModalVisible: true,
+          mainMenuVisible: false,
         });
       }
     };

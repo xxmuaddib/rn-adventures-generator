@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect } from 'react';
-import { Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AdMobRewarded } from 'expo-ads-admob';
@@ -8,19 +7,24 @@ import { setStateAction } from '../helpers/ReducersGenerator';
 import { Hint } from './Hint';
 import { AboutModal } from './AboutModal';
 
-const UnwrappedCommonComponents = ({ hintModalVisible, progress, aboutModalVisible, setState }) => {
+const UnwrappedCommonComponents = ({
+  hintModalVisible,
+  progress,
+  aboutModalVisible,
+  setState,
+}) => {
   useEffect(() => {
-    if (Platform.OS === 'ios') {
-      AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/3552369374');
-    } else {
-      AdMobRewarded.setAdUnitID('ca-app-pub-2994481870952435/5683229761');
-    }
-
     AdMobRewarded.addEventListener('rewardedVideoDidRewardUser', () => {
       setState({
         hintModalVisible: true,
+        adIsLoading: false,
+        mainMenuVisible: false,
       });
     });
+
+    return () => {
+      AdMobRewarded.removeAllListeners();
+    };
   }, []);
 
   const showHintModal = useCallback(() => {
@@ -37,13 +41,11 @@ const UnwrappedCommonComponents = ({ hintModalVisible, progress, aboutModalVisib
 
   return (
     <>
-      {hintModalVisible && (
-        <Hint
-          hintModalVisible={hintModalVisible}
-          progress={progress}
-          showHintModal={showHintModal}
-        />
-      )}
+      <Hint
+        hintModalVisible={hintModalVisible}
+        progress={progress}
+        showHintModal={showHintModal}
+      />
       <AboutModal
         aboutModalVisible={aboutModalVisible}
         openAboutModal={openAboutModal}
@@ -62,7 +64,10 @@ const mapDispatchToProps = {
   setState: setStateAction,
 };
 
-export const CommonComponents = connect(mapStateToProps, mapDispatchToProps)(UnwrappedCommonComponents);
+export const CommonComponents = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UnwrappedCommonComponents);
 
 UnwrappedCommonComponents.propTypes = {
   setState: PropTypes.func.isRequired,
