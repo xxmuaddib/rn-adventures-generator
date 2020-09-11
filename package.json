@@ -16,7 +16,7 @@
     "expo-localization": "~8.2.1",
     "expo-permissions": "~9.0.1",
     "i18n-js": "^3.5.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "lottie-react-native": "~2.6.1",
     "prop-types": "^15.7.2",
     "qs": "^6.9.3",
