@@ -22,7 +22,6 @@ import { ObjectGrid } from './GridGenerator';
 import { Inventory } from '../components/Inventory';
 import { Dialog } from '../components/Dialog';
 import { Paper } from '../components/Paper';
-import { MainMenuModal } from '../components/MainMenuModal';
 import {
   setStateAction,
   findHelperFunction,
@@ -66,10 +65,6 @@ function screenGenerator(scene) {
       this.redirectIfSplashScreen();
     }
 
-    componentWillUnmount() {
-      AdMobRewarded.removeAllListeners();
-    }
-
     redirectIfSplashScreen = () => {
       const {
         navigation,
@@ -108,23 +103,6 @@ function screenGenerator(scene) {
       } catch (e) {
         console.error(e);
       }
-    };
-
-    resetFunction = async () => {
-      const { setState, reset, navigation } = this.props;
-      reset();
-      navigation.navigate(INITIAL_SCREEN);
-      const sceneCopy = _.cloneDeep(scene);
-      setState(
-        {
-          scene: sceneCopy,
-          originalScene: sceneCopy,
-          currentRoute: INITIAL_SCREEN,
-        },
-        scene.name,
-      );
-      this.setBgSound();
-      setState({ loading: false });
     };
 
     saveProgress = async progress => {
@@ -588,37 +566,11 @@ function screenGenerator(scene) {
       });
     };
 
-    showHint = async () => {
-      const { setState } = this.props;
-      try {
-        await AdMobRewarded.requestAdAsync();
-        await AdMobRewarded.showAdAsync();
-        setTimeout(() => {
-          setState({
-            mainMenuVisible: false,
-          });
-        }, 2000);
-      } catch (e) {
-        setState({
-          hintModalVisible: true,
-          mainMenuVisible: false,
-        });
-      }
-    };
-
-    showHintModal = () => {
-      const { hintModalVisible, setState } = this.props;
-      setState({
-        hintModalVisible: !hintModalVisible,
-      });
-    };
-
     render() {
       const {
         collectedItems,
         inventoryOpen,
         loading,
-        mainMenuVisible,
         paperModalVisible,
         dialogModalVisible,
         paperModalContent,
@@ -626,7 +578,6 @@ function screenGenerator(scene) {
         dialogAnswer,
         dialogKey,
         resolved,
-        adIsLoading,
         currentScene: {
           scene: { objects, bg },
         },
@@ -663,14 +614,6 @@ function screenGenerator(scene) {
               receive={this.receive}
               objects={objects}
               resolved={resolved}
-            />
-            <MainMenuModal
-              mainMenuVisible={mainMenuVisible}
-              adIsLoading={adIsLoading}
-              openMainMenu={this.openMainMenu}
-              openAboutModal={this.openAboutModal}
-              reset={this.resetFunction}
-              showHint={this.showHint}
             />
             {paperModalContent && (
               <Paper
@@ -711,21 +654,25 @@ function screenGenerator(scene) {
     mainMenuVisible: PropTypes.bool.isRequired,
     paperModalVisible: PropTypes.bool.isRequired,
     dialogModalVisible: PropTypes.bool.isRequired,
-    paperModalContent: PaperPropType.isRequired,
-    dialogModalContent: DialogPropType.isRequired,
-    originalDialogContent: DialogPropType.isRequired,
-    dialogAnswer: PropTypes.bool.isRequired,
+    paperModalContent: PaperPropType,
+    dialogModalContent: DialogPropType,
+    originalDialogContent: DialogPropType,
+    dialogAnswer: PropTypes.string,
     dialogShouldBeDropped: PropTypes.bool.isRequired,
     dialogKey: PropTypes.string,
     currentRoute: PropTypes.string.isRequired,
     tmp: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
     hintModalVisible: PropTypes.bool.isRequired,
     aboutModalVisible: PropTypes.bool.isRequired,
-    adIsLoading: PropTypes.bool.isRequired,
+    shouldBeReseted: PropTypes.bool.isRequired,
   };
 
   ScreenGenerator.defaultProps = {
     dialogKey: '',
+    dialogAnswer: '',
+    dialogModalContent: null,
+    originalDialogContent: null,
+    paperModalContent: null,
   };
 
   const mapStateToProps = ({ app, [scene.name]: currentScene }) => ({
@@ -747,7 +694,7 @@ function screenGenerator(scene) {
     tmp: app.tmp,
     hintModalVisible: app.hintModalVisible,
     aboutModalVisible: app.aboutModalVisible,
-    adIsLoading: app.adIsLoading,
+    shouldBeReseted: app.shouldBeReseted,
   });
 
   const mapDispatchToProps = {

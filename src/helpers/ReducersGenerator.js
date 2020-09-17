@@ -23,6 +23,7 @@ const appInitialState = {
   currentRoute: '',
   adIsLoading: false,
   addWasRewarded: false,
+  shouldBeReseted: false,
 };
 
 const appReducer = createReducer(appInitialState, {

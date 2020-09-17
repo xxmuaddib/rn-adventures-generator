@@ -9,7 +9,7 @@
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
     "@reduxjs/toolkit": "^1.2.5",
-    "expo": "^38.0.0",
+    "expo": "^38.0.2",
     "expo-ads-admob": "~8.2.1",
     "expo-av": "~8.2.1",
     "expo-font": "~8.2.1",

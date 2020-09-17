@@ -74,7 +74,7 @@ const CloseHintButton = styled(TouchableOpacity)`
 `;
 
 Hint.propTypes = {
-  hintModalVisible: PaperPropType.isRequired,
+  hintModalVisible: PropTypes.bool.isRequired,
   progress: PropTypes.string,
   showHintModal: PropTypes.func,
 };

@@ -136,7 +136,7 @@ const ObjectGrid = ({
               {(type === ITEMS.NAV || type === ITEMS.BLANK) &&
                 isResolved &&
                 !hideResolved && (
-                  <View style={generateStyle(position)}>
+                  <View key={id} style={generateStyle(position)}>
                     <StyledTouchableWithoutFeedback
                       disabled={isDeactive || !isActive || hideResolved}
                       onPress={() => {
@@ -158,7 +158,7 @@ const ObjectGrid = ({
                   </View>
                 )}
               {type === ITEMS.RECEIVER && isResolved && !hideResolved && (
-                <View style={generateStyle(position)}>
+                <View key={id} style={generateStyle(position)}>
                   <StyledView>
                     <Element element={element} position={position} />
                   </StyledView>
@@ -166,6 +166,7 @@ const ObjectGrid = ({
               )}
               {type === ITEMS.DRAGGABLE && isResolved && !hideResolved && (
                 <Draggable
+                  key={id}
                   style={generateStyle(position)}
                   x={position.x * pointX}
                   y={position.y * pointY}

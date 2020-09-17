@@ -12,7 +12,6 @@ export const MainMenuModal = ({
   mainMenuVisible,
   openMainMenu,
   openAboutModal,
-  reset,
   showHint,
   adIsLoading,
 }) => (
@@ -29,9 +28,6 @@ export const MainMenuModal = ({
         <Cointainer>
           <MainMenuButton onPress={showHint}>
             <StyledText isLoaded={Font.isLoaded('acme')}>Show hint</StyledText>
-          </MainMenuButton>
-          <MainMenuButton onPress={reset}>
-            <StyledText isLoaded={Font.isLoaded('acme')}>Reset</StyledText>
           </MainMenuButton>
           <MainMenuButton onPress={openAboutModal}>
             <StyledText isLoaded={Font.isLoaded('acme')}>About us</StyledText>
@@ -83,7 +79,6 @@ MainMenuModal.propTypes = {
   showHint: PropTypes.func,
   openAboutModal: PropTypes.func,
   openMainMenu: PropTypes.func,
-  reset: PropTypes.func,
   adIsLoading: PropTypes.bool,
 };
 
@@ -92,6 +87,5 @@ MainMenuModal.defaultProps = {
   showHint: () => undefined,
   openAboutModal: () => undefined,
   openMainMenu: () => undefined,
-  reset: () => undefined,
   adIsLoading: false,
 };
